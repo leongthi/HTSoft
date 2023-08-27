@@ -1,0 +1,42 @@
+/* Start Folder Style */
+.list-group{
+	width: 250px !important;
+
+}
+
+.list-group-item{
+	margin-top:10px;
+	border-radius: none; 
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+#cus_name{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#count_file{
+    color: black;
+}
+
+#date_last_modified{
+    color: black;    
+
+}
+
+.list-group-item:hover{
+	transform: scaleX(1.1);
+}
+
+
+.about span{
+	font-size: 12px;
+	margin-right: 10px;
+
+}
+
+
+  /* End */
