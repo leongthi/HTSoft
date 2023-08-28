@@ -1,11 +1,12 @@
 {% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+{% for cus in customers %}
 <div class="col-lg-2">
     <ul class="list-group text-white">
       <li  class="list-group-item d-flex justify-content-between align-content-left" id="li-detail">        
         <div class="d-flex flex-row">
           <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
           <div class="ml-2">
-            <h6 class="mb-0"><a id="cus_name" href="#">Test</a></h6>
+            <h6 class="mb-0"><a id="cus_name" href="#">{{cus.CustomerName}}</a></h6>
             <div class="about">
               <span id="count_file">802 Files</span>
               <span id="date_last_modified">Jan 29, 2020</span>
@@ -14,5 +15,6 @@
         </div>
       </li>    
     </ul>  
-  </div>   
+  </div> 
+  {% endfor %}  
 {% endblock %}

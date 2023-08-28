@@ -27,23 +27,33 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th>FacID</th>
+            <th>CustomerNo</th>
+            <th>CustomerName</th>
+            <th>HospitalCouncil</th>
+            <th>CustomerAddress</th>
+            <th>Hotline</th>
+            <th>IsActive</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody id="myTable">
+          {% for cus in customers %}
           <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
+            <td>{{cus.FacID}}</td>
+            <td>{{cus.CustomerNo}}</td>
+            <td>{{cus.CustomerName}}</td>
+            <td>{{cus.HospitalCouncil}}</td>
+            <td>{{cus.CustomerAddress}}</td>
+            <td>{{cus.Hotline}}</td>
+            <td>{{cus.IsActive}}</td>
             <td>
               <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
