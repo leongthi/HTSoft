@@ -23,4 +23,5 @@ urlpatterns = [
     path("dashboard/",include("dashboard.urls")),
     path("folder/",include("folder.urls")),
     path("shared/",include("shared.urls")),
+    path("taskmanagement/",include("taskmanagement.urls")),
 ]

@@ -66,47 +66,29 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
           >
-        </li>
-        <!-- Nav Item - Folder -->
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'folderList' %}">
-            <i class="fas fa-users" style="color: #ffffff;"></i>
-            <span>Quản lý khách hàng</span></a
-          >
-        </li>
+        </li>        
 
         <!-- Divider -->
         <hr class="sidebar-divider" />
 
         <!-- Heading -->
-        <div class="sidebar-heading">Interface</div>
+        <div class="sidebar-heading">Quản lý</div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - Folder Menu -->   
         <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
+          <a class="nav-link" href="{% url 'folderList' %}">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Tài liệu</span></a
           >
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-          </a>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
+        </li>
+
+        <!-- Nav Item - Folder Menu -->   
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'task_dashboard' %}">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Task</span></a
           >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Custom Components:</h6>
-              <a class="collapse-item" href="buttons.html">Buttons</a>
-              <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-          </div>
-        </li>        
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider" />

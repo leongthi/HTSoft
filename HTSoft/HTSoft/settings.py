@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authenticate.apps.AuthenticateConfig',
     'dashboard.apps.DashboardConfig',
     'folder.apps.FolderConfig',
+    'taskmanagement.apps.TaskmanagementConfig',
 ]
 
 MIDDLEWARE = [
