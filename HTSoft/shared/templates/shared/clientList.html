@@ -1,0 +1,64 @@
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-4">
+        <h2>
+          Danh sách Client
+          <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+
+        </h2>
+        <p>
+          Danh sách Client phần mềm của công ty
+        </p>
+        <input
+          class="form-control"
+          id="myInput"
+          type="text"
+          placeholder="Search.."
+        />
+      </div>
+    </div>
+   
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ClientName</th>
+            <th>Active</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          {% for cli in clients %}
+          <tr>
+            <td>{{cli.id}}</td>
+            <td>{{cli.ClientName}}</td>
+            <td>{{cli.IsActive}}</td>
+            <td>
+              <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+{% endblock %}

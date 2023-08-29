@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer
+from .models import Customer,Client
 
 # Create your views here.
 def customerList(request):
@@ -12,3 +12,13 @@ def customerList(request):
 
     return render(request,"shared/customerList.html",context)
 
+
+def clientList(request):
+
+    clients=Client.objects.all().order_by('id')
+
+    context={
+        'clients':clients
+    }
+
+    return render(request,"shared/clientList.html",context)

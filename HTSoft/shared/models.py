@@ -31,15 +31,13 @@ class Status(models.Model):
         return self.StatusName
 
 
-# class Build(models.Model):
-#     BuildName=models.CharField(max_length=100,blank=False)
-#     BuildCustomerID=models.ForeignKey(Customer,related_name='build_Customer_2BuildStatus',on_delete=models.CASCADE)
-#     BuildStatus=models.ForeignKey(Status,related_name='build_Status_2BuildStatus',on_delete=models.CASCADE)
-#     Deadline=models.DateField()
-#     created_date=models.DateTimeField(auto_now_add=True, blank=True)
-#     created_by=models.ForeignKey(User,related_name='user_Build_2created_by',on_delete=models.CASCADE)
-#     modified_date=models.DateTimeField(auto_now_add=True, blank=True)
-#     modified_by=models.ForeignKey(User,related_name='user_Build_2modified_by',on_delete=models.CASCADE)
+class Client(models.Model):
+    ClientName=models.CharField(max_length=100,blank=False)
+    IsActive=models.BooleanField()
+    created_date=models.DateTimeField(auto_now_add=True, blank=True)
+    created_by=models.ForeignKey(User,related_name='user_Client_2created_by',on_delete=models.CASCADE)
+    modified_date=models.DateTimeField(auto_now_add=True, blank=True)
+    modified_by=models.ForeignKey(User,related_name='user_Client_2modified_by',on_delete=models.CASCADE)
 
-#     def __str__(self):
-#         return self.BuildName
+    def __str__(self):
+        return self.ClientName

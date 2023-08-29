@@ -1,13 +1,41 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Build
 from shared.models import Customer, Status
+from . import api
+from . import functions as ft
+
+from dateutil import parser
 
 # Create your views here.
 def task_dashboard(request):
+    builds=Build.objects.all().order_by('id')    
 
-    builds=Build.objects.all().order_by('id')
 
+    lst_build=ft.InitialBuild(api.builds_getall())    
+    if lst_build is not None:
+        for build in lst_build:
 
+            check_build=Build.objects.filter(BuildID=build["BuildID"])
+
+            if check_build is not None:
+                continue
+            
+            else:
+                BuildID=build["BuildID"]
+                ClientID=build["ClientID"]
+                BuildName=build["BuildName"]
+                BuildStatus=build["Status"]
+                BuildDeadline=parser.isoparse(build["DueDate"])
+                
+                b=Build(
+                    BuildID=BuildID,
+                    ClientID=ClientID,
+                    BuildName=BuildName,
+                    BuildStatus=BuildStatus,
+                    BuildDeadline=BuildDeadline
+                )
+
+                b.save()
     context={
         'builds':builds
     }
@@ -19,23 +47,12 @@ def task_dashboard_buildUpdate(request,id):
     if build is None:
         return
     
+    
 
-    if request.method=='POST':
-        BuildName=request.POST.get('BuildName')
-        BuildCustomerID=request.POST.get('BuildCustomerID')
-        BuildStatusID=request.POST.get('BuildStatusID')
-        BuildDeadline=request.POST.get('BuildDeadline')
-        created_by=request.user
-        modified_by=request.user
+def buildTickets(request,BuildID):
+    
+    context={
 
-
-        build.BuildName=BuildName
-        build.BuildCustomerID=BuildCustomerID
-        build.BuildStatusID=BuildStatusID
-        build.BuildDeadline=BuildDeadline
-        build.created_by=created_by
-        build.modified_by=modified_by
-
-        build.save()
-        return redirect('task_dashboard')
+    }
+    return render(request,"taskmanagement/buildTickets.html",context)
     
