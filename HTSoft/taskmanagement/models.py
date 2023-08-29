@@ -13,6 +13,7 @@ class Build(models.Model):
     
 
 class Ticket(models.Model):
+    TicketID=models.IntegerField()
     Priority=models.CharField(max_length=50,blank=True)
     Status=models.CharField(max_length=50,blank=True)
     DueDate=models.DateTimeField()

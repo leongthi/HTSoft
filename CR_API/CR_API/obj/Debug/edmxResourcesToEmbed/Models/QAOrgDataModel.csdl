@@ -1,0 +1,1503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QAOrgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Builds">
+    <Key>
+      <PropertyRef Name="BuildID" />
+    </Key>
+    <Property Name="BuildID" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="BuildName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="BuildTickets">
+    <Key>
+      <PropertyRef Name="BuildID" />
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="BuildID" Type="Int32" Nullable="false" />
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByInt" Type="Int32" />
+    <Property Name="ModifiedByInt" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Client_Participants">
+    <Key>
+      <PropertyRef Name="ThamGiaID" />
+    </Key>
+    <Property Name="ThamGiaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Rank" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="WebServiceURL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveYN" Type="Boolean" />
+    <Property Name="SLGiuong" Type="Int32" />
+    <Property Name="SLuotKham" Type="Int32" />
+    <Property Name="GiamDoc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NguoiLienHe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="HopDongID" Type="Int32" />
+    <Property Name="ThamGiaID" Type="Int32" />
+    <Property Name="GiaTriHopDong" Type="Int32" />
+    <Property Name="PM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DanhSachPhanHeTamAnh">
+    <Key>
+      <PropertyRef Name="PhanHeID" />
+    </Key>
+    <Property Name="PhanHeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenPhanHe" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="deleted_Mail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="FacID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Header" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Footer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DateAsInt" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="deleted_MailFiles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="MailID" Type="Guid" />
+    <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="deleted_MailSender">
+    <Key>
+      <PropertyRef Name="MailID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="GroupUserID" />
+    </Key>
+    <Property Name="MailID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="GroupUserID" Type="Guid" Nullable="false" />
+    <Property Name="IsRead" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Features_Ref">
+    <Key>
+      <PropertyRef Name="FeatureCode_Source" />
+      <PropertyRef Name="FeatureCode_Ref" />
+    </Key>
+    <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FeatureCode_Source" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FeatureCode_Ref" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RefText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Installer">
+    <Key>
+      <PropertyRef Name="Path" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Extension" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Hash" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UploadPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Instance">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+    </Key>
+    <Property Name="InstanceID" Type="Guid" Nullable="false" />
+    <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InstanceName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InstanceType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="WebService" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_Attachment">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_CongViec">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="MucDo" Type="Int32" />
+    <Property Name="TinhTrang" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="L_Features">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Menu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubMenu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="L_Lookup">
+    <Key>
+      <PropertyRef Name="LookupName" />
+      <PropertyRef Name="LookupValue" />
+    </Key>
+    <Property Name="LookupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LookupValue" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="PrimaryDEV" Type="Int32" />
+    <Property Name="OrderBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="L_MucDo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MucDo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_Position">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PositionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="L_PrintLocation">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_BoPhan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaBP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenBP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_CongNo">
+    <Key>
+      <PropertyRef Name="MaCongNo" />
+    </Key>
+    <Property Name="MaCongNo" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="ContractID" Type="Guid" />
+    <Property Name="MaHSTT" Type="Guid" />
+    <Property Name="SoTienThu" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SoTienDaThu" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NgayThu" Type="DateTime" Precision="3" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ChoTreTT" Type="Boolean" />
+    <Property Name="MaSoLanTre" Type="Int32" />
+    <Property Name="NgayNhacNo" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ChucVu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ChucVuKH">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaCV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenCV" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_DuAn">
+    <Key>
+      <PropertyRef Name="MaDA" />
+    </Key>
+    <Property Name="MaDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MaKV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaNhomKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MaLoaiCS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoaiDN" Type="Int32" />
+    <Property Name="MaLoaiNganh" Type="Int32" />
+    <Property Name="SoLuongKhoaPhong" Type="Int32" />
+    <Property Name="SoLuotKham" Type="Int32" />
+    <Property Name="SoLuotGiuong" Type="Int32" />
+    <Property Name="MaHangBV" Type="Int32" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="PMDangSD" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MaTrangThai" Type="Int32" />
+    <Property Name="MaNhuCau" Type="Int32" />
+    <Property Name="MaMucDoUuTien" Type="Int32" />
+    <Property Name="ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MaLoaiDoanhThu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_FileUpload">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="L_QLDA_GDDA">
+    <Key>
+      <PropertyRef Name="MaGDDA" />
+    </Key>
+    <Property Name="MaGDDA" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="MaGD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="SoNgayTre" Type="Int32" />
+    <Property Name="KhoKhan" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_GiaiDoan">
+    <Key>
+      <PropertyRef Name="MaGD" />
+    </Key>
+    <Property Name="MaGD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenGD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_HangBenhVien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenHang" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_HopDong">
+    <Key>
+      <PropertyRef Name="ContractID" />
+    </Key>
+    <Property Name="ContractID" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="Nam" Type="Int32" />
+    <Property Name="ContractNumber" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ContractDate" Type="DateTime" Precision="3" />
+    <Property Name="UseYear" Type="Boolean" />
+    <Property Name="UseMonth" Type="Boolean" />
+    <Property Name="MaThoiHan" Type="Int32" />
+    <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+    <Property Name="NgayPhuLuc" Type="DateTime" Precision="3" />
+    <Property Name="MaLoaiHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaLoaiTien" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GiaTriHopDong" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_HoSoThanhToan">
+    <Key>
+      <PropertyRef Name="MaHSTT" />
+    </Key>
+    <Property Name="MaHSTT" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="ContractID" Type="Guid" />
+    <Property Name="SoHSTT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NoiDungTT" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SoHoaDon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NgayGuiHoSo" Type="DateTime" Precision="3" />
+    <Property Name="NgayKHNhanHS" Type="DateTime" Precision="3" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKH" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaSoThue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TinhTP" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Quan" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_KhuVuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaKV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenKV" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LichSuSale">
+    <Key>
+      <PropertyRef Name="SaleHistoryID" />
+    </Key>
+    <Property Name="SaleHistoryID" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="MaTrangThai" Type="Int32" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianSale" Type="DateTime" Precision="3" />
+    <Property Name="MucDich" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KetQua" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KhoKhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhuongAn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YKienCapTren" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiCoSo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiDoanhThu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDoanhThu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiHinhDoanhNghiep">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiHopDong">
+    <Key>
+      <PropertyRef Name="MaLoaiHD" />
+    </Key>
+    <Property Name="MaLoaiHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenLoaiHopDong" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiNganh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiNganh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiTien">
+    <Key>
+      <PropertyRef Name="MaLoaiTien" />
+    </Key>
+    <Property Name="MaLoaiTien" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenLoaiTien" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_MucDoUuTien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThongTinMucDoUuTien" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_NhanSu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="MaBoPhan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaGD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_NhomKH">
+    <Key>
+      <PropertyRef Name="MaNhom" />
+    </Key>
+    <Property Name="MaNhom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NhomKH" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_NhuCau">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThongTinNhuCau" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_SoLanTre">
+    <Key>
+      <PropertyRef Name="MaLanTre" />
+    </Key>
+    <Property Name="MaLanTre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLanTre" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ThoiHan">
+    <Key>
+      <PropertyRef Name="MaThoiHan" />
+    </Key>
+    <Property Name="MaThoiHan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThoiHan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ThongTinLHKH">
+    <Key>
+      <PropertyRef Name="MaLH" />
+    </Key>
+    <Property Name="MaLH" Type="Guid" Nullable="false" />
+    <Property Name="MaDA" Type="Int32" />
+    <Property Name="HoTen" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MaChucVu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SDT1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SDT2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_QLDA_TrangThai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThongTinTrangThai" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_ReportCollumsDetails">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CollumIndex" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CollumIndex" Type="Int32" Nullable="false" />
+    <Property Name="STT" Type="Int32" />
+    <Property Name="TableNo" Type="Int32" />
+    <Property Name="CollumName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FontSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CollumType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DevDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Table" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Field" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Dev_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_ReportDetail">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="FacID" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="FacID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DataProc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ProgID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_ReportInfo">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="OutputType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Orientation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FontName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HeaderFontSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BodyFontSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FooterFontSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Report_ID" Type="Guid" />
+    <Property Name="ReportName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DEV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsOnScreen" Type="Boolean" />
+    <Property Name="DataProc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ProgID" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_ReportParam">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="ParamName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParamDescripsion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParamType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsMandostory" Type="Boolean" />
+    <Property Name="DefaultValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Option" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ValueType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="STT" Type="Int32" />
+  </EntityType>
+  <EntityType Name="L_Reports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="ReportName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsOnScreen" Type="Boolean" />
+    <Property Name="DEV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NotesTester" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_ReportsSign">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Index" Type="Int32" Nullable="false" />
+    <Property Name="Values1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Values2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_Tags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tag" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="L_TeamMembers">
+    <Key>
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="TeamID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PositionID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_Teams">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeamName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="L_TicketErrorProtocol">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorID" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="L_TicketErrors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsNew" Type="Boolean" />
+    <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="L_TinhTrang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TinhTrang" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MailHeader">
+    <Key>
+      <PropertyRef Name="MailMessageKey" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="MailMessageKey" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MemoTemplates">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ControlType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Modules_Users">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveYN" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="BA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProjectUsers">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RequirementOriginal">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequirementCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BuilID" Type="Int32" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Deadline" Type="DateTime" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TypeRequirement" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="URDID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="URDFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SUP_Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ControlType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SUP_Requirement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TA_MoiTruongDay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="EnvName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="TA_TicketXacNhanDayMoiTruong">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int64" Nullable="false" />
+    <Property Name="UserIDConfirm" Type="Int32" />
+    <Property Name="Confirmer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MoiTruongID" Type="Guid" />
+    <Property Name="MoiTruongName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="TamAnhHospitalRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VersionURD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NameURD" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Request" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="Module" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketEmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="AssignedTo" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Title_Ununicode" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDateAsInt" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompletedOn" Type="DateTime" Precision="3" />
+    <Property Name="Responsibility" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MODULE" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="RequestedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RequestedBy_CheckSum" Type="Int32" />
+    <Property Name="TeamID" Type="Int32" />
+    <Property Name="PrimaryDEV" Type="Int32" />
+    <Property Name="PrimaryQC" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OrginalDeadline" Type="DateTime" Precision="3" />
+    <Property Name="ReportID" Type="Guid" />
+    <Property Name="TypeScripts" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectID" Type="Int32" />
+    <Property Name="RequestStatus" Type="Int32" />
+    <Property Name="ParentTicketID" Type="Int32" />
+    <Property Name="IsParent" Type="Boolean" />
+    <Property Name="ReportedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReleaseNote" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryBA" Type="Int32" />
+    <Property Name="TicketOwner" Type="Int32" />
+    <Property Name="Reproduce" Type="DateTime" Precision="3" />
+    <Property Name="DocumentID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Ticket_Estimations_Detail">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="DesignScreen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalDesignScreen" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="LogicScreen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalLogicScreen" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SPScreen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalSPScreen" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DesignReport" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalDesignReport" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SPReport" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalSPReport" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DevUnitTest" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DevFixBug" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalOther" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Ticket_InWeek">
+    <Key>
+      <PropertyRef Name="WeekNumber" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="TictketID" />
+    </Key>
+    <Property Name="WeekNumber" Type="Int32" Nullable="false" />
+    <Property Name="TeamID" Type="Int32" Nullable="false" />
+    <Property Name="TictketID" Type="Int64" Nullable="false" />
+    <Property Name="PrimaryDev" Type="Int32" />
+    <Property Name="ActualDev" Type="Int32" />
+    <Property Name="PrimaryQC" Type="Int32" />
+    <Property Name="ActualQC" Type="Int32" />
+    <Property Name="EstDev" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="TOEST" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="EstQC" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="HourInWeek" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="DeadlineCR" Type="DateTime" Precision="0" />
+    <Property Name="DeadlineTO" Type="DateTime" Precision="0" />
+    <Property Name="DeadlineQC" Type="DateTime" Precision="0" />
+    <Property Name="NgayGiaoQC" Type="DateTime" Precision="0" />
+    <Property Name="DoOrNot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOutOfWeek" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="Tuan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Ticket_Log_Bugs">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="TicketID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Ticket_Log_Bugs_Files">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="LogBugSeq" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Ticket_Menu">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MenuID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Ticket_QC_Estimation_Detail">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="Testcase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Ticket_ReleaseNote">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="ReleaseNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Ticket_RequirementOriginal">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="RequirementCode" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="RequirementCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BuildID" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Ticket_Tuan_PreSource">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="TuanID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="TuanID" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="UuTien" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DeadlineCR" Type="DateTime" Precision="0" />
+    <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Ticket_Week">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WeekName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TicketClients">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsDeployed" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TicketCompleted">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="CompletedOn" Type="DateTime" Precision="3" />
+    <Property Name="CompletedBy" Type="Int32" />
+    <Property Name="ActiveYN" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TicketDLLs">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketID" Type="Int32" />
+    <Property Name="Revision_SVN" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketEmails">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="MailMessageKey" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="MailMessageKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketErrors">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="ErrorID" />
+      <PropertyRef Name="FacID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="ErrorID" Type="Int32" Nullable="false" />
+    <Property Name="FacID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketEstimations">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="BA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DesignScreen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LogicScreen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SPScreen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DesignReport" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SPReport" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DEV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DEV_Real" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QC_Real" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BA_Real" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketFeature">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="FeatureCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketFeature_Log">
+    <Key>
+      <PropertyRef Name="HistorySeq" />
+    </Key>
+    <Property Name="HistorySeq" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Seq" Type="Int32" />
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="FeatureCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DeleteYN" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketFiles">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketFollow">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketHistory">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChangedOn" Type="DateTime" Precision="3" />
+    <Property Name="ChangedBy" Type="Int32" />
+    <Property Name="DeleteFlag" Type="Boolean" />
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompletedOn" Type="DateTime" Precision="3" />
+    <Property Name="AssignedFrom" Type="Int32" />
+    <Property Name="AssignedTo" Type="Int32" />
+    <Property Name="FromStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ToStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Seen" Type="Boolean" Nullable="false" />
+    <Property Name="FromPriority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToPriority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TicketHistoryLog">
+    <Key>
+      <PropertyRef Name="HistoryLogSeq" />
+    </Key>
+    <Property Name="HistorySeq" Type="Int64" />
+    <Property Name="HistoryLogSeq" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="FieldName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ValueOriginal" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ValueNew" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TicketNotes">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketReview">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TicketSVN_Link">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketID" Type="Int32" />
+    <Property Name="Revision_SVN" Type="Int32" />
+    <Property Name="LinkSVN_File" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketTags">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="Tag" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Responsibility" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NewID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Installer_History">
+    <Key>
+      <PropertyRef Name="Path" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Extension" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Hash" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UploadPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="L_DLLs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DLLName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="L_TicketFuture">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="WeekID" />
+    </Key>
+    <Property Name="TicketID" Type="Int64" Nullable="false" />
+    <Property Name="TeamID" Type="Int32" Nullable="false" />
+    <Property Name="WeekID" Type="Int32" Nullable="false" />
+    <Property Name="PrimaryDev" Type="Int32" />
+    <Property Name="ActualDev" Type="Int32" />
+    <Property Name="PrimaryQC" Type="Int32" />
+    <Property Name="ActualQC" Type="Int32" />
+    <Property Name="EstDEV" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="EstTO" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="EstQC" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="HourInWeek" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="DeadlineCR" Type="DateTime" Precision="0" />
+    <Property Name="DeadlineTO" Type="DateTime" Precision="0" />
+    <Property Name="DeadlineQC" Type="DateTime" Precision="0" />
+    <Property Name="NgayGiaoQC" Type="DateTime" Precision="0" />
+    <Property Name="DoOrNot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tuan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ScriptsDeploy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerList" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TicketNoWeek">
+    <Key>
+      <PropertyRef Name="WeekNumber" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="TictketID" />
+    </Key>
+    <Property Name="WeekNumber" Type="Int32" Nullable="false" />
+    <Property Name="TeamID" Type="Int32" Nullable="false" />
+    <Property Name="TictketID" Type="Int64" Nullable="false" />
+    <Property Name="PrimaryDev" Type="Int32" />
+    <Property Name="ActualDev" Type="Int32" />
+    <Property Name="PrimaryQC" Type="Int32" />
+    <Property Name="ActualQC" Type="Int32" />
+    <Property Name="EstDev" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="TOEST" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="EstQC" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="HourInWeek" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="DeadlineCR" Type="DateTime" Precision="0" />
+    <Property Name="DeadlineTO" Type="DateTime" Precision="0" />
+    <Property Name="DeadlineQC" Type="DateTime" Precision="0" />
+    <Property Name="NgayGiaoQC" Type="DateTime" Precision="0" />
+    <Property Name="DoOrNot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsOutOfWeek" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="Tuan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="QAOrgDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Builds" EntityType="Self.Builds" />
+    <EntitySet Name="BuildTickets" EntityType="Self.BuildTickets" />
+    <EntitySet Name="Client_Participants" EntityType="Self.Client_Participants" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" />
+    <EntitySet Name="DanhSachPhanHeTamAnh" EntityType="Self.DanhSachPhanHeTamAnh" />
+    <EntitySet Name="deleted_Mail" EntityType="Self.deleted_Mail" />
+    <EntitySet Name="deleted_MailFiles" EntityType="Self.deleted_MailFiles" />
+    <EntitySet Name="deleted_MailSender" EntityType="Self.deleted_MailSender" />
+    <EntitySet Name="Features_Ref" EntityType="Self.Features_Ref" />
+    <EntitySet Name="Installer" EntityType="Self.Installer" />
+    <EntitySet Name="Instance" EntityType="Self.Instance" />
+    <EntitySet Name="L_Attachment" EntityType="Self.L_Attachment" />
+    <EntitySet Name="L_CongViec" EntityType="Self.L_CongViec" />
+    <EntitySet Name="L_Features" EntityType="Self.L_Features" />
+    <EntitySet Name="L_Lookup" EntityType="Self.L_Lookup" />
+    <EntitySet Name="L_MucDo" EntityType="Self.L_MucDo" />
+    <EntitySet Name="L_Position" EntityType="Self.L_Position" />
+    <EntitySet Name="L_PrintLocation" EntityType="Self.L_PrintLocation" />
+    <EntitySet Name="L_QLDA_BoPhan" EntityType="Self.L_QLDA_BoPhan" />
+    <EntitySet Name="L_QLDA_CongNo" EntityType="Self.L_QLDA_CongNo" />
+    <EntitySet Name="L_QLDA_ChucVu" EntityType="Self.L_QLDA_ChucVu" />
+    <EntitySet Name="L_QLDA_ChucVuKH" EntityType="Self.L_QLDA_ChucVuKH" />
+    <EntitySet Name="L_QLDA_DuAn" EntityType="Self.L_QLDA_DuAn" />
+    <EntitySet Name="L_QLDA_FileUpload" EntityType="Self.L_QLDA_FileUpload" />
+    <EntitySet Name="L_QLDA_GDDA" EntityType="Self.L_QLDA_GDDA" />
+    <EntitySet Name="L_QLDA_GiaiDoan" EntityType="Self.L_QLDA_GiaiDoan" />
+    <EntitySet Name="L_QLDA_HangBenhVien" EntityType="Self.L_QLDA_HangBenhVien" />
+    <EntitySet Name="L_QLDA_HopDong" EntityType="Self.L_QLDA_HopDong" />
+    <EntitySet Name="L_QLDA_HoSoThanhToan" EntityType="Self.L_QLDA_HoSoThanhToan" />
+    <EntitySet Name="L_QLDA_KhachHang" EntityType="Self.L_QLDA_KhachHang" />
+    <EntitySet Name="L_QLDA_KhuVuc" EntityType="Self.L_QLDA_KhuVuc" />
+    <EntitySet Name="L_QLDA_LichSuSale" EntityType="Self.L_QLDA_LichSuSale" />
+    <EntitySet Name="L_QLDA_LoaiCoSo" EntityType="Self.L_QLDA_LoaiCoSo" />
+    <EntitySet Name="L_QLDA_LoaiDoanhThu" EntityType="Self.L_QLDA_LoaiDoanhThu" />
+    <EntitySet Name="L_QLDA_LoaiHinhDoanhNghiep" EntityType="Self.L_QLDA_LoaiHinhDoanhNghiep" />
+    <EntitySet Name="L_QLDA_LoaiHopDong" EntityType="Self.L_QLDA_LoaiHopDong" />
+    <EntitySet Name="L_QLDA_LoaiNganh" EntityType="Self.L_QLDA_LoaiNganh" />
+    <EntitySet Name="L_QLDA_LoaiTien" EntityType="Self.L_QLDA_LoaiTien" />
+    <EntitySet Name="L_QLDA_MucDoUuTien" EntityType="Self.L_QLDA_MucDoUuTien" />
+    <EntitySet Name="L_QLDA_NhanSu" EntityType="Self.L_QLDA_NhanSu" />
+    <EntitySet Name="L_QLDA_NhomKH" EntityType="Self.L_QLDA_NhomKH" />
+    <EntitySet Name="L_QLDA_NhuCau" EntityType="Self.L_QLDA_NhuCau" />
+    <EntitySet Name="L_QLDA_SoLanTre" EntityType="Self.L_QLDA_SoLanTre" />
+    <EntitySet Name="L_QLDA_ThoiHan" EntityType="Self.L_QLDA_ThoiHan" />
+    <EntitySet Name="L_QLDA_ThongTinLHKH" EntityType="Self.L_QLDA_ThongTinLHKH" />
+    <EntitySet Name="L_QLDA_TrangThai" EntityType="Self.L_QLDA_TrangThai" />
+    <EntitySet Name="L_ReportCollumsDetails" EntityType="Self.L_ReportCollumsDetails" />
+    <EntitySet Name="L_ReportDetail" EntityType="Self.L_ReportDetail" />
+    <EntitySet Name="L_ReportInfo" EntityType="Self.L_ReportInfo" />
+    <EntitySet Name="L_ReportParam" EntityType="Self.L_ReportParam" />
+    <EntitySet Name="L_Reports" EntityType="Self.L_Reports" />
+    <EntitySet Name="L_ReportsSign" EntityType="Self.L_ReportsSign" />
+    <EntitySet Name="L_Tags" EntityType="Self.L_Tags" />
+    <EntitySet Name="L_TeamMembers" EntityType="Self.L_TeamMembers" />
+    <EntitySet Name="L_Teams" EntityType="Self.L_Teams" />
+    <EntitySet Name="L_TicketErrorProtocol" EntityType="Self.L_TicketErrorProtocol" />
+    <EntitySet Name="L_TicketErrors" EntityType="Self.L_TicketErrors" />
+    <EntitySet Name="L_TinhTrang" EntityType="Self.L_TinhTrang" />
+    <EntitySet Name="MailHeader" EntityType="Self.MailHeader" />
+    <EntitySet Name="MemoTemplates" EntityType="Self.MemoTemplates" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" />
+    <EntitySet Name="Modules_Users" EntityType="Self.Modules_Users" />
+    <EntitySet Name="Projects" EntityType="Self.Projects" />
+    <EntitySet Name="ProjectUsers" EntityType="Self.ProjectUsers" />
+    <EntitySet Name="RequirementOriginal" EntityType="Self.RequirementOriginal" />
+    <EntitySet Name="SUP_Menu" EntityType="Self.SUP_Menu" />
+    <EntitySet Name="SUP_Requirement" EntityType="Self.SUP_Requirement" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TA_MoiTruongDay" EntityType="Self.TA_MoiTruongDay" />
+    <EntitySet Name="TA_TicketXacNhanDayMoiTruong" EntityType="Self.TA_TicketXacNhanDayMoiTruong" />
+    <EntitySet Name="TamAnhHospitalRequest" EntityType="Self.TamAnhHospitalRequest" />
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+    <EntitySet Name="Ticket_Estimations_Detail" EntityType="Self.Ticket_Estimations_Detail" />
+    <EntitySet Name="Ticket_InWeek" EntityType="Self.Ticket_InWeek" />
+    <EntitySet Name="Ticket_Log_Bugs" EntityType="Self.Ticket_Log_Bugs" />
+    <EntitySet Name="Ticket_Log_Bugs_Files" EntityType="Self.Ticket_Log_Bugs_Files" />
+    <EntitySet Name="Ticket_Menu" EntityType="Self.Ticket_Menu" />
+    <EntitySet Name="Ticket_QC_Estimation_Detail" EntityType="Self.Ticket_QC_Estimation_Detail" />
+    <EntitySet Name="Ticket_ReleaseNote" EntityType="Self.Ticket_ReleaseNote" />
+    <EntitySet Name="Ticket_RequirementOriginal" EntityType="Self.Ticket_RequirementOriginal" />
+    <EntitySet Name="Ticket_Tuan_PreSource" EntityType="Self.Ticket_Tuan_PreSource" />
+    <EntitySet Name="Ticket_Week" EntityType="Self.Ticket_Week" />
+    <EntitySet Name="TicketClients" EntityType="Self.TicketClients" />
+    <EntitySet Name="TicketCompleted" EntityType="Self.TicketCompleted" />
+    <EntitySet Name="TicketDLLs" EntityType="Self.TicketDLLs" />
+    <EntitySet Name="TicketEmails" EntityType="Self.TicketEmails" />
+    <EntitySet Name="TicketErrors" EntityType="Self.TicketErrors" />
+    <EntitySet Name="TicketEstimations" EntityType="Self.TicketEstimations" />
+    <EntitySet Name="TicketFeature" EntityType="Self.TicketFeature" />
+    <EntitySet Name="TicketFeature_Log" EntityType="Self.TicketFeature_Log" />
+    <EntitySet Name="TicketFiles" EntityType="Self.TicketFiles" />
+    <EntitySet Name="TicketFollow" EntityType="Self.TicketFollow" />
+    <EntitySet Name="TicketHistory" EntityType="Self.TicketHistory" />
+    <EntitySet Name="TicketHistoryLog" EntityType="Self.TicketHistoryLog" />
+    <EntitySet Name="TicketNotes" EntityType="Self.TicketNotes" />
+    <EntitySet Name="TicketReview" EntityType="Self.TicketReview" />
+    <EntitySet Name="TicketSVN_Link" EntityType="Self.TicketSVN_Link" />
+    <EntitySet Name="TicketTags" EntityType="Self.TicketTags" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Installer_History" EntityType="Self.Installer_History" />
+    <EntitySet Name="L_DLLs" EntityType="Self.L_DLLs" />
+    <EntitySet Name="L_TicketFuture" EntityType="Self.L_TicketFuture" />
+    <EntitySet Name="ScriptsDeploy" EntityType="Self.ScriptsDeploy" />
+    <EntitySet Name="TicketNoWeek" EntityType="Self.TicketNoWeek" />
+  </EntityContainer>
+</Schema>

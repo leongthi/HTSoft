@@ -1,0 +1,131 @@
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\CR_API.dll.config
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\CR_API.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\CR_API.pdb
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\csc.exe
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\csc.exe.config
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\csc.rsp
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\csi.exe
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\csi.rsp
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\System.AppContext.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\System.Collections.Immutable.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\System.IO.FileSystem.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\System.Reflection.Metadata.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\vbc.exe
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\vbc.exe.config
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\vbc.rsp
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\VBCSCompiler.exe
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\roslyn\VBCSCompiler.exe.config
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Antlr3.Runtime.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\EntityFramework.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\EntityFramework.SqlServer.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Microsoft.Web.Infrastructure.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Newtonsoft.Json.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Net.Http.Formatting.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Helpers.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Http.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Http.WebHost.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Mvc.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Optimization.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Razor.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.WebPages.Deployment.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.WebPages.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.WebPages.Razor.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\WebGrease.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\EntityFramework.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\EntityFramework.SqlServer.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Newtonsoft.Json.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Net.Http.Formatting.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Helpers.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Http.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Http.WebHost.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Mvc.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Optimization.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.Razor.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.WebPages.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.WebPages.Deployment.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\System.Web.WebPages.Razor.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Antlr3.Runtime.pdb
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\obj\Debug\CR_API.csproj.CoreCompileInputs.cache
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\obj\Debug\CR_API.csproj.CopyComplete
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\obj\Debug\CR_API.dll
+D:\@Đây là thư mục của Thiện\@Code\webapi\CR_API\CR_API\obj\Debug\CR_API.pdb
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\CR_API.dll.config
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\CR_API.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\CR_API.pdb
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\csc.exe
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\csc.exe.config
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\csc.rsp
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\csi.exe
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\csi.rsp
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\vbc.exe
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\vbc.exe.config
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\vbc.rsp
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\EntityFramework.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Helpers.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Http.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Mvc.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Optimization.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Razor.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.WebPages.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\WebGrease.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\EntityFramework.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Helpers.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Http.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Mvc.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Optimization.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.Razor.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.WebPages.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\Downloads\CR_API\CR_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\Downloads\CR_API\CR_API\obj\Debug\CR_API.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\CR_API\CR_API\obj\Debug\CR_API.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\CR_API\CR_API\obj\Debug\CR_API.csproj.CopyComplete
+C:\Users\Admin\Downloads\CR_API\CR_API\obj\Debug\CR_API.dll
+C:\Users\Admin\Downloads\CR_API\CR_API\obj\Debug\CR_API.pdb

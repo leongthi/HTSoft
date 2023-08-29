@@ -1,0 +1,2157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QAOrgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Builds">
+    <Key>
+      <PropertyRef Name="BuildID" />
+    </Key>
+    <Property Name="BuildID" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="BuildName" Type="nvarchar" MaxLength="500" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BuildTickets">
+    <Key>
+      <PropertyRef Name="BuildID" />
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="BuildID" Type="int" Nullable="false" />
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="CreatedByInt" Type="int" />
+    <Property Name="ModifiedByInt" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Client_Hierarchy' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Client_Hierarchy">
+          <Property Name="ClientID" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="250" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Client_Participants">
+    <Key>
+      <PropertyRef Name="ThamGiaID" />
+    </Key>
+    <Property Name="ThamGiaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="250" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.ClientDeployInfor' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ClientDeployInfor">
+          <Property Name="CientName" Type="varchar" MaxLength="50" />
+          <Property Name="ConnectionString" Type="varchar" MaxLength="500" />
+        </EntityType>-->
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Rank" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="nvarchar" MaxLength="150" />
+    <Property Name="Type" Type="nvarchar" MaxLength="150" />
+    <Property Name="WebServiceURL" Type="nvarchar" MaxLength="250" />
+    <Property Name="ActiveYN" Type="bit" />
+    <Property Name="SLGiuong" Type="int" />
+    <Property Name="SLuotKham" Type="int" />
+    <Property Name="GiamDoc" Type="nvarchar" MaxLength="250" />
+    <Property Name="NguoiLienHe" Type="nvarchar" MaxLength="250" />
+    <Property Name="HopDongID" Type="int" />
+    <Property Name="ThamGiaID" Type="int" />
+    <Property Name="GiaTriHopDong" Type="int" />
+    <Property Name="PM" Type="nvarchar" MaxLength="200" />
+    <Property Name="CR" Type="nvarchar" MaxLength="200" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DanhSachPhanHeTamAnh">
+    <Key>
+      <PropertyRef Name="PhanHeID" />
+    </Key>
+    <Property Name="PhanHeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenPhanHe" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="deleted_Mail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FacID" Type="varchar" MaxLength="10" />
+    <Property Name="Header" Type="nvarchar" MaxLength="500" />
+    <Property Name="Body" Type="nvarchar(max)" />
+    <Property Name="Footer" Type="nvarchar" MaxLength="500" />
+    <Property Name="DateAsInt" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="deleted_MailFiles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MailID" Type="uniqueidentifier" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="FileData" Type="varchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="deleted_MailSender">
+    <Key>
+      <PropertyRef Name="MailID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="GroupUserID" />
+    </Key>
+    <Property Name="MailID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GroupUserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsRead" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.DuyAnh$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DuyAnh$">
+          <Property Name="TicketID" Type="float" />
+          <Property Name="Team" Type="float" />
+          <Property Name="DeadlineCR" Type="datetime" />
+          <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="F7" Type="nvarchar" MaxLength="255" />
+          <Property Name="F8" Type="nvarchar" MaxLength="255" />
+          <Property Name="F9" Type="nvarchar" MaxLength="255" />
+          <Property Name="F10" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+          <Property Name="F28" Type="nvarchar" MaxLength="255" />
+          <Property Name="F29" Type="nvarchar" MaxLength="255" />
+          <Property Name="F30" Type="nvarchar" MaxLength="255" />
+          <Property Name="F31" Type="nvarchar" MaxLength="255" />
+          <Property Name="F32" Type="nvarchar" MaxLength="255" />
+          <Property Name="F33" Type="nvarchar" MaxLength="255" />
+          <Property Name="F34" Type="nvarchar" MaxLength="255" />
+          <Property Name="F35" Type="nvarchar" MaxLength="255" />
+          <Property Name="F36" Type="nvarchar" MaxLength="255" />
+          <Property Name="F37" Type="nvarchar" MaxLength="255" />
+          <Property Name="F38" Type="nvarchar" MaxLength="255" />
+          <Property Name="F39" Type="nvarchar" MaxLength="255" />
+          <Property Name="F40" Type="nvarchar" MaxLength="255" />
+          <Property Name="F41" Type="nvarchar" MaxLength="255" />
+          <Property Name="F42" Type="nvarchar" MaxLength="255" />
+          <Property Name="F43" Type="nvarchar" MaxLength="255" />
+          <Property Name="F44" Type="nvarchar" MaxLength="255" />
+          <Property Name="F45" Type="nvarchar" MaxLength="255" />
+          <Property Name="F46" Type="nvarchar" MaxLength="255" />
+          <Property Name="F47" Type="nvarchar" MaxLength="255" />
+          <Property Name="F48" Type="nvarchar" MaxLength="255" />
+          <Property Name="F49" Type="nvarchar" MaxLength="255" />
+          <Property Name="F50" Type="nvarchar" MaxLength="255" />
+          <Property Name="F51" Type="nvarchar" MaxLength="255" />
+          <Property Name="F52" Type="nvarchar" MaxLength="255" />
+          <Property Name="F53" Type="nvarchar" MaxLength="255" />
+          <Property Name="F54" Type="nvarchar" MaxLength="255" />
+          <Property Name="F55" Type="nvarchar" MaxLength="255" />
+          <Property Name="F56" Type="nvarchar" MaxLength="255" />
+          <Property Name="F57" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_CLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_CLS">
+          <Property Name="F1" Type="nvarchar" MaxLength="255" />
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mô tả" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_Duoc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_Duoc">
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MÔ TẢ" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_KB' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_KB">
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MÔ TẢ" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_NThuoc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_NThuoc">
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MÔ TẢ" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_NTru' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_NTru">
+          <Property Name="F1" Type="nvarchar" MaxLength="255" />
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MÔ TẢ" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_TiepNhan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_TiepNhan">
+          <Property Name="F1" Type="nvarchar" MaxLength="255" />
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MÔ TẢ" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar(max)" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Fea_ThanhToan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fea_ThanhToan">
+          <Property Name="F1" Type="nvarchar" MaxLength="255" />
+          <Property Name="STT" Type="float" />
+          <Property Name="MÃ" Type="nvarchar" MaxLength="255" />
+          <Property Name="MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="SUB MENU" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG" Type="nvarchar" MaxLength="255" />
+          <Property Name="MÔ TẢ" Type="nvarchar" MaxLength="255" />
+          <Property Name="GHI CHÚ" Type="nvarchar" MaxLength="255" />
+          <Property Name="CHỨC NĂNG LIÊN QUAN" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEV" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="Features_Ref">
+    <Key>
+      <PropertyRef Name="FeatureCode_Source" />
+      <PropertyRef Name="FeatureCode_Ref" />
+    </Key>
+    <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeatureCode_Source" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FeatureCode_Ref" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RefText" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Hieu$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Hieu$">
+          <Property Name="TicketID" Type="float" />
+          <Property Name="Team" Type="float" />
+          <Property Name="DeadlineCR" Type="datetime" />
+          <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="F7" Type="nvarchar" MaxLength="255" />
+          <Property Name="F8" Type="nvarchar" MaxLength="255" />
+          <Property Name="F9" Type="nvarchar" MaxLength="255" />
+          <Property Name="F10" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+          <Property Name="F28" Type="nvarchar" MaxLength="255" />
+          <Property Name="F29" Type="nvarchar" MaxLength="255" />
+          <Property Name="F30" Type="nvarchar" MaxLength="255" />
+          <Property Name="F31" Type="nvarchar" MaxLength="255" />
+          <Property Name="F32" Type="nvarchar" MaxLength="255" />
+          <Property Name="F33" Type="nvarchar" MaxLength="255" />
+          <Property Name="F34" Type="nvarchar" MaxLength="255" />
+          <Property Name="F35" Type="nvarchar" MaxLength="255" />
+          <Property Name="F36" Type="nvarchar" MaxLength="255" />
+          <Property Name="F37" Type="nvarchar" MaxLength="255" />
+          <Property Name="F38" Type="nvarchar" MaxLength="255" />
+          <Property Name="F39" Type="nvarchar" MaxLength="255" />
+          <Property Name="F40" Type="nvarchar" MaxLength="255" />
+          <Property Name="F41" Type="nvarchar" MaxLength="255" />
+          <Property Name="F42" Type="nvarchar" MaxLength="255" />
+          <Property Name="F43" Type="nvarchar" MaxLength="255" />
+          <Property Name="F44" Type="nvarchar" MaxLength="255" />
+          <Property Name="F45" Type="nvarchar" MaxLength="255" />
+          <Property Name="F46" Type="nvarchar" MaxLength="255" />
+          <Property Name="F47" Type="nvarchar" MaxLength="255" />
+          <Property Name="F48" Type="nvarchar" MaxLength="255" />
+          <Property Name="F49" Type="nvarchar" MaxLength="255" />
+          <Property Name="F50" Type="nvarchar" MaxLength="255" />
+          <Property Name="F51" Type="nvarchar" MaxLength="255" />
+          <Property Name="F52" Type="nvarchar" MaxLength="255" />
+          <Property Name="F53" Type="nvarchar" MaxLength="255" />
+          <Property Name="F54" Type="nvarchar" MaxLength="255" />
+          <Property Name="F55" Type="nvarchar" MaxLength="255" />
+          <Property Name="F56" Type="nvarchar" MaxLength="255" />
+          <Property Name="F57" Type="nvarchar" MaxLength="255" />
+          <Property Name="F58" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="Installer">
+    <Key>
+      <PropertyRef Name="Path" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Path" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Extension" Type="varchar" MaxLength="100" />
+    <Property Name="Hash" Type="varchar" MaxLength="100" />
+    <Property Name="Version" Type="varchar" MaxLength="50" />
+    <Property Name="Size" Type="bigint" />
+    <Property Name="Description" Type="varchar" MaxLength="200" />
+    <Property Name="Data" Type="varchar(max)" />
+    <Property Name="UploadPath" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QAOrg.dbo.Installer_History' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Installer_History">
+    <Key>
+      <PropertyRef Name="Path" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Path" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Extension" Type="varchar" MaxLength="100" />
+    <Property Name="Hash" Type="varchar" MaxLength="100" />
+    <Property Name="Version" Type="varchar" MaxLength="50" />
+    <Property Name="Size" Type="bigint" />
+    <Property Name="Description" Type="varchar" MaxLength="200" />
+    <Property Name="Data" Type="varchar(max)" />
+    <Property Name="UploadPath" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Instance">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+    </Key>
+    <Property Name="InstanceID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="200" />
+    <Property Name="InstanceName" Type="nvarchar" MaxLength="200" />
+    <Property Name="InstanceType" Type="nvarchar" MaxLength="200" />
+    <Property Name="WebService" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_Attachment">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="Attachment" Type="varchar(max)" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.L_Category' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="L_Category">
+          <Property Name="ID" Type="int" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>-->
+  <EntityType Name="L_CongViec">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="ThoiGian" Type="datetime" />
+    <Property Name="MucDo" Type="int" />
+    <Property Name="TinhTrang" Type="int" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QAOrg.dbo.L_DLLs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="L_DLLs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="DLLName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Version" Type="varchar" MaxLength="10" />
+    <Property Name="Note" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="L_Features">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prefix" Type="varchar" MaxLength="10" />
+    <Property Name="Number" Type="varchar" MaxLength="10" />
+    <Property Name="Code" Type="nvarchar" MaxLength="20" />
+    <Property Name="Module" Type="nvarchar" MaxLength="100" />
+    <Property Name="Menu" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubMenu" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Desc" Type="nvarchar(max)" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="L_Lookup">
+    <Key>
+      <PropertyRef Name="LookupName" />
+      <PropertyRef Name="LookupValue" />
+    </Key>
+    <Property Name="LookupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LookupValue" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActived" Type="bit" />
+    <Property Name="PrimaryDEV" Type="int" />
+    <Property Name="OrderBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.L_Module' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="L_Module">
+          <Property Name="ID" Type="int" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>-->
+  <EntityType Name="L_MucDo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MucDo" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_Position">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionName" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="L_PrintLocation">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_QLDA_BoPhan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaBP" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenBP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_QLDA_CongNo">
+    <Key>
+      <PropertyRef Name="MaCongNo" />
+    </Key>
+    <Property Name="MaCongNo" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="ContractID" Type="uniqueidentifier" />
+    <Property Name="MaHSTT" Type="uniqueidentifier" />
+    <Property Name="SoTienThu" Type="money" />
+    <Property Name="SoTienDaThu" Type="money" />
+    <Property Name="NgayThu" Type="datetime" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+    <Property Name="ChoTreTT" Type="bit" />
+    <Property Name="MaSoLanTre" Type="int" />
+    <Property Name="NgayNhacNo" Type="datetime" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ChucVu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaCV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenChucVu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ChucVuKH">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaCV" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenCV" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_DuAn">
+    <Key>
+      <PropertyRef Name="MaDA" />
+    </Key>
+    <Property Name="MaDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDA" Type="nvarchar" MaxLength="300" />
+    <Property Name="MaKV" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaNhomKH" Type="varchar" MaxLength="20" />
+    <Property Name="MaLoaiCS" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaLoaiDN" Type="int" />
+    <Property Name="MaLoaiNganh" Type="int" />
+    <Property Name="SoLuongKhoaPhong" Type="int" />
+    <Property Name="SoLuotKham" Type="int" />
+    <Property Name="SoLuotGiuong" Type="int" />
+    <Property Name="MaHangBV" Type="int" />
+    <Property Name="MaKH" Type="int" />
+    <Property Name="PMDangSD" Type="nvarchar" MaxLength="300" />
+    <Property Name="MaTrangThai" Type="int" />
+    <Property Name="MaNhuCau" Type="int" />
+    <Property Name="MaMucDoUuTien" Type="int" />
+    <Property Name="ChiPhi" Type="money" />
+    <Property Name="MaLoaiDoanhThu" Type="varchar" MaxLength="20" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="300" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_FileUpload">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="FileData" Type="nvarchar(max)" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateBy" Type="int" />
+  </EntityType>
+  <EntityType Name="L_QLDA_GDDA">
+    <Key>
+      <PropertyRef Name="MaGDDA" />
+    </Key>
+    <Property Name="MaGDDA" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="MaGD" Type="varchar" MaxLength="10" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="SoNgayTre" Type="int" />
+    <Property Name="KhoKhan" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu" Type="ntext" />
+  </EntityType>
+  <EntityType Name="L_QLDA_GiaiDoan">
+    <Key>
+      <PropertyRef Name="MaGD" />
+    </Key>
+    <Property Name="MaGD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenGD" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_QLDA_HangBenhVien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenHang" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_HopDong">
+    <Key>
+      <PropertyRef Name="ContractID" />
+    </Key>
+    <Property Name="ContractID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="Nam" Type="int" />
+    <Property Name="ContractNumber" Type="nvarchar" MaxLength="300" />
+    <Property Name="ContractDate" Type="datetime" />
+    <Property Name="UseYear" Type="bit" />
+    <Property Name="UseMonth" Type="bit" />
+    <Property Name="MaThoiHan" Type="int" />
+    <Property Name="NgayKetThuc" Type="datetime" />
+    <Property Name="NgayPhuLuc" Type="datetime" />
+    <Property Name="MaLoaiHD" Type="varchar" MaxLength="10" />
+    <Property Name="MaLoaiTien" Type="varchar" MaxLength="10" />
+    <Property Name="GiaTriHopDong" Type="money" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="L_QLDA_HoSoThanhToan">
+    <Key>
+      <PropertyRef Name="MaHSTT" />
+    </Key>
+    <Property Name="MaHSTT" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="ContractID" Type="uniqueidentifier" />
+    <Property Name="SoHSTT" Type="varchar" MaxLength="10" />
+    <Property Name="NoiDungTT" Type="nvarchar" MaxLength="300" />
+    <Property Name="SoHoaDon" Type="varchar" MaxLength="10" />
+    <Property Name="NgayGuiHoSo" Type="datetime" />
+    <Property Name="NgayKHNhanHS" Type="datetime" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenKH" Type="nvarchar" MaxLength="300" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="300" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaSoThue" Type="nvarchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+    <Property Name="TinhTP" Type="nvarchar" MaxLength="300" />
+    <Property Name="Quan" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_KhuVuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaKV" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenKV" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LichSuSale">
+    <Key>
+      <PropertyRef Name="SaleHistoryID" />
+    </Key>
+    <Property Name="SaleHistoryID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="MaTrangThai" Type="int" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="ThoiGianSale" Type="datetime" />
+    <Property Name="MucDich" Type="nvarchar(max)" />
+    <Property Name="KetQua" Type="nvarchar(max)" />
+    <Property Name="KhoKhan" Type="nvarchar(max)" />
+    <Property Name="PhuongAn" Type="nvarchar(max)" />
+    <Property Name="YKienCapTren" Type="nvarchar(max)" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiCoSo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiDoanhThu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaDT" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenDoanhThu" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiHinhDoanhNghiep">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiHinh" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiHopDong">
+    <Key>
+      <PropertyRef Name="MaLoaiHD" />
+    </Key>
+    <Property Name="MaLoaiHD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenLoaiHopDong" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiNganh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiNganh" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_QLDA_LoaiTien">
+    <Key>
+      <PropertyRef Name="MaLoaiTien" />
+    </Key>
+    <Property Name="MaLoaiTien" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenLoaiTien" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_MucDoUuTien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ThongTinMucDoUuTien" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_NhanSu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="MaBoPhan" Type="varchar" MaxLength="10" />
+    <Property Name="MaCV" Type="varchar" MaxLength="10" />
+    <Property Name="MaGD" Type="varchar" MaxLength="10" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_NhomKH">
+    <Key>
+      <PropertyRef Name="MaNhom" />
+    </Key>
+    <Property Name="MaNhom" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="NhomKH" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_NhuCau">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ThongTinNhuCau" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_SoLanTre">
+    <Key>
+      <PropertyRef Name="MaLanTre" />
+    </Key>
+    <Property Name="MaLanTre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLanTre" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ThoiHan">
+    <Key>
+      <PropertyRef Name="MaThoiHan" />
+    </Key>
+    <Property Name="MaThoiHan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenThoiHan" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="L_QLDA_ThongTinLHKH">
+    <Key>
+      <PropertyRef Name="MaLH" />
+    </Key>
+    <Property Name="MaLH" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MaDA" Type="int" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="300" />
+    <Property Name="MaChucVu" Type="varchar" MaxLength="10" />
+    <Property Name="Fax" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="SDT1" Type="varchar" MaxLength="20" />
+    <Property Name="SDT2" Type="varchar" MaxLength="20" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_QLDA_TrangThai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ThongTinTrangThai" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="L_ReportCollumsDetails">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CollumIndex" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="CollumIndex" Type="int" Nullable="false" />
+    <Property Name="STT" Type="int" />
+    <Property Name="TableNo" Type="int" />
+    <Property Name="CollumName" Type="nvarchar" MaxLength="200" />
+    <Property Name="FontSize" Type="varchar" MaxLength="50" />
+    <Property Name="CollumType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="DevDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="Table" Type="nvarchar" MaxLength="500" />
+    <Property Name="Field" Type="nvarchar" MaxLength="500" />
+    <Property Name="Dev_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_ReportDetail">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="FacID" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FacID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DataProc" Type="varchar" MaxLength="500" />
+    <Property Name="ProgID" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_ReportInfo">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="OutputType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Orientation" Type="nvarchar" MaxLength="100" />
+    <Property Name="FontName" Type="nvarchar" MaxLength="500" />
+    <Property Name="HeaderFontSize" Type="varchar" MaxLength="50" />
+    <Property Name="BodyFontSize" Type="varchar" MaxLength="50" />
+    <Property Name="FooterFontSize" Type="varchar" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="Report_ID" Type="uniqueidentifier" />
+    <Property Name="ReportName" Type="nvarchar" MaxLength="500" />
+    <Property Name="DEV" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsOnScreen" Type="bit" />
+    <Property Name="DataProc" Type="varchar" MaxLength="300" />
+    <Property Name="ProgID" Type="varchar" MaxLength="300" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="L_ReportParam">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="ParamName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ParamDescripsion" Type="nvarchar" MaxLength="500" />
+    <Property Name="ParamType" Type="varchar" MaxLength="50" />
+    <Property Name="IsMandostory" Type="bit" />
+    <Property Name="DefaultValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="Caption" Type="nvarchar" MaxLength="500" />
+    <Property Name="Option" Type="nvarchar" MaxLength="500" />
+    <Property Name="ValueType" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="STT" Type="int" />
+  </EntityType>
+  <EntityType Name="L_Reports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ReportName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsOnScreen" Type="bit" />
+    <Property Name="DEV" Type="nvarchar" MaxLength="500" />
+    <Property Name="Location" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotesTester" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="L_ReportsSign">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Index" />
+    </Key>
+    <Property Name="ReportID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="Values1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Values2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.L_StoreProcedures' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="L_StoreProcedures">
+          <Property Name="ID" Type="uniqueidentifier" />
+          <Property Name="IDDLL" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Note" Type="nvarchar" MaxLength="350" />
+          <Property Name="Version" Type="varchar" MaxLength="10" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>-->
+  <EntityType Name="L_Tags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tag" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="L_TeamMembers">
+    <Key>
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="TeamID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="PositionID" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="L_Teams">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="L_TicketErrorProtocol">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="ErrorID" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="L_TicketErrors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ModuleID" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsNew" Type="bit" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileData" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QAOrg.dbo.L_TicketFuture' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="L_TicketFuture">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="WeekID" />
+    </Key>
+    <Property Name="TicketID" Type="bigint" Nullable="false" />
+    <Property Name="TeamID" Type="int" Nullable="false" />
+    <Property Name="WeekID" Type="int" Nullable="false" />
+    <Property Name="PrimaryDev" Type="int" />
+    <Property Name="ActualDev" Type="int" />
+    <Property Name="PrimaryQC" Type="int" />
+    <Property Name="ActualQC" Type="int" />
+    <Property Name="EstDEV" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="EstTO" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="EstQC" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="HourInWeek" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="DeadlineCR" Type="date" />
+    <Property Name="DeadlineTO" Type="date" />
+    <Property Name="DeadlineQC" Type="date" />
+    <Property Name="NgayGiaoQC" Type="date" />
+    <Property Name="DoOrNot" Type="varchar" MaxLength="50" />
+    <Property Name="Tuan" Type="varchar" MaxLength="10" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="L_TinhTrang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.MailAddress' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MailAddress">
+          <Property Name="MailMessageKey" Type="uniqueidentifier" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Host" Type="varchar" MaxLength="10" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.MailAttachment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MailAttachment">
+          <Property Name="MailMessageKey" Type="uniqueidentifier" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="MailHeader">
+    <Key>
+      <PropertyRef Name="MailMessageKey" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="MailMessageKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.MailMessage' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MailMessage">
+          <Property Name="MailMessageKey" Type="uniqueidentifier" />
+          <Property Name="ImapMessageId" Type="varchar" MaxLength="200" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="200" />
+          <Property Name="Priority" Type="varchar" MaxLength="50" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="BodyEncoding" Type="nchar" MaxLength="10" />
+          <Property Name="IsBodyHtml" Type="bit" />
+          <Property Name="Type" Type="varchar" MaxLength="5" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsSent" Type="bit" />
+        </EntityType>-->
+  <EntityType Name="MemoTemplates">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+    <Property Name="Value" Type="nvarchar" MaxLength="800" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Icon" Type="varchar" MaxLength="100" />
+    <Property Name="ControlType" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Modules_Users">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Module" Type="nvarchar" MaxLength="100" />
+    <Property Name="ActiveYN" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Nhan$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Nhan$">
+          <Property Name="TicketID" Type="float" />
+          <Property Name="Team" Type="float" />
+          <Property Name="DeadlineCR" Type="datetime" />
+          <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="F7" Type="nvarchar" MaxLength="255" />
+          <Property Name="F8" Type="nvarchar" MaxLength="255" />
+          <Property Name="F9" Type="nvarchar" MaxLength="255" />
+          <Property Name="F10" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+          <Property Name="F28" Type="nvarchar" MaxLength="255" />
+          <Property Name="F29" Type="nvarchar" MaxLength="255" />
+          <Property Name="F30" Type="nvarchar" MaxLength="255" />
+          <Property Name="F31" Type="nvarchar" MaxLength="255" />
+          <Property Name="F32" Type="nvarchar" MaxLength="255" />
+          <Property Name="F33" Type="nvarchar" MaxLength="255" />
+          <Property Name="F34" Type="nvarchar" MaxLength="255" />
+          <Property Name="F35" Type="nvarchar" MaxLength="255" />
+          <Property Name="F36" Type="nvarchar" MaxLength="255" />
+          <Property Name="F37" Type="nvarchar" MaxLength="255" />
+          <Property Name="F38" Type="nvarchar" MaxLength="255" />
+          <Property Name="F39" Type="nvarchar" MaxLength="255" />
+          <Property Name="F40" Type="nvarchar" MaxLength="255" />
+          <Property Name="F41" Type="nvarchar" MaxLength="255" />
+          <Property Name="F42" Type="nvarchar" MaxLength="255" />
+          <Property Name="F43" Type="nvarchar" MaxLength="255" />
+          <Property Name="F44" Type="nvarchar" MaxLength="255" />
+          <Property Name="F45" Type="nvarchar" MaxLength="255" />
+          <Property Name="F46" Type="nvarchar" MaxLength="255" />
+          <Property Name="F47" Type="nvarchar" MaxLength="255" />
+          <Property Name="F48" Type="nvarchar" MaxLength="255" />
+          <Property Name="F49" Type="nvarchar" MaxLength="255" />
+          <Property Name="F50" Type="nvarchar" MaxLength="255" />
+          <Property Name="F51" Type="nvarchar" MaxLength="255" />
+          <Property Name="F52" Type="nvarchar" MaxLength="255" />
+          <Property Name="F53" Type="nvarchar" MaxLength="255" />
+          <Property Name="F54" Type="nvarchar" MaxLength="255" />
+          <Property Name="F55" Type="nvarchar" MaxLength="255" />
+          <Property Name="F56" Type="nvarchar" MaxLength="255" />
+          <Property Name="F57" Type="nvarchar" MaxLength="255" />
+          <Property Name="F58" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="ProjectCode" Type="varchar" MaxLength="50" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="BA" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProjectUsers">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RequirementOriginal">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequirementCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BuilID" Type="int" />
+    <Property Name="Detail" Type="nvarchar(max)" />
+    <Property Name="Deadline" Type="datetime" />
+    <Property Name="Note" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Module" Type="nvarchar" MaxLength="100" />
+    <Property Name="TypeRequirement" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="URDID" Type="varchar" MaxLength="50" />
+    <Property Name="URDFileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QAOrg.dbo.ScriptsDeploy' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ScriptsDeploy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Path" Type="nvarchar" MaxLength="500" />
+    <Property Name="CustomerList" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="SUP_Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Icon" Type="varchar" MaxLength="100" />
+    <Property Name="ControlType" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="SUP_Requirement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TA_MoiTruongDay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EnvName" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="TA_TicketXacNhanDayMoiTruong">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="bigint" Nullable="false" />
+    <Property Name="UserIDConfirm" Type="int" />
+    <Property Name="Confirmer" Type="nvarchar" MaxLength="500" />
+    <Property Name="MoiTruongID" Type="uniqueidentifier" />
+    <Property Name="MoiTruongName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="TamAnhHospitalRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VersionURD" Type="nvarchar" MaxLength="20" />
+    <Property Name="NameURD" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Request" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="Module" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ModuleID" Type="int" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketEmailID" Type="varchar" MaxLength="100" />
+    <Property Name="Priority" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="AssignedTo" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Title_Ununicode" Type="varchar" MaxLength="1000" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedDateAsInt" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompletedOn" Type="datetime" />
+    <Property Name="Responsibility" Type="nvarchar" MaxLength="300" />
+    <Property Name="Category" Type="nvarchar" MaxLength="300" />
+    <Property Name="MODULE" Type="nvarchar" MaxLength="300" />
+    <Property Name="RequestedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="RequestedBy_CheckSum" Type="int" />
+    <Property Name="TeamID" Type="int" />
+    <Property Name="PrimaryDEV" Type="int" />
+    <Property Name="PrimaryQC" Type="int" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="1000" />
+    <Property Name="OrginalDeadline" Type="datetime" />
+    <Property Name="ReportID" Type="uniqueidentifier" />
+    <Property Name="TypeScripts" Type="varchar" MaxLength="5" />
+    <Property Name="ProjectID" Type="int" />
+    <Property Name="RequestStatus" Type="int" />
+    <Property Name="ParentTicketID" Type="int" />
+    <Property Name="IsParent" Type="bit" />
+    <Property Name="ReportedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReleaseNote" Type="nvarchar" MaxLength="500" />
+    <Property Name="PrimaryBA" Type="int" />
+    <Property Name="TicketOwner" Type="int" />
+    <Property Name="Reproduce" Type="datetime" />
+    <Property Name="DocumentID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Ticket_Estimations_Detail">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="DesignScreen" Type="nvarchar(max)" />
+    <Property Name="TotalDesignScreen" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LogicScreen" Type="nvarchar(max)" />
+    <Property Name="TotalLogicScreen" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SPScreen" Type="nvarchar(max)" />
+    <Property Name="TotalSPScreen" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DesignReport" Type="nvarchar(max)" />
+    <Property Name="TotalDesignReport" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SPReport" Type="nvarchar(max)" />
+    <Property Name="TotalSPReport" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DevUnitTest" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DevFixBug" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Other" Type="nvarchar(max)" />
+    <Property Name="TotalOther" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Ticket_InWeek">
+    <Key>
+      <PropertyRef Name="WeekNumber" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="TictketID" />
+    </Key>
+    <Property Name="WeekNumber" Type="int" Nullable="false" />
+    <Property Name="TeamID" Type="int" Nullable="false" />
+    <Property Name="TictketID" Type="bigint" Nullable="false" />
+    <Property Name="PrimaryDev" Type="int" />
+    <Property Name="ActualDev" Type="int" />
+    <Property Name="PrimaryQC" Type="int" />
+    <Property Name="ActualQC" Type="int" />
+    <Property Name="EstDev" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="TOEST" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="EstQC" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="HourInWeek" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="DeadlineCR" Type="date" />
+    <Property Name="DeadlineTO" Type="date" />
+    <Property Name="DeadlineQC" Type="date" />
+    <Property Name="NgayGiaoQC" Type="date" />
+    <Property Name="DoOrNot" Type="varchar" MaxLength="50" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsOutOfWeek" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="Tuan" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Ticket_Log_Bugs">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="TicketID" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ticket_Log_Bugs_Files">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="LogBugSeq" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="FileData" Type="varchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Ticket_Menu">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="MenuID" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Ticket_QC_Estimation_Detail">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="Testcase" Type="nvarchar(max)" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Ticket_ReleaseNote">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="ReleaseNote" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Ticket_RequirementOriginal">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="RequirementCode" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="RequirementCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="BuildID" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ticket_Tuan_PreSource">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="TuanID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="TuanID" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="1000" />
+    <Property Name="UuTien" Type="nvarchar" MaxLength="150" />
+    <Property Name="DeadlineCR" Type="date" />
+    <Property Name="Team" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ticket_Week">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WeekName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.TicketAttachment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TicketAttachment">
+          <Property Name="TicketKey" Type="uniqueidentifier" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="varchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="TicketClients">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Priority" Type="nvarchar" MaxLength="50" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeployed" Type="bit" />
+  </EntityType>
+  <EntityType Name="TicketCompleted">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="CompletedOn" Type="datetime" />
+    <Property Name="CompletedBy" Type="int" />
+    <Property Name="ActiveYN" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TicketDLLs">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketID" Type="int" />
+    <Property Name="Revision_SVN" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketEmails">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="MailMessageKey" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="MailMessageKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketErrors">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="ErrorID" />
+      <PropertyRef Name="FacID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="ErrorID" Type="int" Nullable="false" />
+    <Property Name="FacID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketEstimations">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="BA" Type="nvarchar" MaxLength="100" />
+    <Property Name="DesignScreen" Type="nvarchar" MaxLength="100" />
+    <Property Name="LogicScreen" Type="nvarchar" MaxLength="100" />
+    <Property Name="SPScreen" Type="nvarchar" MaxLength="100" />
+    <Property Name="DesignReport" Type="nvarchar" MaxLength="100" />
+    <Property Name="SPReport" Type="nvarchar" MaxLength="100" />
+    <Property Name="DEV" Type="nvarchar" MaxLength="100" />
+    <Property Name="QC" Type="nvarchar" MaxLength="100" />
+    <Property Name="DEV_Real" Type="nvarchar" MaxLength="100" />
+    <Property Name="QC_Real" Type="nvarchar" MaxLength="100" />
+    <Property Name="BA_Real" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketFeature">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="FeatureCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketFeature_Log">
+    <Key>
+      <PropertyRef Name="HistorySeq" />
+    </Key>
+    <Property Name="HistorySeq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Seq" Type="int" />
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="FeatureCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="DeleteYN" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketFiles">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="FileData" Type="varchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketFollow">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketHistory">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChangedOn" Type="datetime" />
+    <Property Name="ChangedBy" Type="int" />
+    <Property Name="DeleteFlag" Type="bit" />
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="Priority" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompletedOn" Type="datetime" />
+    <Property Name="AssignedFrom" Type="int" />
+    <Property Name="AssignedTo" Type="int" />
+    <Property Name="FromStatus" Type="nvarchar" MaxLength="200" />
+    <Property Name="ToStatus" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Seen" Type="bit" Nullable="false" />
+    <Property Name="FromPriority" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToPriority" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TicketHistoryLog">
+    <Key>
+      <PropertyRef Name="HistoryLogSeq" />
+    </Key>
+    <Property Name="HistorySeq" Type="bigint" />
+    <Property Name="HistoryLogSeq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="FieldName" Type="varchar" MaxLength="200" />
+    <Property Name="ValueOriginal" Type="nvarchar" MaxLength="500" />
+    <Property Name="ValueNew" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TicketNotes">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QAOrg.dbo.TicketNoWeek' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TicketNoWeek">
+    <Key>
+      <PropertyRef Name="WeekNumber" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="TictketID" />
+    </Key>
+    <Property Name="WeekNumber" Type="int" Nullable="false" />
+    <Property Name="TeamID" Type="int" Nullable="false" />
+    <Property Name="TictketID" Type="bigint" Nullable="false" />
+    <Property Name="PrimaryDev" Type="int" />
+    <Property Name="ActualDev" Type="int" />
+    <Property Name="PrimaryQC" Type="int" />
+    <Property Name="ActualQC" Type="int" />
+    <Property Name="EstDev" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="TOEST" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="EstQC" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="HourInWeek" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="DeadlineCR" Type="date" />
+    <Property Name="DeadlineTO" Type="date" />
+    <Property Name="DeadlineQC" Type="date" />
+    <Property Name="NgayGiaoQC" Type="date" />
+    <Property Name="DoOrNot" Type="varchar" MaxLength="50" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsOutOfWeek" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="Tuan" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.TicketProject' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TicketProject">
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="TicketID" Type="int" />
+        </EntityType>-->
+  <EntityType Name="TicketReview">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TicketSVN_Link">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="Seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketID" Type="int" />
+    <Property Name="Revision_SVN" Type="int" />
+    <Property Name="LinkSVN_File" Type="varchar" MaxLength="1000" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketTags">
+    <Key>
+      <PropertyRef Name="TicketID" />
+      <PropertyRef Name="Tag" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="Tag" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Thinh$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Thinh$">
+          <Property Name="TicketID" Type="float" />
+          <Property Name="Team" Type="float" />
+          <Property Name="DeadlineCR" Type="datetime" />
+          <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="F7" Type="nvarchar" MaxLength="255" />
+          <Property Name="F8" Type="nvarchar" MaxLength="255" />
+          <Property Name="F9" Type="nvarchar" MaxLength="255" />
+          <Property Name="F10" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+          <Property Name="F28" Type="nvarchar" MaxLength="255" />
+          <Property Name="F29" Type="nvarchar" MaxLength="255" />
+          <Property Name="F30" Type="nvarchar" MaxLength="255" />
+          <Property Name="F31" Type="nvarchar" MaxLength="255" />
+          <Property Name="F32" Type="nvarchar" MaxLength="255" />
+          <Property Name="F33" Type="nvarchar" MaxLength="255" />
+          <Property Name="F34" Type="nvarchar" MaxLength="255" />
+          <Property Name="F35" Type="nvarchar" MaxLength="255" />
+          <Property Name="F36" Type="nvarchar" MaxLength="255" />
+          <Property Name="F37" Type="nvarchar" MaxLength="255" />
+          <Property Name="F38" Type="nvarchar" MaxLength="255" />
+          <Property Name="F39" Type="nvarchar" MaxLength="255" />
+          <Property Name="F40" Type="nvarchar" MaxLength="255" />
+          <Property Name="F41" Type="nvarchar" MaxLength="255" />
+          <Property Name="F42" Type="nvarchar" MaxLength="255" />
+          <Property Name="F43" Type="nvarchar" MaxLength="255" />
+          <Property Name="F44" Type="nvarchar" MaxLength="255" />
+          <Property Name="F45" Type="nvarchar" MaxLength="255" />
+          <Property Name="F46" Type="nvarchar" MaxLength="255" />
+          <Property Name="F47" Type="nvarchar" MaxLength="255" />
+          <Property Name="F48" Type="nvarchar" MaxLength="255" />
+          <Property Name="F49" Type="nvarchar" MaxLength="255" />
+          <Property Name="F50" Type="nvarchar" MaxLength="255" />
+          <Property Name="F51" Type="nvarchar" MaxLength="255" />
+          <Property Name="F52" Type="nvarchar" MaxLength="255" />
+          <Property Name="F53" Type="nvarchar" MaxLength="255" />
+          <Property Name="F54" Type="nvarchar" MaxLength="255" />
+          <Property Name="F55" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QAOrg.dbo.Thuong$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Thuong$">
+          <Property Name="TicketID" Type="float" />
+          <Property Name="Team" Type="float" />
+          <Property Name="DeadlineCR" Type="datetime" />
+          <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="F7" Type="nvarchar" MaxLength="255" />
+          <Property Name="F8" Type="nvarchar" MaxLength="255" />
+          <Property Name="F9" Type="nvarchar" MaxLength="255" />
+          <Property Name="F10" Type="nvarchar" MaxLength="255" />
+          <Property Name="F11" Type="nvarchar" MaxLength="255" />
+          <Property Name="F12" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="F14" Type="nvarchar" MaxLength="255" />
+          <Property Name="F15" Type="nvarchar" MaxLength="255" />
+          <Property Name="F16" Type="nvarchar" MaxLength="255" />
+          <Property Name="F17" Type="nvarchar" MaxLength="255" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+          <Property Name="F28" Type="nvarchar" MaxLength="255" />
+          <Property Name="F29" Type="nvarchar" MaxLength="255" />
+          <Property Name="F30" Type="nvarchar" MaxLength="255" />
+          <Property Name="F31" Type="nvarchar" MaxLength="255" />
+          <Property Name="F32" Type="nvarchar" MaxLength="255" />
+          <Property Name="F33" Type="nvarchar" MaxLength="255" />
+          <Property Name="F34" Type="nvarchar" MaxLength="255" />
+          <Property Name="F35" Type="nvarchar" MaxLength="255" />
+          <Property Name="F36" Type="nvarchar" MaxLength="255" />
+          <Property Name="F37" Type="nvarchar" MaxLength="255" />
+          <Property Name="F38" Type="nvarchar" MaxLength="255" />
+          <Property Name="F39" Type="nvarchar" MaxLength="255" />
+          <Property Name="F40" Type="nvarchar" MaxLength="255" />
+          <Property Name="F41" Type="nvarchar" MaxLength="255" />
+          <Property Name="F42" Type="nvarchar" MaxLength="255" />
+          <Property Name="F43" Type="nvarchar" MaxLength="255" />
+          <Property Name="F44" Type="nvarchar" MaxLength="255" />
+          <Property Name="F45" Type="nvarchar" MaxLength="255" />
+          <Property Name="F46" Type="nvarchar" MaxLength="255" />
+          <Property Name="F47" Type="nvarchar" MaxLength="255" />
+          <Property Name="F48" Type="nvarchar" MaxLength="255" />
+          <Property Name="F49" Type="nvarchar" MaxLength="255" />
+          <Property Name="F50" Type="nvarchar" MaxLength="255" />
+          <Property Name="F51" Type="nvarchar" MaxLength="255" />
+          <Property Name="F52" Type="nvarchar" MaxLength="255" />
+          <Property Name="F53" Type="nvarchar" MaxLength="255" />
+          <Property Name="F54" Type="nvarchar" MaxLength="255" />
+          <Property Name="F55" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Responsibility" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PasswordEmail" Type="varchar" MaxLength="256" />
+    <Property Name="Tel" Type="varchar" MaxLength="50" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="100" />
+    <Property Name="Skype" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="NewID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityContainer Name="QAOrgModelStoreContainer">
+    <EntitySet Name="Builds" EntityType="Self.Builds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BuildTickets" EntityType="Self.BuildTickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client_Participants" EntityType="Self.Client_Participants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhSachPhanHeTamAnh" EntityType="Self.DanhSachPhanHeTamAnh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="deleted_Mail" EntityType="Self.deleted_Mail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="deleted_MailFiles" EntityType="Self.deleted_MailFiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="deleted_MailSender" EntityType="Self.deleted_MailSender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Features_Ref" EntityType="Self.Features_Ref" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Installer" EntityType="Self.Installer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Instance" EntityType="Self.Instance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Attachment" EntityType="Self.L_Attachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_CongViec" EntityType="Self.L_CongViec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Features" EntityType="Self.L_Features" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Lookup" EntityType="Self.L_Lookup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_MucDo" EntityType="Self.L_MucDo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Position" EntityType="Self.L_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_PrintLocation" EntityType="Self.L_PrintLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_BoPhan" EntityType="Self.L_QLDA_BoPhan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_CongNo" EntityType="Self.L_QLDA_CongNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_ChucVu" EntityType="Self.L_QLDA_ChucVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_ChucVuKH" EntityType="Self.L_QLDA_ChucVuKH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_DuAn" EntityType="Self.L_QLDA_DuAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_FileUpload" EntityType="Self.L_QLDA_FileUpload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_GDDA" EntityType="Self.L_QLDA_GDDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_GiaiDoan" EntityType="Self.L_QLDA_GiaiDoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_HangBenhVien" EntityType="Self.L_QLDA_HangBenhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_HopDong" EntityType="Self.L_QLDA_HopDong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_HoSoThanhToan" EntityType="Self.L_QLDA_HoSoThanhToan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_KhachHang" EntityType="Self.L_QLDA_KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_KhuVuc" EntityType="Self.L_QLDA_KhuVuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LichSuSale" EntityType="Self.L_QLDA_LichSuSale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LoaiCoSo" EntityType="Self.L_QLDA_LoaiCoSo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LoaiDoanhThu" EntityType="Self.L_QLDA_LoaiDoanhThu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LoaiHinhDoanhNghiep" EntityType="Self.L_QLDA_LoaiHinhDoanhNghiep" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LoaiHopDong" EntityType="Self.L_QLDA_LoaiHopDong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LoaiNganh" EntityType="Self.L_QLDA_LoaiNganh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_LoaiTien" EntityType="Self.L_QLDA_LoaiTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_MucDoUuTien" EntityType="Self.L_QLDA_MucDoUuTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_NhanSu" EntityType="Self.L_QLDA_NhanSu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_NhomKH" EntityType="Self.L_QLDA_NhomKH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_NhuCau" EntityType="Self.L_QLDA_NhuCau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_SoLanTre" EntityType="Self.L_QLDA_SoLanTre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_ThoiHan" EntityType="Self.L_QLDA_ThoiHan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_ThongTinLHKH" EntityType="Self.L_QLDA_ThongTinLHKH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_QLDA_TrangThai" EntityType="Self.L_QLDA_TrangThai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_ReportCollumsDetails" EntityType="Self.L_ReportCollumsDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_ReportDetail" EntityType="Self.L_ReportDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_ReportInfo" EntityType="Self.L_ReportInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_ReportParam" EntityType="Self.L_ReportParam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Reports" EntityType="Self.L_Reports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_ReportsSign" EntityType="Self.L_ReportsSign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Tags" EntityType="Self.L_Tags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_TeamMembers" EntityType="Self.L_TeamMembers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_Teams" EntityType="Self.L_Teams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_TicketErrorProtocol" EntityType="Self.L_TicketErrorProtocol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_TicketErrors" EntityType="Self.L_TicketErrors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="L_TinhTrang" EntityType="Self.L_TinhTrang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MailHeader" EntityType="Self.MailHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemoTemplates" EntityType="Self.MemoTemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modules_Users" EntityType="Self.Modules_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectUsers" EntityType="Self.ProjectUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequirementOriginal" EntityType="Self.RequirementOriginal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUP_Menu" EntityType="Self.SUP_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUP_Requirement" EntityType="Self.SUP_Requirement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_MoiTruongDay" EntityType="Self.TA_MoiTruongDay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TA_TicketXacNhanDayMoiTruong" EntityType="Self.TA_TicketXacNhanDayMoiTruong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TamAnhHospitalRequest" EntityType="Self.TamAnhHospitalRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_Estimations_Detail" EntityType="Self.Ticket_Estimations_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_InWeek" EntityType="Self.Ticket_InWeek" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_Log_Bugs" EntityType="Self.Ticket_Log_Bugs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_Log_Bugs_Files" EntityType="Self.Ticket_Log_Bugs_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_Menu" EntityType="Self.Ticket_Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_QC_Estimation_Detail" EntityType="Self.Ticket_QC_Estimation_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_ReleaseNote" EntityType="Self.Ticket_ReleaseNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_RequirementOriginal" EntityType="Self.Ticket_RequirementOriginal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_Tuan_PreSource" EntityType="Self.Ticket_Tuan_PreSource" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket_Week" EntityType="Self.Ticket_Week" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketClients" EntityType="Self.TicketClients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketCompleted" EntityType="Self.TicketCompleted" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketDLLs" EntityType="Self.TicketDLLs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketEmails" EntityType="Self.TicketEmails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketErrors" EntityType="Self.TicketErrors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketEstimations" EntityType="Self.TicketEstimations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketFeature" EntityType="Self.TicketFeature" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketFeature_Log" EntityType="Self.TicketFeature_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketFiles" EntityType="Self.TicketFiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketFollow" EntityType="Self.TicketFollow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketHistory" EntityType="Self.TicketHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketHistoryLog" EntityType="Self.TicketHistoryLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketNotes" EntityType="Self.TicketNotes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketReview" EntityType="Self.TicketReview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketSVN_Link" EntityType="Self.TicketSVN_Link" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketTags" EntityType="Self.TicketTags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Installer_History" EntityType="Self.Installer_History" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Installer_History].[Path] AS [Path], 
+    [Installer_History].[Name] AS [Name], 
+    [Installer_History].[Extension] AS [Extension], 
+    [Installer_History].[Hash] AS [Hash], 
+    [Installer_History].[Version] AS [Version], 
+    [Installer_History].[Size] AS [Size], 
+    [Installer_History].[Description] AS [Description], 
+    [Installer_History].[Data] AS [Data], 
+    [Installer_History].[UploadPath] AS [UploadPath], 
+    [Installer_History].[CreatedOn] AS [CreatedOn], 
+    [Installer_History].[CreatedBy] AS [CreatedBy], 
+    [Installer_History].[ModifiedOn] AS [ModifiedOn], 
+    [Installer_History].[ModifiedBy] AS [ModifiedBy]
+    FROM [dbo].[Installer_History] AS [Installer_History]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="L_DLLs" EntityType="Self.L_DLLs" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [L_DLLs].[ID] AS [ID], 
+    [L_DLLs].[Name] AS [Name], 
+    [L_DLLs].[DLLName] AS [DLLName], 
+    [L_DLLs].[Version] AS [Version], 
+    [L_DLLs].[Note] AS [Note], 
+    [L_DLLs].[CreatedOn] AS [CreatedOn], 
+    [L_DLLs].[ModifiedOn] AS [ModifiedOn], 
+    [L_DLLs].[CreatedBy] AS [CreatedBy], 
+    [L_DLLs].[ModifiedBy] AS [ModifiedBy]
+    FROM [dbo].[L_DLLs] AS [L_DLLs]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="L_TicketFuture" EntityType="Self.L_TicketFuture" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [L_TicketFuture].[TicketID] AS [TicketID], 
+    [L_TicketFuture].[TeamID] AS [TeamID], 
+    [L_TicketFuture].[WeekID] AS [WeekID], 
+    [L_TicketFuture].[PrimaryDev] AS [PrimaryDev], 
+    [L_TicketFuture].[ActualDev] AS [ActualDev], 
+    [L_TicketFuture].[PrimaryQC] AS [PrimaryQC], 
+    [L_TicketFuture].[ActualQC] AS [ActualQC], 
+    [L_TicketFuture].[EstDEV] AS [EstDEV], 
+    [L_TicketFuture].[EstTO] AS [EstTO], 
+    [L_TicketFuture].[EstQC] AS [EstQC], 
+    [L_TicketFuture].[HourInWeek] AS [HourInWeek], 
+    [L_TicketFuture].[DeadlineCR] AS [DeadlineCR], 
+    [L_TicketFuture].[DeadlineTO] AS [DeadlineTO], 
+    [L_TicketFuture].[DeadlineQC] AS [DeadlineQC], 
+    [L_TicketFuture].[NgayGiaoQC] AS [NgayGiaoQC], 
+    [L_TicketFuture].[DoOrNot] AS [DoOrNot], 
+    [L_TicketFuture].[Tuan] AS [Tuan], 
+    [L_TicketFuture].[Note] AS [Note], 
+    [L_TicketFuture].[CreatedOn] AS [CreatedOn], 
+    [L_TicketFuture].[CreatedBy] AS [CreatedBy]
+    FROM [dbo].[L_TicketFuture] AS [L_TicketFuture]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ScriptsDeploy" EntityType="Self.ScriptsDeploy" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ScriptsDeploy].[ID] AS [ID], 
+    [ScriptsDeploy].[FileName] AS [FileName], 
+    [ScriptsDeploy].[Path] AS [Path], 
+    [ScriptsDeploy].[CustomerList] AS [CustomerList], 
+    [ScriptsDeploy].[CreatedOn] AS [CreatedOn], 
+    [ScriptsDeploy].[ModifiedOn] AS [ModifiedOn], 
+    [ScriptsDeploy].[Status] AS [Status]
+    FROM [dbo].[ScriptsDeploy] AS [ScriptsDeploy]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TicketNoWeek" EntityType="Self.TicketNoWeek" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TicketNoWeek].[WeekNumber] AS [WeekNumber], 
+    [TicketNoWeek].[TeamID] AS [TeamID], 
+    [TicketNoWeek].[TictketID] AS [TictketID], 
+    [TicketNoWeek].[PrimaryDev] AS [PrimaryDev], 
+    [TicketNoWeek].[ActualDev] AS [ActualDev], 
+    [TicketNoWeek].[PrimaryQC] AS [PrimaryQC], 
+    [TicketNoWeek].[ActualQC] AS [ActualQC], 
+    [TicketNoWeek].[EstDev] AS [EstDev], 
+    [TicketNoWeek].[TOEST] AS [TOEST], 
+    [TicketNoWeek].[EstQC] AS [EstQC], 
+    [TicketNoWeek].[HourInWeek] AS [HourInWeek], 
+    [TicketNoWeek].[DeadlineCR] AS [DeadlineCR], 
+    [TicketNoWeek].[DeadlineTO] AS [DeadlineTO], 
+    [TicketNoWeek].[DeadlineQC] AS [DeadlineQC], 
+    [TicketNoWeek].[NgayGiaoQC] AS [NgayGiaoQC], 
+    [TicketNoWeek].[DoOrNot] AS [DoOrNot], 
+    [TicketNoWeek].[Note] AS [Note], 
+    [TicketNoWeek].[IsOutOfWeek] AS [IsOutOfWeek], 
+    [TicketNoWeek].[CreatedOn] AS [CreatedOn], 
+    [TicketNoWeek].[CreatedBy] AS [CreatedBy], 
+    [TicketNoWeek].[Tuan] AS [Tuan]
+    FROM [dbo].[TicketNoWeek] AS [TicketNoWeek]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

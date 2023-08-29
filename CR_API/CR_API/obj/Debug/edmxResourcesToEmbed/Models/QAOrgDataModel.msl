@@ -1,0 +1,1466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QAOrgModelStoreContainer" CdmEntityContainer="QAOrgDBContext">
+    <EntitySetMapping Name="Builds">
+      <EntityTypeMapping TypeName="QAOrgModel.Builds">
+        <MappingFragment StoreEntitySet="Builds">
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildTickets">
+      <EntityTypeMapping TypeName="QAOrgModel.BuildTickets">
+        <MappingFragment StoreEntitySet="BuildTickets">
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedByInt" ColumnName="CreatedByInt" />
+          <ScalarProperty Name="ModifiedByInt" ColumnName="ModifiedByInt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client_Participants">
+      <EntityTypeMapping TypeName="QAOrgModel.Client_Participants">
+        <MappingFragment StoreEntitySet="Client_Participants">
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="QAOrgModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhSachPhanHeTamAnh">
+      <EntityTypeMapping TypeName="QAOrgModel.DanhSachPhanHeTamAnh">
+        <MappingFragment StoreEntitySet="DanhSachPhanHeTamAnh">
+          <ScalarProperty Name="PhanHeID" ColumnName="PhanHeID" />
+          <ScalarProperty Name="TenPhanHe" ColumnName="TenPhanHe" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deleted_Mail">
+      <EntityTypeMapping TypeName="QAOrgModel.deleted_Mail">
+        <MappingFragment StoreEntitySet="deleted_Mail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Footer" ColumnName="Footer" />
+          <ScalarProperty Name="DateAsInt" ColumnName="DateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deleted_MailFiles">
+      <EntityTypeMapping TypeName="QAOrgModel.deleted_MailFiles">
+        <MappingFragment StoreEntitySet="deleted_MailFiles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MailID" ColumnName="MailID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deleted_MailSender">
+      <EntityTypeMapping TypeName="QAOrgModel.deleted_MailSender">
+        <MappingFragment StoreEntitySet="deleted_MailSender">
+          <ScalarProperty Name="MailID" ColumnName="MailID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="GroupUserID" ColumnName="GroupUserID" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Features_Ref">
+      <EntityTypeMapping TypeName="QAOrgModel.Features_Ref">
+        <MappingFragment StoreEntitySet="Features_Ref">
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="FeatureCode_Source" ColumnName="FeatureCode_Source" />
+          <ScalarProperty Name="FeatureCode_Ref" ColumnName="FeatureCode_Ref" />
+          <ScalarProperty Name="RefText" ColumnName="RefText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Installer">
+      <EntityTypeMapping TypeName="QAOrgModel.Installer">
+        <MappingFragment StoreEntitySet="Installer">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instance">
+      <EntityTypeMapping TypeName="QAOrgModel.Instance">
+        <MappingFragment StoreEntitySet="Instance">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+          <ScalarProperty Name="InstanceType" ColumnName="InstanceType" />
+          <ScalarProperty Name="WebService" ColumnName="WebService" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Attachment">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Attachment">
+        <MappingFragment StoreEntitySet="L_Attachment">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_CongViec">
+      <EntityTypeMapping TypeName="QAOrgModel.L_CongViec">
+        <MappingFragment StoreEntitySet="L_CongViec">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="MucDo" ColumnName="MucDo" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Features">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Features">
+        <MappingFragment StoreEntitySet="L_Features">
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
+          <ScalarProperty Name="SubMenu" ColumnName="SubMenu" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Lookup">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Lookup">
+        <MappingFragment StoreEntitySet="L_Lookup">
+          <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+          <ScalarProperty Name="LookupValue" ColumnName="LookupValue" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_MucDo">
+      <EntityTypeMapping TypeName="QAOrgModel.L_MucDo">
+        <MappingFragment StoreEntitySet="L_MucDo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MucDo" ColumnName="MucDo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Position">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Position">
+        <MappingFragment StoreEntitySet="L_Position">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_PrintLocation">
+      <EntityTypeMapping TypeName="QAOrgModel.L_PrintLocation">
+        <MappingFragment StoreEntitySet="L_PrintLocation">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_BoPhan">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_BoPhan">
+        <MappingFragment StoreEntitySet="L_QLDA_BoPhan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaBP" ColumnName="MaBP" />
+          <ScalarProperty Name="TenBP" ColumnName="TenBP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_CongNo">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_CongNo">
+        <MappingFragment StoreEntitySet="L_QLDA_CongNo">
+          <ScalarProperty Name="MaCongNo" ColumnName="MaCongNo" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="MaHSTT" ColumnName="MaHSTT" />
+          <ScalarProperty Name="SoTienThu" ColumnName="SoTienThu" />
+          <ScalarProperty Name="SoTienDaThu" ColumnName="SoTienDaThu" />
+          <ScalarProperty Name="NgayThu" ColumnName="NgayThu" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="ChoTreTT" ColumnName="ChoTreTT" />
+          <ScalarProperty Name="MaSoLanTre" ColumnName="MaSoLanTre" />
+          <ScalarProperty Name="NgayNhacNo" ColumnName="NgayNhacNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_ChucVu">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_ChucVu">
+        <MappingFragment StoreEntitySet="L_QLDA_ChucVu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_ChucVuKH">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_ChucVuKH">
+        <MappingFragment StoreEntitySet="L_QLDA_ChucVuKH">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_DuAn">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_DuAn">
+        <MappingFragment StoreEntitySet="L_QLDA_DuAn">
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="TenDA" ColumnName="TenDA" />
+          <ScalarProperty Name="MaKV" ColumnName="MaKV" />
+          <ScalarProperty Name="MaNhomKH" ColumnName="MaNhomKH" />
+          <ScalarProperty Name="MaLoaiCS" ColumnName="MaLoaiCS" />
+          <ScalarProperty Name="MaLoaiDN" ColumnName="MaLoaiDN" />
+          <ScalarProperty Name="MaLoaiNganh" ColumnName="MaLoaiNganh" />
+          <ScalarProperty Name="SoLuongKhoaPhong" ColumnName="SoLuongKhoaPhong" />
+          <ScalarProperty Name="SoLuotKham" ColumnName="SoLuotKham" />
+          <ScalarProperty Name="SoLuotGiuong" ColumnName="SoLuotGiuong" />
+          <ScalarProperty Name="MaHangBV" ColumnName="MaHangBV" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="PMDangSD" ColumnName="PMDangSD" />
+          <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+          <ScalarProperty Name="MaNhuCau" ColumnName="MaNhuCau" />
+          <ScalarProperty Name="MaMucDoUuTien" ColumnName="MaMucDoUuTien" />
+          <ScalarProperty Name="ChiPhi" ColumnName="ChiPhi" />
+          <ScalarProperty Name="MaLoaiDoanhThu" ColumnName="MaLoaiDoanhThu" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_FileUpload">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_FileUpload">
+        <MappingFragment StoreEntitySet="L_QLDA_FileUpload">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_GDDA">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_GDDA">
+        <MappingFragment StoreEntitySet="L_QLDA_GDDA">
+          <ScalarProperty Name="MaGDDA" ColumnName="MaGDDA" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="SoNgayTre" ColumnName="SoNgayTre" />
+          <ScalarProperty Name="KhoKhan" ColumnName="KhoKhan" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_GiaiDoan">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_GiaiDoan">
+        <MappingFragment StoreEntitySet="L_QLDA_GiaiDoan">
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="TenGD" ColumnName="TenGD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_HangBenhVien">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_HangBenhVien">
+        <MappingFragment StoreEntitySet="L_QLDA_HangBenhVien">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_HopDong">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_HopDong">
+        <MappingFragment StoreEntitySet="L_QLDA_HopDong">
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="Nam" ColumnName="Nam" />
+          <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+          <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+          <ScalarProperty Name="UseYear" ColumnName="UseYear" />
+          <ScalarProperty Name="UseMonth" ColumnName="UseMonth" />
+          <ScalarProperty Name="MaThoiHan" ColumnName="MaThoiHan" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+          <ScalarProperty Name="NgayPhuLuc" ColumnName="NgayPhuLuc" />
+          <ScalarProperty Name="MaLoaiHD" ColumnName="MaLoaiHD" />
+          <ScalarProperty Name="MaLoaiTien" ColumnName="MaLoaiTien" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_HoSoThanhToan">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_HoSoThanhToan">
+        <MappingFragment StoreEntitySet="L_QLDA_HoSoThanhToan">
+          <ScalarProperty Name="MaHSTT" ColumnName="MaHSTT" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="SoHSTT" ColumnName="SoHSTT" />
+          <ScalarProperty Name="NoiDungTT" ColumnName="NoiDungTT" />
+          <ScalarProperty Name="SoHoaDon" ColumnName="SoHoaDon" />
+          <ScalarProperty Name="NgayGuiHoSo" ColumnName="NgayGuiHoSo" />
+          <ScalarProperty Name="NgayKHNhanHS" ColumnName="NgayKHNhanHS" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_KhachHang">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_KhachHang">
+        <MappingFragment StoreEntitySet="L_QLDA_KhachHang">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="MaSoThue" ColumnName="MaSoThue" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TinhTP" ColumnName="TinhTP" />
+          <ScalarProperty Name="Quan" ColumnName="Quan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_KhuVuc">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_KhuVuc">
+        <MappingFragment StoreEntitySet="L_QLDA_KhuVuc">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MaKV" ColumnName="MaKV" />
+          <ScalarProperty Name="TenKV" ColumnName="TenKV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LichSuSale">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LichSuSale">
+        <MappingFragment StoreEntitySet="L_QLDA_LichSuSale">
+          <ScalarProperty Name="SaleHistoryID" ColumnName="SaleHistoryID" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="ThoiGianSale" ColumnName="ThoiGianSale" />
+          <ScalarProperty Name="MucDich" ColumnName="MucDich" />
+          <ScalarProperty Name="KetQua" ColumnName="KetQua" />
+          <ScalarProperty Name="KhoKhan" ColumnName="KhoKhan" />
+          <ScalarProperty Name="PhuongAn" ColumnName="PhuongAn" />
+          <ScalarProperty Name="YKienCapTren" ColumnName="YKienCapTren" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LoaiCoSo">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LoaiCoSo">
+        <MappingFragment StoreEntitySet="L_QLDA_LoaiCoSo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LoaiDoanhThu">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LoaiDoanhThu">
+        <MappingFragment StoreEntitySet="L_QLDA_LoaiDoanhThu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MaDT" ColumnName="MaDT" />
+          <ScalarProperty Name="TenDoanhThu" ColumnName="TenDoanhThu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LoaiHinhDoanhNghiep">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LoaiHinhDoanhNghiep">
+        <MappingFragment StoreEntitySet="L_QLDA_LoaiHinhDoanhNghiep">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenLoaiHinh" ColumnName="TenLoaiHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LoaiHopDong">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LoaiHopDong">
+        <MappingFragment StoreEntitySet="L_QLDA_LoaiHopDong">
+          <ScalarProperty Name="MaLoaiHD" ColumnName="MaLoaiHD" />
+          <ScalarProperty Name="TenLoaiHopDong" ColumnName="TenLoaiHopDong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LoaiNganh">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LoaiNganh">
+        <MappingFragment StoreEntitySet="L_QLDA_LoaiNganh">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenLoaiNganh" ColumnName="TenLoaiNganh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_LoaiTien">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_LoaiTien">
+        <MappingFragment StoreEntitySet="L_QLDA_LoaiTien">
+          <ScalarProperty Name="MaLoaiTien" ColumnName="MaLoaiTien" />
+          <ScalarProperty Name="TenLoaiTien" ColumnName="TenLoaiTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_MucDoUuTien">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_MucDoUuTien">
+        <MappingFragment StoreEntitySet="L_QLDA_MucDoUuTien">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ThongTinMucDoUuTien" ColumnName="ThongTinMucDoUuTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_NhanSu">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_NhanSu">
+        <MappingFragment StoreEntitySet="L_QLDA_NhanSu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MaBoPhan" ColumnName="MaBoPhan" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_NhomKH">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_NhomKH">
+        <MappingFragment StoreEntitySet="L_QLDA_NhomKH">
+          <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+          <ScalarProperty Name="NhomKH" ColumnName="NhomKH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_NhuCau">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_NhuCau">
+        <MappingFragment StoreEntitySet="L_QLDA_NhuCau">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThongTinNhuCau" ColumnName="ThongTinNhuCau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_SoLanTre">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_SoLanTre">
+        <MappingFragment StoreEntitySet="L_QLDA_SoLanTre">
+          <ScalarProperty Name="MaLanTre" ColumnName="MaLanTre" />
+          <ScalarProperty Name="TenLanTre" ColumnName="TenLanTre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_ThoiHan">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_ThoiHan">
+        <MappingFragment StoreEntitySet="L_QLDA_ThoiHan">
+          <ScalarProperty Name="MaThoiHan" ColumnName="MaThoiHan" />
+          <ScalarProperty Name="TenThoiHan" ColumnName="TenThoiHan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_ThongTinLHKH">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_ThongTinLHKH">
+        <MappingFragment StoreEntitySet="L_QLDA_ThongTinLHKH">
+          <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT1" ColumnName="SDT1" />
+          <ScalarProperty Name="SDT2" ColumnName="SDT2" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_QLDA_TrangThai">
+      <EntityTypeMapping TypeName="QAOrgModel.L_QLDA_TrangThai">
+        <MappingFragment StoreEntitySet="L_QLDA_TrangThai">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThongTinTrangThai" ColumnName="ThongTinTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_ReportCollumsDetails">
+      <EntityTypeMapping TypeName="QAOrgModel.L_ReportCollumsDetails">
+        <MappingFragment StoreEntitySet="L_ReportCollumsDetails">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CollumIndex" ColumnName="CollumIndex" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="TableNo" ColumnName="TableNo" />
+          <ScalarProperty Name="CollumName" ColumnName="CollumName" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="CollumType" ColumnName="CollumType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DevDescription" ColumnName="DevDescription" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Table" ColumnName="Table" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="Dev_Type" ColumnName="Dev_Type" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_ReportDetail">
+      <EntityTypeMapping TypeName="QAOrgModel.L_ReportDetail">
+        <MappingFragment StoreEntitySet="L_ReportDetail">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DataProc" ColumnName="DataProc" />
+          <ScalarProperty Name="ProgID" ColumnName="ProgID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_ReportInfo">
+      <EntityTypeMapping TypeName="QAOrgModel.L_ReportInfo">
+        <MappingFragment StoreEntitySet="L_ReportInfo">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OutputType" ColumnName="OutputType" />
+          <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="FooterFontSize" ColumnName="FooterFontSize" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Report_ID" ColumnName="Report_ID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DataProc" ColumnName="DataProc" />
+          <ScalarProperty Name="ProgID" ColumnName="ProgID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_ReportParam">
+      <EntityTypeMapping TypeName="QAOrgModel.L_ReportParam">
+        <MappingFragment StoreEntitySet="L_ReportParam">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+          <ScalarProperty Name="ParamDescripsion" ColumnName="ParamDescripsion" />
+          <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+          <ScalarProperty Name="IsMandostory" ColumnName="IsMandostory" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="Option" ColumnName="Option" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Reports">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Reports">
+        <MappingFragment StoreEntitySet="L_Reports">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NotesTester" ColumnName="NotesTester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_ReportsSign">
+      <EntityTypeMapping TypeName="QAOrgModel.L_ReportsSign">
+        <MappingFragment StoreEntitySet="L_ReportsSign">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Values1" ColumnName="Values1" />
+          <ScalarProperty Name="Values2" ColumnName="Values2" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Tags">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Tags">
+        <MappingFragment StoreEntitySet="L_Tags">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_TeamMembers">
+      <EntityTypeMapping TypeName="QAOrgModel.L_TeamMembers">
+        <MappingFragment StoreEntitySet="L_TeamMembers">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_Teams">
+      <EntityTypeMapping TypeName="QAOrgModel.L_Teams">
+        <MappingFragment StoreEntitySet="L_Teams">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_TicketErrorProtocol">
+      <EntityTypeMapping TypeName="QAOrgModel.L_TicketErrorProtocol">
+        <MappingFragment StoreEntitySet="L_TicketErrorProtocol">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_TicketErrors">
+      <EntityTypeMapping TypeName="QAOrgModel.L_TicketErrors">
+        <MappingFragment StoreEntitySet="L_TicketErrors">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_TinhTrang">
+      <EntityTypeMapping TypeName="QAOrgModel.L_TinhTrang">
+        <MappingFragment StoreEntitySet="L_TinhTrang">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailHeader">
+      <EntityTypeMapping TypeName="QAOrgModel.MailHeader">
+        <MappingFragment StoreEntitySet="MailHeader">
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemoTemplates">
+      <EntityTypeMapping TypeName="QAOrgModel.MemoTemplates">
+        <MappingFragment StoreEntitySet="MemoTemplates">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menu">
+      <EntityTypeMapping TypeName="QAOrgModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modules_Users">
+      <EntityTypeMapping TypeName="QAOrgModel.Modules_Users">
+        <MappingFragment StoreEntitySet="Modules_Users">
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="QAOrgModel.Projects">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="BA" ColumnName="BA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectUsers">
+      <EntityTypeMapping TypeName="QAOrgModel.ProjectUsers">
+        <MappingFragment StoreEntitySet="ProjectUsers">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequirementOriginal">
+      <EntityTypeMapping TypeName="QAOrgModel.RequirementOriginal">
+        <MappingFragment StoreEntitySet="RequirementOriginal">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RequirementCode" ColumnName="RequirementCode" />
+          <ScalarProperty Name="BuilID" ColumnName="BuilID" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="TypeRequirement" ColumnName="TypeRequirement" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="URDID" ColumnName="URDID" />
+          <ScalarProperty Name="URDFileName" ColumnName="URDFileName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUP_Menu">
+      <EntityTypeMapping TypeName="QAOrgModel.SUP_Menu">
+        <MappingFragment StoreEntitySet="SUP_Menu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUP_Requirement">
+      <EntityTypeMapping TypeName="QAOrgModel.SUP_Requirement">
+        <MappingFragment StoreEntitySet="SUP_Requirement">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QAOrgModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_MoiTruongDay">
+      <EntityTypeMapping TypeName="QAOrgModel.TA_MoiTruongDay">
+        <MappingFragment StoreEntitySet="TA_MoiTruongDay">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EnvName" ColumnName="EnvName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TA_TicketXacNhanDayMoiTruong">
+      <EntityTypeMapping TypeName="QAOrgModel.TA_TicketXacNhanDayMoiTruong">
+        <MappingFragment StoreEntitySet="TA_TicketXacNhanDayMoiTruong">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="UserIDConfirm" ColumnName="UserIDConfirm" />
+          <ScalarProperty Name="Confirmer" ColumnName="Confirmer" />
+          <ScalarProperty Name="MoiTruongID" ColumnName="MoiTruongID" />
+          <ScalarProperty Name="MoiTruongName" ColumnName="MoiTruongName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TamAnhHospitalRequest">
+      <EntityTypeMapping TypeName="QAOrgModel.TamAnhHospitalRequest">
+        <MappingFragment StoreEntitySet="TamAnhHospitalRequest">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="VersionURD" ColumnName="VersionURD" />
+          <ScalarProperty Name="NameURD" ColumnName="NameURD" />
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ununicode" ColumnName="Title_Ununicode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDateAsInt" ColumnName="CreatedDateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Estimations_Detail">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_Estimations_Detail">
+        <MappingFragment StoreEntitySet="Ticket_Estimations_Detail">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="DesignScreen" ColumnName="DesignScreen" />
+          <ScalarProperty Name="TotalDesignScreen" ColumnName="TotalDesignScreen" />
+          <ScalarProperty Name="LogicScreen" ColumnName="LogicScreen" />
+          <ScalarProperty Name="TotalLogicScreen" ColumnName="TotalLogicScreen" />
+          <ScalarProperty Name="SPScreen" ColumnName="SPScreen" />
+          <ScalarProperty Name="TotalSPScreen" ColumnName="TotalSPScreen" />
+          <ScalarProperty Name="DesignReport" ColumnName="DesignReport" />
+          <ScalarProperty Name="TotalDesignReport" ColumnName="TotalDesignReport" />
+          <ScalarProperty Name="SPReport" ColumnName="SPReport" />
+          <ScalarProperty Name="TotalSPReport" ColumnName="TotalSPReport" />
+          <ScalarProperty Name="DevUnitTest" ColumnName="DevUnitTest" />
+          <ScalarProperty Name="DevFixBug" ColumnName="DevFixBug" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="TotalOther" ColumnName="TotalOther" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_InWeek">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_InWeek">
+        <MappingFragment StoreEntitySet="Ticket_InWeek">
+          <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TictketID" ColumnName="TictketID" />
+          <ScalarProperty Name="PrimaryDev" ColumnName="PrimaryDev" />
+          <ScalarProperty Name="ActualDev" ColumnName="ActualDev" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="ActualQC" ColumnName="ActualQC" />
+          <ScalarProperty Name="EstDev" ColumnName="EstDev" />
+          <ScalarProperty Name="TOEST" ColumnName="TOEST" />
+          <ScalarProperty Name="EstQC" ColumnName="EstQC" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="DeadlineTO" ColumnName="DeadlineTO" />
+          <ScalarProperty Name="DeadlineQC" ColumnName="DeadlineQC" />
+          <ScalarProperty Name="NgayGiaoQC" ColumnName="NgayGiaoQC" />
+          <ScalarProperty Name="DoOrNot" ColumnName="DoOrNot" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="IsOutOfWeek" ColumnName="IsOutOfWeek" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Log_Bugs">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_Log_Bugs">
+        <MappingFragment StoreEntitySet="Ticket_Log_Bugs">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Log_Bugs_Files">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_Log_Bugs_Files">
+        <MappingFragment StoreEntitySet="Ticket_Log_Bugs_Files">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="LogBugSeq" ColumnName="LogBugSeq" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Menu">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_Menu">
+        <MappingFragment StoreEntitySet="Ticket_Menu">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_QC_Estimation_Detail">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_QC_Estimation_Detail">
+        <MappingFragment StoreEntitySet="Ticket_QC_Estimation_Detail">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Testcase" ColumnName="Testcase" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_ReleaseNote">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_ReleaseNote">
+        <MappingFragment StoreEntitySet="Ticket_ReleaseNote">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_RequirementOriginal">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_RequirementOriginal">
+        <MappingFragment StoreEntitySet="Ticket_RequirementOriginal">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="RequirementCode" ColumnName="RequirementCode" />
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Tuan_PreSource">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_Tuan_PreSource">
+        <MappingFragment StoreEntitySet="Ticket_Tuan_PreSource">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TuanID" ColumnName="TuanID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="UuTien" ColumnName="UuTien" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Week">
+      <EntityTypeMapping TypeName="QAOrgModel.Ticket_Week">
+        <MappingFragment StoreEntitySet="Ticket_Week">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WeekName" ColumnName="WeekName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketClients">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketClients">
+        <MappingFragment StoreEntitySet="TicketClients">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeployed" ColumnName="IsDeployed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketCompleted">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketCompleted">
+        <MappingFragment StoreEntitySet="TicketCompleted">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketDLLs">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketDLLs">
+        <MappingFragment StoreEntitySet="TicketDLLs">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Revision_SVN" ColumnName="Revision_SVN" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketEmails">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketEmails">
+        <MappingFragment StoreEntitySet="TicketEmails">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketErrors">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketErrors">
+        <MappingFragment StoreEntitySet="TicketErrors">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketEstimations">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketEstimations">
+        <MappingFragment StoreEntitySet="TicketEstimations">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="BA" ColumnName="BA" />
+          <ScalarProperty Name="DesignScreen" ColumnName="DesignScreen" />
+          <ScalarProperty Name="LogicScreen" ColumnName="LogicScreen" />
+          <ScalarProperty Name="SPScreen" ColumnName="SPScreen" />
+          <ScalarProperty Name="DesignReport" ColumnName="DesignReport" />
+          <ScalarProperty Name="SPReport" ColumnName="SPReport" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="QC" ColumnName="QC" />
+          <ScalarProperty Name="DEV_Real" ColumnName="DEV_Real" />
+          <ScalarProperty Name="QC_Real" ColumnName="QC_Real" />
+          <ScalarProperty Name="BA_Real" ColumnName="BA_Real" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketFeature">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketFeature">
+        <MappingFragment StoreEntitySet="TicketFeature">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="FeatureCode" ColumnName="FeatureCode" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketFeature_Log">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketFeature_Log">
+        <MappingFragment StoreEntitySet="TicketFeature_Log">
+          <ScalarProperty Name="HistorySeq" ColumnName="HistorySeq" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="FeatureCode" ColumnName="FeatureCode" />
+          <ScalarProperty Name="DeleteYN" ColumnName="DeleteYN" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketFiles">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketFiles">
+        <MappingFragment StoreEntitySet="TicketFiles">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketFollow">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketFollow">
+        <MappingFragment StoreEntitySet="TicketFollow">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketHistory">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketHistory">
+        <MappingFragment StoreEntitySet="TicketHistory">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="ChangedOn" ColumnName="ChangedOn" />
+          <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+          <ScalarProperty Name="DeleteFlag" ColumnName="DeleteFlag" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="AssignedFrom" ColumnName="AssignedFrom" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="FromStatus" ColumnName="FromStatus" />
+          <ScalarProperty Name="ToStatus" ColumnName="ToStatus" />
+          <ScalarProperty Name="Seen" ColumnName="Seen" />
+          <ScalarProperty Name="FromPriority" ColumnName="FromPriority" />
+          <ScalarProperty Name="ToPriority" ColumnName="ToPriority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketHistoryLog">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketHistoryLog">
+        <MappingFragment StoreEntitySet="TicketHistoryLog">
+          <ScalarProperty Name="HistorySeq" ColumnName="HistorySeq" />
+          <ScalarProperty Name="HistoryLogSeq" ColumnName="HistoryLogSeq" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="ValueOriginal" ColumnName="ValueOriginal" />
+          <ScalarProperty Name="ValueNew" ColumnName="ValueNew" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketNotes">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketNotes">
+        <MappingFragment StoreEntitySet="TicketNotes">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketReview">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketReview">
+        <MappingFragment StoreEntitySet="TicketReview">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketSVN_Link">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketSVN_Link">
+        <MappingFragment StoreEntitySet="TicketSVN_Link">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Revision_SVN" ColumnName="Revision_SVN" />
+          <ScalarProperty Name="LinkSVN_File" ColumnName="LinkSVN_File" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketTags">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketTags">
+        <MappingFragment StoreEntitySet="TicketTags">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="QAOrgModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordEmail" ColumnName="PasswordEmail" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Installer_History">
+      <EntityTypeMapping TypeName="QAOrgModel.Installer_History">
+        <MappingFragment StoreEntitySet="Installer_History">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_DLLs">
+      <EntityTypeMapping TypeName="QAOrgModel.L_DLLs">
+        <MappingFragment StoreEntitySet="L_DLLs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DLLName" ColumnName="DLLName" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="L_TicketFuture">
+      <EntityTypeMapping TypeName="QAOrgModel.L_TicketFuture">
+        <MappingFragment StoreEntitySet="L_TicketFuture">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="WeekID" ColumnName="WeekID" />
+          <ScalarProperty Name="PrimaryDev" ColumnName="PrimaryDev" />
+          <ScalarProperty Name="ActualDev" ColumnName="ActualDev" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="ActualQC" ColumnName="ActualQC" />
+          <ScalarProperty Name="EstDEV" ColumnName="EstDEV" />
+          <ScalarProperty Name="EstTO" ColumnName="EstTO" />
+          <ScalarProperty Name="EstQC" ColumnName="EstQC" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="DeadlineTO" ColumnName="DeadlineTO" />
+          <ScalarProperty Name="DeadlineQC" ColumnName="DeadlineQC" />
+          <ScalarProperty Name="NgayGiaoQC" ColumnName="NgayGiaoQC" />
+          <ScalarProperty Name="DoOrNot" ColumnName="DoOrNot" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScriptsDeploy">
+      <EntityTypeMapping TypeName="QAOrgModel.ScriptsDeploy">
+        <MappingFragment StoreEntitySet="ScriptsDeploy">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="CustomerList" ColumnName="CustomerList" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketNoWeek">
+      <EntityTypeMapping TypeName="QAOrgModel.TicketNoWeek">
+        <MappingFragment StoreEntitySet="TicketNoWeek">
+          <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TictketID" ColumnName="TictketID" />
+          <ScalarProperty Name="PrimaryDev" ColumnName="PrimaryDev" />
+          <ScalarProperty Name="ActualDev" ColumnName="ActualDev" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="ActualQC" ColumnName="ActualQC" />
+          <ScalarProperty Name="EstDev" ColumnName="EstDev" />
+          <ScalarProperty Name="TOEST" ColumnName="TOEST" />
+          <ScalarProperty Name="EstQC" ColumnName="EstQC" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="DeadlineTO" ColumnName="DeadlineTO" />
+          <ScalarProperty Name="DeadlineQC" ColumnName="DeadlineQC" />
+          <ScalarProperty Name="NgayGiaoQC" ColumnName="NgayGiaoQC" />
+          <ScalarProperty Name="DoOrNot" ColumnName="DoOrNot" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="IsOutOfWeek" ColumnName="IsOutOfWeek" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

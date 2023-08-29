@@ -27,31 +27,43 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>CustomerNo</th>
-            <th>CustomerName</th>
-            <th>HospitalCouncil</th>
-            <th>CustomerAddress</th>
-            <th>Hotline</th>
-            <th>IsActive</th>
+            <th>TicketID</th>
+            <th>Category</th>
+            <th>MODULE</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>AssignedTo</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>PrimaryDEV</th>
+            <th>PrimaryQC</th>
+            <th>PrimaryBA</th>
+            <th>TicketOwner</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody id="myTable">
-          {% comment %} {% for cus in customers %} {% endcomment %}
+          {% for ticket in tickets %}
           <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+            <td>{{ticket.TicketID}}</td>
+            <td>{{ticket.Category}}</td>
+            <td>{{ticket.MODULE}}</td>
+            <td>{{ticket.Priority}}</td>
+            <td>{{ticket.Status}}</td>
+            <td>{{ticket.AssignedTo}}</td>
+            <td>{{ticket.Title}}</td>
+            <td>{{ticket.Description}}</td>
+            <td>{{ticket.PrimaryDEV}}</td>
+            <td>{{ticket.PrimaryQC}}</td>
+            <td>{{ticket.PrimaryBA}}</td>
+            <td>{{ticket.TicketOwner}}</td>
             <td>
               <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
               <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
-          {% comment %} {% endfor %} {% endcomment %}
+          {% endfor %}
         </tbody>
       </table>
     </div>
