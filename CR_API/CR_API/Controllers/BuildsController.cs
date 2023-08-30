@@ -16,6 +16,17 @@ namespace CR_API.Controllers
             {
                 return dBContext.Builds.ToList();
             }    
-        }        
+        }
+
+
+        [Route("api/builds/getbuildtoday")]
+        [HttpGet]
+        public IEnumerable<Builds> GetBuildToday()
+        {
+            using (QAOrgDBContext dBContext = new QAOrgDBContext())
+            {
+                return dBContext.Builds.Where(x=>x.CreatedOn==DateTime.Today).ToList();
+            }
+        }
     }
 }

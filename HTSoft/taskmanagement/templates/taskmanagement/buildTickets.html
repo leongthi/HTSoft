@@ -12,19 +12,13 @@
         <p>
           Danh sách chi tiết các ticket trong build
         </p>
-        <input
-          class="form-control"
-          id="myInput"
-          type="text"
-          placeholder="Search.."
-        />
       </div>
     </div>
    
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered">
+      <table class="table table-bordered" id="dataTable">
         <thead>
           <tr>
             <th>TicketID</th>
@@ -34,10 +28,7 @@
             <th>Status</th>
             <th>AssignedTo</th>
             <th>Title</th>
-            <th>Description</th>
             <th>PrimaryDEV</th>
-            <th>PrimaryQC</th>
-            <th>PrimaryBA</th>
             <th>TicketOwner</th>
             <th>Actions</th>
           </tr>
@@ -52,10 +43,7 @@
             <td>{{ticket.Status}}</td>
             <td>{{ticket.AssignedTo}}</td>
             <td>{{ticket.Title}}</td>
-            <td>{{ticket.Description}}</td>
             <td>{{ticket.PrimaryDEV}}</td>
-            <td>{{ticket.PrimaryQC}}</td>
-            <td>{{ticket.PrimaryBA}}</td>
             <td>{{ticket.TicketOwner}}</td>
             <td>
               <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
