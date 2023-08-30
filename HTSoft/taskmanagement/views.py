@@ -1,10 +1,11 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Build,Ticket
-from shared.models import Customer, Status
+from shared.models import Customer, Status, UsersTicket
 from . import api
 from . import functions as ft
 
 from dateutil import parser
+from django.db import connection
 
 # Create your views here.
 def task_dashboard(request):
@@ -110,10 +111,20 @@ def buildTickets(request,BuildID):
                 tick.save()
 
     tickets=Ticket.objects.filter(TicketID__in=lst_ticketid).order_by('TicketID')
+    for item in lst_ticketid:
+        print(item)
+        with connection.cursor() as cursor:
+            cursor.execute('CALL sp_ticketInBuild_list(111829)')
+            print(cursor.rowcount)
+            # results = cursor.fetchmany()
+            # print(results)
+
+    
 
         
     context={
-        'tickets':tickets
+        'tickets':tickets,
+        
     }
     return render(request,"taskmanagement/buildTickets.html",context)
     
@@ -133,12 +144,12 @@ def ticketList(request):
                 TicketID=ticket["TicketID"]
                 Priority=ticket["Priority"]
                 Status=ticket["Status"]
-                DueDate=parser.isoparse(ticket["DueDate"])
+                DueDate=parser.isoparse(ticket["DueDate"]) if ticket["DueDate"] is not None else None
                 AssignedTo=ticket["AssignedTo"]
                 Title=ticket["Title"]
                 Description=ticket["Description"]
-                created_date=parser.isoparse(ticket["CreatedOn"])
-                modified_date=parser.isoparse(ticket["ModifiedOn"])
+                created_date=parser.isoparse(ticket["CreatedOn"]) if ticket["CreatedOn"] is not None else None
+                modified_date=parser.isoparse(ticket["ModifiedOn"]) if ticket["ModifiedOn"] is not None else None
                 created_by=ticket["CreatedBy"]
                 modified_by=ticket["ModifiedBy"]
                 Category=ticket["Category"]
