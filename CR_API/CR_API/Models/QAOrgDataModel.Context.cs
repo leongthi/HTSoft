@@ -12,11 +12,13 @@ namespace CR_API.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class QAOrgDBContext : DbContext
+    public partial class QAOrgEntities : DbContext
     {
-        public QAOrgDBContext()
-            : base("name=QAOrgDBContext")
+        public QAOrgEntities()
+            : base("name=QAOrgEntities")
         {
         }
     
@@ -129,5 +131,8427 @@ namespace CR_API.Models
         public virtual DbSet<L_TicketFuture> L_TicketFuture { get; set; }
         public virtual DbSet<ScriptsDeploy> ScriptsDeploy { get; set; }
         public virtual DbSet<TicketNoWeek> TicketNoWeek { get; set; }
+        public virtual DbSet<Tickets_ClientView> Tickets_ClientView { get; set; }
+        public virtual DbSet<Tickets_MorningMeetingView> Tickets_MorningMeetingView { get; set; }
+    
+        [DbFunction("QAOrgEntities", "fnSplitString")]
+        public virtual IQueryable<fnSplitString_Result> fnSplitString(string @string, string delimiter)
+        {
+            var stringParameter = @string != null ?
+                new ObjectParameter("string", @string) :
+                new ObjectParameter("string", typeof(string));
+    
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("delimiter", delimiter) :
+                new ObjectParameter("delimiter", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnSplitString_Result>("[QAOrgEntities].[fnSplitString](@string, @delimiter)", stringParameter, delimiterParameter);
+        }
+    
+        [DbFunction("QAOrgEntities", "func_Split")]
+        public virtual IQueryable<func_Split_Result> func_Split(string delimiter, string list)
+        {
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
+    
+            var listParameter = list != null ?
+                new ObjectParameter("List", list) :
+                new ObjectParameter("List", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<func_Split_Result>("[QAOrgEntities].[func_Split](@Delimiter, @List)", delimiterParameter, listParameter);
+        }
+    
+        [DbFunction("QAOrgEntities", "func_SplitString")]
+        public virtual IQueryable<func_SplitString_Result> func_SplitString(string delimiter, string list)
+        {
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
+    
+            var listParameter = list != null ?
+                new ObjectParameter("List", list) :
+                new ObjectParameter("List", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<func_SplitString_Result>("[QAOrgEntities].[func_SplitString](@Delimiter, @List)", delimiterParameter, listParameter);
+        }
+    
+        [DbFunction("QAOrgEntities", "Split")]
+        public virtual IQueryable<Split_Result> Split(string delimiter, string list)
+        {
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
+    
+            var listParameter = list != null ?
+                new ObjectParameter("List", list) :
+                new ObjectParameter("List", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Split_Result>("[QAOrgEntities].[Split](@Delimiter, @List)", delimiterParameter, listParameter);
+        }
+    
+        public virtual int job_(Nullable<int> from, Nullable<int> to)
+        {
+            var fromParameter = from.HasValue ?
+                new ObjectParameter("From", from) :
+                new ObjectParameter("From", typeof(int));
+    
+            var toParameter = to.HasValue ?
+                new ObjectParameter("To", to) :
+                new ObjectParameter("To", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("job_", fromParameter, toParameter);
+        }
+    
+        public virtual int job_SendEmails_DanhsachHotfix()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("job_SendEmails_DanhsachHotfix");
+        }
+    
+        public virtual int job_SendEmails_Tickets()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("job_SendEmails_Tickets");
+        }
+    
+        public virtual ObjectResult<proc_Tickets_BAView_Result> proc_Tickets_BAView(Nullable<int> assignedTo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("assignedTo", assignedTo) :
+                new ObjectParameter("assignedTo", typeof(int));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Tickets_BAView_Result>("proc_Tickets_BAView", assignedToParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<proc_Tickets_BigDeploy_Result> proc_Tickets_BigDeploy(Nullable<int> clientId)
+        {
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("clientId", clientId) :
+                new ObjectParameter("clientId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_Tickets_BigDeploy_Result>("proc_Tickets_BigDeploy", clientIdParameter);
+        }
+    
+        public virtual int proc_Tickets_ClientView(Nullable<int> clientId, Nullable<int> assignedTo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string createdBy)
+        {
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("clientId", clientId) :
+                new ObjectParameter("clientId", typeof(int));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("assignedTo", assignedTo) :
+                new ObjectParameter("assignedTo", typeof(int));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("createdBy", createdBy) :
+                new ObjectParameter("createdBy", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Tickets_ClientView", clientIdParameter, assignedToParameter, fromDateParameter, toDateParameter, createdByParameter);
+        }
+    
+        public virtual int proc_Tickets_DeployingFrom(Nullable<int> days, Nullable<int> clientId, Nullable<int> assignedTo)
+        {
+            var daysParameter = days.HasValue ?
+                new ObjectParameter("days", days) :
+                new ObjectParameter("days", typeof(int));
+    
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("clientId", clientId) :
+                new ObjectParameter("clientId", typeof(int));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("assignedTo", assignedTo) :
+                new ObjectParameter("assignedTo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Tickets_DeployingFrom", daysParameter, clientIdParameter, assignedToParameter);
+        }
+    
+        public virtual int proc_Tickets_PerClient(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Tickets_PerClient", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual int proc_Tickets_ToClose(Nullable<int> clientId, Nullable<int> assignedTo)
+        {
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("clientId", clientId) :
+                new ObjectParameter("clientId", typeof(int));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("assignedTo", assignedTo) :
+                new ObjectParameter("assignedTo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Tickets_ToClose", clientIdParameter, assignedToParameter);
+        }
+    
+        public virtual int proc_Tickets_ToRemind(Nullable<int> clientId, Nullable<int> assignedTo)
+        {
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("clientId", clientId) :
+                new ObjectParameter("clientId", typeof(int));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("assignedTo", assignedTo) :
+                new ObjectParameter("assignedTo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Tickets_ToRemind", clientIdParameter, assignedToParameter);
+        }
+    
+        public virtual int proc_Tickets_ToReview()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_Tickets_ToReview");
+        }
+    
+        public virtual int rep_LoadReportBug(string facID, Nullable<int> quy, Nullable<int> year)
+        {
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var quyParameter = quy.HasValue ?
+                new ObjectParameter("Quy", quy) :
+                new ObjectParameter("Quy", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("rep_LoadReportBug", facIDParameter, quyParameter, yearParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Builds_Get_Result> sp_Builds_Get(Nullable<int> buildID)
+        {
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Builds_Get_Result>("sp_Builds_Get", buildIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_Builds_List_Result> sp_Builds_List(Nullable<int> clientID)
+        {
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Builds_List_Result>("sp_Builds_List", clientIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_Builds_Save(Nullable<int> buildID, Nullable<int> clientID, string buildName, Nullable<System.DateTime> dueDate, string status, Nullable<System.Guid> userID)
+        {
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var buildNameParameter = buildName != null ?
+                new ObjectParameter("BuildName", buildName) :
+                new ObjectParameter("BuildName", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Builds_Save", buildIDParameter, clientIDParameter, buildNameParameter, dueDateParameter, statusParameter, userIDParameter);
+        }
+    
+        public virtual int sp_Builds_Search(Nullable<int> clientID)
+        {
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Builds_Search", clientIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_Client_List_Result> sp_Client_List(Nullable<int> clientID)
+        {
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Client_List_Result>("sp_Client_List", clientIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_Create_L_Reports(Nullable<System.Guid> reportID, string category, string name, string caption, string description, string type, string progID, string dataProc, string reportParamSample, Nullable<bool> isSreen)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var captionParameter = caption != null ?
+                new ObjectParameter("Caption", caption) :
+                new ObjectParameter("Caption", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var progIDParameter = progID != null ?
+                new ObjectParameter("ProgID", progID) :
+                new ObjectParameter("ProgID", typeof(string));
+    
+            var dataProcParameter = dataProc != null ?
+                new ObjectParameter("DataProc", dataProc) :
+                new ObjectParameter("DataProc", typeof(string));
+    
+            var reportParamSampleParameter = reportParamSample != null ?
+                new ObjectParameter("ReportParamSample", reportParamSample) :
+                new ObjectParameter("ReportParamSample", typeof(string));
+    
+            var isSreenParameter = isSreen.HasValue ?
+                new ObjectParameter("IsSreen", isSreen) :
+                new ObjectParameter("IsSreen", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Create_L_Reports", reportIDParameter, categoryParameter, nameParameter, captionParameter, descriptionParameter, typeParameter, progIDParameter, dataProcParameter, reportParamSampleParameter, isSreenParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual ObjectResult<sp_DLLs_List_Result> sp_DLLs_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DLLs_List_Result>("sp_DLLs_List");
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_helptext2(string procName)
+        {
+            var procNameParameter = procName != null ?
+                new ObjectParameter("ProcName", procName) :
+                new ObjectParameter("ProcName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_helptext2", procNameParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_Installer_Delete(string path, string name)
+        {
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Installer_Delete", pathParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_Installer_File(string path, string name)
+        {
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Installer_File", pathParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<sp_Installer_Get_Result> sp_Installer_Get(string path, string name)
+        {
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Installer_Get_Result>("sp_Installer_Get", pathParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<sp_Installer_List_Result> sp_Installer_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Installer_List_Result>("sp_Installer_List");
+        }
+    
+        public virtual ObjectResult<string> sp_Installer_Save(string path, string name, string extension, string hash, string version, Nullable<long> size, string description, string data, string uploadPath, string userID)
+        {
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var extensionParameter = extension != null ?
+                new ObjectParameter("Extension", extension) :
+                new ObjectParameter("Extension", typeof(string));
+    
+            var hashParameter = hash != null ?
+                new ObjectParameter("Hash", hash) :
+                new ObjectParameter("Hash", typeof(string));
+    
+            var versionParameter = version != null ?
+                new ObjectParameter("Version", version) :
+                new ObjectParameter("Version", typeof(string));
+    
+            var sizeParameter = size.HasValue ?
+                new ObjectParameter("Size", size) :
+                new ObjectParameter("Size", typeof(long));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var dataParameter = data != null ?
+                new ObjectParameter("Data", data) :
+                new ObjectParameter("Data", typeof(string));
+    
+            var uploadPathParameter = uploadPath != null ?
+                new ObjectParameter("UploadPath", uploadPath) :
+                new ObjectParameter("UploadPath", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Installer_Save", pathParameter, nameParameter, extensionParameter, hashParameter, versionParameter, sizeParameter, descriptionParameter, dataParameter, uploadPathParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_Customer_List_Result> sp_L_Customer_List(string facID)
+        {
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_Customer_List_Result>("sp_L_Customer_List", facIDParameter);
+        }
+    
+        public virtual int sp_L_CustomerByReportID_List(Nullable<System.Guid> reportID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_CustomerByReportID_List", reportIDParameter);
+        }
+    
+        public virtual int sp_L_CustomerByReportID_ListV2(Nullable<System.Guid> reportID, string customerName)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var customerNameParameter = customerName != null ?
+                new ObjectParameter("CustomerName", customerName) :
+                new ObjectParameter("CustomerName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_CustomerByReportID_ListV2", reportIDParameter, customerNameParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_L_Custumer_Report(Nullable<System.Guid> reportID, string facID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_L_Custumer_Report", reportIDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_Lookup_List_Result> sp_L_Lookup_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_Lookup_List_Result>("sp_L_Lookup_List");
+        }
+    
+        public virtual ObjectResult<string> sp_L_Report_Param(Nullable<System.Guid> reportID, Nullable<int> index, string name, string capTion, string type, string option, Nullable<bool> isSchedule)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var capTionParameter = capTion != null ?
+                new ObjectParameter("CapTion", capTion) :
+                new ObjectParameter("CapTion", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var optionParameter = option != null ?
+                new ObjectParameter("Option", option) :
+                new ObjectParameter("Option", typeof(string));
+    
+            var isScheduleParameter = isSchedule.HasValue ?
+                new ObjectParameter("IsSchedule", isSchedule) :
+                new ObjectParameter("IsSchedule", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_L_Report_Param", reportIDParameter, indexParameter, nameParameter, capTionParameter, typeParameter, optionParameter, isScheduleParameter);
+        }
+    
+        public virtual int sp_L_ReportCollumsDetails_Copy(string session, Nullable<System.Guid> reportID, Nullable<int> facID, Nullable<int> iD)
+        {
+            var sessionParameter = session != null ?
+                new ObjectParameter("Session", session) :
+                new ObjectParameter("Session", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID.HasValue ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(int));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_ReportCollumsDetails_Copy", sessionParameter, reportIDParameter, facIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_ReportCollumsDetails_List_Result> sp_L_ReportCollumsDetails_List(Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_ReportCollumsDetails_List_Result>("sp_L_ReportCollumsDetails_List", reportIDParameter, iDParameter);
+        }
+    
+        public virtual int sp_L_ReportInfo_Delete(Nullable<System.Guid> reportID, string facID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_ReportInfo_Delete", reportIDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_ReportInfo_List_Result> sp_L_ReportInfo_List(Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_ReportInfo_List_Result>("sp_L_ReportInfo_List", reportIDParameter, iDParameter);
+        }
+    
+        public virtual int sp_L_ReportParam_Delete(Nullable<System.Guid> reportID, string facID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_ReportParam_Delete", reportIDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_ReportParam_List_Result> sp_L_ReportParam_List(Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_ReportParam_List_Result>("sp_L_ReportParam_List", reportIDParameter, iDParameter);
+        }
+    
+        public virtual int sp_L_Reports_delete(Nullable<System.Guid> reportID, Nullable<int> facID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID.HasValue ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_Reports_delete", reportIDParameter, facIDParameter);
+        }
+    
+        public virtual int sp_L_Reports_DeleteAll(Nullable<System.Guid> reportID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_Reports_DeleteAll", reportIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_Reports_Get_Result> sp_L_Reports_Get(Nullable<System.Guid> reportID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_Reports_Get_Result>("sp_L_Reports_Get", reportIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_Reports_List_Result> sp_L_Reports_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_Reports_List_Result>("sp_L_Reports_List");
+        }
+    
+        public virtual int sp_L_Reports1_List(Nullable<System.Guid> reportID, string facID)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_Reports1_List", reportIDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_Reports2_List_Result> sp_L_Reports2_List(string session)
+        {
+            var sessionParameter = session != null ?
+                new ObjectParameter("Session", session) :
+                new ObjectParameter("Session", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_Reports2_List_Result>("sp_L_Reports2_List", sessionParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_ReportsCollumsDetail_List_Result> sp_L_ReportsCollumsDetail_List(Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_ReportsCollumsDetail_List_Result>("sp_L_ReportsCollumsDetail_List", reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_L_TicketReport_Deploy_Result> sp_L_TicketReport_Deploy(string facID)
+        {
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_L_TicketReport_Deploy_Result>("sp_L_TicketReport_Deploy", facIDParameter);
+        }
+    
+        public virtual int sp_L_TicketReport_DEV(Nullable<System.DateTime> fromDate, Nullable<int> primaryDEV)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var primaryDEVParameter = primaryDEV.HasValue ?
+                new ObjectParameter("PrimaryDEV", primaryDEV) :
+                new ObjectParameter("PrimaryDEV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_L_TicketReport_DEV", fromDateParameter, primaryDEVParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_MemoTemplates_Delete(Nullable<int> seq)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_MemoTemplates_Delete", seqParameter);
+        }
+    
+        public virtual ObjectResult<sp_MemoTemplates_List_Result> sp_MemoTemplates_List(string category)
+        {
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MemoTemplates_List_Result>("sp_MemoTemplates_List", categoryParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_MemoTemplates_Save(Nullable<int> seq, string category, string value)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var valueParameter = value != null ?
+                new ObjectParameter("Value", value) :
+                new ObjectParameter("Value", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_MemoTemplates_Save", seqParameter, categoryParameter, valueParameter);
+        }
+    
+        public virtual ObjectResult<sp_Menu_List_Result> sp_Menu_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Menu_List_Result>("sp_Menu_List");
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual ObjectResult<sp_ScriptsDeploy_List_Result> sp_ScriptsDeploy_List(string fileName)
+        {
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ScriptsDeploy_List_Result>("sp_ScriptsDeploy_List", fileNameParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_ScriptsDeploy_Save(string fileName, string path, string customerList)
+        {
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var customerListParameter = customerList != null ?
+                new ObjectParameter("CustomerList", customerList) :
+                new ObjectParameter("CustomerList", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_ScriptsDeploy_Save", fileNameParameter, pathParameter, customerListParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_ScriptsDeploy_Update(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_ScriptsDeploy_Update", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_TA_MoiTruongDay_List_Result> sp_TA_MoiTruongDay_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TA_MoiTruongDay_List_Result>("sp_TA_MoiTruongDay_List");
+        }
+    
+        public virtual ObjectResult<string> sp_Ticket_Delete(string ticketID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Ticket_Delete", ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_Ticket_Get_Result> sp_Ticket_Get(string ticketID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Ticket_Get_Result>("sp_Ticket_Get", ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_Ticket_NewBuildID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_Ticket_NewBuildID");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_Ticket_NewTicketID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_Ticket_NewTicketID");
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> sp_Ticket_Save_deleted(Nullable<int> ticketID, string priority, string status, Nullable<System.DateTime> dueDate, Nullable<int> assignedTo, string title, string description, string userID, string category, string module, string requestedBy, Nullable<int> primaryDEV, Nullable<int> primaryQC, string comment, Nullable<System.DateTime> originalDeadline, Nullable<System.Guid> reportID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var requestedByParameter = requestedBy != null ?
+                new ObjectParameter("RequestedBy", requestedBy) :
+                new ObjectParameter("RequestedBy", typeof(string));
+    
+            var primaryDEVParameter = primaryDEV.HasValue ?
+                new ObjectParameter("PrimaryDEV", primaryDEV) :
+                new ObjectParameter("PrimaryDEV", typeof(int));
+    
+            var primaryQCParameter = primaryQC.HasValue ?
+                new ObjectParameter("PrimaryQC", primaryQC) :
+                new ObjectParameter("PrimaryQC", typeof(int));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("Comment", comment) :
+                new ObjectParameter("Comment", typeof(string));
+    
+            var originalDeadlineParameter = originalDeadline.HasValue ?
+                new ObjectParameter("OriginalDeadline", originalDeadline) :
+                new ObjectParameter("OriginalDeadline", typeof(System.DateTime));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_Ticket_Save_deleted", ticketIDParameter, priorityParameter, statusParameter, dueDateParameter, assignedToParameter, titleParameter, descriptionParameter, userIDParameter, categoryParameter, moduleParameter, requestedByParameter, primaryDEVParameter, primaryQCParameter, commentParameter, originalDeadlineParameter, reportIDParameter);
+        }
+    
+        public virtual int sp_Ticket_Search_deleted(string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow)
+        {
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Ticket_Search_deleted", criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter);
+        }
+    
+        public virtual int sp_Ticket_SearchDueDate(string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow)
+        {
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Ticket_SearchDueDate", criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketClients_Delete(string ticketID, Nullable<int> clientID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketClients_Delete", ticketIDParameter, clientIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_TicketClients_List_Result> sp_TicketClients_List(string ticketID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TicketClients_List_Result>("sp_TicketClients_List", ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_TicketClients_Save(Nullable<int> ticketID, Nullable<int> clientID, string priority, Nullable<System.DateTime> dueDate, string status, Nullable<int> userID, Nullable<bool> isDeployed)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_TicketClients_Save", ticketIDParameter, clientIDParameter, priorityParameter, dueDateParameter, statusParameter, userIDParameter, isDeployedParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketFiles_Delete(Nullable<int> seq, string ticketID)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketFiles_Delete", seqParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketFiles_FileData(Nullable<int> seq, string ticketID)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketFiles_FileData", seqParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_TicketFiles_GetFileData_By_Seq_Result> sp_TicketFiles_GetFileData_By_Seq(Nullable<int> seq)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TicketFiles_GetFileData_By_Seq_Result>("sp_TicketFiles_GetFileData_By_Seq", seqParameter);
+        }
+    
+        public virtual int sp_TicketFiles_List(string ticketID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketFiles_List", ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketFiles_Save(Nullable<int> seq, Nullable<int> ticketID, string fileName, string fileData, Nullable<int> userID)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var fileDataParameter = fileData != null ?
+                new ObjectParameter("FileData", fileData) :
+                new ObjectParameter("FileData", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketFiles_Save", seqParameter, ticketIDParameter, fileNameParameter, fileDataParameter, userIDParameter);
+        }
+    
+        public virtual int sp_TicketFollow_Delete(Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketFollow_Delete", ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketFollow_Get(Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketFollow_Get", ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketFollow_Save(Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketFollow_Save", ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual int sp_TicketHistory_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketHistory_List");
+        }
+    
+        public virtual int sp_TicketHistory_ListByTicketID(Nullable<int> ticketID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketHistory_ListByTicketID", ticketIDParameter);
+        }
+    
+        public virtual int sp_TicketHistory_Save(Nullable<int> ticketID, Nullable<int> changedBy, Nullable<int> assignedFrom, Nullable<int> assignedTo, string fromStatus, string toStatus)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var changedByParameter = changedBy.HasValue ?
+                new ObjectParameter("ChangedBy", changedBy) :
+                new ObjectParameter("ChangedBy", typeof(int));
+    
+            var assignedFromParameter = assignedFrom.HasValue ?
+                new ObjectParameter("AssignedFrom", assignedFrom) :
+                new ObjectParameter("AssignedFrom", typeof(int));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(int));
+    
+            var fromStatusParameter = fromStatus != null ?
+                new ObjectParameter("FromStatus", fromStatus) :
+                new ObjectParameter("FromStatus", typeof(string));
+    
+            var toStatusParameter = toStatus != null ?
+                new ObjectParameter("ToStatus", toStatus) :
+                new ObjectParameter("ToStatus", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketHistory_Save", ticketIDParameter, changedByParameter, assignedFromParameter, assignedToParameter, fromStatusParameter, toStatusParameter);
+        }
+    
+        public virtual int sp_TicketNotes_Delete(Nullable<int> seq)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketNotes_Delete", seqParameter);
+        }
+    
+        public virtual int sp_TicketNotes_Get(string ticketID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_TicketNotes_Get", ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketNotes_GetBySeq(Nullable<int> seq)
+        {
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketNotes_GetBySeq", seqParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketNotes_Save(Nullable<int> ticketID, string note, Nullable<int> userID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketNotes_Save", ticketIDParameter, noteParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_TicketTags_Delete(Nullable<int> ticketID, string tag)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("Tag", tag) :
+                new ObjectParameter("Tag", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TicketTags_Delete", ticketIDParameter, tagParameter);
+        }
+    
+        public virtual ObjectResult<sp_TicketTags_List_Result> sp_TicketTags_List(string ticketID)
+        {
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TicketTags_List_Result>("sp_TicketTags_List", ticketIDParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<sp_User_List_Result> sp_User_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_User_List_Result>("sp_User_List");
+        }
+    
+        public virtual ObjectResult<sp_User_Login_Result> sp_User_Login(string userName, string password)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_User_Login_Result>("sp_User_Login", userNameParameter, passwordParameter);
+        }
+    
+        public virtual int sp_User_Search()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_User_Search");
+        }
+    
+        public virtual ObjectResult<ws_Build_Ticket_InBuild_Get_Result> ws_Build_Ticket_InBuild_Get(string sessionID, Nullable<int> buildID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Build_Ticket_InBuild_Get_Result>("ws_Build_Ticket_InBuild_Get", sessionIDParameter, buildIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Builds_List_Result> ws_Builds_List(string sessionID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Builds_List_Result>("ws_Builds_List", sessionIDParameter, clientIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Builds_Save(string sessionID, Nullable<int> buildID, Nullable<int> clientID, string buildName, Nullable<System.DateTime> dueDate, string status, Nullable<System.Guid> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var buildNameParameter = buildName != null ?
+                new ObjectParameter("BuildName", buildName) :
+                new ObjectParameter("BuildName", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Builds_Save", sessionIDParameter, buildIDParameter, clientIDParameter, buildNameParameter, dueDateParameter, statusParameter, userIDParameter);
+        }
+    
+        public virtual int ws_Builds_Search(string sessionID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Builds_Search", sessionIDParameter, clientIDParameter);
+        }
+    
+        public virtual int ws_BuildTicket_Edit(string sessionID, Nullable<int> ticketID, Nullable<int> buildID, Nullable<int> newBuildID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var newBuildIDParameter = newBuildID.HasValue ?
+                new ObjectParameter("NewBuildID", newBuildID) :
+                new ObjectParameter("NewBuildID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_BuildTicket_Edit", sessionIDParameter, ticketIDParameter, buildIDParameter, newBuildIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_BuildTicket_Update_RequirementCode(string sessionID, Nullable<int> buildID, Nullable<int> ticketID, string requirementCode, Nullable<int> createdBy)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var requirementCodeParameter = requirementCode != null ?
+                new ObjectParameter("RequirementCode", requirementCode) :
+                new ObjectParameter("RequirementCode", typeof(string));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_BuildTicket_Update_RequirementCode", sessionIDParameter, buildIDParameter, ticketIDParameter, requirementCodeParameter, createdByParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_BuildTickets_Save(string sessionID, Nullable<int> buildID, Nullable<int> ticketID, Nullable<System.Guid> userID, Nullable<int> oldBuildID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var oldBuildIDParameter = oldBuildID.HasValue ?
+                new ObjectParameter("OldBuildID", oldBuildID) :
+                new ObjectParameter("OldBuildID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_BuildTickets_Save", sessionIDParameter, buildIDParameter, ticketIDParameter, userIDParameter, oldBuildIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Client_Get_Result> ws_Client_Get(string sessionID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Client_Get_Result>("ws_Client_Get", sessionIDParameter, clientIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Client_List_Result> ws_Client_List(string sessionID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Client_List_Result>("ws_Client_List", sessionIDParameter, clientIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Client_List_ByRunning_Result> ws_Client_List_ByRunning(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Client_List_ByRunning_Result>("ws_Client_List_ByRunning", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Client_Save(string sessionID, Nullable<int> clientID, string name, Nullable<byte> rank, string status, string webServiceURL, string username, string password)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var rankParameter = rank.HasValue ?
+                new ObjectParameter("Rank", rank) :
+                new ObjectParameter("Rank", typeof(byte));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var webServiceURLParameter = webServiceURL != null ?
+                new ObjectParameter("WebServiceURL", webServiceURL) :
+                new ObjectParameter("WebServiceURL", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("Username", username) :
+                new ObjectParameter("Username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Client_Save", sessionIDParameter, clientIDParameter, nameParameter, rankParameter, statusParameter, webServiceURLParameter, usernameParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<ws_Clients_List_Result> ws_Clients_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Clients_List_Result>("ws_Clients_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Clients_Save(Nullable<int> iD, string code, string name, string rank, string type, Nullable<int> sLGiuong, Nullable<int> sLuotKham, string giamDoc, string nguoiLienHe, Nullable<int> thamGiaID, Nullable<int> giaTriHopDong, string pM, string cR)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var rankParameter = rank != null ?
+                new ObjectParameter("Rank", rank) :
+                new ObjectParameter("Rank", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var sLGiuongParameter = sLGiuong.HasValue ?
+                new ObjectParameter("SLGiuong", sLGiuong) :
+                new ObjectParameter("SLGiuong", typeof(int));
+    
+            var sLuotKhamParameter = sLuotKham.HasValue ?
+                new ObjectParameter("SLuotKham", sLuotKham) :
+                new ObjectParameter("SLuotKham", typeof(int));
+    
+            var giamDocParameter = giamDoc != null ?
+                new ObjectParameter("GiamDoc", giamDoc) :
+                new ObjectParameter("GiamDoc", typeof(string));
+    
+            var nguoiLienHeParameter = nguoiLienHe != null ?
+                new ObjectParameter("NguoiLienHe", nguoiLienHe) :
+                new ObjectParameter("NguoiLienHe", typeof(string));
+    
+            var thamGiaIDParameter = thamGiaID.HasValue ?
+                new ObjectParameter("ThamGiaID", thamGiaID) :
+                new ObjectParameter("ThamGiaID", typeof(int));
+    
+            var giaTriHopDongParameter = giaTriHopDong.HasValue ?
+                new ObjectParameter("GiaTriHopDong", giaTriHopDong) :
+                new ObjectParameter("GiaTriHopDong", typeof(int));
+    
+            var pMParameter = pM != null ?
+                new ObjectParameter("PM", pM) :
+                new ObjectParameter("PM", typeof(string));
+    
+            var cRParameter = cR != null ?
+                new ObjectParameter("CR", cR) :
+                new ObjectParameter("CR", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Clients_Save", iDParameter, codeParameter, nameParameter, rankParameter, typeParameter, sLGiuongParameter, sLuotKhamParameter, giamDocParameter, nguoiLienHeParameter, thamGiaIDParameter, giaTriHopDongParameter, pMParameter, cRParameter);
+        }
+    
+        public virtual ObjectResult<ws_ConnectionString_Get_Result> ws_ConnectionString_Get(string sessionID, string clientName)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientNameParameter = clientName != null ?
+                new ObjectParameter("ClientName", clientName) :
+                new ObjectParameter("ClientName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_ConnectionString_Get_Result>("ws_ConnectionString_Get", sessionIDParameter, clientNameParameter);
+        }
+    
+        public virtual ObjectResult<ws_ConnectionString_List_Result> ws_ConnectionString_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_ConnectionString_List_Result>("ws_ConnectionString_List", sessionIDParameter);
+        }
+    
+        public virtual int ws_CongViec_Delete(string sessionID, Nullable<int> userID, Nullable<System.Guid> id)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_CongViec_Delete", sessionIDParameter, userIDParameter, idParameter);
+        }
+    
+        public virtual ObjectResult<ws_CongViec_List_Result> ws_CongViec_List(string sessionID, Nullable<int> userID, Nullable<int> setting, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> thruDate)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var thruDateParameter = thruDate.HasValue ?
+                new ObjectParameter("ThruDate", thruDate) :
+                new ObjectParameter("ThruDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_CongViec_List_Result>("ws_CongViec_List", sessionIDParameter, userIDParameter, settingParameter, fromDateParameter, thruDateParameter);
+        }
+    
+        public virtual int ws_CongViec_Save(string sessionID, Nullable<System.Guid> congViecid, Nullable<int> userID, string noiDung, Nullable<System.DateTime> thoiGian, Nullable<int> mucDo, Nullable<int> tinhTrang, string ghiChu)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var congViecidParameter = congViecid.HasValue ?
+                new ObjectParameter("CongViecid", congViecid) :
+                new ObjectParameter("CongViecid", typeof(System.Guid));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var noiDungParameter = noiDung != null ?
+                new ObjectParameter("NoiDung", noiDung) :
+                new ObjectParameter("NoiDung", typeof(string));
+    
+            var thoiGianParameter = thoiGian.HasValue ?
+                new ObjectParameter("ThoiGian", thoiGian) :
+                new ObjectParameter("ThoiGian", typeof(System.DateTime));
+    
+            var mucDoParameter = mucDo.HasValue ?
+                new ObjectParameter("MucDo", mucDo) :
+                new ObjectParameter("MucDo", typeof(int));
+    
+            var tinhTrangParameter = tinhTrang.HasValue ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(int));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_CongViec_Save", sessionIDParameter, congViecidParameter, userIDParameter, noiDungParameter, thoiGianParameter, mucDoParameter, tinhTrangParameter, ghiChuParameter);
+        }
+    
+        public virtual ObjectResult<ws_DanhSachPhanHeTamAnh_GetAll_Result> ws_DanhSachPhanHeTamAnh_GetAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_DanhSachPhanHeTamAnh_GetAll_Result>("ws_DanhSachPhanHeTamAnh_GetAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_DuAn_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_DuAn_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Error_List_Result> ws_Error_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Error_List_Result>("ws_Error_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_helptext2(string sessionID, string procName)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var procNameParameter = procName != null ?
+                new ObjectParameter("ProcName", procName) :
+                new ObjectParameter("ProcName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_helptext2", sessionIDParameter, procNameParameter);
+        }
+    
+        public virtual ObjectResult<ws_InstallCheck_Result> ws_InstallCheck(Nullable<System.DateTime> lastcheck)
+        {
+            var lastcheckParameter = lastcheck.HasValue ?
+                new ObjectParameter("Lastcheck", lastcheck) :
+                new ObjectParameter("Lastcheck", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_InstallCheck_Result>("ws_InstallCheck", lastcheckParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Installer_Delete(string sessionID, string path, string name)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Installer_Delete", sessionIDParameter, pathParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Installer_File(string sessionID, string path, string name)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Installer_File", sessionIDParameter, pathParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<ws_Installer_Get_Result> ws_Installer_Get(string sessionID, string path, string name)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Installer_Get_Result>("ws_Installer_Get", sessionIDParameter, pathParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<ws_Installer_List_Result> ws_Installer_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Installer_List_Result>("ws_Installer_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Installer_Save(string sessionID, string path, string name, string extension, string hash, string version, Nullable<long> size, string description, string data, string uploadPath, string userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var extensionParameter = extension != null ?
+                new ObjectParameter("Extension", extension) :
+                new ObjectParameter("Extension", typeof(string));
+    
+            var hashParameter = hash != null ?
+                new ObjectParameter("Hash", hash) :
+                new ObjectParameter("Hash", typeof(string));
+    
+            var versionParameter = version != null ?
+                new ObjectParameter("Version", version) :
+                new ObjectParameter("Version", typeof(string));
+    
+            var sizeParameter = size.HasValue ?
+                new ObjectParameter("Size", size) :
+                new ObjectParameter("Size", typeof(long));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var dataParameter = data != null ?
+                new ObjectParameter("Data", data) :
+                new ObjectParameter("Data", typeof(string));
+    
+            var uploadPathParameter = uploadPath != null ?
+                new ObjectParameter("UploadPath", uploadPath) :
+                new ObjectParameter("UploadPath", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Installer_Save", sessionIDParameter, pathParameter, nameParameter, extensionParameter, hashParameter, versionParameter, sizeParameter, descriptionParameter, dataParameter, uploadPathParameter, userIDParameter);
+        }
+    
+        public virtual int ws_KhachHangSuDungBaoCao(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_KhachHangSuDungBaoCao", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Attachment_Delete(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Attachment_Delete", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Attachment_List_Result> ws_L_Attachment_List(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Attachment_List_Result>("ws_L_Attachment_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Attachment_Save(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> index, string attachment, string fileName)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            var attachmentParameter = attachment != null ?
+                new ObjectParameter("Attachment", attachment) :
+                new ObjectParameter("Attachment", typeof(string));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Attachment_Save", sessionIDParameter, reportIDParameter, iDParameter, indexParameter, attachmentParameter, fileNameParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Customer_Get_Result> ws_L_Customer_Get(string sessionID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Customer_Get_Result>("ws_L_Customer_Get", sessionIDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Customer_List_Result> ws_L_Customer_List(string sessionID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Customer_List_Result>("ws_L_Customer_List", sessionIDParameter, facIDParameter);
+        }
+    
+        public virtual int ws_L_Customer_Report_Delete(string sessionID, string facID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Customer_Report_Delete", sessionIDParameter, facIDParameter, reportIDParameter);
+        }
+    
+        public virtual int ws_L_Customer_Report_Save(string sessionID, string facID, Nullable<System.Guid> reportID, string isActive)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var isActiveParameter = isActive != null ?
+                new ObjectParameter("isActive", isActive) :
+                new ObjectParameter("isActive", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Customer_Report_Save", sessionIDParameter, facIDParameter, reportIDParameter, isActiveParameter);
+        }
+    
+        public virtual int ws_L_CustomerByReportID_List(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_CustomerByReportID_List", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Custumer_Report(string sessionID, Nullable<System.Guid> reportID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Custumer_Report", sessionIDParameter, reportIDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_DLLs_Get_Result> ws_L_DLLs_Get(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_DLLs_Get_Result>("ws_L_DLLs_Get", iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_DLLs_Save(Nullable<int> iD, string name, string dLLName, string version, string note, Nullable<int> userID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var dLLNameParameter = dLLName != null ?
+                new ObjectParameter("DLLName", dLLName) :
+                new ObjectParameter("DLLName", typeof(string));
+    
+            var versionParameter = version != null ?
+                new ObjectParameter("Version", version) :
+                new ObjectParameter("Version", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_DLLs_Save", iDParameter, nameParameter, dLLNameParameter, versionParameter, noteParameter, userIDParameter);
+        }
+    
+        public virtual int ws_L_DLLs_Update(string sessionID, string dLLName, string version)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var dLLNameParameter = dLLName != null ?
+                new ObjectParameter("DLLName", dLLName) :
+                new ObjectParameter("DLLName", typeof(string));
+    
+            var versionParameter = version != null ?
+                new ObjectParameter("Version", version) :
+                new ObjectParameter("Version", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_DLLs_Update", sessionIDParameter, dLLNameParameter, versionParameter);
+        }
+    
+        public virtual int ws_L_Features_GetMaxByModule(string sessionID, string module)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Features_GetMaxByModule", sessionIDParameter, moduleParameter);
+        }
+    
+        public virtual int ws_L_Features_List(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Features_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Features_Save(string sessionID, Nullable<int> seq, string code, string module, string menu, string subMenu, string name, string desc, string remark, string @ref)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var menuParameter = menu != null ?
+                new ObjectParameter("Menu", menu) :
+                new ObjectParameter("Menu", typeof(string));
+    
+            var subMenuParameter = subMenu != null ?
+                new ObjectParameter("SubMenu", subMenu) :
+                new ObjectParameter("SubMenu", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("Desc", desc) :
+                new ObjectParameter("Desc", typeof(string));
+    
+            var remarkParameter = remark != null ?
+                new ObjectParameter("Remark", remark) :
+                new ObjectParameter("Remark", typeof(string));
+    
+            var refParameter = @ref != null ?
+                new ObjectParameter("Ref", @ref) :
+                new ObjectParameter("Ref", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Features_Save", sessionIDParameter, seqParameter, codeParameter, moduleParameter, menuParameter, subMenuParameter, nameParameter, descParameter, remarkParameter, refParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Lookup_List_Result> ws_L_Lookup_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Lookup_List_Result>("ws_L_Lookup_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Lookup_Status_List_Result> ws_L_Lookup_Status_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Lookup_Status_List_Result>("ws_L_Lookup_Status_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Module_List_Result> ws_L_Module_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Module_List_Result>("ws_L_Module_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_BoPhan_ListAll_Result> ws_L_QLDA_BoPhan_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_BoPhan_ListAll_Result>("ws_L_QLDA_BoPhan_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_CongNo_Delete(Nullable<int> userID, Nullable<System.Guid> maCongNo)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maCongNoParameter = maCongNo.HasValue ?
+                new ObjectParameter("MaCongNo", maCongNo) :
+                new ObjectParameter("MaCongNo", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_CongNo_Delete", userIDParameter, maCongNoParameter);
+        }
+    
+        public virtual int ws_L_QLDA_CongNo_Get(string sessionID, Nullable<System.Guid> maCongNo)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var maCongNoParameter = maCongNo.HasValue ?
+                new ObjectParameter("MaCongNo", maCongNo) :
+                new ObjectParameter("MaCongNo", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_CongNo_Get", sessionIDParameter, maCongNoParameter);
+        }
+    
+        public virtual int ws_L_QLDA_CongNo_ListAll(Nullable<int> setting, Nullable<int> maDA, string sessionID)
+        {
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("setting", setting) :
+                new ObjectParameter("setting", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_CongNo_ListAll", settingParameter, maDAParameter, sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_CongNo_Save(string sessionID, Nullable<int> userID, Nullable<System.Guid> maCongNo, Nullable<int> maDA, Nullable<System.Guid> contractID, Nullable<System.Guid> maHSTT, Nullable<decimal> soTienThu, Nullable<decimal> soTienDaThu, Nullable<System.DateTime> ngayThu, string ghiChu, Nullable<bool> choTreTT, Nullable<int> maSoLanTre, Nullable<System.DateTime> ngayNhacNo)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maCongNoParameter = maCongNo.HasValue ?
+                new ObjectParameter("MaCongNo", maCongNo) :
+                new ObjectParameter("MaCongNo", typeof(System.Guid));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var contractIDParameter = contractID.HasValue ?
+                new ObjectParameter("ContractID", contractID) :
+                new ObjectParameter("ContractID", typeof(System.Guid));
+    
+            var maHSTTParameter = maHSTT.HasValue ?
+                new ObjectParameter("MaHSTT", maHSTT) :
+                new ObjectParameter("MaHSTT", typeof(System.Guid));
+    
+            var soTienThuParameter = soTienThu.HasValue ?
+                new ObjectParameter("SoTienThu", soTienThu) :
+                new ObjectParameter("SoTienThu", typeof(decimal));
+    
+            var soTienDaThuParameter = soTienDaThu.HasValue ?
+                new ObjectParameter("SoTienDaThu", soTienDaThu) :
+                new ObjectParameter("SoTienDaThu", typeof(decimal));
+    
+            var ngayThuParameter = ngayThu.HasValue ?
+                new ObjectParameter("NgayThu", ngayThu) :
+                new ObjectParameter("NgayThu", typeof(System.DateTime));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            var choTreTTParameter = choTreTT.HasValue ?
+                new ObjectParameter("ChoTreTT", choTreTT) :
+                new ObjectParameter("ChoTreTT", typeof(bool));
+    
+            var maSoLanTreParameter = maSoLanTre.HasValue ?
+                new ObjectParameter("MaSoLanTre", maSoLanTre) :
+                new ObjectParameter("MaSoLanTre", typeof(int));
+    
+            var ngayNhacNoParameter = ngayNhacNo.HasValue ?
+                new ObjectParameter("NgayNhacNo", ngayNhacNo) :
+                new ObjectParameter("NgayNhacNo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_CongNo_Save", sessionIDParameter, userIDParameter, maCongNoParameter, maDAParameter, contractIDParameter, maHSTTParameter, soTienThuParameter, soTienDaThuParameter, ngayThuParameter, ghiChuParameter, choTreTTParameter, maSoLanTreParameter, ngayNhacNoParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_ChucVu_ListAll_Result> ws_L_QLDA_ChucVu_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_ChucVu_ListAll_Result>("ws_L_QLDA_ChucVu_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_ChucVuKH_ListAll_Result> ws_L_QLDA_ChucVuKH_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_ChucVuKH_ListAll_Result>("ws_L_QLDA_ChucVuKH_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_DuAn_Delete(string sessionID, Nullable<int> userID, Nullable<int> maDA)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_DuAn_Delete", sessionIDParameter, userIDParameter, maDAParameter);
+        }
+    
+        public virtual int ws_L_QLDA_DuAn_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_DuAn_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_DuAn_Save(string sessionID, Nullable<int> userID, Nullable<int> maDA, string tenDuAn, string khuVuc, string nhomKH, string loaiCS, Nullable<int> loaiHinhDN, Nullable<int> loaiNganh, Nullable<int> soLuongPhongKhoa, Nullable<int> soLuotKham, Nullable<int> soLuotGiuong, Nullable<int> hangBV, string diaChi, string dienThoai, string email, Nullable<int> trucThuoc, string pMDangSD, Nullable<int> trangThai, Nullable<int> nhuCau, Nullable<int> uuTien, Nullable<decimal> chiPhi, string loaiDoanhThu, string ghiChu)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var tenDuAnParameter = tenDuAn != null ?
+                new ObjectParameter("TenDuAn", tenDuAn) :
+                new ObjectParameter("TenDuAn", typeof(string));
+    
+            var khuVucParameter = khuVuc != null ?
+                new ObjectParameter("khuVuc", khuVuc) :
+                new ObjectParameter("khuVuc", typeof(string));
+    
+            var nhomKHParameter = nhomKH != null ?
+                new ObjectParameter("NhomKH", nhomKH) :
+                new ObjectParameter("NhomKH", typeof(string));
+    
+            var loaiCSParameter = loaiCS != null ?
+                new ObjectParameter("LoaiCS", loaiCS) :
+                new ObjectParameter("LoaiCS", typeof(string));
+    
+            var loaiHinhDNParameter = loaiHinhDN.HasValue ?
+                new ObjectParameter("LoaiHinhDN", loaiHinhDN) :
+                new ObjectParameter("LoaiHinhDN", typeof(int));
+    
+            var loaiNganhParameter = loaiNganh.HasValue ?
+                new ObjectParameter("LoaiNganh", loaiNganh) :
+                new ObjectParameter("LoaiNganh", typeof(int));
+    
+            var soLuongPhongKhoaParameter = soLuongPhongKhoa.HasValue ?
+                new ObjectParameter("SoLuongPhongKhoa", soLuongPhongKhoa) :
+                new ObjectParameter("SoLuongPhongKhoa", typeof(int));
+    
+            var soLuotKhamParameter = soLuotKham.HasValue ?
+                new ObjectParameter("SoLuotKham", soLuotKham) :
+                new ObjectParameter("SoLuotKham", typeof(int));
+    
+            var soLuotGiuongParameter = soLuotGiuong.HasValue ?
+                new ObjectParameter("SoLuotGiuong", soLuotGiuong) :
+                new ObjectParameter("SoLuotGiuong", typeof(int));
+    
+            var hangBVParameter = hangBV.HasValue ?
+                new ObjectParameter("HangBV", hangBV) :
+                new ObjectParameter("HangBV", typeof(int));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var dienThoaiParameter = dienThoai != null ?
+                new ObjectParameter("DienThoai", dienThoai) :
+                new ObjectParameter("DienThoai", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var trucThuocParameter = trucThuoc.HasValue ?
+                new ObjectParameter("TrucThuoc", trucThuoc) :
+                new ObjectParameter("TrucThuoc", typeof(int));
+    
+            var pMDangSDParameter = pMDangSD != null ?
+                new ObjectParameter("PMDangSD", pMDangSD) :
+                new ObjectParameter("PMDangSD", typeof(string));
+    
+            var trangThaiParameter = trangThai.HasValue ?
+                new ObjectParameter("TrangThai", trangThai) :
+                new ObjectParameter("TrangThai", typeof(int));
+    
+            var nhuCauParameter = nhuCau.HasValue ?
+                new ObjectParameter("NhuCau", nhuCau) :
+                new ObjectParameter("NhuCau", typeof(int));
+    
+            var uuTienParameter = uuTien.HasValue ?
+                new ObjectParameter("UuTien", uuTien) :
+                new ObjectParameter("UuTien", typeof(int));
+    
+            var chiPhiParameter = chiPhi.HasValue ?
+                new ObjectParameter("ChiPhi", chiPhi) :
+                new ObjectParameter("ChiPhi", typeof(decimal));
+    
+            var loaiDoanhThuParameter = loaiDoanhThu != null ?
+                new ObjectParameter("LoaiDoanhThu", loaiDoanhThu) :
+                new ObjectParameter("LoaiDoanhThu", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_DuAn_Save", sessionIDParameter, userIDParameter, maDAParameter, tenDuAnParameter, khuVucParameter, nhomKHParameter, loaiCSParameter, loaiHinhDNParameter, loaiNganhParameter, soLuongPhongKhoaParameter, soLuotKhamParameter, soLuotGiuongParameter, hangBVParameter, diaChiParameter, dienThoaiParameter, emailParameter, trucThuocParameter, pMDangSDParameter, trangThaiParameter, nhuCauParameter, uuTienParameter, chiPhiParameter, loaiDoanhThuParameter, ghiChuParameter);
+        }
+    
+        public virtual int ws_L_QLDA_DuAnChiTiet_Get(string sessionID, Nullable<int> userID, Nullable<int> maDA)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_DuAnChiTiet_Get", sessionIDParameter, userIDParameter, maDAParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_QLDA_FileUpload_Delete(string sessionID, Nullable<int> seq, Nullable<int> maDA)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_QLDA_FileUpload_Delete", sessionIDParameter, seqParameter, maDAParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_FileUpload_List_Result> ws_L_QLDA_FileUpload_List(string sessionID, Nullable<int> maDA)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_FileUpload_List_Result>("ws_L_QLDA_FileUpload_List", sessionIDParameter, maDAParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_QLDA_FileUpload_Save(string sessionID, Nullable<int> seq, Nullable<int> maDA, string fileName, string fileData, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var fileDataParameter = fileData != null ?
+                new ObjectParameter("FileData", fileData) :
+                new ObjectParameter("FileData", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_QLDA_FileUpload_Save", sessionIDParameter, seqParameter, maDAParameter, fileNameParameter, fileDataParameter, userIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_GDDA_Delete(Nullable<System.Guid> maGDDA, string sessionID, Nullable<int> userID)
+        {
+            var maGDDAParameter = maGDDA.HasValue ?
+                new ObjectParameter("MaGDDA", maGDDA) :
+                new ObjectParameter("MaGDDA", typeof(System.Guid));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_GDDA_Delete", maGDDAParameter, sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_GDDA_Get_Result> ws_L_QLDA_GDDA_Get(string sessionID, Nullable<System.Guid> maGD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var maGDParameter = maGD.HasValue ?
+                new ObjectParameter("MaGD", maGD) :
+                new ObjectParameter("MaGD", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_GDDA_Get_Result>("ws_L_QLDA_GDDA_Get", sessionIDParameter, maGDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_GDDA_ListAll(string sessionID, Nullable<int> setting, Nullable<int> duAnID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            var duAnIDParameter = duAnID.HasValue ?
+                new ObjectParameter("DuAnID", duAnID) :
+                new ObjectParameter("DuAnID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_GDDA_ListAll", sessionIDParameter, settingParameter, duAnIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_GDDA_Save(string sessionID, Nullable<int> userID, Nullable<System.Guid> maGDDA, Nullable<int> maDA, string maGD, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<int> soNgayTre, string khoKhan, string ghiChu)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maGDDAParameter = maGDDA.HasValue ?
+                new ObjectParameter("MaGDDA", maGDDA) :
+                new ObjectParameter("MaGDDA", typeof(System.Guid));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var maGDParameter = maGD != null ?
+                new ObjectParameter("MaGD", maGD) :
+                new ObjectParameter("MaGD", typeof(string));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            var soNgayTreParameter = soNgayTre.HasValue ?
+                new ObjectParameter("SoNgayTre", soNgayTre) :
+                new ObjectParameter("SoNgayTre", typeof(int));
+    
+            var khoKhanParameter = khoKhan != null ?
+                new ObjectParameter("KhoKhan", khoKhan) :
+                new ObjectParameter("KhoKhan", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_GDDA_Save", sessionIDParameter, userIDParameter, maGDDAParameter, maDAParameter, maGDParameter, startDateParameter, endDateParameter, soNgayTreParameter, khoKhanParameter, ghiChuParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_GiaiDoan_ListAll_Result> ws_L_QLDA_GiaiDoan_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_GiaiDoan_ListAll_Result>("ws_L_QLDA_GiaiDoan_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_HangBenhVien_ListAll_Result> ws_L_QLDA_HangBenhVien_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_HangBenhVien_ListAll_Result>("ws_L_QLDA_HangBenhVien_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_HopDong_Delete(Nullable<System.Guid> contractID, string sessionID, Nullable<int> userID)
+        {
+            var contractIDParameter = contractID.HasValue ?
+                new ObjectParameter("ContractID", contractID) :
+                new ObjectParameter("ContractID", typeof(System.Guid));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_HopDong_Delete", contractIDParameter, sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_HopDong_List(string sessionID, Nullable<int> duAnID, Nullable<int> setting)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var duAnIDParameter = duAnID.HasValue ?
+                new ObjectParameter("DuAnID", duAnID) :
+                new ObjectParameter("DuAnID", typeof(int));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_HopDong_List", sessionIDParameter, duAnIDParameter, settingParameter);
+        }
+    
+        public virtual int ws_L_QLDA_HopDong_Save(Nullable<System.Guid> contractID, string sessionID, Nullable<int> userID, string duAn, Nullable<int> nam, string soHD, Nullable<System.DateTime> ngayHD, Nullable<int> thoiHan, Nullable<System.DateTime> ngayKetThuc, Nullable<System.DateTime> ngayphuluc, string loaiHD, string loaiTien, Nullable<decimal> giaTriHD, string ghiChu, Nullable<bool> useYear, Nullable<bool> useMonth)
+        {
+            var contractIDParameter = contractID.HasValue ?
+                new ObjectParameter("ContractID", contractID) :
+                new ObjectParameter("ContractID", typeof(System.Guid));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var duAnParameter = duAn != null ?
+                new ObjectParameter("DuAn", duAn) :
+                new ObjectParameter("DuAn", typeof(string));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(int));
+    
+            var soHDParameter = soHD != null ?
+                new ObjectParameter("soHD", soHD) :
+                new ObjectParameter("soHD", typeof(string));
+    
+            var ngayHDParameter = ngayHD.HasValue ?
+                new ObjectParameter("NgayHD", ngayHD) :
+                new ObjectParameter("NgayHD", typeof(System.DateTime));
+    
+            var thoiHanParameter = thoiHan.HasValue ?
+                new ObjectParameter("ThoiHan", thoiHan) :
+                new ObjectParameter("ThoiHan", typeof(int));
+    
+            var ngayKetThucParameter = ngayKetThuc.HasValue ?
+                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
+                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
+    
+            var ngayphulucParameter = ngayphuluc.HasValue ?
+                new ObjectParameter("Ngayphuluc", ngayphuluc) :
+                new ObjectParameter("Ngayphuluc", typeof(System.DateTime));
+    
+            var loaiHDParameter = loaiHD != null ?
+                new ObjectParameter("LoaiHD", loaiHD) :
+                new ObjectParameter("LoaiHD", typeof(string));
+    
+            var loaiTienParameter = loaiTien != null ?
+                new ObjectParameter("LoaiTien", loaiTien) :
+                new ObjectParameter("LoaiTien", typeof(string));
+    
+            var giaTriHDParameter = giaTriHD.HasValue ?
+                new ObjectParameter("GiaTriHD", giaTriHD) :
+                new ObjectParameter("GiaTriHD", typeof(decimal));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            var useYearParameter = useYear.HasValue ?
+                new ObjectParameter("UseYear", useYear) :
+                new ObjectParameter("UseYear", typeof(bool));
+    
+            var useMonthParameter = useMonth.HasValue ?
+                new ObjectParameter("UseMonth", useMonth) :
+                new ObjectParameter("UseMonth", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_HopDong_Save", contractIDParameter, sessionIDParameter, userIDParameter, duAnParameter, namParameter, soHDParameter, ngayHDParameter, thoiHanParameter, ngayKetThucParameter, ngayphulucParameter, loaiHDParameter, loaiTienParameter, giaTriHDParameter, ghiChuParameter, useYearParameter, useMonthParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_QLDA_HopDong_TreThanhToan(string sessionID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_QLDA_HopDong_TreThanhToan", sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_HopDongChiTiet_Get_Result> ws_L_QLDA_HopDongChiTiet_Get(string sessionID, Nullable<int> userID, Nullable<System.Guid> contractID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var contractIDParameter = contractID.HasValue ?
+                new ObjectParameter("ContractID", contractID) :
+                new ObjectParameter("ContractID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_HopDongChiTiet_Get_Result>("ws_L_QLDA_HopDongChiTiet_Get", sessionIDParameter, userIDParameter, contractIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_HoSoThanhToan_Delete(string sessionID, Nullable<int> userID, Nullable<System.Guid> soHoSo)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var soHoSoParameter = soHoSo.HasValue ?
+                new ObjectParameter("SoHoSo", soHoSo) :
+                new ObjectParameter("SoHoSo", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_HoSoThanhToan_Delete", sessionIDParameter, userIDParameter, soHoSoParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_HoSoThanhToan_Get_Result> ws_L_QLDA_HoSoThanhToan_Get(string sessionID, Nullable<int> userID, Nullable<System.Guid> soHoSo)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var soHoSoParameter = soHoSo.HasValue ?
+                new ObjectParameter("SoHoSo", soHoSo) :
+                new ObjectParameter("SoHoSo", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_HoSoThanhToan_Get_Result>("ws_L_QLDA_HoSoThanhToan_Get", sessionIDParameter, userIDParameter, soHoSoParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_HoSoThanhToan_List_Result> ws_L_QLDA_HoSoThanhToan_List(string sessionID, Nullable<System.Guid> contractID, Nullable<int> duAnID, Nullable<int> setting)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var contractIDParameter = contractID.HasValue ?
+                new ObjectParameter("ContractID", contractID) :
+                new ObjectParameter("ContractID", typeof(System.Guid));
+    
+            var duAnIDParameter = duAnID.HasValue ?
+                new ObjectParameter("DuAnID", duAnID) :
+                new ObjectParameter("DuAnID", typeof(int));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_HoSoThanhToan_List_Result>("ws_L_QLDA_HoSoThanhToan_List", sessionIDParameter, contractIDParameter, duAnIDParameter, settingParameter);
+        }
+    
+        public virtual int ws_L_QLDA_HoSoThanhToan_Save(string sessionID, Nullable<int> userID, Nullable<System.Guid> maHoSo, Nullable<int> maDA, Nullable<System.Guid> contractID, string soHSTT, string noiDungTT, string soHoaDon, Nullable<System.DateTime> ngayGuiHoSo, Nullable<System.DateTime> ngayKHNhanHS, string ghiChu)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maHoSoParameter = maHoSo.HasValue ?
+                new ObjectParameter("MaHoSo", maHoSo) :
+                new ObjectParameter("MaHoSo", typeof(System.Guid));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var contractIDParameter = contractID.HasValue ?
+                new ObjectParameter("ContractID", contractID) :
+                new ObjectParameter("ContractID", typeof(System.Guid));
+    
+            var soHSTTParameter = soHSTT != null ?
+                new ObjectParameter("SoHSTT", soHSTT) :
+                new ObjectParameter("SoHSTT", typeof(string));
+    
+            var noiDungTTParameter = noiDungTT != null ?
+                new ObjectParameter("NoiDungTT", noiDungTT) :
+                new ObjectParameter("NoiDungTT", typeof(string));
+    
+            var soHoaDonParameter = soHoaDon != null ?
+                new ObjectParameter("SoHoaDon", soHoaDon) :
+                new ObjectParameter("SoHoaDon", typeof(string));
+    
+            var ngayGuiHoSoParameter = ngayGuiHoSo.HasValue ?
+                new ObjectParameter("NgayGuiHoSo", ngayGuiHoSo) :
+                new ObjectParameter("NgayGuiHoSo", typeof(System.DateTime));
+    
+            var ngayKHNhanHSParameter = ngayKHNhanHS.HasValue ?
+                new ObjectParameter("NgayKHNhanHS", ngayKHNhanHS) :
+                new ObjectParameter("NgayKHNhanHS", typeof(System.DateTime));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_HoSoThanhToan_Save", sessionIDParameter, userIDParameter, maHoSoParameter, maDAParameter, contractIDParameter, soHSTTParameter, noiDungTTParameter, soHoaDonParameter, ngayGuiHoSoParameter, ngayKHNhanHSParameter, ghiChuParameter);
+        }
+    
+        public virtual int ws_L_QLDA_KhachHang_Delete(string sessionID, Nullable<int> userID, Nullable<int> maKH)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maKHParameter = maKH.HasValue ?
+                new ObjectParameter("MaKH", maKH) :
+                new ObjectParameter("MaKH", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_KhachHang_Delete", sessionIDParameter, userIDParameter, maKHParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_KhachHang_ListAll_Result> ws_L_QLDA_KhachHang_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_KhachHang_ListAll_Result>("ws_L_QLDA_KhachHang_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_KhachHang_Save(string sessionID, Nullable<int> maKH, Nullable<int> userID, string tenKH, string diaChi, string sDT, string email, string fax, string maSoThue, string ghiChu, string tinhTP, string quan)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var maKHParameter = maKH.HasValue ?
+                new ObjectParameter("MaKH", maKH) :
+                new ObjectParameter("MaKH", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var tenKHParameter = tenKH != null ?
+                new ObjectParameter("TenKH", tenKH) :
+                new ObjectParameter("TenKH", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var sDTParameter = sDT != null ?
+                new ObjectParameter("SDT", sDT) :
+                new ObjectParameter("SDT", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var faxParameter = fax != null ?
+                new ObjectParameter("Fax", fax) :
+                new ObjectParameter("Fax", typeof(string));
+    
+            var maSoThueParameter = maSoThue != null ?
+                new ObjectParameter("MaSoThue", maSoThue) :
+                new ObjectParameter("MaSoThue", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            var tinhTPParameter = tinhTP != null ?
+                new ObjectParameter("TinhTP", tinhTP) :
+                new ObjectParameter("TinhTP", typeof(string));
+    
+            var quanParameter = quan != null ?
+                new ObjectParameter("Quan", quan) :
+                new ObjectParameter("Quan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_KhachHang_Save", sessionIDParameter, maKHParameter, userIDParameter, tenKHParameter, diaChiParameter, sDTParameter, emailParameter, faxParameter, maSoThueParameter, ghiChuParameter, tinhTPParameter, quanParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_KhuVuc_ListAll_Result> ws_L_QLDA_KhuVuc_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_KhuVuc_ListAll_Result>("ws_L_QLDA_KhuVuc_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_LichSuSale_Delete(string sessionID, Nullable<int> userID, Nullable<System.Guid> saleID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var saleIDParameter = saleID.HasValue ?
+                new ObjectParameter("SaleID", saleID) :
+                new ObjectParameter("SaleID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_LichSuSale_Delete", sessionIDParameter, userIDParameter, saleIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LichSuSale_List_Result> ws_L_QLDA_LichSuSale_List(string sessionID, Nullable<int> duAnID, Nullable<int> setting)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var duAnIDParameter = duAnID.HasValue ?
+                new ObjectParameter("DuAnID", duAnID) :
+                new ObjectParameter("DuAnID", typeof(int));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LichSuSale_List_Result>("ws_L_QLDA_LichSuSale_List", sessionIDParameter, duAnIDParameter, settingParameter);
+        }
+    
+        public virtual int ws_L_QLDA_LichSuSale_Save(Nullable<System.Guid> saleID, string sessionID, Nullable<int> userID, string duAn, Nullable<int> trangThai, string noiDung, Nullable<System.DateTime> thoiGian, string mucDich, string ketQua, string khoKhan, string phuongAn, string yKienCapTren)
+        {
+            var saleIDParameter = saleID.HasValue ?
+                new ObjectParameter("SaleID", saleID) :
+                new ObjectParameter("SaleID", typeof(System.Guid));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var duAnParameter = duAn != null ?
+                new ObjectParameter("DuAn", duAn) :
+                new ObjectParameter("DuAn", typeof(string));
+    
+            var trangThaiParameter = trangThai.HasValue ?
+                new ObjectParameter("TrangThai", trangThai) :
+                new ObjectParameter("TrangThai", typeof(int));
+    
+            var noiDungParameter = noiDung != null ?
+                new ObjectParameter("NoiDung", noiDung) :
+                new ObjectParameter("NoiDung", typeof(string));
+    
+            var thoiGianParameter = thoiGian.HasValue ?
+                new ObjectParameter("ThoiGian", thoiGian) :
+                new ObjectParameter("ThoiGian", typeof(System.DateTime));
+    
+            var mucDichParameter = mucDich != null ?
+                new ObjectParameter("MucDich", mucDich) :
+                new ObjectParameter("MucDich", typeof(string));
+    
+            var ketQuaParameter = ketQua != null ?
+                new ObjectParameter("KetQua", ketQua) :
+                new ObjectParameter("KetQua", typeof(string));
+    
+            var khoKhanParameter = khoKhan != null ?
+                new ObjectParameter("KhoKhan", khoKhan) :
+                new ObjectParameter("KhoKhan", typeof(string));
+    
+            var phuongAnParameter = phuongAn != null ?
+                new ObjectParameter("PhuongAn", phuongAn) :
+                new ObjectParameter("PhuongAn", typeof(string));
+    
+            var yKienCapTrenParameter = yKienCapTren != null ?
+                new ObjectParameter("YKienCapTren", yKienCapTren) :
+                new ObjectParameter("YKienCapTren", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_LichSuSale_Save", saleIDParameter, sessionIDParameter, userIDParameter, duAnParameter, trangThaiParameter, noiDungParameter, thoiGianParameter, mucDichParameter, ketQuaParameter, khoKhanParameter, phuongAnParameter, yKienCapTrenParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LoaiCoSo_ListAll_Result> ws_L_QLDA_LoaiCoSo_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LoaiCoSo_ListAll_Result>("ws_L_QLDA_LoaiCoSo_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LoaiDoanhThu_ListAll_Result> ws_L_QLDA_LoaiDoanhThu_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LoaiDoanhThu_ListAll_Result>("ws_L_QLDA_LoaiDoanhThu_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll_Result> ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll_Result>("ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LoaiHopDong_ListAll_Result> ws_L_QLDA_LoaiHopDong_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LoaiHopDong_ListAll_Result>("ws_L_QLDA_LoaiHopDong_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LoaiNganh_ListAll_Result> ws_L_QLDA_LoaiNganh_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LoaiNganh_ListAll_Result>("ws_L_QLDA_LoaiNganh_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_LoaiTien_ListAll_Result> ws_L_QLDA_LoaiTien_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_LoaiTien_ListAll_Result>("ws_L_QLDA_LoaiTien_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_MucDoUuTien_ListAll_Result> ws_L_QLDA_MucDoUuTien_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_MucDoUuTien_ListAll_Result>("ws_L_QLDA_MucDoUuTien_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_NhanSu_Delete(string sessionID, Nullable<int> userID, Nullable<System.Guid> nhanSuID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var nhanSuIDParameter = nhanSuID.HasValue ?
+                new ObjectParameter("NhanSuID", nhanSuID) :
+                new ObjectParameter("NhanSuID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_NhanSu_Delete", sessionIDParameter, userIDParameter, nhanSuIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_NhanSu_Get_Result> ws_L_QLDA_NhanSu_Get(string sessionID, Nullable<System.Guid> nhanSuID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var nhanSuIDParameter = nhanSuID.HasValue ?
+                new ObjectParameter("NhanSuID", nhanSuID) :
+                new ObjectParameter("NhanSuID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_NhanSu_Get_Result>("ws_L_QLDA_NhanSu_Get", sessionIDParameter, nhanSuIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_NhanSu_List(string sessionID, Nullable<int> duAnID, string maGD, string maBP, Nullable<int> setting)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var duAnIDParameter = duAnID.HasValue ?
+                new ObjectParameter("DuAnID", duAnID) :
+                new ObjectParameter("DuAnID", typeof(int));
+    
+            var maGDParameter = maGD != null ?
+                new ObjectParameter("MaGD", maGD) :
+                new ObjectParameter("MaGD", typeof(string));
+    
+            var maBPParameter = maBP != null ?
+                new ObjectParameter("MaBP", maBP) :
+                new ObjectParameter("MaBP", typeof(string));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_NhanSu_List", sessionIDParameter, duAnIDParameter, maGDParameter, maBPParameter, settingParameter);
+        }
+    
+        public virtual int ws_L_QLDA_NhanSu_Save(string sessionID, Nullable<System.Guid> nhanSuID, Nullable<int> userID, Nullable<int> maDA, Nullable<int> nhanVien, string maBoPhan, string maCV, string maGD, string ghiChu)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var nhanSuIDParameter = nhanSuID.HasValue ?
+                new ObjectParameter("NhanSuID", nhanSuID) :
+                new ObjectParameter("NhanSuID", typeof(System.Guid));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var nhanVienParameter = nhanVien.HasValue ?
+                new ObjectParameter("NhanVien", nhanVien) :
+                new ObjectParameter("NhanVien", typeof(int));
+    
+            var maBoPhanParameter = maBoPhan != null ?
+                new ObjectParameter("MaBoPhan", maBoPhan) :
+                new ObjectParameter("MaBoPhan", typeof(string));
+    
+            var maCVParameter = maCV != null ?
+                new ObjectParameter("MaCV", maCV) :
+                new ObjectParameter("MaCV", typeof(string));
+    
+            var maGDParameter = maGD != null ?
+                new ObjectParameter("MaGD", maGD) :
+                new ObjectParameter("MaGD", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_NhanSu_Save", sessionIDParameter, nhanSuIDParameter, userIDParameter, maDAParameter, nhanVienParameter, maBoPhanParameter, maCVParameter, maGDParameter, ghiChuParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_NhomKH_ListAll_Result> ws_L_QLDA_NhomKH_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_NhomKH_ListAll_Result>("ws_L_QLDA_NhomKH_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_NhuCau_ListAll_Result> ws_L_QLDA_NhuCau_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_NhuCau_ListAll_Result>("ws_L_QLDA_NhuCau_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_SoLanTre_ListAll_Result> ws_L_QLDA_SoLanTre_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_SoLanTre_ListAll_Result>("ws_L_QLDA_SoLanTre_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_ThoiHan_ListAll_Result> ws_L_QLDA_ThoiHan_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_ThoiHan_ListAll_Result>("ws_L_QLDA_ThoiHan_ListAll", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_QLDA_ThongTinLHKH_Delete(Nullable<System.Guid> maLH, string sessionID, Nullable<int> userID)
+        {
+            var maLHParameter = maLH.HasValue ?
+                new ObjectParameter("MaLH", maLH) :
+                new ObjectParameter("MaLH", typeof(System.Guid));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_ThongTinLHKH_Delete", maLHParameter, sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_ThongTinLHKH_Get_Result> ws_L_QLDA_ThongTinLHKH_Get(string sessionID, Nullable<System.Guid> maLH)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var maLHParameter = maLH.HasValue ?
+                new ObjectParameter("MaLH", maLH) :
+                new ObjectParameter("MaLH", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_ThongTinLHKH_Get_Result>("ws_L_QLDA_ThongTinLHKH_Get", sessionIDParameter, maLHParameter);
+        }
+    
+        public virtual int ws_L_QLDA_ThongTinLHKH_List(string sessionID, Nullable<int> duAnID, Nullable<int> setting)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var duAnIDParameter = duAnID.HasValue ?
+                new ObjectParameter("DuAnID", duAnID) :
+                new ObjectParameter("DuAnID", typeof(int));
+    
+            var settingParameter = setting.HasValue ?
+                new ObjectParameter("Setting", setting) :
+                new ObjectParameter("Setting", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_ThongTinLHKH_List", sessionIDParameter, duAnIDParameter, settingParameter);
+        }
+    
+        public virtual int ws_L_QLDA_ThongTinLHKH_Save(string sessionID, Nullable<int> userID, Nullable<System.Guid> maLH, Nullable<int> maDA, string hoTen, string maChucVu, string fax, string email, string sDT1, string sDT2, string ghiChu)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var maLHParameter = maLH.HasValue ?
+                new ObjectParameter("MaLH", maLH) :
+                new ObjectParameter("MaLH", typeof(System.Guid));
+    
+            var maDAParameter = maDA.HasValue ?
+                new ObjectParameter("MaDA", maDA) :
+                new ObjectParameter("MaDA", typeof(int));
+    
+            var hoTenParameter = hoTen != null ?
+                new ObjectParameter("HoTen", hoTen) :
+                new ObjectParameter("HoTen", typeof(string));
+    
+            var maChucVuParameter = maChucVu != null ?
+                new ObjectParameter("MaChucVu", maChucVu) :
+                new ObjectParameter("MaChucVu", typeof(string));
+    
+            var faxParameter = fax != null ?
+                new ObjectParameter("Fax", fax) :
+                new ObjectParameter("Fax", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var sDT1Parameter = sDT1 != null ?
+                new ObjectParameter("SDT1", sDT1) :
+                new ObjectParameter("SDT1", typeof(string));
+    
+            var sDT2Parameter = sDT2 != null ?
+                new ObjectParameter("SDT2", sDT2) :
+                new ObjectParameter("SDT2", typeof(string));
+    
+            var ghiChuParameter = ghiChu != null ?
+                new ObjectParameter("GhiChu", ghiChu) :
+                new ObjectParameter("GhiChu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_QLDA_ThongTinLHKH_Save", sessionIDParameter, userIDParameter, maLHParameter, maDAParameter, hoTenParameter, maChucVuParameter, faxParameter, emailParameter, sDT1Parameter, sDT2Parameter, ghiChuParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_QLDA_TrangThai_ListAll_Result> ws_L_QLDA_TrangThai_ListAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_QLDA_TrangThai_ListAll_Result>("ws_L_QLDA_TrangThai_ListAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Report_Param(string sessionID, Nullable<System.Guid> reportID, Nullable<int> index, string name, string capTion, string type, string option, Nullable<bool> isSchedule)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var capTionParameter = capTion != null ?
+                new ObjectParameter("CapTion", capTion) :
+                new ObjectParameter("CapTion", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var optionParameter = option != null ?
+                new ObjectParameter("Option", option) :
+                new ObjectParameter("Option", typeof(string));
+    
+            var isScheduleParameter = isSchedule.HasValue ?
+                new ObjectParameter("IsSchedule", isSchedule) :
+                new ObjectParameter("IsSchedule", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Report_Param", sessionIDParameter, reportIDParameter, indexParameter, nameParameter, capTionParameter, typeParameter, optionParameter, isScheduleParameter);
+        }
+    
+        public virtual int ws_L_ReportCollumsDetails_Copy(string sessionID, Nullable<System.Guid> reportID, Nullable<int> facID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID.HasValue ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(int));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_ReportCollumsDetails_Copy", sessionIDParameter, reportIDParameter, facIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportCollumsDetails_Delete(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportCollumsDetails_Delete", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportCollumsDetails_Delete_OnceColumn(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> collumIndex)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var collumIndexParameter = collumIndex.HasValue ?
+                new ObjectParameter("CollumIndex", collumIndex) :
+                new ObjectParameter("CollumIndex", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportCollumsDetails_Delete_OnceColumn", sessionIDParameter, reportIDParameter, iDParameter, collumIndexParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_ReportCollumsDetails_List_Result> ws_L_ReportCollumsDetails_List(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_ReportCollumsDetails_List_Result>("ws_L_ReportCollumsDetails_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportCollumsDetails_Save(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> collumIndex, Nullable<int> tableNo, string collumName, string fontSize, string collumType, string description, string devDescription, string notes, string table, string field, string dev_Type, Nullable<int> sTT)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var collumIndexParameter = collumIndex.HasValue ?
+                new ObjectParameter("CollumIndex", collumIndex) :
+                new ObjectParameter("CollumIndex", typeof(int));
+    
+            var tableNoParameter = tableNo.HasValue ?
+                new ObjectParameter("TableNo", tableNo) :
+                new ObjectParameter("TableNo", typeof(int));
+    
+            var collumNameParameter = collumName != null ?
+                new ObjectParameter("CollumName", collumName) :
+                new ObjectParameter("CollumName", typeof(string));
+    
+            var fontSizeParameter = fontSize != null ?
+                new ObjectParameter("FontSize", fontSize) :
+                new ObjectParameter("FontSize", typeof(string));
+    
+            var collumTypeParameter = collumType != null ?
+                new ObjectParameter("CollumType", collumType) :
+                new ObjectParameter("CollumType", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var devDescriptionParameter = devDescription != null ?
+                new ObjectParameter("DevDescription", devDescription) :
+                new ObjectParameter("DevDescription", typeof(string));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            var tableParameter = table != null ?
+                new ObjectParameter("Table", table) :
+                new ObjectParameter("Table", typeof(string));
+    
+            var fieldParameter = field != null ?
+                new ObjectParameter("Field", field) :
+                new ObjectParameter("Field", typeof(string));
+    
+            var dev_TypeParameter = dev_Type != null ?
+                new ObjectParameter("Dev_Type", dev_Type) :
+                new ObjectParameter("Dev_Type", typeof(string));
+    
+            var sTTParameter = sTT.HasValue ?
+                new ObjectParameter("STT", sTT) :
+                new ObjectParameter("STT", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportCollumsDetails_Save", sessionIDParameter, reportIDParameter, iDParameter, collumIndexParameter, tableNoParameter, collumNameParameter, fontSizeParameter, collumTypeParameter, descriptionParameter, devDescriptionParameter, notesParameter, tableParameter, fieldParameter, dev_TypeParameter, sTTParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_L_ReportDetail_Add_Get(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_L_ReportDetail_Add_Get", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportDetail_Delete(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportDetail_Delete", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportDetail_Delete_OnceReportDetail(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportDetail_Delete_OnceReportDetail", sessionIDParameter, reportIDParameter, iDParameter, facIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportDetail_Get_DataProc_ProgID(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportDetail_Get_DataProc_ProgID", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_ReportDetail_List_Result> ws_L_ReportDetail_List(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_ReportDetail_List_Result>("ws_L_ReportDetail_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_L_ReportDetail_New_Get(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_L_ReportDetail_New_Get", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportDetail_Save(string sessionID, Nullable<System.Guid> reportID, string facID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportDetail_Save", sessionIDParameter, reportIDParameter, facIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportInfo_Delete(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportInfo_Delete", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_ReportInfo_List_Result> ws_L_ReportInfo_List(string sessionID, Nullable<System.Guid> reportID, string iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_ReportInfo_List_Result>("ws_L_ReportInfo_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportInfo_Save(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, string outputType, string orientation, string fontName, string headerFontSize, string bodyFontSize, string footerFontSize, string notes, Nullable<System.Guid> report_ID, string reportName, string dEV, Nullable<bool> isOnScreen, string dataProc, string progID, string description)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var outputTypeParameter = outputType != null ?
+                new ObjectParameter("OutputType", outputType) :
+                new ObjectParameter("OutputType", typeof(string));
+    
+            var orientationParameter = orientation != null ?
+                new ObjectParameter("Orientation", orientation) :
+                new ObjectParameter("Orientation", typeof(string));
+    
+            var fontNameParameter = fontName != null ?
+                new ObjectParameter("FontName", fontName) :
+                new ObjectParameter("FontName", typeof(string));
+    
+            var headerFontSizeParameter = headerFontSize != null ?
+                new ObjectParameter("HeaderFontSize", headerFontSize) :
+                new ObjectParameter("HeaderFontSize", typeof(string));
+    
+            var bodyFontSizeParameter = bodyFontSize != null ?
+                new ObjectParameter("BodyFontSize", bodyFontSize) :
+                new ObjectParameter("BodyFontSize", typeof(string));
+    
+            var footerFontSizeParameter = footerFontSize != null ?
+                new ObjectParameter("FooterFontSize", footerFontSize) :
+                new ObjectParameter("FooterFontSize", typeof(string));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            var report_IDParameter = report_ID.HasValue ?
+                new ObjectParameter("Report_ID", report_ID) :
+                new ObjectParameter("Report_ID", typeof(System.Guid));
+    
+            var reportNameParameter = reportName != null ?
+                new ObjectParameter("ReportName", reportName) :
+                new ObjectParameter("ReportName", typeof(string));
+    
+            var dEVParameter = dEV != null ?
+                new ObjectParameter("DEV", dEV) :
+                new ObjectParameter("DEV", typeof(string));
+    
+            var isOnScreenParameter = isOnScreen.HasValue ?
+                new ObjectParameter("IsOnScreen", isOnScreen) :
+                new ObjectParameter("IsOnScreen", typeof(bool));
+    
+            var dataProcParameter = dataProc != null ?
+                new ObjectParameter("DataProc", dataProc) :
+                new ObjectParameter("DataProc", typeof(string));
+    
+            var progIDParameter = progID != null ?
+                new ObjectParameter("ProgID", progID) :
+                new ObjectParameter("ProgID", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportInfo_Save", sessionIDParameter, reportIDParameter, iDParameter, outputTypeParameter, orientationParameter, fontNameParameter, headerFontSizeParameter, bodyFontSizeParameter, footerFontSizeParameter, notesParameter, report_IDParameter, reportNameParameter, dEVParameter, isOnScreenParameter, dataProcParameter, progIDParameter, descriptionParameter);
+        }
+    
+        public virtual int ws_L_ReportParam_Delete(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_ReportParam_Delete", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportParam_Delete_OnceParam(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> index)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportParam_Delete_OnceParam", sessionIDParameter, reportIDParameter, iDParameter, indexParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_ReportParam_List_Result> ws_L_ReportParam_List(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_ReportParam_List_Result>("ws_L_ReportParam_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportParam_Save(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> index, string paramName, string paramDescripsion, string paramType, Nullable<bool> isMandostory, string defaultValue, string notes, string caption, string option, string valueType, Nullable<int> sTTParam)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            var paramNameParameter = paramName != null ?
+                new ObjectParameter("ParamName", paramName) :
+                new ObjectParameter("ParamName", typeof(string));
+    
+            var paramDescripsionParameter = paramDescripsion != null ?
+                new ObjectParameter("ParamDescripsion", paramDescripsion) :
+                new ObjectParameter("ParamDescripsion", typeof(string));
+    
+            var paramTypeParameter = paramType != null ?
+                new ObjectParameter("ParamType", paramType) :
+                new ObjectParameter("ParamType", typeof(string));
+    
+            var isMandostoryParameter = isMandostory.HasValue ?
+                new ObjectParameter("IsMandostory", isMandostory) :
+                new ObjectParameter("IsMandostory", typeof(bool));
+    
+            var defaultValueParameter = defaultValue != null ?
+                new ObjectParameter("DefaultValue", defaultValue) :
+                new ObjectParameter("DefaultValue", typeof(string));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            var captionParameter = caption != null ?
+                new ObjectParameter("Caption", caption) :
+                new ObjectParameter("Caption", typeof(string));
+    
+            var optionParameter = option != null ?
+                new ObjectParameter("Option", option) :
+                new ObjectParameter("Option", typeof(string));
+    
+            var valueTypeParameter = valueType != null ?
+                new ObjectParameter("ValueType", valueType) :
+                new ObjectParameter("ValueType", typeof(string));
+    
+            var sTTParamParameter = sTTParam.HasValue ?
+                new ObjectParameter("STTParam", sTTParam) :
+                new ObjectParameter("STTParam", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportParam_Save", sessionIDParameter, reportIDParameter, iDParameter, indexParameter, paramNameParameter, paramDescripsionParameter, paramTypeParameter, isMandostoryParameter, defaultValueParameter, notesParameter, captionParameter, optionParameter, valueTypeParameter, sTTParamParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Reports_Delete(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Reports_Delete", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual int ws_L_Reports_DeleteAll(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Reports_DeleteAll", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Reports_Get_Result> ws_L_Reports_Get(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Reports_Get_Result>("ws_L_Reports_Get", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Reports_GetDataProc(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Reports_GetDataProc", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Reports_GetNotesTester(string sessionID, Nullable<System.Guid> reportID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Reports_GetNotesTester", sessionIDParameter, reportIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Reports_GetProgID(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Reports_GetProgID", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Reports_List_Result> ws_L_Reports_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Reports_List_Result>("ws_L_Reports_List", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_Reports_List_ForWeb(string sessionID, string criteria)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Reports_List_ForWeb", sessionIDParameter, criteriaParameter);
+        }
+    
+        public virtual int ws_L_Reports_ListAll(string sessionID, string category)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("category", category) :
+                new ObjectParameter("category", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Reports_ListAll", sessionIDParameter, categoryParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_Reports_Save(string sessionID, Nullable<System.Guid> reportID, string reportName, string description, string notesTester, string category, Nullable<bool> isOnScreen, string dEV, string location)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var reportNameParameter = reportName != null ?
+                new ObjectParameter("ReportName", reportName) :
+                new ObjectParameter("ReportName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var notesTesterParameter = notesTester != null ?
+                new ObjectParameter("NotesTester", notesTester) :
+                new ObjectParameter("NotesTester", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var isOnScreenParameter = isOnScreen.HasValue ?
+                new ObjectParameter("IsOnScreen", isOnScreen) :
+                new ObjectParameter("IsOnScreen", typeof(bool));
+    
+            var dEVParameter = dEV != null ?
+                new ObjectParameter("DEV", dEV) :
+                new ObjectParameter("DEV", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_Reports_Save", sessionIDParameter, reportIDParameter, reportNameParameter, descriptionParameter, notesTesterParameter, categoryParameter, isOnScreenParameter, dEVParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Reports2_List_Result> ws_L_Reports2_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Reports2_List_Result>("ws_L_Reports2_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_ReportsCollumsDetail_List_Result> ws_L_ReportsCollumsDetail_List(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_ReportsCollumsDetail_List_Result>("ws_L_ReportsCollumsDetail_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportsSign_Delete(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportsSign_Delete", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual int ws_L_ReportsSign_Delete_OnceSign(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> index)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_ReportsSign_Delete_OnceSign", sessionIDParameter, reportIDParameter, iDParameter, indexParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_ReportsSign_List_Result> ws_L_ReportsSign_List(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_ReportsSign_List_Result>("ws_L_ReportsSign_List", sessionIDParameter, reportIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_ReportsSign_Save(string sessionID, Nullable<System.Guid> reportID, Nullable<int> iD, Nullable<int> index, string values1, string values2, string notes)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var indexParameter = index.HasValue ?
+                new ObjectParameter("Index", index) :
+                new ObjectParameter("Index", typeof(int));
+    
+            var values1Parameter = values1 != null ?
+                new ObjectParameter("Values1", values1) :
+                new ObjectParameter("Values1", typeof(string));
+    
+            var values2Parameter = values2 != null ?
+                new ObjectParameter("Values2", values2) :
+                new ObjectParameter("Values2", typeof(string));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_ReportsSign_Save", sessionIDParameter, reportIDParameter, iDParameter, indexParameter, values1Parameter, values2Parameter, notesParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_StoreProcedures_Delete(string sessionID, Nullable<System.Guid> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_StoreProcedures_Delete", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_StoreProcedures_Get_Result> ws_L_StoreProcedures_Get(Nullable<System.Guid> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_StoreProcedures_Get_Result>("ws_L_StoreProcedures_Get", iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_StoreProcedures_Save(Nullable<System.Guid> iD, Nullable<int> iDDLL, string name, string note, string version, Nullable<int> userID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            var iDDLLParameter = iDDLL.HasValue ?
+                new ObjectParameter("IDDLL", iDDLL) :
+                new ObjectParameter("IDDLL", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var versionParameter = version != null ?
+                new ObjectParameter("Version", version) :
+                new ObjectParameter("Version", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_StoreProcedures_Save", iDParameter, iDDLLParameter, nameParameter, noteParameter, versionParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Tags_List_Result> ws_L_Tags_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Tags_List_Result>("ws_L_Tags_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_L_TeamMember_Delete(string sessionID, Nullable<int> teamID, Nullable<int> userID, Nullable<int> position)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var positionParameter = position.HasValue ?
+                new ObjectParameter("Position", position) :
+                new ObjectParameter("Position", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_L_TeamMember_Delete", sessionIDParameter, teamIDParameter, userIDParameter, positionParameter);
+        }
+    
+        public virtual int ws_L_TeamMembers_Get(string sessionID, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_TeamMembers_Get", sessionIDParameter, teamIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_L_TeamMembers_GetMember(string sessionID, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_L_TeamMembers_GetMember", sessionIDParameter, teamIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_L_TeamMembers_Save(string sessionID, Nullable<int> teamID, Nullable<int> userID, string fullName, Nullable<int> positionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var fullNameParameter = fullName != null ?
+                new ObjectParameter("FullName", fullName) :
+                new ObjectParameter("FullName", typeof(string));
+    
+            var positionIDParameter = positionID.HasValue ?
+                new ObjectParameter("PositionID", positionID) :
+                new ObjectParameter("PositionID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_L_TeamMembers_Save", sessionIDParameter, teamIDParameter, userIDParameter, fullNameParameter, positionIDParameter);
+        }
+    
+        public virtual int ws_L_Teams_Get(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Teams_Get", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_Teams_List_Result> ws_L_Teams_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_Teams_List_Result>("ws_L_Teams_List", sessionIDParameter);
+        }
+    
+        public virtual int ws_L_Teams_Save(string sessionID, Nullable<int> tOID, string teamName)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var tOIDParameter = tOID.HasValue ?
+                new ObjectParameter("TOID", tOID) :
+                new ObjectParameter("TOID", typeof(int));
+    
+            var teamNameParameter = teamName != null ?
+                new ObjectParameter("TeamName", teamName) :
+                new ObjectParameter("TeamName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_Teams_Save", sessionIDParameter, tOIDParameter, teamNameParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_TeamTicket_GetByDev_Result> ws_L_TeamTicket_GetByDev(string sessionID, Nullable<int> userID, Nullable<System.DateTime> tuNgay, Nullable<System.DateTime> denNgay)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var tuNgayParameter = tuNgay.HasValue ?
+                new ObjectParameter("TuNgay", tuNgay) :
+                new ObjectParameter("TuNgay", typeof(System.DateTime));
+    
+            var denNgayParameter = denNgay.HasValue ?
+                new ObjectParameter("DenNgay", denNgay) :
+                new ObjectParameter("DenNgay", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_TeamTicket_GetByDev_Result>("ws_L_TeamTicket_GetByDev", sessionIDParameter, userIDParameter, tuNgayParameter, denNgayParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_TeamTicket_GetByTO_Result> ws_L_TeamTicket_GetByTO(string sessionID, Nullable<int> userID, Nullable<System.DateTime> tuNgay, Nullable<System.DateTime> denNgay)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var tuNgayParameter = tuNgay.HasValue ?
+                new ObjectParameter("TuNgay", tuNgay) :
+                new ObjectParameter("TuNgay", typeof(System.DateTime));
+    
+            var denNgayParameter = denNgay.HasValue ?
+                new ObjectParameter("DenNgay", denNgay) :
+                new ObjectParameter("DenNgay", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_TeamTicket_GetByTO_Result>("ws_L_TeamTicket_GetByTO", sessionIDParameter, userIDParameter, tuNgayParameter, denNgayParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_TicketErrorProtocol_ListByErrorID_Result> ws_L_TicketErrorProtocol_ListByErrorID(string sessionID, Nullable<int> errorID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var errorIDParameter = errorID.HasValue ?
+                new ObjectParameter("ErrorID", errorID) :
+                new ObjectParameter("ErrorID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_TicketErrorProtocol_ListByErrorID_Result>("ws_L_TicketErrorProtocol_ListByErrorID", sessionIDParameter, errorIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_TicketErrorProtocol_Save(string sessionID, Nullable<int> iD, string description, Nullable<int> errorID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var errorIDParameter = errorID.HasValue ?
+                new ObjectParameter("ErrorID", errorID) :
+                new ObjectParameter("ErrorID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_TicketErrorProtocol_Save", sessionIDParameter, iDParameter, descriptionParameter, errorIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_L_TicketErrors_Delete(string sessionID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_L_TicketErrors_Delete", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_L_TicketErrors_List_Result> ws_L_TicketErrors_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_L_TicketErrors_List_Result>("ws_L_TicketErrors_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_L_TicketErrors_Save(string sessionID, Nullable<int> iD, Nullable<int> moduleID, string description, Nullable<int> userID, string fileName, string fileData)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var moduleIDParameter = moduleID.HasValue ?
+                new ObjectParameter("ModuleID", moduleID) :
+                new ObjectParameter("ModuleID", typeof(int));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var fileDataParameter = fileData != null ?
+                new ObjectParameter("FileData", fileData) :
+                new ObjectParameter("FileData", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_L_TicketErrors_Save", sessionIDParameter, iDParameter, moduleIDParameter, descriptionParameter, userIDParameter, fileNameParameter, fileDataParameter);
+        }
+    
+        public virtual int ws_LoadTicketDetail(string sessionID, Nullable<int> primaryDEV)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var primaryDEVParameter = primaryDEV.HasValue ?
+                new ObjectParameter("PrimaryDEV", primaryDEV) :
+                new ObjectParameter("PrimaryDEV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_LoadTicketDetail", sessionIDParameter, primaryDEVParameter);
+        }
+    
+        public virtual ObjectResult<ws_LoadTuan_Result> ws_LoadTuan(string sessionID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_LoadTuan_Result>("ws_LoadTuan", sessionIDParameter, clientIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_LoadWeek_Result> ws_LoadWeek(string sesionID, Nullable<int> clientID)
+        {
+            var sesionIDParameter = sesionID != null ?
+                new ObjectParameter("SesionID", sesionID) :
+                new ObjectParameter("SesionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_LoadWeek_Result>("ws_LoadWeek", sesionIDParameter, clientIDParameter);
+        }
+    
+        public virtual int ws_Mail_Delete(string sessionID, Nullable<System.Guid> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Mail_Delete", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual int ws_Mail_Get(string sessionID, Nullable<System.Guid> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Mail_Get", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual int ws_Mail_ListByUserID(string sessionID, Nullable<System.Guid> userID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Mail_ListByUserID", sessionIDParameter, userIDParameter, facIDParameter);
+        }
+    
+        public virtual int ws_Mail_ListNguoiNhan(string sessionID, Nullable<System.Guid> mailID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Mail_ListNguoiNhan", sessionIDParameter, mailIDParameter, facIDParameter);
+        }
+    
+        public virtual int ws_Mail_Save(string sessionID, Nullable<System.Guid> iD, string facID, string header, string body, string footer, Nullable<int> dateAsInt)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var headerParameter = header != null ?
+                new ObjectParameter("Header", header) :
+                new ObjectParameter("Header", typeof(string));
+    
+            var bodyParameter = body != null ?
+                new ObjectParameter("Body", body) :
+                new ObjectParameter("Body", typeof(string));
+    
+            var footerParameter = footer != null ?
+                new ObjectParameter("Footer", footer) :
+                new ObjectParameter("Footer", typeof(string));
+    
+            var dateAsIntParameter = dateAsInt.HasValue ?
+                new ObjectParameter("DateAsInt", dateAsInt) :
+                new ObjectParameter("DateAsInt", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Mail_Save", sessionIDParameter, iDParameter, facIDParameter, headerParameter, bodyParameter, footerParameter, dateAsIntParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailAddress_Delete(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailAddress_Delete", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<ws_MailAddress_Get_Result> ws_MailAddress_Get(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_MailAddress_Get_Result>("ws_MailAddress_Get", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailAddress_Save(string sessionID, Nullable<System.Guid> mailMessageKey, string type, string address, string displayName, string host)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var displayNameParameter = displayName != null ?
+                new ObjectParameter("DisplayName", displayName) :
+                new ObjectParameter("DisplayName", typeof(string));
+    
+            var hostParameter = host != null ?
+                new ObjectParameter("Host", host) :
+                new ObjectParameter("Host", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailAddress_Save", sessionIDParameter, mailMessageKeyParameter, typeParameter, addressParameter, displayNameParameter, hostParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailAttachment_Delete(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailAttachment_Delete", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<ws_MailAttachment_Get_Result> ws_MailAttachment_Get(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_MailAttachment_Get_Result>("ws_MailAttachment_Get", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailAttachment_Save(string sessionID, Nullable<System.Guid> mailMessageKey, string fileName, string contentType, string content)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var contentTypeParameter = contentType != null ?
+                new ObjectParameter("ContentType", contentType) :
+                new ObjectParameter("ContentType", typeof(string));
+    
+            var contentParameter = content != null ?
+                new ObjectParameter("Content", content) :
+                new ObjectParameter("Content", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailAttachment_Save", sessionIDParameter, mailMessageKeyParameter, fileNameParameter, contentTypeParameter, contentParameter);
+        }
+    
+        public virtual int ws_MailFiles_List(string sessionID, Nullable<System.Guid> mailID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailFiles_List", sessionIDParameter, mailIDParameter, facIDParameter);
+        }
+    
+        public virtual int ws_MailFiles_Save(string sessionID, Nullable<System.Guid> iD, Nullable<System.Guid> mailID, string fileName, string fileData, Nullable<System.Guid> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var fileDataParameter = fileData != null ?
+                new ObjectParameter("FileData", fileData) :
+                new ObjectParameter("FileData", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailFiles_Save", sessionIDParameter, iDParameter, mailIDParameter, fileNameParameter, fileDataParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailHeader_Delete(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailHeader_Delete", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<ws_MailHeader_Get_Result> ws_MailHeader_Get(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_MailHeader_Get_Result>("ws_MailHeader_Get", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailHeader_Save(string sessionID, Nullable<System.Guid> mailMessageKey, string name, string value)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var valueParameter = value != null ?
+                new ObjectParameter("Value", value) :
+                new ObjectParameter("Value", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailHeader_Save", sessionIDParameter, mailMessageKeyParameter, nameParameter, valueParameter);
+        }
+    
+        public virtual int ws_MailMessage_CreateTicket(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailMessage_CreateTicket", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailMessage_Delete(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailMessage_Delete", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<ws_MailMessage_Get_Result> ws_MailMessage_Get(string sessionID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_MailMessage_Get_Result>("ws_MailMessage_Get", sessionIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<ws_MailMessage_GetByTicketID_Result> ws_MailMessage_GetByTicketID(string sessionID, Nullable<int> ticketID, Nullable<System.Guid> mailMessageKey, string type)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_MailMessage_GetByTicketID_Result>("ws_MailMessage_GetByTicketID", sessionIDParameter, ticketIDParameter, mailMessageKeyParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<ws_MailMessage_List_Result> ws_MailMessage_List(string sessionID, Nullable<int> ticketID, Nullable<bool> isSent)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var isSentParameter = isSent.HasValue ?
+                new ObjectParameter("IsSent", isSent) :
+                new ObjectParameter("IsSent", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_MailMessage_List_Result>("ws_MailMessage_List", sessionIDParameter, ticketIDParameter, isSentParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> ws_MailMessage_Save(string sessionID, Nullable<System.Guid> mailMessageKey, string imapMessageId, string subject, string priority, string body, string bodyEncoding, string isBodyHtml, string type)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            var imapMessageIdParameter = imapMessageId != null ?
+                new ObjectParameter("ImapMessageId", imapMessageId) :
+                new ObjectParameter("ImapMessageId", typeof(string));
+    
+            var subjectParameter = subject != null ?
+                new ObjectParameter("Subject", subject) :
+                new ObjectParameter("Subject", typeof(string));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var bodyParameter = body != null ?
+                new ObjectParameter("Body", body) :
+                new ObjectParameter("Body", typeof(string));
+    
+            var bodyEncodingParameter = bodyEncoding != null ?
+                new ObjectParameter("BodyEncoding", bodyEncoding) :
+                new ObjectParameter("BodyEncoding", typeof(string));
+    
+            var isBodyHtmlParameter = isBodyHtml != null ?
+                new ObjectParameter("IsBodyHtml", isBodyHtml) :
+                new ObjectParameter("IsBodyHtml", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ws_MailMessage_Save", sessionIDParameter, mailMessageKeyParameter, imapMessageIdParameter, subjectParameter, priorityParameter, bodyParameter, bodyEncodingParameter, isBodyHtmlParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_MailMessage_Update(string sessionID, Nullable<System.Guid> mailMessageKey, Nullable<bool> isSent)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            var isSentParameter = isSent.HasValue ?
+                new ObjectParameter("IsSent", isSent) :
+                new ObjectParameter("IsSent", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_MailMessage_Update", sessionIDParameter, mailMessageKeyParameter, isSentParameter);
+        }
+    
+        public virtual int ws_MailSend_ListByUserID(string sessionID, Nullable<System.Guid> userID, string facID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailSend_ListByUserID", sessionIDParameter, userIDParameter, facIDParameter);
+        }
+    
+        public virtual int ws_MailSender_Delete(string sessionID, Nullable<System.Guid> mailID, Nullable<System.Guid> userID, Nullable<System.Guid> groupUserID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var groupUserIDParameter = groupUserID.HasValue ?
+                new ObjectParameter("GroupUserID", groupUserID) :
+                new ObjectParameter("GroupUserID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailSender_Delete", sessionIDParameter, mailIDParameter, userIDParameter, groupUserIDParameter);
+        }
+    
+        public virtual int ws_MailSender_Get(string sessionID, Nullable<System.Guid> mailID, Nullable<System.Guid> userID, Nullable<System.Guid> groupUserID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var groupUserIDParameter = groupUserID.HasValue ?
+                new ObjectParameter("GroupUserID", groupUserID) :
+                new ObjectParameter("GroupUserID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailSender_Get", sessionIDParameter, mailIDParameter, userIDParameter, groupUserIDParameter);
+        }
+    
+        public virtual int ws_MailSender_Save(string sessionID, Nullable<System.Guid> mailID, Nullable<System.Guid> userID, Nullable<System.Guid> groupUserID, Nullable<bool> isRead)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var groupUserIDParameter = groupUserID.HasValue ?
+                new ObjectParameter("GroupUserID", groupUserID) :
+                new ObjectParameter("GroupUserID", typeof(System.Guid));
+    
+            var isReadParameter = isRead.HasValue ?
+                new ObjectParameter("IsRead", isRead) :
+                new ObjectParameter("IsRead", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailSender_Save", sessionIDParameter, mailIDParameter, userIDParameter, groupUserIDParameter, isReadParameter);
+        }
+    
+        public virtual int ws_MailSender_UpdateIsRead(string sessionID, Nullable<System.Guid> mailID, Nullable<System.Guid> userID, Nullable<System.Guid> groupUserID, Nullable<bool> isRead)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var mailIDParameter = mailID.HasValue ?
+                new ObjectParameter("MailID", mailID) :
+                new ObjectParameter("MailID", typeof(System.Guid));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            var groupUserIDParameter = groupUserID.HasValue ?
+                new ObjectParameter("GroupUserID", groupUserID) :
+                new ObjectParameter("GroupUserID", typeof(System.Guid));
+    
+            var isReadParameter = isRead.HasValue ?
+                new ObjectParameter("IsRead", isRead) :
+                new ObjectParameter("IsRead", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_MailSender_UpdateIsRead", sessionIDParameter, mailIDParameter, userIDParameter, groupUserIDParameter, isReadParameter);
+        }
+    
+        public virtual ObjectResult<ws_Member_Get_Result> ws_Member_Get(string sessionID, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Member_Get_Result>("ws_Member_Get", sessionIDParameter, teamIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Menu_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Menu_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Menu_List_Org_Result> ws_Menu_List_Org(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Menu_List_Org_Result>("ws_Menu_List_Org", sessionIDParameter);
+        }
+    
+        public virtual int ws_Projects_Chart(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Projects_Chart", sessionIDParameter);
+        }
+    
+        public virtual int ws_Projects_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Projects_List", sessionIDParameter);
+        }
+    
+        public virtual int ws_Projects_ListBy(string sessionID, string status, Nullable<bool> available)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var availableParameter = available.HasValue ?
+                new ObjectParameter("Available", available) :
+                new ObjectParameter("Available", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Projects_ListBy", sessionIDParameter, statusParameter, availableParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> ws_Projects_Save(string sessionID, Nullable<int> projectID, Nullable<int> parentID, string projectCode, string projectName, string status, Nullable<bool> isActive, Nullable<int> userID, Nullable<System.DateTime> dueDate)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var parentIDParameter = parentID.HasValue ?
+                new ObjectParameter("ParentID", parentID) :
+                new ObjectParameter("ParentID", typeof(int));
+    
+            var projectCodeParameter = projectCode != null ?
+                new ObjectParameter("ProjectCode", projectCode) :
+                new ObjectParameter("ProjectCode", typeof(string));
+    
+            var projectNameParameter = projectName != null ?
+                new ObjectParameter("ProjectName", projectName) :
+                new ObjectParameter("ProjectName", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ws_Projects_Save", sessionIDParameter, projectIDParameter, parentIDParameter, projectCodeParameter, projectNameParameter, statusParameter, isActiveParameter, userIDParameter, dueDateParameter);
+        }
+    
+        public virtual ObjectResult<ws_Projects_Search_Result> ws_Projects_Search(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Projects_Search_Result>("ws_Projects_Search", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_ProjectUsers_ListByProjectID_Result> ws_ProjectUsers_ListByProjectID(string sessionID, Nullable<int> projectID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_ProjectUsers_ListByProjectID_Result>("ws_ProjectUsers_ListByProjectID", sessionIDParameter, projectIDParameter);
+        }
+    
+        public virtual int ws_ProjectUsers_Save(string sessionID, Nullable<int> projectID, Nullable<int> userID, Nullable<bool> enableYN, Nullable<int> createdBy)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var enableYNParameter = enableYN.HasValue ?
+                new ObjectParameter("EnableYN", enableYN) :
+                new ObjectParameter("EnableYN", typeof(bool));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_ProjectUsers_Save", sessionIDParameter, projectIDParameter, userIDParameter, enableYNParameter, createdByParameter);
+        }
+    
+        public virtual int ws_rep_LoadReportBug(string sessionID, string facID, Nullable<int> quy, Nullable<int> year)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var quyParameter = quy.HasValue ?
+                new ObjectParameter("Quy", quy) :
+                new ObjectParameter("Quy", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_rep_LoadReportBug", sessionIDParameter, facIDParameter, quyParameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<ws_ReportChild_List_Result> ws_ReportChild_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_ReportChild_List_Result>("ws_ReportChild_List", sessionIDParameter);
+        }
+    
+        public virtual int ws_ReportforSup(string sessionID, string facID, Nullable<int> week, Nullable<int> year)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var weekParameter = week.HasValue ?
+                new ObjectParameter("Week", week) :
+                new ObjectParameter("Week", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_ReportforSup", sessionIDParameter, facIDParameter, weekParameter, yearParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_RequirementOriginal_Delete(string sessionID, Nullable<long> seq, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(long));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_RequirementOriginal_Delete", sessionIDParameter, seqParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_RequirementOriginal_GetByBuilID_Result> ws_RequirementOriginal_GetByBuilID(string sessionID, Nullable<int> buildID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_RequirementOriginal_GetByBuilID_Result>("ws_RequirementOriginal_GetByBuilID", sessionIDParameter, buildIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_RequirementOriginal_GetByCode_Result> ws_RequirementOriginal_GetByCode(string sessionID, string requirementCode)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var requirementCodeParameter = requirementCode != null ?
+                new ObjectParameter("RequirementCode", requirementCode) :
+                new ObjectParameter("RequirementCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_RequirementOriginal_GetByCode_Result>("ws_RequirementOriginal_GetByCode", sessionIDParameter, requirementCodeParameter);
+        }
+    
+        public virtual ObjectResult<ws_RequirementOriginal_List_Result> ws_RequirementOriginal_List(string sessionID, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<bool> isGetAll, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            var isGetAllParameter = isGetAll.HasValue ?
+                new ObjectParameter("IsGetAll", isGetAll) :
+                new ObjectParameter("IsGetAll", typeof(bool));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_RequirementOriginal_List_Result>("ws_RequirementOriginal_List", sessionIDParameter, fromDateParameter, toDateParameter, isGetAllParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_RequirementOriginal_List_ByTicket_Result> ws_RequirementOriginal_List_ByTicket(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_RequirementOriginal_List_ByTicket_Result>("ws_RequirementOriginal_List_ByTicket", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_RequirementOriginal_Multi_Save(string sessionID, Nullable<long> seq, string requirementCode, Nullable<int> builID, string detail, Nullable<System.DateTime> deadline, string note, string module, string typeRequirement, string clientName, string uRDID, string uRDFileName, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(long));
+    
+            var requirementCodeParameter = requirementCode != null ?
+                new ObjectParameter("RequirementCode", requirementCode) :
+                new ObjectParameter("RequirementCode", typeof(string));
+    
+            var builIDParameter = builID.HasValue ?
+                new ObjectParameter("BuilID", builID) :
+                new ObjectParameter("BuilID", typeof(int));
+    
+            var detailParameter = detail != null ?
+                new ObjectParameter("Detail", detail) :
+                new ObjectParameter("Detail", typeof(string));
+    
+            var deadlineParameter = deadline.HasValue ?
+                new ObjectParameter("Deadline", deadline) :
+                new ObjectParameter("Deadline", typeof(System.DateTime));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var typeRequirementParameter = typeRequirement != null ?
+                new ObjectParameter("TypeRequirement", typeRequirement) :
+                new ObjectParameter("TypeRequirement", typeof(string));
+    
+            var clientNameParameter = clientName != null ?
+                new ObjectParameter("ClientName", clientName) :
+                new ObjectParameter("ClientName", typeof(string));
+    
+            var uRDIDParameter = uRDID != null ?
+                new ObjectParameter("URDID", uRDID) :
+                new ObjectParameter("URDID", typeof(string));
+    
+            var uRDFileNameParameter = uRDFileName != null ?
+                new ObjectParameter("URDFileName", uRDFileName) :
+                new ObjectParameter("URDFileName", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_RequirementOriginal_Multi_Save", sessionIDParameter, seqParameter, requirementCodeParameter, builIDParameter, detailParameter, deadlineParameter, noteParameter, moduleParameter, typeRequirementParameter, clientNameParameter, uRDIDParameter, uRDFileNameParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_RequirementOriginal_Save(string sessionID, Nullable<long> seq, string requirementCode, Nullable<int> builID, string detail, Nullable<System.DateTime> deadline, string note, string module, string typeRequirement, Nullable<int> clientID, string uRDID, string uRDFileName, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(long));
+    
+            var requirementCodeParameter = requirementCode != null ?
+                new ObjectParameter("RequirementCode", requirementCode) :
+                new ObjectParameter("RequirementCode", typeof(string));
+    
+            var builIDParameter = builID.HasValue ?
+                new ObjectParameter("BuilID", builID) :
+                new ObjectParameter("BuilID", typeof(int));
+    
+            var detailParameter = detail != null ?
+                new ObjectParameter("Detail", detail) :
+                new ObjectParameter("Detail", typeof(string));
+    
+            var deadlineParameter = deadline.HasValue ?
+                new ObjectParameter("Deadline", deadline) :
+                new ObjectParameter("Deadline", typeof(System.DateTime));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var typeRequirementParameter = typeRequirement != null ?
+                new ObjectParameter("TypeRequirement", typeRequirement) :
+                new ObjectParameter("TypeRequirement", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var uRDIDParameter = uRDID != null ?
+                new ObjectParameter("URDID", uRDID) :
+                new ObjectParameter("URDID", typeof(string));
+    
+            var uRDFileNameParameter = uRDFileName != null ?
+                new ObjectParameter("URDFileName", uRDFileName) :
+                new ObjectParameter("URDFileName", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_RequirementOriginal_Save", sessionIDParameter, seqParameter, requirementCodeParameter, builIDParameter, detailParameter, deadlineParameter, noteParameter, moduleParameter, typeRequirementParameter, clientIDParameter, uRDIDParameter, uRDFileNameParameter, userIDParameter);
+        }
+    
+        public virtual int ws_Status_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Status_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_SUP_Menu_List_Result> ws_SUP_Menu_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_SUP_Menu_List_Result>("ws_SUP_Menu_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_SUP_Requirement_List_Result> ws_SUP_Requirement_List(string sessionID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_SUP_Requirement_List_Result>("ws_SUP_Requirement_List", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_SUP_Search(string sessionID, string facID, Nullable<int> requirementID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var facIDParameter = facID != null ?
+                new ObjectParameter("FacID", facID) :
+                new ObjectParameter("FacID", typeof(string));
+    
+            var requirementIDParameter = requirementID.HasValue ?
+                new ObjectParameter("RequirementID", requirementID) :
+                new ObjectParameter("RequirementID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_SUP_Search", sessionIDParameter, facIDParameter, requirementIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TA_MoiTruongDay_List_Result> ws_TA_MoiTruongDay_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TA_MoiTruongDay_List_Result>("ws_TA_MoiTruongDay_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TA_TicketXacNhanDayMoiTruong_Get_Result> ws_TA_TicketXacNhanDayMoiTruong_Get(string sessionID, Nullable<long> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TA_TicketXacNhanDayMoiTruong_Get_Result>("ws_TA_TicketXacNhanDayMoiTruong_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TA_TicketXacNhanDayMoiTruong_Save(string sessionID, Nullable<long> ticketID, Nullable<int> userIDConfirm, string confirmer, Nullable<System.Guid> moiTruongID, string moiTruongName, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(long));
+    
+            var userIDConfirmParameter = userIDConfirm.HasValue ?
+                new ObjectParameter("UserIDConfirm", userIDConfirm) :
+                new ObjectParameter("UserIDConfirm", typeof(int));
+    
+            var confirmerParameter = confirmer != null ?
+                new ObjectParameter("Confirmer", confirmer) :
+                new ObjectParameter("Confirmer", typeof(string));
+    
+            var moiTruongIDParameter = moiTruongID.HasValue ?
+                new ObjectParameter("MoiTruongID", moiTruongID) :
+                new ObjectParameter("MoiTruongID", typeof(System.Guid));
+    
+            var moiTruongNameParameter = moiTruongName != null ?
+                new ObjectParameter("MoiTruongName", moiTruongName) :
+                new ObjectParameter("MoiTruongName", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TA_TicketXacNhanDayMoiTruong_Save", sessionIDParameter, ticketIDParameter, userIDConfirmParameter, confirmerParameter, moiTruongIDParameter, moiTruongNameParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TamAnhHospitalRequest_Delete(string sessionID, Nullable<int> requestID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var requestIDParameter = requestID.HasValue ?
+                new ObjectParameter("RequestID", requestID) :
+                new ObjectParameter("RequestID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TamAnhHospitalRequest_Delete", sessionIDParameter, requestIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TamAnhHospitalRequest_GetAll_Result> ws_TamAnhHospitalRequest_GetAll(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TamAnhHospitalRequest_GetAll_Result>("ws_TamAnhHospitalRequest_GetAll", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TamAnhHospitalRequest_Save(string sessionID, Nullable<int> requestID, string versionURD, string nameURD, string request, Nullable<int> moduleID, string module)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var requestIDParameter = requestID.HasValue ?
+                new ObjectParameter("RequestID", requestID) :
+                new ObjectParameter("RequestID", typeof(int));
+    
+            var versionURDParameter = versionURD != null ?
+                new ObjectParameter("VersionURD", versionURD) :
+                new ObjectParameter("VersionURD", typeof(string));
+    
+            var nameURDParameter = nameURD != null ?
+                new ObjectParameter("NameURD", nameURD) :
+                new ObjectParameter("NameURD", typeof(string));
+    
+            var requestParameter = request != null ?
+                new ObjectParameter("Request", request) :
+                new ObjectParameter("Request", typeof(string));
+    
+            var moduleIDParameter = moduleID.HasValue ?
+                new ObjectParameter("ModuleID", moduleID) :
+                new ObjectParameter("ModuleID", typeof(int));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TamAnhHospitalRequest_Save", sessionIDParameter, requestIDParameter, versionURDParameter, nameURDParameter, requestParameter, moduleIDParameter, moduleParameter);
+        }
+    
+        public virtual int ws_Ticket_Comfirm(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Comfirm", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual int ws_Ticket_Convert(string sessionID, Nullable<System.Guid> reportID, Nullable<System.Guid> report_ID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var report_IDParameter = report_ID.HasValue ?
+                new ObjectParameter("Report_ID", report_ID) :
+                new ObjectParameter("Report_ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Convert", sessionIDParameter, reportIDParameter, report_IDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_Delete(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_Delete", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_Deploy_Get(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_Deploy_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_Estimations_Detail_Get_Result> ws_Ticket_Estimations_Detail_Get(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_Estimations_Detail_Get_Result>("ws_Ticket_Estimations_Detail_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_Estimations_Detail_Save(string sessionID, Nullable<int> ticketID, string designScreen, Nullable<decimal> totalDesignScreen, string logicScreen, Nullable<decimal> totalLogicScreen, string sPScreen, Nullable<decimal> totalSPScreen, string designReport, Nullable<decimal> totalDesignReport, string sPReport, Nullable<decimal> totalSPReport, Nullable<decimal> devUnitTest, Nullable<decimal> devFixBug, string other, Nullable<decimal> totalOther, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var designScreenParameter = designScreen != null ?
+                new ObjectParameter("DesignScreen", designScreen) :
+                new ObjectParameter("DesignScreen", typeof(string));
+    
+            var totalDesignScreenParameter = totalDesignScreen.HasValue ?
+                new ObjectParameter("TotalDesignScreen", totalDesignScreen) :
+                new ObjectParameter("TotalDesignScreen", typeof(decimal));
+    
+            var logicScreenParameter = logicScreen != null ?
+                new ObjectParameter("LogicScreen", logicScreen) :
+                new ObjectParameter("LogicScreen", typeof(string));
+    
+            var totalLogicScreenParameter = totalLogicScreen.HasValue ?
+                new ObjectParameter("TotalLogicScreen", totalLogicScreen) :
+                new ObjectParameter("TotalLogicScreen", typeof(decimal));
+    
+            var sPScreenParameter = sPScreen != null ?
+                new ObjectParameter("SPScreen", sPScreen) :
+                new ObjectParameter("SPScreen", typeof(string));
+    
+            var totalSPScreenParameter = totalSPScreen.HasValue ?
+                new ObjectParameter("TotalSPScreen", totalSPScreen) :
+                new ObjectParameter("TotalSPScreen", typeof(decimal));
+    
+            var designReportParameter = designReport != null ?
+                new ObjectParameter("DesignReport", designReport) :
+                new ObjectParameter("DesignReport", typeof(string));
+    
+            var totalDesignReportParameter = totalDesignReport.HasValue ?
+                new ObjectParameter("TotalDesignReport", totalDesignReport) :
+                new ObjectParameter("TotalDesignReport", typeof(decimal));
+    
+            var sPReportParameter = sPReport != null ?
+                new ObjectParameter("SPReport", sPReport) :
+                new ObjectParameter("SPReport", typeof(string));
+    
+            var totalSPReportParameter = totalSPReport.HasValue ?
+                new ObjectParameter("TotalSPReport", totalSPReport) :
+                new ObjectParameter("TotalSPReport", typeof(decimal));
+    
+            var devUnitTestParameter = devUnitTest.HasValue ?
+                new ObjectParameter("DevUnitTest", devUnitTest) :
+                new ObjectParameter("DevUnitTest", typeof(decimal));
+    
+            var devFixBugParameter = devFixBug.HasValue ?
+                new ObjectParameter("DevFixBug", devFixBug) :
+                new ObjectParameter("DevFixBug", typeof(decimal));
+    
+            var otherParameter = other != null ?
+                new ObjectParameter("Other", other) :
+                new ObjectParameter("Other", typeof(string));
+    
+            var totalOtherParameter = totalOther.HasValue ?
+                new ObjectParameter("TotalOther", totalOther) :
+                new ObjectParameter("TotalOther", typeof(decimal));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_Estimations_Detail_Save", sessionIDParameter, ticketIDParameter, designScreenParameter, totalDesignScreenParameter, logicScreenParameter, totalLogicScreenParameter, sPScreenParameter, totalSPScreenParameter, designReportParameter, totalDesignReportParameter, sPReportParameter, totalSPReportParameter, devUnitTestParameter, devFixBugParameter, otherParameter, totalOtherParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_Get_Result> ws_Ticket_Get(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_Get_Result>("ws_Ticket_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_Ticket_Get_ByDocumentID(string sessionID, Nullable<System.Guid> documentID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var documentIDParameter = documentID.HasValue ?
+                new ObjectParameter("DocumentID", documentID) :
+                new ObjectParameter("DocumentID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_Ticket_Get_ByDocumentID", sessionIDParameter, documentIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_Get_ForWeb_Result> ws_Ticket_Get_ForWeb(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_Get_ForWeb_Result>("ws_Ticket_Get_ForWeb", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual int ws_Ticket_GetCount(string sessionID, string criteria, string module, string status, string priority, string assignedTo, string owner, string category, string client, string dueDate, string createon)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var assignedToParameter = assignedTo != null ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(string));
+    
+            var ownerParameter = owner != null ?
+                new ObjectParameter("Owner", owner) :
+                new ObjectParameter("Owner", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var clientParameter = client != null ?
+                new ObjectParameter("Client", client) :
+                new ObjectParameter("Client", typeof(string));
+    
+            var dueDateParameter = dueDate != null ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(string));
+    
+            var createonParameter = createon != null ?
+                new ObjectParameter("Createon", createon) :
+                new ObjectParameter("Createon", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_GetCount", sessionIDParameter, criteriaParameter, moduleParameter, statusParameter, priorityParameter, assignedToParameter, ownerParameter, categoryParameter, clientParameter, dueDateParameter, createonParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_GetRelative_Result> ws_Ticket_GetRelative(string sessionID, string ticketKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketKeyParameter = ticketKey != null ?
+                new ObjectParameter("TicketKey", ticketKey) :
+                new ObjectParameter("TicketKey", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_GetRelative_Result>("ws_Ticket_GetRelative", sessionIDParameter, ticketKeyParameter);
+        }
+    
+        public virtual int ws_Ticket_GetWeekTicketForTO(string sessionID, string ticketIDs)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDsParameter = ticketIDs != null ?
+                new ObjectParameter("TicketIDs", ticketIDs) :
+                new ObjectParameter("TicketIDs", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_GetWeekTicketForTO", sessionIDParameter, ticketIDsParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_Hotfix_Result> ws_Ticket_Hotfix(string sessionID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_Hotfix_Result>("ws_Ticket_Hotfix", sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_Ticket_InBuild_Delete(string sessionID, Nullable<int> ticketID, Nullable<int> buildID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_InBuild_Delete", sessionIDParameter, ticketIDParameter, buildIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_InBuild_List_Result> ws_Ticket_InBuild_List(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InBuild_List_Result>("ws_Ticket_InBuild_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual int ws_Ticket_InDev(string sessionID, string criteria, Nullable<int> clientID, string status, string userID, Nullable<System.DateTime> dueDate)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_InDev", sessionIDParameter, criteriaParameter, clientIDParameter, statusParameter, userIDParameter, dueDateParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_InWeek_Chart_Result> ws_Ticket_InWeek_Chart(string sessionID, Nullable<int> teamID, Nullable<int> tuanID, Nullable<int> type)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            var typeParameter = type.HasValue ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_Chart_Result>("ws_Ticket_InWeek_Chart", sessionIDParameter, teamIDParameter, tuanIDParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_InWeek_ForUser_Result> ws_Ticket_InWeek_ForUser(string sessionID, Nullable<int> userID, Nullable<int> tuanID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_ForUser_Result>("ws_Ticket_InWeek_ForUser", sessionIDParameter, userIDParameter, tuanIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_InWeek_Get_Result> ws_Ticket_InWeek_Get(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_Get_Result>("ws_Ticket_InWeek_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_InWeek_List_Result> ws_Ticket_InWeek_List(string sessionID, Nullable<int> tuanID, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_List_Result>("ws_Ticket_InWeek_List", sessionIDParameter, tuanIDParameter, teamIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_InWeek_Raw_List_Result> ws_Ticket_InWeek_Raw_List(string sessionID, Nullable<int> tuanID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_Raw_List_Result>("ws_Ticket_InWeek_Raw_List", sessionIDParameter, tuanIDParameter);
+        }
+    
+        public virtual int ws_Ticket_InWeek_Save(string sessionID, Nullable<int> ticketID, Nullable<int> teamID, Nullable<int> tuanID, Nullable<bool> isPhatSinh, Nullable<bool> isDelete, Nullable<int> userID, Nullable<System.DateTime> deadlineCR, string note)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            var isPhatSinhParameter = isPhatSinh.HasValue ?
+                new ObjectParameter("IsPhatSinh", isPhatSinh) :
+                new ObjectParameter("IsPhatSinh", typeof(bool));
+    
+            var isDeleteParameter = isDelete.HasValue ?
+                new ObjectParameter("IsDelete", isDelete) :
+                new ObjectParameter("IsDelete", typeof(bool));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var deadlineCRParameter = deadlineCR.HasValue ?
+                new ObjectParameter("DeadlineCR", deadlineCR) :
+                new ObjectParameter("DeadlineCR", typeof(System.DateTime));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_InWeek_Save", sessionIDParameter, ticketIDParameter, teamIDParameter, tuanIDParameter, isPhatSinhParameter, isDeleteParameter, userIDParameter, deadlineCRParameter, noteParameter);
+        }
+    
+        public virtual int ws_Ticket_InWeek_Update(string sessionID, Nullable<int> ticketID, Nullable<int> primaryDev, Nullable<int> primaryQC, string yN, string note, Nullable<System.DateTime> deadlineTO, Nullable<System.DateTime> deadlineCR, string tuan, Nullable<int> teamID, Nullable<decimal> tOEST, Nullable<decimal> hourInWeek, Nullable<System.DateTime> deadlineQC, Nullable<System.DateTime> ngayGiaoQC, Nullable<decimal> eSTQC)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var primaryDevParameter = primaryDev.HasValue ?
+                new ObjectParameter("PrimaryDev", primaryDev) :
+                new ObjectParameter("PrimaryDev", typeof(int));
+    
+            var primaryQCParameter = primaryQC.HasValue ?
+                new ObjectParameter("PrimaryQC", primaryQC) :
+                new ObjectParameter("PrimaryQC", typeof(int));
+    
+            var yNParameter = yN != null ?
+                new ObjectParameter("YN", yN) :
+                new ObjectParameter("YN", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var deadlineTOParameter = deadlineTO.HasValue ?
+                new ObjectParameter("DeadlineTO", deadlineTO) :
+                new ObjectParameter("DeadlineTO", typeof(System.DateTime));
+    
+            var deadlineCRParameter = deadlineCR.HasValue ?
+                new ObjectParameter("DeadlineCR", deadlineCR) :
+                new ObjectParameter("DeadlineCR", typeof(System.DateTime));
+    
+            var tuanParameter = tuan != null ?
+                new ObjectParameter("Tuan", tuan) :
+                new ObjectParameter("Tuan", typeof(string));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            var tOESTParameter = tOEST.HasValue ?
+                new ObjectParameter("TOEST", tOEST) :
+                new ObjectParameter("TOEST", typeof(decimal));
+    
+            var hourInWeekParameter = hourInWeek.HasValue ?
+                new ObjectParameter("HourInWeek", hourInWeek) :
+                new ObjectParameter("HourInWeek", typeof(decimal));
+    
+            var deadlineQCParameter = deadlineQC.HasValue ?
+                new ObjectParameter("DeadlineQC", deadlineQC) :
+                new ObjectParameter("DeadlineQC", typeof(System.DateTime));
+    
+            var ngayGiaoQCParameter = ngayGiaoQC.HasValue ?
+                new ObjectParameter("NgayGiaoQC", ngayGiaoQC) :
+                new ObjectParameter("NgayGiaoQC", typeof(System.DateTime));
+    
+            var eSTQCParameter = eSTQC.HasValue ?
+                new ObjectParameter("ESTQC", eSTQC) :
+                new ObjectParameter("ESTQC", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_InWeek_Update", sessionIDParameter, ticketIDParameter, primaryDevParameter, primaryQCParameter, yNParameter, noteParameter, deadlineTOParameter, deadlineCRParameter, tuanParameter, teamIDParameter, tOESTParameter, hourInWeekParameter, deadlineQCParameter, ngayGiaoQCParameter, eSTQCParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_List_Result> ws_Ticket_List(string sessionID, Nullable<bool> isParent)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var isParentParameter = isParent.HasValue ?
+                new ObjectParameter("IsParent", isParent) :
+                new ObjectParameter("IsParent", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_List_Result>("ws_Ticket_List", sessionIDParameter, isParentParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_Menu_Save(string sessionID, Nullable<int> ticketID, Nullable<int> menuID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var menuIDParameter = menuID.HasValue ?
+                new ObjectParameter("MenuID", menuID) :
+                new ObjectParameter("MenuID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_Menu_Save", sessionIDParameter, ticketIDParameter, menuIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_Ticket_NewBuildID(Nullable<System.Guid> sessionID)
+        {
+            var sessionIDParameter = sessionID.HasValue ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_Ticket_NewBuildID", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_Ticket_NewTicketErrorID(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_Ticket_NewTicketErrorID", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_Ticket_NewTicketErrorProtocolID(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_Ticket_NewTicketErrorProtocolID", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_QC_Estimation_Detail_Get_Result> ws_Ticket_QC_Estimation_Detail_Get(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_QC_Estimation_Detail_Get_Result>("ws_Ticket_QC_Estimation_Detail_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_QC_Estimation_Detail_Save(string sessionID, Nullable<int> ticketID, string testcase, Nullable<decimal> total, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var testcaseParameter = testcase != null ?
+                new ObjectParameter("Testcase", testcase) :
+                new ObjectParameter("Testcase", typeof(string));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("Total", total) :
+                new ObjectParameter("Total", typeof(decimal));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_QC_Estimation_Detail_Save", sessionIDParameter, ticketIDParameter, testcaseParameter, totalParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_ReleaseNote_Save(string sessionID, Nullable<int> ticketID, Nullable<int> userID, string releaseNote)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var releaseNoteParameter = releaseNote != null ?
+                new ObjectParameter("ReleaseNote", releaseNote) :
+                new ObjectParameter("ReleaseNote", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_ReleaseNote_Save", sessionIDParameter, ticketIDParameter, userIDParameter, releaseNoteParameter);
+        }
+    
+        public virtual int ws_Ticket_RequestDeploy(string sessionID, Nullable<int> ticketID, Nullable<int> requestStatus)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var requestStatusParameter = requestStatus.HasValue ?
+                new ObjectParameter("RequestStatus", requestStatus) :
+                new ObjectParameter("RequestStatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_RequestDeploy", sessionIDParameter, ticketIDParameter, requestStatusParameter);
+        }
+    
+        public virtual int ws_Ticket_RequirementOriginal_Delete(string sessionID, Nullable<int> ticketID, string requirementCode)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var requirementCodeParameter = requirementCode != null ?
+                new ObjectParameter("RequirementCode", requirementCode) :
+                new ObjectParameter("RequirementCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_RequirementOriginal_Delete", sessionIDParameter, ticketIDParameter, requirementCodeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> ws_Ticket_Save(string sessionID, Nullable<int> ticketID, string priority, string status, Nullable<System.DateTime> dueDate, Nullable<int> assignedTo, string title, string description, string userID, string category, string module, string requestedBy, Nullable<int> primaryDEV, Nullable<int> primaryQC, Nullable<int> primaryBA, Nullable<int> ticketOwner, string comment, Nullable<System.DateTime> originalDeadline, Nullable<System.Guid> reportID, string typeScripts, Nullable<int> projectID, Nullable<int> parentTicketID, Nullable<bool> isParent, string ticketEmailID, string reportedBy, string releaseNote, Nullable<System.DateTime> reproduce, Nullable<System.Guid> documentID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var requestedByParameter = requestedBy != null ?
+                new ObjectParameter("RequestedBy", requestedBy) :
+                new ObjectParameter("RequestedBy", typeof(string));
+    
+            var primaryDEVParameter = primaryDEV.HasValue ?
+                new ObjectParameter("PrimaryDEV", primaryDEV) :
+                new ObjectParameter("PrimaryDEV", typeof(int));
+    
+            var primaryQCParameter = primaryQC.HasValue ?
+                new ObjectParameter("PrimaryQC", primaryQC) :
+                new ObjectParameter("PrimaryQC", typeof(int));
+    
+            var primaryBAParameter = primaryBA.HasValue ?
+                new ObjectParameter("PrimaryBA", primaryBA) :
+                new ObjectParameter("PrimaryBA", typeof(int));
+    
+            var ticketOwnerParameter = ticketOwner.HasValue ?
+                new ObjectParameter("TicketOwner", ticketOwner) :
+                new ObjectParameter("TicketOwner", typeof(int));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("Comment", comment) :
+                new ObjectParameter("Comment", typeof(string));
+    
+            var originalDeadlineParameter = originalDeadline.HasValue ?
+                new ObjectParameter("OriginalDeadline", originalDeadline) :
+                new ObjectParameter("OriginalDeadline", typeof(System.DateTime));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var typeScriptsParameter = typeScripts != null ?
+                new ObjectParameter("TypeScripts", typeScripts) :
+                new ObjectParameter("TypeScripts", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var parentTicketIDParameter = parentTicketID.HasValue ?
+                new ObjectParameter("ParentTicketID", parentTicketID) :
+                new ObjectParameter("ParentTicketID", typeof(int));
+    
+            var isParentParameter = isParent.HasValue ?
+                new ObjectParameter("IsParent", isParent) :
+                new ObjectParameter("IsParent", typeof(bool));
+    
+            var ticketEmailIDParameter = ticketEmailID != null ?
+                new ObjectParameter("TicketEmailID", ticketEmailID) :
+                new ObjectParameter("TicketEmailID", typeof(string));
+    
+            var reportedByParameter = reportedBy != null ?
+                new ObjectParameter("ReportedBy", reportedBy) :
+                new ObjectParameter("ReportedBy", typeof(string));
+    
+            var releaseNoteParameter = releaseNote != null ?
+                new ObjectParameter("ReleaseNote", releaseNote) :
+                new ObjectParameter("ReleaseNote", typeof(string));
+    
+            var reproduceParameter = reproduce.HasValue ?
+                new ObjectParameter("Reproduce", reproduce) :
+                new ObjectParameter("Reproduce", typeof(System.DateTime));
+    
+            var documentIDParameter = documentID.HasValue ?
+                new ObjectParameter("DocumentID", documentID) :
+                new ObjectParameter("DocumentID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ws_Ticket_Save", sessionIDParameter, ticketIDParameter, priorityParameter, statusParameter, dueDateParameter, assignedToParameter, titleParameter, descriptionParameter, userIDParameter, categoryParameter, moduleParameter, requestedByParameter, primaryDEVParameter, primaryQCParameter, primaryBAParameter, ticketOwnerParameter, commentParameter, originalDeadlineParameter, reportIDParameter, typeScriptsParameter, projectIDParameter, parentTicketIDParameter, isParentParameter, ticketEmailIDParameter, reportedByParameter, releaseNoteParameter, reproduceParameter, documentIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ws_Ticket_Save_ForWeb(string sessionID, Nullable<int> ticketID, string priority, string status, string dueDate, Nullable<int> assignedTo, string title, string description, string userID, string category, string module, string requestedBy, Nullable<System.Guid> reportID, string typeScripts, Nullable<int> projectID, Nullable<int> parentTicketID, Nullable<int> client, Nullable<bool> isParent, string childID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var dueDateParameter = dueDate != null ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(string));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var requestedByParameter = requestedBy != null ?
+                new ObjectParameter("RequestedBy", requestedBy) :
+                new ObjectParameter("RequestedBy", typeof(string));
+    
+            var reportIDParameter = reportID.HasValue ?
+                new ObjectParameter("ReportID", reportID) :
+                new ObjectParameter("ReportID", typeof(System.Guid));
+    
+            var typeScriptsParameter = typeScripts != null ?
+                new ObjectParameter("TypeScripts", typeScripts) :
+                new ObjectParameter("TypeScripts", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var parentTicketIDParameter = parentTicketID.HasValue ?
+                new ObjectParameter("ParentTicketID", parentTicketID) :
+                new ObjectParameter("ParentTicketID", typeof(int));
+    
+            var clientParameter = client.HasValue ?
+                new ObjectParameter("Client", client) :
+                new ObjectParameter("Client", typeof(int));
+    
+            var isParentParameter = isParent.HasValue ?
+                new ObjectParameter("IsParent", isParent) :
+                new ObjectParameter("IsParent", typeof(bool));
+    
+            var childIDParameter = childID != null ?
+                new ObjectParameter("ChildID", childID) :
+                new ObjectParameter("ChildID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ws_Ticket_Save_ForWeb", sessionIDParameter, ticketIDParameter, priorityParameter, statusParameter, dueDateParameter, assignedToParameter, titleParameter, descriptionParameter, userIDParameter, categoryParameter, moduleParameter, requestedByParameter, reportIDParameter, typeScriptsParameter, projectIDParameter, parentTicketIDParameter, clientParameter, isParentParameter, childIDParameter);
+        }
+    
+        public virtual int ws_Ticket_Search(string sessionID, string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildIDs, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow, Nullable<bool> isDeployed, Nullable<int> projectID, Nullable<bool> isParentTicket, Nullable<int> parentTicketID, Nullable<bool> isAllParent, string tag, Nullable<System.DateTime> createdDateFrom, Nullable<System.DateTime> createdDateThru, Nullable<System.DateTime> createdDate, Nullable<int> user_Login)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildIDsParameter = buildIDs != null ?
+                new ObjectParameter("BuildIDs", buildIDs) :
+                new ObjectParameter("BuildIDs", typeof(string));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var isParentTicketParameter = isParentTicket.HasValue ?
+                new ObjectParameter("IsParentTicket", isParentTicket) :
+                new ObjectParameter("IsParentTicket", typeof(bool));
+    
+            var parentTicketIDParameter = parentTicketID.HasValue ?
+                new ObjectParameter("ParentTicketID", parentTicketID) :
+                new ObjectParameter("ParentTicketID", typeof(int));
+    
+            var isAllParentParameter = isAllParent.HasValue ?
+                new ObjectParameter("IsAllParent", isAllParent) :
+                new ObjectParameter("IsAllParent", typeof(bool));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("tag", tag) :
+                new ObjectParameter("tag", typeof(string));
+    
+            var createdDateFromParameter = createdDateFrom.HasValue ?
+                new ObjectParameter("CreatedDateFrom", createdDateFrom) :
+                new ObjectParameter("CreatedDateFrom", typeof(System.DateTime));
+    
+            var createdDateThruParameter = createdDateThru.HasValue ?
+                new ObjectParameter("CreatedDateThru", createdDateThru) :
+                new ObjectParameter("CreatedDateThru", typeof(System.DateTime));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            var user_LoginParameter = user_Login.HasValue ?
+                new ObjectParameter("User_Login", user_Login) :
+                new ObjectParameter("User_Login", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Search", sessionIDParameter, criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildIDsParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter, isDeployedParameter, projectIDParameter, isParentTicketParameter, parentTicketIDParameter, isAllParentParameter, tagParameter, createdDateFromParameter, createdDateThruParameter, createdDateParameter, user_LoginParameter);
+        }
+    
+        public virtual int ws_Ticket_Search_ForWeb(string sessionID, Nullable<int> pageNumber, Nullable<int> pageSize, string ticketTab, string criteria, string module, string status, string priority, string assignedTo, string owner, string category, string client, string dueDate, string createon, string orderByDate)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            var ticketTabParameter = ticketTab != null ?
+                new ObjectParameter("TicketTab", ticketTab) :
+                new ObjectParameter("TicketTab", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var assignedToParameter = assignedTo != null ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(string));
+    
+            var ownerParameter = owner != null ?
+                new ObjectParameter("Owner", owner) :
+                new ObjectParameter("Owner", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var clientParameter = client != null ?
+                new ObjectParameter("Client", client) :
+                new ObjectParameter("Client", typeof(string));
+    
+            var dueDateParameter = dueDate != null ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(string));
+    
+            var createonParameter = createon != null ?
+                new ObjectParameter("Createon", createon) :
+                new ObjectParameter("Createon", typeof(string));
+    
+            var orderByDateParameter = orderByDate != null ?
+                new ObjectParameter("OrderByDate", orderByDate) :
+                new ObjectParameter("OrderByDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Search_ForWeb", sessionIDParameter, pageNumberParameter, pageSizeParameter, ticketTabParameter, criteriaParameter, moduleParameter, statusParameter, priorityParameter, assignedToParameter, ownerParameter, categoryParameter, clientParameter, dueDateParameter, createonParameter, orderByDateParameter);
+        }
+    
+        public virtual int ws_Ticket_Search_V2(string sessionID, string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildIDs, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow, Nullable<bool> isDeployed, Nullable<int> projectID, Nullable<bool> isParentTicket, Nullable<int> parentTicketID, Nullable<bool> isAllParent, string tag, Nullable<System.DateTime> createdDateFrom, Nullable<System.DateTime> createdDateThru, Nullable<System.DateTime> createdDate, Nullable<int> user_Login, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildIDsParameter = buildIDs != null ?
+                new ObjectParameter("BuildIDs", buildIDs) :
+                new ObjectParameter("BuildIDs", typeof(string));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var isParentTicketParameter = isParentTicket.HasValue ?
+                new ObjectParameter("IsParentTicket", isParentTicket) :
+                new ObjectParameter("IsParentTicket", typeof(bool));
+    
+            var parentTicketIDParameter = parentTicketID.HasValue ?
+                new ObjectParameter("ParentTicketID", parentTicketID) :
+                new ObjectParameter("ParentTicketID", typeof(int));
+    
+            var isAllParentParameter = isAllParent.HasValue ?
+                new ObjectParameter("IsAllParent", isAllParent) :
+                new ObjectParameter("IsAllParent", typeof(bool));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("tag", tag) :
+                new ObjectParameter("tag", typeof(string));
+    
+            var createdDateFromParameter = createdDateFrom.HasValue ?
+                new ObjectParameter("CreatedDateFrom", createdDateFrom) :
+                new ObjectParameter("CreatedDateFrom", typeof(System.DateTime));
+    
+            var createdDateThruParameter = createdDateThru.HasValue ?
+                new ObjectParameter("CreatedDateThru", createdDateThru) :
+                new ObjectParameter("CreatedDateThru", typeof(System.DateTime));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            var user_LoginParameter = user_Login.HasValue ?
+                new ObjectParameter("User_Login", user_Login) :
+                new ObjectParameter("User_Login", typeof(int));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Search_V2", sessionIDParameter, criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildIDsParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter, isDeployedParameter, projectIDParameter, isParentTicketParameter, parentTicketIDParameter, isAllParentParameter, tagParameter, createdDateFromParameter, createdDateThruParameter, createdDateParameter, user_LoginParameter, teamIDParameter);
+        }
+    
+        public virtual int ws_Ticket_Search_V3(string sessionID, string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildIDs, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow, Nullable<bool> isDeployed, Nullable<int> projectID, Nullable<bool> isParentTicket, Nullable<int> parentTicketID, Nullable<bool> isAllParent, string tag, Nullable<System.DateTime> createdDateFrom, Nullable<System.DateTime> createdDateThru, Nullable<System.DateTime> createdDate, Nullable<int> user_Login, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildIDsParameter = buildIDs != null ?
+                new ObjectParameter("BuildIDs", buildIDs) :
+                new ObjectParameter("BuildIDs", typeof(string));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var isParentTicketParameter = isParentTicket.HasValue ?
+                new ObjectParameter("IsParentTicket", isParentTicket) :
+                new ObjectParameter("IsParentTicket", typeof(bool));
+    
+            var parentTicketIDParameter = parentTicketID.HasValue ?
+                new ObjectParameter("ParentTicketID", parentTicketID) :
+                new ObjectParameter("ParentTicketID", typeof(int));
+    
+            var isAllParentParameter = isAllParent.HasValue ?
+                new ObjectParameter("IsAllParent", isAllParent) :
+                new ObjectParameter("IsAllParent", typeof(bool));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("tag", tag) :
+                new ObjectParameter("tag", typeof(string));
+    
+            var createdDateFromParameter = createdDateFrom.HasValue ?
+                new ObjectParameter("CreatedDateFrom", createdDateFrom) :
+                new ObjectParameter("CreatedDateFrom", typeof(System.DateTime));
+    
+            var createdDateThruParameter = createdDateThru.HasValue ?
+                new ObjectParameter("CreatedDateThru", createdDateThru) :
+                new ObjectParameter("CreatedDateThru", typeof(System.DateTime));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            var user_LoginParameter = user_Login.HasValue ?
+                new ObjectParameter("User_Login", user_Login) :
+                new ObjectParameter("User_Login", typeof(int));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Search_V3", sessionIDParameter, criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildIDsParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter, isDeployedParameter, projectIDParameter, isParentTicketParameter, parentTicketIDParameter, isAllParentParameter, tagParameter, createdDateFromParameter, createdDateThruParameter, createdDateParameter, user_LoginParameter, teamIDParameter);
+        }
+    
+        public virtual int ws_Ticket_Search_V4(string sessionID, string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildIDs, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow, Nullable<bool> isDeployed, Nullable<int> projectID, Nullable<bool> isParentTicket, Nullable<int> parentTicketID, Nullable<bool> isAllParent, string tag, Nullable<System.DateTime> createdDateFrom, Nullable<System.DateTime> createdDateThru, Nullable<System.DateTime> createdDate, Nullable<int> user_Login, Nullable<int> teamID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildIDsParameter = buildIDs != null ?
+                new ObjectParameter("BuildIDs", buildIDs) :
+                new ObjectParameter("BuildIDs", typeof(string));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var isParentTicketParameter = isParentTicket.HasValue ?
+                new ObjectParameter("IsParentTicket", isParentTicket) :
+                new ObjectParameter("IsParentTicket", typeof(bool));
+    
+            var parentTicketIDParameter = parentTicketID.HasValue ?
+                new ObjectParameter("ParentTicketID", parentTicketID) :
+                new ObjectParameter("ParentTicketID", typeof(int));
+    
+            var isAllParentParameter = isAllParent.HasValue ?
+                new ObjectParameter("IsAllParent", isAllParent) :
+                new ObjectParameter("IsAllParent", typeof(bool));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("tag", tag) :
+                new ObjectParameter("tag", typeof(string));
+    
+            var createdDateFromParameter = createdDateFrom.HasValue ?
+                new ObjectParameter("CreatedDateFrom", createdDateFrom) :
+                new ObjectParameter("CreatedDateFrom", typeof(System.DateTime));
+    
+            var createdDateThruParameter = createdDateThru.HasValue ?
+                new ObjectParameter("CreatedDateThru", createdDateThru) :
+                new ObjectParameter("CreatedDateThru", typeof(System.DateTime));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            var user_LoginParameter = user_Login.HasValue ?
+                new ObjectParameter("User_Login", user_Login) :
+                new ObjectParameter("User_Login", typeof(int));
+    
+            var teamIDParameter = teamID.HasValue ?
+                new ObjectParameter("TeamID", teamID) :
+                new ObjectParameter("TeamID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Search_V4", sessionIDParameter, criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildIDsParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter, isDeployedParameter, projectIDParameter, isParentTicketParameter, parentTicketIDParameter, isAllParentParameter, tagParameter, createdDateFromParameter, createdDateThruParameter, createdDateParameter, user_LoginParameter, teamIDParameter);
+        }
+    
+        public virtual int ws_Ticket_SearchDueDate(string sessionID, string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_SearchDueDate", sessionIDParameter, criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter);
+        }
+    
+        public virtual int ws_Ticket_SearchListNotRelative(string sessionID, string ticketKey, string criteria, Nullable<bool> getParent, Nullable<int> pageNumber, Nullable<int> pageSize)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketKeyParameter = ticketKey != null ?
+                new ObjectParameter("TicketKey", ticketKey) :
+                new ObjectParameter("TicketKey", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var getParentParameter = getParent.HasValue ?
+                new ObjectParameter("GetParent", getParent) :
+                new ObjectParameter("GetParent", typeof(bool));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_SearchListNotRelative", sessionIDParameter, ticketKeyParameter, criteriaParameter, getParentParameter, pageNumberParameter, pageSizeParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_SearchV1_Result> ws_Ticket_SearchV1(string sessionID, string criteria, Nullable<int> clientID, string priority, string status, string responsibility, string userID, string category, string module, Nullable<int> buildID, string buildIDs, string buildStatus, Nullable<System.DateTime> dueDate, Nullable<int> pDEV, Nullable<int> pQC, Nullable<int> createdByID, Nullable<bool> follow, Nullable<int> userIDFollow, Nullable<bool> isDeployed, Nullable<int> projectID, Nullable<bool> isParentTicket)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var criteriaParameter = criteria != null ?
+                new ObjectParameter("Criteria", criteria) :
+                new ObjectParameter("Criteria", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
+    
+            var moduleParameter = module != null ?
+                new ObjectParameter("Module", module) :
+                new ObjectParameter("Module", typeof(string));
+    
+            var buildIDParameter = buildID.HasValue ?
+                new ObjectParameter("BuildID", buildID) :
+                new ObjectParameter("BuildID", typeof(int));
+    
+            var buildIDsParameter = buildIDs != null ?
+                new ObjectParameter("BuildIDs", buildIDs) :
+                new ObjectParameter("BuildIDs", typeof(string));
+    
+            var buildStatusParameter = buildStatus != null ?
+                new ObjectParameter("buildStatus", buildStatus) :
+                new ObjectParameter("buildStatus", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var pDEVParameter = pDEV.HasValue ?
+                new ObjectParameter("PDEV", pDEV) :
+                new ObjectParameter("PDEV", typeof(int));
+    
+            var pQCParameter = pQC.HasValue ?
+                new ObjectParameter("PQC", pQC) :
+                new ObjectParameter("PQC", typeof(int));
+    
+            var createdByIDParameter = createdByID.HasValue ?
+                new ObjectParameter("CreatedByID", createdByID) :
+                new ObjectParameter("CreatedByID", typeof(int));
+    
+            var followParameter = follow.HasValue ?
+                new ObjectParameter("Follow", follow) :
+                new ObjectParameter("Follow", typeof(bool));
+    
+            var userIDFollowParameter = userIDFollow.HasValue ?
+                new ObjectParameter("UserIDFollow", userIDFollow) :
+                new ObjectParameter("UserIDFollow", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            var isParentTicketParameter = isParentTicket.HasValue ?
+                new ObjectParameter("IsParentTicket", isParentTicket) :
+                new ObjectParameter("IsParentTicket", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_SearchV1_Result>("ws_Ticket_SearchV1", sessionIDParameter, criteriaParameter, clientIDParameter, priorityParameter, statusParameter, responsibilityParameter, userIDParameter, categoryParameter, moduleParameter, buildIDParameter, buildIDsParameter, buildStatusParameter, dueDateParameter, pDEVParameter, pQCParameter, createdByIDParameter, followParameter, userIDFollowParameter, isDeployedParameter, projectIDParameter, isParentTicketParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_TM_Chart_Result> ws_Ticket_TM_Chart(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_TM_Chart_Result>("ws_Ticket_TM_Chart", sessionIDParameter);
+        }
+    
+        public virtual int ws_Ticket_TM_Estimation(string sessionID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_TM_Estimation", sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_Ticket_TM_Search(string sessionID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_TM_Search", sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_Ticket_Update(string sessionID, Nullable<int> ticketID, string title, string comment)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("Comment", comment) :
+                new ObjectParameter("Comment", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Update", sessionIDParameter, ticketIDParameter, titleParameter, commentParameter);
+        }
+    
+        public virtual int ws_Ticket_Week_Delete(string sessionID, Nullable<int> weekID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var weekIDParameter = weekID.HasValue ?
+                new ObjectParameter("WeekID", weekID) :
+                new ObjectParameter("WeekID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Ticket_Week_Delete", sessionIDParameter, weekIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_Ticket_Week_List_Result> ws_Ticket_Week_List(string sessionID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_Week_List_Result>("ws_Ticket_Week_List", sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Ticket_Week_Save(string sessionID, Nullable<int> iD, string weekName, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var weekNameParameter = weekName != null ?
+                new ObjectParameter("WeekName", weekName) :
+                new ObjectParameter("WeekName", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Ticket_Week_Save", sessionIDParameter, iDParameter, weekNameParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketClients_Delete(string sessionID, string ticketID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketClients_Delete", sessionIDParameter, ticketIDParameter, clientIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketClients_List_Result> ws_TicketClients_List(string sessionID, string ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketClients_List_Result>("ws_TicketClients_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketClients_ListByTicketID_Result> ws_TicketClients_ListByTicketID(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketClients_ListByTicketID_Result>("ws_TicketClients_ListByTicketID", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual int ws_TicketClients_ListByUser(string sessionID, string userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketClients_ListByUser", sessionIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketClients_Save(string sessionID, Nullable<int> ticketID, Nullable<int> clientID, string priority, Nullable<System.DateTime> dueDate, string status, Nullable<int> userID, Nullable<bool> isDeployed)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var priorityParameter = priority != null ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(string));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var isDeployedParameter = isDeployed.HasValue ?
+                new ObjectParameter("IsDeployed", isDeployed) :
+                new ObjectParameter("IsDeployed", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketClients_Save", sessionIDParameter, ticketIDParameter, clientIDParameter, priorityParameter, dueDateParameter, statusParameter, userIDParameter, isDeployedParameter);
+        }
+    
+        public virtual int ws_TicketCompleted_Save(string sessionID, Nullable<int> ticketID, Nullable<System.DateTime> completedOn, Nullable<int> completedBy)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var completedOnParameter = completedOn.HasValue ?
+                new ObjectParameter("CompletedOn", completedOn) :
+                new ObjectParameter("CompletedOn", typeof(System.DateTime));
+    
+            var completedByParameter = completedBy.HasValue ?
+                new ObjectParameter("CompletedBy", completedBy) :
+                new ObjectParameter("CompletedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketCompleted_Save", sessionIDParameter, ticketIDParameter, completedOnParameter, completedByParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketCheck_Result> ws_TicketCheck(Nullable<System.DateTime> lastcheck)
+        {
+            var lastcheckParameter = lastcheck.HasValue ?
+                new ObjectParameter("Lastcheck", lastcheck) :
+                new ObjectParameter("Lastcheck", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketCheck_Result>("ws_TicketCheck", lastcheckParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketDLLs_Delete(string sessionID, Nullable<int> seq, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketDLLs_Delete", sessionIDParameter, seqParameter, ticketIDParameter);
+        }
+    
+        public virtual int ws_TicketDLLs_List(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketDLLs_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketDLLs_Save(string sessionID, Nullable<int> seq, Nullable<int> ticketID, string fileName, Nullable<int> userID, Nullable<int> revision_SVN)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var revision_SVNParameter = revision_SVN.HasValue ?
+                new ObjectParameter("Revision_SVN", revision_SVN) :
+                new ObjectParameter("Revision_SVN", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketDLLs_Save", sessionIDParameter, seqParameter, ticketIDParameter, fileNameParameter, userIDParameter, revision_SVNParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketEmails_Save(string sessionID, Nullable<int> ticketID, Nullable<System.Guid> mailMessageKey)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var mailMessageKeyParameter = mailMessageKey.HasValue ?
+                new ObjectParameter("MailMessageKey", mailMessageKey) :
+                new ObjectParameter("MailMessageKey", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketEmails_Save", sessionIDParameter, ticketIDParameter, mailMessageKeyParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketErrors_GetByTicketID_Result> ws_TicketErrors_GetByTicketID(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketErrors_GetByTicketID_Result>("ws_TicketErrors_GetByTicketID", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketErrors_Save(string sessionID, Nullable<int> errorID, Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var errorIDParameter = errorID.HasValue ?
+                new ObjectParameter("ErrorID", errorID) :
+                new ObjectParameter("ErrorID", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketErrors_Save", sessionIDParameter, errorIDParameter, ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketEstimations_GetByTicketID_Result> ws_TicketEstimations_GetByTicketID(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketEstimations_GetByTicketID_Result>("ws_TicketEstimations_GetByTicketID", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketEstimations_Save(string sessionID, Nullable<int> ticketID, string bA, string qC, string dEV, string bA_Real, string qC_Real, string dEV_Real, string dSS, string lCS, string sPS, string dSR, string sPR, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var bAParameter = bA != null ?
+                new ObjectParameter("BA", bA) :
+                new ObjectParameter("BA", typeof(string));
+    
+            var qCParameter = qC != null ?
+                new ObjectParameter("QC", qC) :
+                new ObjectParameter("QC", typeof(string));
+    
+            var dEVParameter = dEV != null ?
+                new ObjectParameter("DEV", dEV) :
+                new ObjectParameter("DEV", typeof(string));
+    
+            var bA_RealParameter = bA_Real != null ?
+                new ObjectParameter("BA_Real", bA_Real) :
+                new ObjectParameter("BA_Real", typeof(string));
+    
+            var qC_RealParameter = qC_Real != null ?
+                new ObjectParameter("QC_Real", qC_Real) :
+                new ObjectParameter("QC_Real", typeof(string));
+    
+            var dEV_RealParameter = dEV_Real != null ?
+                new ObjectParameter("DEV_Real", dEV_Real) :
+                new ObjectParameter("DEV_Real", typeof(string));
+    
+            var dSSParameter = dSS != null ?
+                new ObjectParameter("DSS", dSS) :
+                new ObjectParameter("DSS", typeof(string));
+    
+            var lCSParameter = lCS != null ?
+                new ObjectParameter("LCS", lCS) :
+                new ObjectParameter("LCS", typeof(string));
+    
+            var sPSParameter = sPS != null ?
+                new ObjectParameter("SPS", sPS) :
+                new ObjectParameter("SPS", typeof(string));
+    
+            var dSRParameter = dSR != null ?
+                new ObjectParameter("DSR", dSR) :
+                new ObjectParameter("DSR", typeof(string));
+    
+            var sPRParameter = sPR != null ?
+                new ObjectParameter("SPR", sPR) :
+                new ObjectParameter("SPR", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketEstimations_Save", sessionIDParameter, ticketIDParameter, bAParameter, qCParameter, dEVParameter, bA_RealParameter, qC_RealParameter, dEV_RealParameter, dSSParameter, lCSParameter, sPSParameter, dSRParameter, sPRParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketEstimations_TM_Save(string sessionID, Nullable<int> ticketID, string qC, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var qCParameter = qC != null ?
+                new ObjectParameter("QC", qC) :
+                new ObjectParameter("QC", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketEstimations_TM_Save", sessionIDParameter, ticketIDParameter, qCParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketFeature_Save(string sessionID, Nullable<int> ticketID, string featureCode, Nullable<int> userID, string deleteYN)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var featureCodeParameter = featureCode != null ?
+                new ObjectParameter("FeatureCode", featureCode) :
+                new ObjectParameter("FeatureCode", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var deleteYNParameter = deleteYN != null ?
+                new ObjectParameter("DeleteYN", deleteYN) :
+                new ObjectParameter("DeleteYN", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketFeature_Save", sessionIDParameter, ticketIDParameter, featureCodeParameter, userIDParameter, deleteYNParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketFiles_Delete(string sessionID, Nullable<int> seq, string ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketFiles_Delete", sessionIDParameter, seqParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketFiles_FileData_Result> ws_TicketFiles_FileData(string sessionID, Nullable<int> seq, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketFiles_FileData_Result>("ws_TicketFiles_FileData", sessionIDParameter, seqParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketFiles_GetFileData_By_Seq_Result> ws_TicketFiles_GetFileData_By_Seq(string sessionID, Nullable<int> seq)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketFiles_GetFileData_By_Seq_Result>("ws_TicketFiles_GetFileData_By_Seq", sessionIDParameter, seqParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketFiles_List_Result> ws_TicketFiles_List(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketFiles_List_Result>("ws_TicketFiles_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketFiles_LogList_ForWeb_Result> ws_TicketFiles_LogList_ForWeb(string sessionID, string ticketID, Nullable<int> pageNumber, Nullable<int> pageSize)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketFiles_LogList_ForWeb_Result>("ws_TicketFiles_LogList_ForWeb", sessionIDParameter, ticketIDParameter, pageNumberParameter, pageSizeParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketFiles_Save_Result> ws_TicketFiles_Save(string sessionID, Nullable<int> seq, Nullable<int> ticketID, string fileName, string fileData, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var fileDataParameter = fileData != null ?
+                new ObjectParameter("FileData", fileData) :
+                new ObjectParameter("FileData", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketFiles_Save_Result>("ws_TicketFiles_Save", sessionIDParameter, seqParameter, ticketIDParameter, fileNameParameter, fileDataParameter, userIDParameter);
+        }
+    
+        public virtual int ws_TicketFollow_AssignTo_Users(Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketFollow_AssignTo_Users", ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual int ws_TicketFollow_Delete(string sessionID, Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketFollow_Delete", sessionIDParameter, ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketFollow_Get(string sessionID, Nullable<int> ticketID, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketFollow_Get", sessionIDParameter, ticketIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketFollow_List_Result> ws_TicketFollow_List(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketFollow_List_Result>("ws_TicketFollow_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketFollow_Save(string sessionID, Nullable<int> ticketID, Nullable<int> userID, string userFollowList)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var userFollowListParameter = userFollowList != null ?
+                new ObjectParameter("UserFollowList", userFollowList) :
+                new ObjectParameter("UserFollowList", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketFollow_Save", sessionIDParameter, ticketIDParameter, userIDParameter, userFollowListParameter);
+        }
+    
+        public virtual int ws_TicketHistory_ListByTicketID(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketHistory_ListByTicketID", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual int ws_TicketHistory_ListByTicketID_ForWeb(string sessionID, Nullable<int> ticketID, Nullable<int> pageNumber, Nullable<int> pageSize)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketHistory_ListByTicketID_ForWeb", sessionIDParameter, ticketIDParameter, pageNumberParameter, pageSizeParameter);
+        }
+    
+        public virtual int ws_TicketHistory_Save(string sessionID, Nullable<int> ticketID, Nullable<int> changedBy, Nullable<int> assignedFrom, Nullable<int> assignedTo, string fromStatus, string toStatus, string fromPriority, string toPriority)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var changedByParameter = changedBy.HasValue ?
+                new ObjectParameter("ChangedBy", changedBy) :
+                new ObjectParameter("ChangedBy", typeof(int));
+    
+            var assignedFromParameter = assignedFrom.HasValue ?
+                new ObjectParameter("AssignedFrom", assignedFrom) :
+                new ObjectParameter("AssignedFrom", typeof(int));
+    
+            var assignedToParameter = assignedTo.HasValue ?
+                new ObjectParameter("AssignedTo", assignedTo) :
+                new ObjectParameter("AssignedTo", typeof(int));
+    
+            var fromStatusParameter = fromStatus != null ?
+                new ObjectParameter("FromStatus", fromStatus) :
+                new ObjectParameter("FromStatus", typeof(string));
+    
+            var toStatusParameter = toStatus != null ?
+                new ObjectParameter("ToStatus", toStatus) :
+                new ObjectParameter("ToStatus", typeof(string));
+    
+            var fromPriorityParameter = fromPriority != null ?
+                new ObjectParameter("FromPriority", fromPriority) :
+                new ObjectParameter("FromPriority", typeof(string));
+    
+            var toPriorityParameter = toPriority != null ?
+                new ObjectParameter("ToPriority", toPriority) :
+                new ObjectParameter("ToPriority", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketHistory_Save", sessionIDParameter, ticketIDParameter, changedByParameter, assignedFromParameter, assignedToParameter, fromStatusParameter, toStatusParameter, fromPriorityParameter, toPriorityParameter);
+        }
+    
+        public virtual int ws_TicketHistoryLog_ListByProjectID(string sessionID, Nullable<int> projectID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketHistoryLog_ListByProjectID", sessionIDParameter, projectIDParameter);
+        }
+    
+        public virtual int ws_TicketInWeekRaw_Save(string sessionID, Nullable<int> tuanID, Nullable<int> ticketID, string note, string uuTien, Nullable<System.DateTime> deadlineCR, string team)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var uuTienParameter = uuTien != null ?
+                new ObjectParameter("UuTien", uuTien) :
+                new ObjectParameter("UuTien", typeof(string));
+    
+            var deadlineCRParameter = deadlineCR.HasValue ?
+                new ObjectParameter("DeadlineCR", deadlineCR) :
+                new ObjectParameter("DeadlineCR", typeof(System.DateTime));
+    
+            var teamParameter = team != null ?
+                new ObjectParameter("Team", team) :
+                new ObjectParameter("Team", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketInWeekRaw_Save", sessionIDParameter, tuanIDParameter, ticketIDParameter, noteParameter, uuTienParameter, deadlineCRParameter, teamParameter);
+        }
+    
+        public virtual int ws_TicketNotes_Delete(string sessionID, Nullable<int> seq)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketNotes_Delete", sessionIDParameter, seqParameter);
+        }
+    
+        public virtual int ws_TicketNotes_Get(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketNotes_Get", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketNotes_Get_ForWeb_Result> ws_TicketNotes_Get_ForWeb(string sessionID, string ticketID, Nullable<int> pageNumber, Nullable<int> pageSize)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            var pageNumberParameter = pageNumber.HasValue ?
+                new ObjectParameter("PageNumber", pageNumber) :
+                new ObjectParameter("PageNumber", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketNotes_Get_ForWeb_Result>("ws_TicketNotes_Get_ForWeb", sessionIDParameter, ticketIDParameter, pageNumberParameter, pageSizeParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketNotes_GetBySeq(string sessionID, Nullable<int> seq)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketNotes_GetBySeq", sessionIDParameter, seqParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketNotes_Save(string sessionID, Nullable<int> ticketID, string note, Nullable<int> userID, Nullable<int> seq)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var seqParameter = seq.HasValue ?
+                new ObjectParameter("Seq", seq) :
+                new ObjectParameter("Seq", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketNotes_Save", sessionIDParameter, ticketIDParameter, noteParameter, userIDParameter, seqParameter);
+        }
+    
+        public virtual int ws_TicketProject_GetByProjectID(string sessionID, Nullable<int> projectID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketProject_GetByProjectID", sessionIDParameter, projectIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketProject_GetByTicketID_Result> ws_TicketProject_GetByTicketID(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketProject_GetByTicketID_Result>("ws_TicketProject_GetByTicketID", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketProject_Save(string sessionID, Nullable<int> ticketID, Nullable<int> projectID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var projectIDParameter = projectID.HasValue ?
+                new ObjectParameter("ProjectID", projectID) :
+                new ObjectParameter("ProjectID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketProject_Save", sessionIDParameter, ticketIDParameter, projectIDParameter);
+        }
+    
+        public virtual int ws_TicketRaw_Delete(string sessionID, Nullable<int> ticketID, Nullable<int> tuanID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var tuanIDParameter = tuanID.HasValue ?
+                new ObjectParameter("TuanID", tuanID) :
+                new ObjectParameter("TuanID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketRaw_Delete", sessionIDParameter, ticketIDParameter, tuanIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketReview_List_Result> ws_TicketReview_List(Nullable<int> devID)
+        {
+            var devIDParameter = devID.HasValue ?
+                new ObjectParameter("DevID", devID) :
+                new ObjectParameter("DevID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketReview_List_Result>("ws_TicketReview_List", devIDParameter);
+        }
+    
+        public virtual int ws_TicketReview_Save(string sessionID, Nullable<int> ticketID, string note, string status)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketReview_Save", sessionIDParameter, ticketIDParameter, noteParameter, statusParameter);
+        }
+    
+        public virtual int ws_TicketSVN_Link(Nullable<int> ticketID, Nullable<int> revision_SVN, string linkSVN_File, Nullable<int> userID, string sessionID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var revision_SVNParameter = revision_SVN.HasValue ?
+                new ObjectParameter("Revision_SVN", revision_SVN) :
+                new ObjectParameter("Revision_SVN", typeof(int));
+    
+            var linkSVN_FileParameter = linkSVN_File != null ?
+                new ObjectParameter("LinkSVN_File", linkSVN_File) :
+                new ObjectParameter("LinkSVN_File", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketSVN_Link", ticketIDParameter, revision_SVNParameter, linkSVN_FileParameter, userIDParameter, sessionIDParameter);
+        }
+    
+        public virtual int ws_TicketSVN_Link_Delete_ALL(string sessionID, Nullable<int> ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_TicketSVN_Link_Delete_ALL", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketSVN_Link_Get_Result> ws_TicketSVN_Link_Get(Nullable<int> ticketID, string sessionID)
+        {
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketSVN_Link_Get_Result>("ws_TicketSVN_Link_Get", ticketIDParameter, sessionIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketTags_Delete(string sessionID, Nullable<int> ticketID, string tag)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("Tag", tag) :
+                new ObjectParameter("Tag", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketTags_Delete", sessionIDParameter, ticketIDParameter, tagParameter);
+        }
+    
+        public virtual ObjectResult<ws_TicketTags_List_Result> ws_TicketTags_List(string sessionID, string ticketID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID != null ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_TicketTags_List_Result>("ws_TicketTags_List", sessionIDParameter, ticketIDParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_TicketTags_Save(string sessionID, Nullable<int> ticketID, string tag, Nullable<int> userID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var tagParameter = tag != null ?
+                new ObjectParameter("Tag", tag) :
+                new ObjectParameter("Tag", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_TicketTags_Save", sessionIDParameter, ticketIDParameter, tagParameter, userIDParameter);
+        }
+    
+        public virtual int ws_Tool_Deploy_Update_Note(string sessionID, Nullable<int> ticketID, string clientName, Nullable<int> createdBy)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var ticketIDParameter = ticketID.HasValue ?
+                new ObjectParameter("TicketID", ticketID) :
+                new ObjectParameter("TicketID", typeof(int));
+    
+            var clientNameParameter = clientName != null ?
+                new ObjectParameter("ClientName", clientName) :
+                new ObjectParameter("ClientName", typeof(string));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_Tool_Deploy_Update_Note", sessionIDParameter, ticketIDParameter, clientNameParameter, createdByParameter);
+        }
+    
+        public virtual ObjectResult<ws_User_List_Result> ws_User_List(string sessionID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_User_List_Result>("ws_User_List", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_User_List_Dev_Result> ws_User_List_Dev(string sessionID, Nullable<int> iD)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_User_List_Dev_Result>("ws_User_List_Dev", sessionIDParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<ws_User_Login_Result> ws_User_Login(string sessionID, string userName, string password)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_User_Login_Result>("ws_User_Login", sessionIDParameter, userNameParameter, passwordParameter);
+        }
+    
+        public virtual int ws_User_Search(string sessionID, string responsibility)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ws_User_Search", sessionIDParameter, responsibilityParameter);
+        }
+    
+        public virtual ObjectResult<string> ws_Users_Save(string sessionID, Nullable<int> iD, string responsibility, string firstName, string lastName, string email, string tel, Nullable<int> clientID, string userName, string pASSWORD, Nullable<int> userID, string passwordEmail)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var responsibilityParameter = responsibility != null ?
+                new ObjectParameter("Responsibility", responsibility) :
+                new ObjectParameter("Responsibility", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var telParameter = tel != null ?
+                new ObjectParameter("Tel", tel) :
+                new ObjectParameter("Tel", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var pASSWORDParameter = pASSWORD != null ?
+                new ObjectParameter("PASSWORD", pASSWORD) :
+                new ObjectParameter("PASSWORD", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var passwordEmailParameter = passwordEmail != null ?
+                new ObjectParameter("PasswordEmail", passwordEmail) :
+                new ObjectParameter("PasswordEmail", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ws_Users_Save", sessionIDParameter, iDParameter, responsibilityParameter, firstNameParameter, lastNameParameter, emailParameter, telParameter, clientIDParameter, userNameParameter, pASSWORDParameter, userIDParameter, passwordEmailParameter);
+        }
+    
+        public virtual ObjectResult<ws_Week_List_Result> ws_Week_List(string sessionID, Nullable<int> clientID)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Week_List_Result>("ws_Week_List", sessionIDParameter, clientIDParameter);
+        }
     }
 }

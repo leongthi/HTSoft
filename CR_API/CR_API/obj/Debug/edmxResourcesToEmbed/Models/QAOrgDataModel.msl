@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QAOrgModelStoreContainer" CdmEntityContainer="QAOrgDBContext">
+  <EntityContainerMapping StorageEntityContainer="QAOrgModelStoreContainer" CdmEntityContainer="QAOrgEntities">
     <EntitySetMapping Name="Builds">
       <EntityTypeMapping TypeName="QAOrgModel.Builds">
         <MappingFragment StoreEntitySet="Builds">
@@ -1462,5 +1462,2819 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Tickets_ClientView">
+      <EntityTypeMapping TypeName="QAOrgModel.Tickets_ClientView">
+        <MappingFragment StoreEntitySet="Tickets_ClientView">
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Ticket" ColumnName="Ticket" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets_MorningMeetingView">
+      <EntityTypeMapping TypeName="QAOrgModel.Tickets_MorningMeetingView">
+        <MappingFragment StoreEntitySet="Tickets_MorningMeetingView">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Due_Date" ColumnName="Due Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="QAOrgModel.Store.fnSplitString" FunctionImportName="fnSplitString">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.fnSplitString_Result">
+          <ScalarProperty Name="splitdata" ColumnName="splitdata" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="QAOrgModel.Store.func_Split" FunctionImportName="func_Split">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.func_Split_Result">
+          <ScalarProperty Name="RowId" ColumnName="RowId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="QAOrgModel.Store.func_SplitString" FunctionImportName="func_SplitString">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.func_SplitString_Result">
+          <ScalarProperty Name="RowId" ColumnName="RowId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="QAOrgModel.Store.Split" FunctionImportName="Split">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.Split_Result">
+          <ScalarProperty Name="RowId" ColumnName="RowId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="job_" FunctionName="QAOrgModel.Store.job_" />
+    <FunctionImportMapping FunctionImportName="job_SendEmails_DanhsachHotfix" FunctionName="QAOrgModel.Store.job_SendEmails_DanhsachHotfix" />
+    <FunctionImportMapping FunctionImportName="job_SendEmails_Tickets" FunctionName="QAOrgModel.Store.job_SendEmails_Tickets" />
+    <FunctionImportMapping FunctionImportName="proc_Tickets_BAView" FunctionName="QAOrgModel.Store.proc_Tickets_BAView">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.proc_Tickets_BAView_Result">
+          <ScalarProperty Name="C_" ColumnName="#" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_Tickets_BigDeploy" FunctionName="QAOrgModel.Store.proc_Tickets_BigDeploy">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.proc_Tickets_BigDeploy_Result">
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_Tickets_ClientView" FunctionName="QAOrgModel.Store.proc_Tickets_ClientView" />
+    <FunctionImportMapping FunctionImportName="proc_Tickets_DeployingFrom" FunctionName="QAOrgModel.Store.proc_Tickets_DeployingFrom" />
+    <FunctionImportMapping FunctionImportName="proc_Tickets_PerClient" FunctionName="QAOrgModel.Store.proc_Tickets_PerClient" />
+    <FunctionImportMapping FunctionImportName="proc_Tickets_ToClose" FunctionName="QAOrgModel.Store.proc_Tickets_ToClose" />
+    <FunctionImportMapping FunctionImportName="proc_Tickets_ToRemind" FunctionName="QAOrgModel.Store.proc_Tickets_ToRemind" />
+    <FunctionImportMapping FunctionImportName="proc_Tickets_ToReview" FunctionName="QAOrgModel.Store.proc_Tickets_ToReview" />
+    <FunctionImportMapping FunctionImportName="rep_LoadReportBug" FunctionName="QAOrgModel.Store.rep_LoadReportBug" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QAOrgModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_Builds_Get" FunctionName="QAOrgModel.Store.sp_Builds_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Builds_Get_Result">
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Builds_List" FunctionName="QAOrgModel.Store.sp_Builds_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Builds_List_Result">
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Builds_Save" FunctionName="QAOrgModel.Store.sp_Builds_Save" />
+    <FunctionImportMapping FunctionImportName="sp_Builds_Search" FunctionName="QAOrgModel.Store.sp_Builds_Search" />
+    <FunctionImportMapping FunctionImportName="sp_Client_List" FunctionName="QAOrgModel.Store.sp_Client_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Client_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Create_L_Reports" FunctionName="QAOrgModel.Store.sp_Create_L_Reports" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QAOrgModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_DLLs_List" FunctionName="QAOrgModel.Store.sp_DLLs_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_DLLs_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DLLName" ColumnName="DLLName" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QAOrgModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QAOrgModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QAOrgModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helptext2" FunctionName="QAOrgModel.Store.sp_helptext2" />
+    <FunctionImportMapping FunctionImportName="sp_Installer_Delete" FunctionName="QAOrgModel.Store.sp_Installer_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_Installer_File" FunctionName="QAOrgModel.Store.sp_Installer_File" />
+    <FunctionImportMapping FunctionImportName="sp_Installer_Get" FunctionName="QAOrgModel.Store.sp_Installer_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Installer_Get_Result">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Installer_List" FunctionName="QAOrgModel.Store.sp_Installer_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Installer_List_Result">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Installer_Save" FunctionName="QAOrgModel.Store.sp_Installer_Save" />
+    <FunctionImportMapping FunctionImportName="sp_L_Customer_List" FunctionName="QAOrgModel.Store.sp_L_Customer_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_Customer_List_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+          <ScalarProperty Name="CustomerShortName" ColumnName="CustomerShortName" />
+          <ScalarProperty Name="HospitalCouncil" ColumnName="HospitalCouncil" />
+          <ScalarProperty Name="CoQuanCapTren" ColumnName="CoQuanCapTren" />
+          <ScalarProperty Name="QHNS" ColumnName="QHNS" />
+          <ScalarProperty Name="Routing" ColumnName="Routing" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="CustomerNote" ColumnName="CustomerNote" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="TaxPharmacy" ColumnName="TaxPharmacy" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CoQuanCapTrenVietTat" ColumnName="CoQuanCapTrenVietTat" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Watermark" ColumnName="Watermark" />
+          <ScalarProperty Name="LastDeployTime" ColumnName="LastDeployTime" />
+          <ScalarProperty Name="UsernameBHYT" ColumnName="UsernameBHYT" />
+          <ScalarProperty Name="PasswordBHYT" ColumnName="PasswordBHYT" />
+          <ScalarProperty Name="DauMocDo_XN" ColumnName="DauMocDo_XN" />
+          <ScalarProperty Name="DauMocDo_CDHA" ColumnName="DauMocDo_CDHA" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Banner_NoiSoi" ColumnName="Banner_NoiSoi" />
+          <ScalarProperty Name="Banner_XN" ColumnName="Banner_XN" />
+          <ScalarProperty Name="NguoiDaiDien" ColumnName="NguoiDaiDien" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="TenTTRutGon" ColumnName="TenTTRutGon" />
+          <ScalarProperty Name="khamBHYT" ColumnName="khamBHYT" />
+          <ScalarProperty Name="ChoPhepGuiTinNhan" ColumnName="ChoPhepGuiTinNhan" />
+          <ScalarProperty Name="Customer_DiachiTruSoChinh" ColumnName="Customer_DiachiTruSoChinh" />
+          <ScalarProperty Name="Customer_Branch" ColumnName="Customer_Branch" />
+          <ScalarProperty Name="LogoHeader" ColumnName="LogoHeader" />
+          <ScalarProperty Name="CoSoChinhYN" ColumnName="CoSoChinhYN" />
+          <ScalarProperty Name="CustomerNoUnicode" ColumnName="CustomerNoUnicode" />
+          <ScalarProperty Name="IsHienThiDiaDiemThucHienTiem" ColumnName="IsHienThiDiaDiemThucHienTiem" />
+          <ScalarProperty Name="FormatCungCapDichVu" ColumnName="FormatCungCapDichVu" />
+          <ScalarProperty Name="PrefixBarcodeLab" ColumnName="PrefixBarcodeLab" />
+          <ScalarProperty Name="ProvinceText" ColumnName="ProvinceText" />
+          <ScalarProperty Name="Hotline" ColumnName="Hotline" />
+          <ScalarProperty Name="WardID" ColumnName="WardID" />
+          <ScalarProperty Name="WardName" ColumnName="WardName" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="LogoHeaderA5" ColumnName="LogoHeaderA5" />
+          <ScalarProperty Name="MaCSDuocQG" ColumnName="MaCSDuocQG" />
+          <ScalarProperty Name="CheckSumFacID" ColumnName="CheckSumFacID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_CustomerByReportID_List" FunctionName="QAOrgModel.Store.sp_L_CustomerByReportID_List" />
+    <FunctionImportMapping FunctionImportName="sp_L_CustomerByReportID_ListV2" FunctionName="QAOrgModel.Store.sp_L_CustomerByReportID_ListV2" />
+    <FunctionImportMapping FunctionImportName="sp_L_Custumer_Report" FunctionName="QAOrgModel.Store.sp_L_Custumer_Report" />
+    <FunctionImportMapping FunctionImportName="sp_L_Lookup_List" FunctionName="QAOrgModel.Store.sp_L_Lookup_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_Lookup_List_Result">
+          <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+          <ScalarProperty Name="LookupValue" ColumnName="LookupValue" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_Report_Param" FunctionName="QAOrgModel.Store.sp_L_Report_Param" />
+    <FunctionImportMapping FunctionImportName="sp_L_ReportCollumsDetails_Copy" FunctionName="QAOrgModel.Store.sp_L_ReportCollumsDetails_Copy" />
+    <FunctionImportMapping FunctionImportName="sp_L_ReportCollumsDetails_List" FunctionName="QAOrgModel.Store.sp_L_ReportCollumsDetails_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_ReportCollumsDetails_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CollumIndex" ColumnName="CollumIndex" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="TableNo" ColumnName="TableNo" />
+          <ScalarProperty Name="CollumName" ColumnName="CollumName" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="CollumType" ColumnName="CollumType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DevDescription" ColumnName="DevDescription" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Table" ColumnName="Table" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="Dev_Type" ColumnName="Dev_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_ReportInfo_Delete" FunctionName="QAOrgModel.Store.sp_L_ReportInfo_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_L_ReportInfo_List" FunctionName="QAOrgModel.Store.sp_L_ReportInfo_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_ReportInfo_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OutputType" ColumnName="OutputType" />
+          <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="FooterFontSize" ColumnName="FooterFontSize" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Report_ID" ColumnName="Report_ID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DataProc" ColumnName="DataProc" />
+          <ScalarProperty Name="ProgID" ColumnName="ProgID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_ReportParam_Delete" FunctionName="QAOrgModel.Store.sp_L_ReportParam_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_L_ReportParam_List" FunctionName="QAOrgModel.Store.sp_L_ReportParam_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_ReportParam_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+          <ScalarProperty Name="ParamDescripsion" ColumnName="ParamDescripsion" />
+          <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+          <ScalarProperty Name="IsMandostory" ColumnName="IsMandostory" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="Option" ColumnName="Option" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_Reports_delete" FunctionName="QAOrgModel.Store.sp_L_Reports_delete" />
+    <FunctionImportMapping FunctionImportName="sp_L_Reports_DeleteAll" FunctionName="QAOrgModel.Store.sp_L_Reports_DeleteAll" />
+    <FunctionImportMapping FunctionImportName="sp_L_Reports_Get" FunctionName="QAOrgModel.Store.sp_L_Reports_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_Reports_Get_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NotesTester" ColumnName="NotesTester" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_Reports_List" FunctionName="QAOrgModel.Store.sp_L_Reports_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_Reports_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NotesTester" ColumnName="NotesTester" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_Reports1_List" FunctionName="QAOrgModel.Store.sp_L_Reports1_List" />
+    <FunctionImportMapping FunctionImportName="sp_L_Reports2_List" FunctionName="QAOrgModel.Store.sp_L_Reports2_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_Reports2_List_Result">
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_ReportsCollumsDetail_List" FunctionName="QAOrgModel.Store.sp_L_ReportsCollumsDetail_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_ReportsCollumsDetail_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CollumIndex" ColumnName="CollumIndex" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="TableNo" ColumnName="TableNo" />
+          <ScalarProperty Name="CollumName" ColumnName="CollumName" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="CollumType" ColumnName="CollumType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DevDescription" ColumnName="DevDescription" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Table" ColumnName="Table" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="Dev_Type" ColumnName="Dev_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_TicketReport_Deploy" FunctionName="QAOrgModel.Store.sp_L_TicketReport_Deploy">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_L_TicketReport_Deploy_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ununicode" ColumnName="Title_Ununicode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDateAsInt" ColumnName="CreatedDateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_L_TicketReport_DEV" FunctionName="QAOrgModel.Store.sp_L_TicketReport_DEV" />
+    <FunctionImportMapping FunctionImportName="sp_MemoTemplates_Delete" FunctionName="QAOrgModel.Store.sp_MemoTemplates_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_MemoTemplates_List" FunctionName="QAOrgModel.Store.sp_MemoTemplates_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_MemoTemplates_List_Result">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MemoTemplates_Save" FunctionName="QAOrgModel.Store.sp_MemoTemplates_Save" />
+    <FunctionImportMapping FunctionImportName="sp_Menu_List" FunctionName="QAOrgModel.Store.sp_Menu_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Menu_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QAOrgModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_ScriptsDeploy_List" FunctionName="QAOrgModel.Store.sp_ScriptsDeploy_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_ScriptsDeploy_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="CustomerList" ColumnName="CustomerList" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ScriptsDeploy_Save" FunctionName="QAOrgModel.Store.sp_ScriptsDeploy_Save" />
+    <FunctionImportMapping FunctionImportName="sp_ScriptsDeploy_Update" FunctionName="QAOrgModel.Store.sp_ScriptsDeploy_Update" />
+    <FunctionImportMapping FunctionImportName="sp_TA_MoiTruongDay_List" FunctionName="QAOrgModel.Store.sp_TA_MoiTruongDay_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_TA_MoiTruongDay_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EnvName" ColumnName="EnvName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ticket_Delete" FunctionName="QAOrgModel.Store.sp_Ticket_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_Ticket_Get" FunctionName="QAOrgModel.Store.sp_Ticket_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_Ticket_Get_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ununicode" ColumnName="Title_Ununicode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDateAsInt" ColumnName="CreatedDateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Ticket_NewBuildID" FunctionName="QAOrgModel.Store.sp_Ticket_NewBuildID" />
+    <FunctionImportMapping FunctionImportName="sp_Ticket_NewTicketID" FunctionName="QAOrgModel.Store.sp_Ticket_NewTicketID" />
+    <FunctionImportMapping FunctionImportName="sp_Ticket_Save_deleted" FunctionName="QAOrgModel.Store.sp_Ticket_Save_deleted" />
+    <FunctionImportMapping FunctionImportName="sp_Ticket_Search_deleted" FunctionName="QAOrgModel.Store.sp_Ticket_Search_deleted" />
+    <FunctionImportMapping FunctionImportName="sp_Ticket_SearchDueDate" FunctionName="QAOrgModel.Store.sp_Ticket_SearchDueDate" />
+    <FunctionImportMapping FunctionImportName="sp_TicketClients_Delete" FunctionName="QAOrgModel.Store.sp_TicketClients_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_TicketClients_List" FunctionName="QAOrgModel.Store.sp_TicketClients_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_TicketClients_List_Result">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeployed" ColumnName="IsDeployed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TicketClients_Save" FunctionName="QAOrgModel.Store.sp_TicketClients_Save" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFiles_Delete" FunctionName="QAOrgModel.Store.sp_TicketFiles_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFiles_FileData" FunctionName="QAOrgModel.Store.sp_TicketFiles_FileData" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFiles_GetFileData_By_Seq" FunctionName="QAOrgModel.Store.sp_TicketFiles_GetFileData_By_Seq">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_TicketFiles_GetFileData_By_Seq_Result">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TicketFiles_List" FunctionName="QAOrgModel.Store.sp_TicketFiles_List" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFiles_Save" FunctionName="QAOrgModel.Store.sp_TicketFiles_Save" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFollow_Delete" FunctionName="QAOrgModel.Store.sp_TicketFollow_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFollow_Get" FunctionName="QAOrgModel.Store.sp_TicketFollow_Get" />
+    <FunctionImportMapping FunctionImportName="sp_TicketFollow_Save" FunctionName="QAOrgModel.Store.sp_TicketFollow_Save" />
+    <FunctionImportMapping FunctionImportName="sp_TicketHistory_List" FunctionName="QAOrgModel.Store.sp_TicketHistory_List" />
+    <FunctionImportMapping FunctionImportName="sp_TicketHistory_ListByTicketID" FunctionName="QAOrgModel.Store.sp_TicketHistory_ListByTicketID" />
+    <FunctionImportMapping FunctionImportName="sp_TicketHistory_Save" FunctionName="QAOrgModel.Store.sp_TicketHistory_Save" />
+    <FunctionImportMapping FunctionImportName="sp_TicketNotes_Delete" FunctionName="QAOrgModel.Store.sp_TicketNotes_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_TicketNotes_Get" FunctionName="QAOrgModel.Store.sp_TicketNotes_Get" />
+    <FunctionImportMapping FunctionImportName="sp_TicketNotes_GetBySeq" FunctionName="QAOrgModel.Store.sp_TicketNotes_GetBySeq" />
+    <FunctionImportMapping FunctionImportName="sp_TicketNotes_Save" FunctionName="QAOrgModel.Store.sp_TicketNotes_Save" />
+    <FunctionImportMapping FunctionImportName="sp_TicketTags_Delete" FunctionName="QAOrgModel.Store.sp_TicketTags_Delete" />
+    <FunctionImportMapping FunctionImportName="sp_TicketTags_List" FunctionName="QAOrgModel.Store.sp_TicketTags_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_TicketTags_List_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QAOrgModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_User_List" FunctionName="QAOrgModel.Store.sp_User_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_User_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordEmail" ColumnName="PasswordEmail" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_Login" FunctionName="QAOrgModel.Store.sp_User_Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.sp_User_Login_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_User_Search" FunctionName="QAOrgModel.Store.sp_User_Search" />
+    <FunctionImportMapping FunctionImportName="ws_Build_Ticket_InBuild_Get" FunctionName="QAOrgModel.Store.ws_Build_Ticket_InBuild_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Build_Ticket_InBuild_Get_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Builds_List" FunctionName="QAOrgModel.Store.ws_Builds_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Builds_List_Result">
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Builds_Save" FunctionName="QAOrgModel.Store.ws_Builds_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Builds_Search" FunctionName="QAOrgModel.Store.ws_Builds_Search" />
+    <FunctionImportMapping FunctionImportName="ws_BuildTicket_Edit" FunctionName="QAOrgModel.Store.ws_BuildTicket_Edit" />
+    <FunctionImportMapping FunctionImportName="ws_BuildTicket_Update_RequirementCode" FunctionName="QAOrgModel.Store.ws_BuildTicket_Update_RequirementCode" />
+    <FunctionImportMapping FunctionImportName="ws_BuildTickets_Save" FunctionName="QAOrgModel.Store.ws_BuildTickets_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Client_Get" FunctionName="QAOrgModel.Store.ws_Client_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Client_Get_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Client_List" FunctionName="QAOrgModel.Store.ws_Client_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Client_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Client_List_ByRunning" FunctionName="QAOrgModel.Store.ws_Client_List_ByRunning">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Client_List_ByRunning_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Client_Save" FunctionName="QAOrgModel.Store.ws_Client_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Clients_List" FunctionName="QAOrgModel.Store.ws_Clients_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Clients_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Clients_Save" FunctionName="QAOrgModel.Store.ws_Clients_Save" />
+    <FunctionImportMapping FunctionImportName="ws_ConnectionString_Get" FunctionName="QAOrgModel.Store.ws_ConnectionString_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_ConnectionString_Get_Result">
+          <ScalarProperty Name="CientName" ColumnName="CientName" />
+          <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_ConnectionString_List" FunctionName="QAOrgModel.Store.ws_ConnectionString_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_ConnectionString_List_Result">
+          <ScalarProperty Name="CientName" ColumnName="CientName" />
+          <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_CongViec_Delete" FunctionName="QAOrgModel.Store.ws_CongViec_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_CongViec_List" FunctionName="QAOrgModel.Store.ws_CongViec_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_CongViec_List_Result">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="MucDo" ColumnName="MucDo" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="MD" ColumnName="MD" />
+          <ScalarProperty Name="TT" ColumnName="TT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_CongViec_Save" FunctionName="QAOrgModel.Store.ws_CongViec_Save" />
+    <FunctionImportMapping FunctionImportName="ws_DanhSachPhanHeTamAnh_GetAll" FunctionName="QAOrgModel.Store.ws_DanhSachPhanHeTamAnh_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_DanhSachPhanHeTamAnh_GetAll_Result">
+          <ScalarProperty Name="PhanHeID" ColumnName="PhanHeID" />
+          <ScalarProperty Name="TenPhanHe" ColumnName="TenPhanHe" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_DuAn_ListAll" FunctionName="QAOrgModel.Store.ws_DuAn_ListAll" />
+    <FunctionImportMapping FunctionImportName="ws_Error_List" FunctionName="QAOrgModel.Store.ws_Error_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Error_List_Result">
+          <ScalarProperty Name="LocalIP" ColumnName="LocalIP" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="spName" ColumnName="spName" />
+          <ScalarProperty Name="spParameterQuery" ColumnName="spParameterQuery" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+          <ScalarProperty Name="StackTrade" ColumnName="StackTrade" />
+          <ScalarProperty Name="StackMessage" ColumnName="StackMessage" />
+          <ScalarProperty Name="StackSource" ColumnName="StackSource" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_helptext2" FunctionName="QAOrgModel.Store.ws_helptext2" />
+    <FunctionImportMapping FunctionImportName="ws_InstallCheck" FunctionName="QAOrgModel.Store.ws_InstallCheck">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_InstallCheck_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Installer_Delete" FunctionName="QAOrgModel.Store.ws_Installer_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_Installer_File" FunctionName="QAOrgModel.Store.ws_Installer_File" />
+    <FunctionImportMapping FunctionImportName="ws_Installer_Get" FunctionName="QAOrgModel.Store.ws_Installer_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Installer_Get_Result">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Installer_List" FunctionName="QAOrgModel.Store.ws_Installer_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Installer_List_Result">
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Installer_Save" FunctionName="QAOrgModel.Store.ws_Installer_Save" />
+    <FunctionImportMapping FunctionImportName="ws_KhachHangSuDungBaoCao" FunctionName="QAOrgModel.Store.ws_KhachHangSuDungBaoCao" />
+    <FunctionImportMapping FunctionImportName="ws_L_Attachment_Delete" FunctionName="QAOrgModel.Store.ws_L_Attachment_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_Attachment_List" FunctionName="QAOrgModel.Store.ws_L_Attachment_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Attachment_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Attachment_Save" FunctionName="QAOrgModel.Store.ws_L_Attachment_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_Customer_Get" FunctionName="QAOrgModel.Store.ws_L_Customer_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Customer_Get_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+          <ScalarProperty Name="CustomerShortName" ColumnName="CustomerShortName" />
+          <ScalarProperty Name="HospitalCouncil" ColumnName="HospitalCouncil" />
+          <ScalarProperty Name="CoQuanCapTren" ColumnName="CoQuanCapTren" />
+          <ScalarProperty Name="QHNS" ColumnName="QHNS" />
+          <ScalarProperty Name="Routing" ColumnName="Routing" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="CustomerNote" ColumnName="CustomerNote" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="TaxPharmacy" ColumnName="TaxPharmacy" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CoQuanCapTrenVietTat" ColumnName="CoQuanCapTrenVietTat" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Watermark" ColumnName="Watermark" />
+          <ScalarProperty Name="LastDeployTime" ColumnName="LastDeployTime" />
+          <ScalarProperty Name="UsernameBHYT" ColumnName="UsernameBHYT" />
+          <ScalarProperty Name="PasswordBHYT" ColumnName="PasswordBHYT" />
+          <ScalarProperty Name="DauMocDo_XN" ColumnName="DauMocDo_XN" />
+          <ScalarProperty Name="DauMocDo_CDHA" ColumnName="DauMocDo_CDHA" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Banner_NoiSoi" ColumnName="Banner_NoiSoi" />
+          <ScalarProperty Name="Banner_XN" ColumnName="Banner_XN" />
+          <ScalarProperty Name="NguoiDaiDien" ColumnName="NguoiDaiDien" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="TenTTRutGon" ColumnName="TenTTRutGon" />
+          <ScalarProperty Name="khamBHYT" ColumnName="khamBHYT" />
+          <ScalarProperty Name="ChoPhepGuiTinNhan" ColumnName="ChoPhepGuiTinNhan" />
+          <ScalarProperty Name="Customer_DiachiTruSoChinh" ColumnName="Customer_DiachiTruSoChinh" />
+          <ScalarProperty Name="Customer_Branch" ColumnName="Customer_Branch" />
+          <ScalarProperty Name="LogoHeader" ColumnName="LogoHeader" />
+          <ScalarProperty Name="CoSoChinhYN" ColumnName="CoSoChinhYN" />
+          <ScalarProperty Name="CustomerNoUnicode" ColumnName="CustomerNoUnicode" />
+          <ScalarProperty Name="IsHienThiDiaDiemThucHienTiem" ColumnName="IsHienThiDiaDiemThucHienTiem" />
+          <ScalarProperty Name="FormatCungCapDichVu" ColumnName="FormatCungCapDichVu" />
+          <ScalarProperty Name="PrefixBarcodeLab" ColumnName="PrefixBarcodeLab" />
+          <ScalarProperty Name="ProvinceText" ColumnName="ProvinceText" />
+          <ScalarProperty Name="Hotline" ColumnName="Hotline" />
+          <ScalarProperty Name="WardID" ColumnName="WardID" />
+          <ScalarProperty Name="WardName" ColumnName="WardName" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="LogoHeaderA5" ColumnName="LogoHeaderA5" />
+          <ScalarProperty Name="MaCSDuocQG" ColumnName="MaCSDuocQG" />
+          <ScalarProperty Name="CheckSumFacID" ColumnName="CheckSumFacID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Customer_List" FunctionName="QAOrgModel.Store.ws_L_Customer_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Customer_List_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+          <ScalarProperty Name="CustomerShortName" ColumnName="CustomerShortName" />
+          <ScalarProperty Name="HospitalCouncil" ColumnName="HospitalCouncil" />
+          <ScalarProperty Name="CoQuanCapTren" ColumnName="CoQuanCapTren" />
+          <ScalarProperty Name="QHNS" ColumnName="QHNS" />
+          <ScalarProperty Name="Routing" ColumnName="Routing" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="CustomerNote" ColumnName="CustomerNote" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="TaxPharmacy" ColumnName="TaxPharmacy" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CoQuanCapTrenVietTat" ColumnName="CoQuanCapTrenVietTat" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Watermark" ColumnName="Watermark" />
+          <ScalarProperty Name="LastDeployTime" ColumnName="LastDeployTime" />
+          <ScalarProperty Name="UsernameBHYT" ColumnName="UsernameBHYT" />
+          <ScalarProperty Name="PasswordBHYT" ColumnName="PasswordBHYT" />
+          <ScalarProperty Name="DauMocDo_XN" ColumnName="DauMocDo_XN" />
+          <ScalarProperty Name="DauMocDo_CDHA" ColumnName="DauMocDo_CDHA" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="Banner_NoiSoi" ColumnName="Banner_NoiSoi" />
+          <ScalarProperty Name="Banner_XN" ColumnName="Banner_XN" />
+          <ScalarProperty Name="NguoiDaiDien" ColumnName="NguoiDaiDien" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="TenTTRutGon" ColumnName="TenTTRutGon" />
+          <ScalarProperty Name="khamBHYT" ColumnName="khamBHYT" />
+          <ScalarProperty Name="ChoPhepGuiTinNhan" ColumnName="ChoPhepGuiTinNhan" />
+          <ScalarProperty Name="Customer_DiachiTruSoChinh" ColumnName="Customer_DiachiTruSoChinh" />
+          <ScalarProperty Name="Customer_Branch" ColumnName="Customer_Branch" />
+          <ScalarProperty Name="LogoHeader" ColumnName="LogoHeader" />
+          <ScalarProperty Name="CoSoChinhYN" ColumnName="CoSoChinhYN" />
+          <ScalarProperty Name="CustomerNoUnicode" ColumnName="CustomerNoUnicode" />
+          <ScalarProperty Name="IsHienThiDiaDiemThucHienTiem" ColumnName="IsHienThiDiaDiemThucHienTiem" />
+          <ScalarProperty Name="FormatCungCapDichVu" ColumnName="FormatCungCapDichVu" />
+          <ScalarProperty Name="PrefixBarcodeLab" ColumnName="PrefixBarcodeLab" />
+          <ScalarProperty Name="ProvinceText" ColumnName="ProvinceText" />
+          <ScalarProperty Name="Hotline" ColumnName="Hotline" />
+          <ScalarProperty Name="WardID" ColumnName="WardID" />
+          <ScalarProperty Name="WardName" ColumnName="WardName" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="LogoHeaderA5" ColumnName="LogoHeaderA5" />
+          <ScalarProperty Name="MaCSDuocQG" ColumnName="MaCSDuocQG" />
+          <ScalarProperty Name="CheckSumFacID" ColumnName="CheckSumFacID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Customer_Report_Delete" FunctionName="QAOrgModel.Store.ws_L_Customer_Report_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_Customer_Report_Save" FunctionName="QAOrgModel.Store.ws_L_Customer_Report_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_CustomerByReportID_List" FunctionName="QAOrgModel.Store.ws_L_CustomerByReportID_List" />
+    <FunctionImportMapping FunctionImportName="ws_L_Custumer_Report" FunctionName="QAOrgModel.Store.ws_L_Custumer_Report" />
+    <FunctionImportMapping FunctionImportName="ws_L_DLLs_Get" FunctionName="QAOrgModel.Store.ws_L_DLLs_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_DLLs_Get_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DLLName" ColumnName="DLLName" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_DLLs_Save" FunctionName="QAOrgModel.Store.ws_L_DLLs_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_DLLs_Update" FunctionName="QAOrgModel.Store.ws_L_DLLs_Update" />
+    <FunctionImportMapping FunctionImportName="ws_L_Features_GetMaxByModule" FunctionName="QAOrgModel.Store.ws_L_Features_GetMaxByModule" />
+    <FunctionImportMapping FunctionImportName="ws_L_Features_List" FunctionName="QAOrgModel.Store.ws_L_Features_List" />
+    <FunctionImportMapping FunctionImportName="ws_L_Features_Save" FunctionName="QAOrgModel.Store.ws_L_Features_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_Lookup_List" FunctionName="QAOrgModel.Store.ws_L_Lookup_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Lookup_List_Result">
+          <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+          <ScalarProperty Name="LookupValue" ColumnName="LookupValue" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Lookup_Status_List" FunctionName="QAOrgModel.Store.ws_L_Lookup_Status_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Lookup_Status_List_Result">
+          <ScalarProperty Name="LookupValue" ColumnName="LookupValue" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Module_List" FunctionName="QAOrgModel.Store.ws_L_Module_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Module_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_BoPhan_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_BoPhan_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_BoPhan_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaBP" ColumnName="MaBP" />
+          <ScalarProperty Name="TenBP" ColumnName="TenBP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_CongNo_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_CongNo_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_CongNo_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_CongNo_Get" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_CongNo_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_CongNo_ListAll" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_CongNo_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_CongNo_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ChucVu_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_ChucVu_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_ChucVu_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ChucVuKH_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_ChucVuKH_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_ChucVuKH_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_DuAn_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_DuAn_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_DuAn_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_DuAn_ListAll" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_DuAn_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_DuAn_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_DuAnChiTiet_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_DuAnChiTiet_Get" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_FileUpload_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_FileUpload_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_FileUpload_List" FunctionName="QAOrgModel.Store.ws_L_QLDA_FileUpload_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_FileUpload_List_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_FileUpload_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_FileUpload_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_GDDA_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_GDDA_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_GDDA_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_GDDA_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_GDDA_Get_Result">
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="SoNgayTre" ColumnName="SoNgayTre" />
+          <ScalarProperty Name="KhoKhan" ColumnName="KhoKhan" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_GDDA_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_GDDA_ListAll" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_GDDA_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_GDDA_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_GiaiDoan_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_GiaiDoan_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_GiaiDoan_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="TenGD" ColumnName="TenGD" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HangBenhVien_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_HangBenhVien_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_HangBenhVien_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HopDong_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_HopDong_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HopDong_List" FunctionName="QAOrgModel.Store.ws_L_QLDA_HopDong_List" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HopDong_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_HopDong_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HopDong_TreThanhToan" FunctionName="QAOrgModel.Store.ws_L_QLDA_HopDong_TreThanhToan" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HopDongChiTiet_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_HopDongChiTiet_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_HopDongChiTiet_Get_Result">
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="Nam" ColumnName="Nam" />
+          <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+          <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+          <ScalarProperty Name="UseYear" ColumnName="UseYear" />
+          <ScalarProperty Name="UseMonth" ColumnName="UseMonth" />
+          <ScalarProperty Name="MaThoiHan" ColumnName="MaThoiHan" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+          <ScalarProperty Name="NgayPhuLuc" ColumnName="NgayPhuLuc" />
+          <ScalarProperty Name="MaLoaiHD" ColumnName="MaLoaiHD" />
+          <ScalarProperty Name="MaLoaiTien" ColumnName="MaLoaiTien" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HoSoThanhToan_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_HoSoThanhToan_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HoSoThanhToan_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_HoSoThanhToan_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_HoSoThanhToan_Get_Result">
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="SoHSTT" ColumnName="SoHSTT" />
+          <ScalarProperty Name="NoiDungTT" ColumnName="NoiDungTT" />
+          <ScalarProperty Name="SoHoaDon" ColumnName="SoHoaDon" />
+          <ScalarProperty Name="NgayGuiHoSo" ColumnName="NgayGuiHoSo" />
+          <ScalarProperty Name="NgayKHNhanHS" ColumnName="NgayKHNhanHS" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HoSoThanhToan_List" FunctionName="QAOrgModel.Store.ws_L_QLDA_HoSoThanhToan_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_HoSoThanhToan_List_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaHSTT" ColumnName="MaHSTT" />
+          <ScalarProperty Name="NoiDungTT" ColumnName="NoiDungTT" />
+          <ScalarProperty Name="SoHoaDon" ColumnName="SoHoaDon" />
+          <ScalarProperty Name="NgayGuiHoSo" ColumnName="NgayGuiHoSo" />
+          <ScalarProperty Name="NgayKHNhanHS" ColumnName="NgayKHNhanHS" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_HoSoThanhToan_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_HoSoThanhToan_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_KhachHang_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_KhachHang_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_KhachHang_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_KhachHang_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_KhachHang_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="MaSoThue" ColumnName="MaSoThue" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TinhTP" ColumnName="TinhTP" />
+          <ScalarProperty Name="Quan" ColumnName="Quan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_KhachHang_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_KhachHang_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_KhuVuc_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_KhuVuc_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_KhuVuc_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaKV" ColumnName="MaKV" />
+          <ScalarProperty Name="TenKV" ColumnName="TenKV" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LichSuSale_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_LichSuSale_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LichSuSale_List" FunctionName="QAOrgModel.Store.ws_L_QLDA_LichSuSale_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LichSuSale_List_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="ThoiGianSale" ColumnName="ThoiGianSale" />
+          <ScalarProperty Name="MucDich" ColumnName="MucDich" />
+          <ScalarProperty Name="KetQua" ColumnName="KetQua" />
+          <ScalarProperty Name="KhoKhan" ColumnName="KhoKhan" />
+          <ScalarProperty Name="PhuongAn" ColumnName="PhuongAn" />
+          <ScalarProperty Name="YKienCapTren" ColumnName="YKienCapTren" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ThongTinTrangThai" ColumnName="ThongTinTrangThai" />
+          <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LichSuSale_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_LichSuSale_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LoaiCoSo_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_LoaiCoSo_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LoaiCoSo_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LoaiDoanhThu_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_LoaiDoanhThu_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LoaiDoanhThu_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaDT" ColumnName="MaDT" />
+          <ScalarProperty Name="TenDoanhThu" ColumnName="TenDoanhThu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenLoaiHinh" ColumnName="TenLoaiHinh" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LoaiHopDong_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_LoaiHopDong_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LoaiHopDong_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaLoaiHD" ColumnName="MaLoaiHD" />
+          <ScalarProperty Name="TenLoaiHopDong" ColumnName="TenLoaiHopDong" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LoaiNganh_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_LoaiNganh_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LoaiNganh_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenLoaiNganh" ColumnName="TenLoaiNganh" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_LoaiTien_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_LoaiTien_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_LoaiTien_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaLoaiTien" ColumnName="MaLoaiTien" />
+          <ScalarProperty Name="TenLoaiTien" ColumnName="TenLoaiTien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_MucDoUuTien_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_MucDoUuTien_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_MucDoUuTien_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThongTinMucDoUuTien" ColumnName="ThongTinMucDoUuTien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_NhanSu_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_NhanSu_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_NhanSu_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_NhanSu_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_NhanSu_Get_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="MaBoPhan" ColumnName="MaBoPhan" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_NhanSu_List" FunctionName="QAOrgModel.Store.ws_L_QLDA_NhanSu_List" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_NhanSu_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_NhanSu_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_NhomKH_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_NhomKH_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_NhomKH_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+          <ScalarProperty Name="NhomKH" ColumnName="NhomKH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_NhuCau_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_NhuCau_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_NhuCau_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThongTinNhuCau" ColumnName="ThongTinNhuCau" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_SoLanTre_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_SoLanTre_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_SoLanTre_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaLanTre" ColumnName="MaLanTre" />
+          <ScalarProperty Name="TenLanTre" ColumnName="TenLanTre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ThoiHan_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_ThoiHan_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_ThoiHan_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaThoiHan" ColumnName="MaThoiHan" />
+          <ScalarProperty Name="TenThoiHan" ColumnName="TenThoiHan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ThongTinLHKH_Delete" FunctionName="QAOrgModel.Store.ws_L_QLDA_ThongTinLHKH_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ThongTinLHKH_Get" FunctionName="QAOrgModel.Store.ws_L_QLDA_ThongTinLHKH_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_ThongTinLHKH_Get_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaDA" ColumnName="MaDA" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT1" ColumnName="SDT1" />
+          <ScalarProperty Name="SDT2" ColumnName="SDT2" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ThongTinLHKH_List" FunctionName="QAOrgModel.Store.ws_L_QLDA_ThongTinLHKH_List" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_ThongTinLHKH_Save" FunctionName="QAOrgModel.Store.ws_L_QLDA_ThongTinLHKH_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_QLDA_TrangThai_ListAll" FunctionName="QAOrgModel.Store.ws_L_QLDA_TrangThai_ListAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_QLDA_TrangThai_ListAll_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThongTinTrangThai" ColumnName="ThongTinTrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Report_Param" FunctionName="QAOrgModel.Store.ws_L_Report_Param" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportCollumsDetails_Copy" FunctionName="QAOrgModel.Store.ws_L_ReportCollumsDetails_Copy" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportCollumsDetails_Delete" FunctionName="QAOrgModel.Store.ws_L_ReportCollumsDetails_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportCollumsDetails_Delete_OnceColumn" FunctionName="QAOrgModel.Store.ws_L_ReportCollumsDetails_Delete_OnceColumn" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportCollumsDetails_List" FunctionName="QAOrgModel.Store.ws_L_ReportCollumsDetails_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_ReportCollumsDetails_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CollumIndex" ColumnName="CollumIndex" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="TableNo" ColumnName="TableNo" />
+          <ScalarProperty Name="CollumName" ColumnName="CollumName" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="CollumType" ColumnName="CollumType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DevDescription" ColumnName="DevDescription" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Table" ColumnName="Table" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="Dev_Type" ColumnName="Dev_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportCollumsDetails_Save" FunctionName="QAOrgModel.Store.ws_L_ReportCollumsDetails_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_Add_Get" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_Add_Get" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_Delete" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_Delete_OnceReportDetail" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_Delete_OnceReportDetail" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_Get_DataProc_ProgID" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_Get_DataProc_ProgID" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_List" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_ReportDetail_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DataProc" ColumnName="DataProc" />
+          <ScalarProperty Name="ProgID" ColumnName="ProgID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_New_Get" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_New_Get" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportDetail_Save" FunctionName="QAOrgModel.Store.ws_L_ReportDetail_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportInfo_Delete" FunctionName="QAOrgModel.Store.ws_L_ReportInfo_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportInfo_List" FunctionName="QAOrgModel.Store.ws_L_ReportInfo_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_ReportInfo_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OutputType" ColumnName="OutputType" />
+          <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="FooterFontSize" ColumnName="FooterFontSize" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Report_ID" ColumnName="Report_ID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DataProc" ColumnName="DataProc" />
+          <ScalarProperty Name="ProgID" ColumnName="ProgID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportInfo_Save" FunctionName="QAOrgModel.Store.ws_L_ReportInfo_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportParam_Delete" FunctionName="QAOrgModel.Store.ws_L_ReportParam_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportParam_Delete_OnceParam" FunctionName="QAOrgModel.Store.ws_L_ReportParam_Delete_OnceParam" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportParam_List" FunctionName="QAOrgModel.Store.ws_L_ReportParam_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_ReportParam_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+          <ScalarProperty Name="ParamDescripsion" ColumnName="ParamDescripsion" />
+          <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+          <ScalarProperty Name="IsMandostory" ColumnName="IsMandostory" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="Option" ColumnName="Option" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportParam_Save" FunctionName="QAOrgModel.Store.ws_L_ReportParam_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_Delete" FunctionName="QAOrgModel.Store.ws_L_Reports_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_DeleteAll" FunctionName="QAOrgModel.Store.ws_L_Reports_DeleteAll" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_Get" FunctionName="QAOrgModel.Store.ws_L_Reports_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Reports_Get_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NotesTester" ColumnName="NotesTester" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_GetDataProc" FunctionName="QAOrgModel.Store.ws_L_Reports_GetDataProc" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_GetNotesTester" FunctionName="QAOrgModel.Store.ws_L_Reports_GetNotesTester" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_GetProgID" FunctionName="QAOrgModel.Store.ws_L_Reports_GetProgID" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_List" FunctionName="QAOrgModel.Store.ws_L_Reports_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Reports_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="IsOnScreen" ColumnName="IsOnScreen" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NotesTester" ColumnName="NotesTester" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_List_ForWeb" FunctionName="QAOrgModel.Store.ws_L_Reports_List_ForWeb" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_ListAll" FunctionName="QAOrgModel.Store.ws_L_Reports_ListAll" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports_Save" FunctionName="QAOrgModel.Store.ws_L_Reports_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_Reports2_List" FunctionName="QAOrgModel.Store.ws_L_Reports2_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Reports2_List_Result">
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportsCollumsDetail_List" FunctionName="QAOrgModel.Store.ws_L_ReportsCollumsDetail_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_ReportsCollumsDetail_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CollumIndex" ColumnName="CollumIndex" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="TableNo" ColumnName="TableNo" />
+          <ScalarProperty Name="CollumName" ColumnName="CollumName" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="CollumType" ColumnName="CollumType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DevDescription" ColumnName="DevDescription" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Table" ColumnName="Table" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="Dev_Type" ColumnName="Dev_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportsSign_Delete" FunctionName="QAOrgModel.Store.ws_L_ReportsSign_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportsSign_Delete_OnceSign" FunctionName="QAOrgModel.Store.ws_L_ReportsSign_Delete_OnceSign" />
+    <FunctionImportMapping FunctionImportName="ws_L_ReportsSign_List" FunctionName="QAOrgModel.Store.ws_L_ReportsSign_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_ReportsSign_List_Result">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Values1" ColumnName="Values1" />
+          <ScalarProperty Name="Values2" ColumnName="Values2" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_ReportsSign_Save" FunctionName="QAOrgModel.Store.ws_L_ReportsSign_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_StoreProcedures_Delete" FunctionName="QAOrgModel.Store.ws_L_StoreProcedures_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_StoreProcedures_Get" FunctionName="QAOrgModel.Store.ws_L_StoreProcedures_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_StoreProcedures_Get_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDDLL" ColumnName="IDDLL" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_StoreProcedures_Save" FunctionName="QAOrgModel.Store.ws_L_StoreProcedures_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_Tags_List" FunctionName="QAOrgModel.Store.ws_L_Tags_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Tags_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_TeamMember_Delete" FunctionName="QAOrgModel.Store.ws_L_TeamMember_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_TeamMembers_Get" FunctionName="QAOrgModel.Store.ws_L_TeamMembers_Get" />
+    <FunctionImportMapping FunctionImportName="ws_L_TeamMembers_GetMember" FunctionName="QAOrgModel.Store.ws_L_TeamMembers_GetMember" />
+    <FunctionImportMapping FunctionImportName="ws_L_TeamMembers_Save" FunctionName="QAOrgModel.Store.ws_L_TeamMembers_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_Teams_Get" FunctionName="QAOrgModel.Store.ws_L_Teams_Get" />
+    <FunctionImportMapping FunctionImportName="ws_L_Teams_List" FunctionName="QAOrgModel.Store.ws_L_Teams_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_Teams_List_Result">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_Teams_Save" FunctionName="QAOrgModel.Store.ws_L_Teams_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_TeamTicket_GetByDev" FunctionName="QAOrgModel.Store.ws_L_TeamTicket_GetByDev">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_TeamTicket_GetByDev_Result">
+          <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="DoneInWeek" ColumnName="DoneInWeek" />
+          <ScalarProperty Name="Estimate" ColumnName="Estimate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Planning" ColumnName="Planning" />
+          <ScalarProperty Name="DevAssigned" ColumnName="DevAssigned" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_TeamTicket_GetByTO" FunctionName="QAOrgModel.Store.ws_L_TeamTicket_GetByTO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_TeamTicket_GetByTO_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ununicode" ColumnName="Title_Ununicode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDateAsInt" ColumnName="CreatedDateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Responsibility1" ColumnName="Responsibility1" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordEmail" ColumnName="PasswordEmail" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn1" ColumnName="CreatedOn1" />
+          <ScalarProperty Name="CreatedBy1" ColumnName="CreatedBy1" />
+          <ScalarProperty Name="ModifiedOn1" ColumnName="ModifiedOn1" />
+          <ScalarProperty Name="ModifiedBy1" ColumnName="ModifiedBy1" />
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="DevAssigned" ColumnName="DevAssigned" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_TicketErrorProtocol_ListByErrorID" FunctionName="QAOrgModel.Store.ws_L_TicketErrorProtocol_ListByErrorID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_TicketErrorProtocol_ListByErrorID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_TicketErrorProtocol_Save" FunctionName="QAOrgModel.Store.ws_L_TicketErrorProtocol_Save" />
+    <FunctionImportMapping FunctionImportName="ws_L_TicketErrors_Delete" FunctionName="QAOrgModel.Store.ws_L_TicketErrors_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_L_TicketErrors_List" FunctionName="QAOrgModel.Store.ws_L_TicketErrors_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_L_TicketErrors_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_L_TicketErrors_Save" FunctionName="QAOrgModel.Store.ws_L_TicketErrors_Save" />
+    <FunctionImportMapping FunctionImportName="ws_LoadTicketDetail" FunctionName="QAOrgModel.Store.ws_LoadTicketDetail" />
+    <FunctionImportMapping FunctionImportName="ws_LoadTuan" FunctionName="QAOrgModel.Store.ws_LoadTuan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_LoadTuan_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_LoadWeek" FunctionName="QAOrgModel.Store.ws_LoadWeek">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_LoadWeek_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Mail_Delete" FunctionName="QAOrgModel.Store.ws_Mail_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_Mail_Get" FunctionName="QAOrgModel.Store.ws_Mail_Get" />
+    <FunctionImportMapping FunctionImportName="ws_Mail_ListByUserID" FunctionName="QAOrgModel.Store.ws_Mail_ListByUserID" />
+    <FunctionImportMapping FunctionImportName="ws_Mail_ListNguoiNhan" FunctionName="QAOrgModel.Store.ws_Mail_ListNguoiNhan" />
+    <FunctionImportMapping FunctionImportName="ws_Mail_Save" FunctionName="QAOrgModel.Store.ws_Mail_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailAddress_Delete" FunctionName="QAOrgModel.Store.ws_MailAddress_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_MailAddress_Get" FunctionName="QAOrgModel.Store.ws_MailAddress_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_MailAddress_Get_Result">
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Host" ColumnName="Host" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_MailAddress_Save" FunctionName="QAOrgModel.Store.ws_MailAddress_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailAttachment_Delete" FunctionName="QAOrgModel.Store.ws_MailAttachment_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_MailAttachment_Get" FunctionName="QAOrgModel.Store.ws_MailAttachment_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_MailAttachment_Get_Result">
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_MailAttachment_Save" FunctionName="QAOrgModel.Store.ws_MailAttachment_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailFiles_List" FunctionName="QAOrgModel.Store.ws_MailFiles_List" />
+    <FunctionImportMapping FunctionImportName="ws_MailFiles_Save" FunctionName="QAOrgModel.Store.ws_MailFiles_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailHeader_Delete" FunctionName="QAOrgModel.Store.ws_MailHeader_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_MailHeader_Get" FunctionName="QAOrgModel.Store.ws_MailHeader_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_MailHeader_Get_Result">
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_MailHeader_Save" FunctionName="QAOrgModel.Store.ws_MailHeader_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_CreateTicket" FunctionName="QAOrgModel.Store.ws_MailMessage_CreateTicket" />
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_Delete" FunctionName="QAOrgModel.Store.ws_MailMessage_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_Get" FunctionName="QAOrgModel.Store.ws_MailMessage_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_MailMessage_Get_Result">
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+          <ScalarProperty Name="ImapMessageId" ColumnName="ImapMessageId" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="BodyEncoding" ColumnName="BodyEncoding" />
+          <ScalarProperty Name="IsBodyHtml" ColumnName="IsBodyHtml" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_GetByTicketID" FunctionName="QAOrgModel.Store.ws_MailMessage_GetByTicketID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_MailMessage_GetByTicketID_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Cc" ColumnName="Cc" />
+          <ScalarProperty Name="Bcc" ColumnName="Bcc" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_List" FunctionName="QAOrgModel.Store.ws_MailMessage_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_MailMessage_List_Result">
+          <ScalarProperty Name="MailMessageKey" ColumnName="MailMessageKey" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_Save" FunctionName="QAOrgModel.Store.ws_MailMessage_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailMessage_Update" FunctionName="QAOrgModel.Store.ws_MailMessage_Update" />
+    <FunctionImportMapping FunctionImportName="ws_MailSend_ListByUserID" FunctionName="QAOrgModel.Store.ws_MailSend_ListByUserID" />
+    <FunctionImportMapping FunctionImportName="ws_MailSender_Delete" FunctionName="QAOrgModel.Store.ws_MailSender_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_MailSender_Get" FunctionName="QAOrgModel.Store.ws_MailSender_Get" />
+    <FunctionImportMapping FunctionImportName="ws_MailSender_Save" FunctionName="QAOrgModel.Store.ws_MailSender_Save" />
+    <FunctionImportMapping FunctionImportName="ws_MailSender_UpdateIsRead" FunctionName="QAOrgModel.Store.ws_MailSender_UpdateIsRead" />
+    <FunctionImportMapping FunctionImportName="ws_Member_Get" FunctionName="QAOrgModel.Store.ws_Member_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Member_Get_Result">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Menu_List" FunctionName="QAOrgModel.Store.ws_Menu_List" />
+    <FunctionImportMapping FunctionImportName="ws_Menu_List_Org" FunctionName="QAOrgModel.Store.ws_Menu_List_Org">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Menu_List_Org_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Projects_Chart" FunctionName="QAOrgModel.Store.ws_Projects_Chart" />
+    <FunctionImportMapping FunctionImportName="ws_Projects_List" FunctionName="QAOrgModel.Store.ws_Projects_List" />
+    <FunctionImportMapping FunctionImportName="ws_Projects_ListBy" FunctionName="QAOrgModel.Store.ws_Projects_ListBy" />
+    <FunctionImportMapping FunctionImportName="ws_Projects_Save" FunctionName="QAOrgModel.Store.ws_Projects_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Projects_Search" FunctionName="QAOrgModel.Store.ws_Projects_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Projects_Search_Result">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="BA" ColumnName="BA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_ProjectUsers_ListByProjectID" FunctionName="QAOrgModel.Store.ws_ProjectUsers_ListByProjectID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_ProjectUsers_ListByProjectID_Result">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_ProjectUsers_Save" FunctionName="QAOrgModel.Store.ws_ProjectUsers_Save" />
+    <FunctionImportMapping FunctionImportName="ws_rep_LoadReportBug" FunctionName="QAOrgModel.Store.ws_rep_LoadReportBug" />
+    <FunctionImportMapping FunctionImportName="ws_ReportChild_List" FunctionName="QAOrgModel.Store.ws_ReportChild_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_ReportChild_List_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Description_Con" ColumnName="Description_Con" />
+          <ScalarProperty Name="DataProc" ColumnName="DataProc" />
+          <ScalarProperty Name="ProgID" ColumnName="ProgID" />
+          <ScalarProperty Name="Report_ID" ColumnName="Report_ID" />
+          <ScalarProperty Name="ReportName_Con" ColumnName="ReportName_Con" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_ReportforSup" FunctionName="QAOrgModel.Store.ws_ReportforSup" />
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_Delete" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_GetByBuilID" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_GetByBuilID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_RequirementOriginal_GetByBuilID_Result">
+          <ScalarProperty Name="Chon" ColumnName="Chon" />
+          <ScalarProperty Name="RequirementCode" ColumnName="RequirementCode" />
+          <ScalarProperty Name="BuilID" ColumnName="BuilID" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_GetByCode" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_GetByCode">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_RequirementOriginal_GetByCode_Result">
+          <ScalarProperty Name="Chon" ColumnName="Chon" />
+          <ScalarProperty Name="RequirementCode" ColumnName="RequirementCode" />
+          <ScalarProperty Name="BuilID" ColumnName="BuilID" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_List" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_RequirementOriginal_List_Result">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="RequirementCode" ColumnName="RequirementCode" />
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="TypeRequirement" ColumnName="TypeRequirement" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="URDID" ColumnName="URDID" />
+          <ScalarProperty Name="URDFileName" ColumnName="URDFileName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_List_ByTicket" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_List_ByTicket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_RequirementOriginal_List_ByTicket_Result">
+          <ScalarProperty Name="Chon" ColumnName="Chon" />
+          <ScalarProperty Name="RequirementCode" ColumnName="RequirementCode" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="TypeRequirement" ColumnName="TypeRequirement" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="URDID" ColumnName="URDID" />
+          <ScalarProperty Name="URDFileName" ColumnName="URDFileName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_Multi_Save" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_Multi_Save" />
+    <FunctionImportMapping FunctionImportName="ws_RequirementOriginal_Save" FunctionName="QAOrgModel.Store.ws_RequirementOriginal_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Status_List" FunctionName="QAOrgModel.Store.ws_Status_List" />
+    <FunctionImportMapping FunctionImportName="ws_SUP_Menu_List" FunctionName="QAOrgModel.Store.ws_SUP_Menu_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_SUP_Menu_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_SUP_Requirement_List" FunctionName="QAOrgModel.Store.ws_SUP_Requirement_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_SUP_Requirement_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_SUP_Search" FunctionName="QAOrgModel.Store.ws_SUP_Search" />
+    <FunctionImportMapping FunctionImportName="ws_TA_MoiTruongDay_List" FunctionName="QAOrgModel.Store.ws_TA_MoiTruongDay_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TA_MoiTruongDay_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EnvName" ColumnName="EnvName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TA_TicketXacNhanDayMoiTruong_Get" FunctionName="QAOrgModel.Store.ws_TA_TicketXacNhanDayMoiTruong_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TA_TicketXacNhanDayMoiTruong_Get_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="UserIDConfirm" ColumnName="UserIDConfirm" />
+          <ScalarProperty Name="Confirmer" ColumnName="Confirmer" />
+          <ScalarProperty Name="MoiTruongID" ColumnName="MoiTruongID" />
+          <ScalarProperty Name="MoiTruongName" ColumnName="MoiTruongName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TA_TicketXacNhanDayMoiTruong_Save" FunctionName="QAOrgModel.Store.ws_TA_TicketXacNhanDayMoiTruong_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TamAnhHospitalRequest_Delete" FunctionName="QAOrgModel.Store.ws_TamAnhHospitalRequest_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TamAnhHospitalRequest_GetAll" FunctionName="QAOrgModel.Store.ws_TamAnhHospitalRequest_GetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TamAnhHospitalRequest_GetAll_Result">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="VersionURD" ColumnName="VersionURD" />
+          <ScalarProperty Name="NameURD" ColumnName="NameURD" />
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TamAnhHospitalRequest_Save" FunctionName="QAOrgModel.Store.ws_TamAnhHospitalRequest_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Comfirm" FunctionName="QAOrgModel.Store.ws_Ticket_Comfirm" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Convert" FunctionName="QAOrgModel.Store.ws_Ticket_Convert" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Delete" FunctionName="QAOrgModel.Store.ws_Ticket_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Deploy_Get" FunctionName="QAOrgModel.Store.ws_Ticket_Deploy_Get" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Estimations_Detail_Get" FunctionName="QAOrgModel.Store.ws_Ticket_Estimations_Detail_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_Estimations_Detail_Get_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="DesignScreen" ColumnName="DesignScreen" />
+          <ScalarProperty Name="TotalDesignScreen" ColumnName="TotalDesignScreen" />
+          <ScalarProperty Name="LogicScreen" ColumnName="LogicScreen" />
+          <ScalarProperty Name="TotalLogicScreen" ColumnName="TotalLogicScreen" />
+          <ScalarProperty Name="SPScreen" ColumnName="SPScreen" />
+          <ScalarProperty Name="TotalSPScreen" ColumnName="TotalSPScreen" />
+          <ScalarProperty Name="DesignReport" ColumnName="DesignReport" />
+          <ScalarProperty Name="TotalDesignReport" ColumnName="TotalDesignReport" />
+          <ScalarProperty Name="SPReport" ColumnName="SPReport" />
+          <ScalarProperty Name="TotalSPReport" ColumnName="TotalSPReport" />
+          <ScalarProperty Name="DevUnitTest" ColumnName="DevUnitTest" />
+          <ScalarProperty Name="DevFixBug" ColumnName="DevFixBug" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="TotalOther" ColumnName="TotalOther" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Estimations_Detail_Save" FunctionName="QAOrgModel.Store.ws_Ticket_Estimations_Detail_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Get" FunctionName="QAOrgModel.Store.ws_Ticket_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_Get_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="RequestedByID" ColumnName="RequestedByID" />
+          <ScalarProperty Name="ThoiGianHoanThanh" ColumnName="ThoiGianHoanThanh" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="StatusReview" ColumnName="StatusReview" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Get_ByDocumentID" FunctionName="QAOrgModel.Store.ws_Ticket_Get_ByDocumentID" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Get_ForWeb" FunctionName="QAOrgModel.Store.ws_Ticket_Get_ForWeb">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_Get_ForWeb_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="AssignedToText" ColumnName="AssignedToText" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="ParentKey" ColumnName="ParentKey" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_GetCount" FunctionName="QAOrgModel.Store.ws_Ticket_GetCount" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_GetRelative" FunctionName="QAOrgModel.Store.ws_Ticket_GetRelative">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_GetRelative_Result">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_GetWeekTicketForTO" FunctionName="QAOrgModel.Store.ws_Ticket_GetWeekTicketForTO" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Hotfix" FunctionName="QAOrgModel.Store.ws_Ticket_Hotfix">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_Hotfix_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ununicode" ColumnName="Title_Ununicode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDateAsInt" ColumnName="CreatedDateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InBuild_Delete" FunctionName="QAOrgModel.Store.ws_Ticket_InBuild_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InBuild_List" FunctionName="QAOrgModel.Store.ws_Ticket_InBuild_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_InBuild_List_Result">
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InDev" FunctionName="QAOrgModel.Store.ws_Ticket_InDev" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_Chart" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_Chart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_InWeek_Chart_Result">
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_ForUser" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_ForUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_InWeek_ForUser_Result">
+          <ScalarProperty Name="TictketID" ColumnName="TictketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NgayGiaoQC" ColumnName="NgayGiaoQC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_Get" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_InWeek_Get_Result">
+          <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="TictketID" ColumnName="TictketID" />
+          <ScalarProperty Name="PrimaryDev" ColumnName="PrimaryDev" />
+          <ScalarProperty Name="ActualDev" ColumnName="ActualDev" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="ActualQC" ColumnName="ActualQC" />
+          <ScalarProperty Name="EstDev" ColumnName="EstDev" />
+          <ScalarProperty Name="TOEST" ColumnName="TOEST" />
+          <ScalarProperty Name="EstQC" ColumnName="EstQC" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="DeadlineTO" ColumnName="DeadlineTO" />
+          <ScalarProperty Name="DeadlineQC" ColumnName="DeadlineQC" />
+          <ScalarProperty Name="NgayGiaoQC" ColumnName="NgayGiaoQC" />
+          <ScalarProperty Name="DoOrNot" ColumnName="DoOrNot" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="IsOutOfWeek" ColumnName="IsOutOfWeek" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_List" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_InWeek_List_Result">
+          <ScalarProperty Name="TictketID" ColumnName="TictketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="ESTDEV" ColumnName="ESTDEV" />
+          <ScalarProperty Name="ESTQC" ColumnName="ESTQC" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="DeadlineTO" ColumnName="DeadlineTO" />
+          <ScalarProperty Name="DoOrNot" ColumnName="DoOrNot" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsOutOfWeek" ColumnName="IsOutOfWeek" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+          <ScalarProperty Name="TOEST" ColumnName="TOEST" />
+          <ScalarProperty Name="HourInWeek" ColumnName="HourInWeek" />
+          <ScalarProperty Name="TeamName1" ColumnName="TeamName1" />
+          <ScalarProperty Name="DeadlineQC" ColumnName="DeadlineQC" />
+          <ScalarProperty Name="NgayGiaoQC" ColumnName="NgayGiaoQC" />
+          <ScalarProperty Name="STTUuTien" ColumnName="STTUuTien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_Raw_List" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_Raw_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_InWeek_Raw_List_Result">
+          <ScalarProperty Name="Check" ColumnName="Check" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="TuanID" ColumnName="TuanID" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="SttUuTien" ColumnName="SttUuTien" />
+          <ScalarProperty Name="DeadlineCR" ColumnName="DeadlineCR" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="TicketID1" ColumnName="TicketID1" />
+          <ScalarProperty Name="TicketEmailID" ColumnName="TicketEmailID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ununicode" ColumnName="Title_Ununicode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDateAsInt" ColumnName="CreatedDateAsInt" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestedBy_CheckSum" ColumnName="RequestedBy_CheckSum" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PrimaryDEV" ColumnName="PrimaryDEV" />
+          <ScalarProperty Name="PrimaryQC" ColumnName="PrimaryQC" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="OrginalDeadline" ColumnName="OrginalDeadline" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TypeScripts" ColumnName="TypeScripts" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+          <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="ReleaseNote" ColumnName="ReleaseNote" />
+          <ScalarProperty Name="PrimaryBA" ColumnName="PrimaryBA" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+          <ScalarProperty Name="Reproduce" ColumnName="Reproduce" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_Save" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_InWeek_Update" FunctionName="QAOrgModel.Store.ws_Ticket_InWeek_Update" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_List" FunctionName="QAOrgModel.Store.ws_Ticket_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_List_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Menu_Save" FunctionName="QAOrgModel.Store.ws_Ticket_Menu_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_NewBuildID" FunctionName="QAOrgModel.Store.ws_Ticket_NewBuildID" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_NewTicketErrorID" FunctionName="QAOrgModel.Store.ws_Ticket_NewTicketErrorID" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_NewTicketErrorProtocolID" FunctionName="QAOrgModel.Store.ws_Ticket_NewTicketErrorProtocolID" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_QC_Estimation_Detail_Get" FunctionName="QAOrgModel.Store.ws_Ticket_QC_Estimation_Detail_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_QC_Estimation_Detail_Get_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Testcase" ColumnName="Testcase" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_QC_Estimation_Detail_Save" FunctionName="QAOrgModel.Store.ws_Ticket_QC_Estimation_Detail_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_ReleaseNote_Save" FunctionName="QAOrgModel.Store.ws_Ticket_ReleaseNote_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_RequestDeploy" FunctionName="QAOrgModel.Store.ws_Ticket_RequestDeploy" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_RequirementOriginal_Delete" FunctionName="QAOrgModel.Store.ws_Ticket_RequirementOriginal_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Save" FunctionName="QAOrgModel.Store.ws_Ticket_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Save_ForWeb" FunctionName="QAOrgModel.Store.ws_Ticket_Save_ForWeb" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Search" FunctionName="QAOrgModel.Store.ws_Ticket_Search" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Search_ForWeb" FunctionName="QAOrgModel.Store.ws_Ticket_Search_ForWeb" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Search_V2" FunctionName="QAOrgModel.Store.ws_Ticket_Search_V2" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Search_V3" FunctionName="QAOrgModel.Store.ws_Ticket_Search_V3" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Search_V4" FunctionName="QAOrgModel.Store.ws_Ticket_Search_V4" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_SearchDueDate" FunctionName="QAOrgModel.Store.ws_Ticket_SearchDueDate" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_SearchListNotRelative" FunctionName="QAOrgModel.Store.ws_Ticket_SearchListNotRelative" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_SearchV1" FunctionName="QAOrgModel.Store.ws_Ticket_SearchV1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_SearchV1_Result">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+          <ScalarProperty Name="BuildName" ColumnName="BuildName" />
+          <ScalarProperty Name="BuildDueDate" ColumnName="BuildDueDate" />
+          <ScalarProperty Name="StatusBuild" ColumnName="StatusBuild" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Responsibility1" ColumnName="Responsibility1" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AssignedToName" ColumnName="AssignedToName" />
+          <ScalarProperty Name="ForeColor" ColumnName="ForeColor" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+          <ScalarProperty Name="IsFollow" ColumnName="IsFollow" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ParentTicketID" ColumnName="ParentTicketID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_TM_Chart" FunctionName="QAOrgModel.Store.ws_Ticket_TM_Chart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_TM_Chart_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_TM_Estimation" FunctionName="QAOrgModel.Store.ws_Ticket_TM_Estimation" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_TM_Search" FunctionName="QAOrgModel.Store.ws_Ticket_TM_Search" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Update" FunctionName="QAOrgModel.Store.ws_Ticket_Update" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Week_Delete" FunctionName="QAOrgModel.Store.ws_Ticket_Week_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Week_List" FunctionName="QAOrgModel.Store.ws_Ticket_Week_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Ticket_Week_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WeekName" ColumnName="WeekName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_Ticket_Week_Save" FunctionName="QAOrgModel.Store.ws_Ticket_Week_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketClients_Delete" FunctionName="QAOrgModel.Store.ws_TicketClients_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketClients_List" FunctionName="QAOrgModel.Store.ws_TicketClients_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketClients_List_Result">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeployed" ColumnName="IsDeployed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketClients_ListByTicketID" FunctionName="QAOrgModel.Store.ws_TicketClients_ListByTicketID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketClients_ListByTicketID_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketClients_ListByUser" FunctionName="QAOrgModel.Store.ws_TicketClients_ListByUser" />
+    <FunctionImportMapping FunctionImportName="ws_TicketClients_Save" FunctionName="QAOrgModel.Store.ws_TicketClients_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketCompleted_Save" FunctionName="QAOrgModel.Store.ws_TicketCompleted_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketCheck" FunctionName="QAOrgModel.Store.ws_TicketCheck">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketCheck_Result">
+          <ScalarProperty Name="ChangedOn" ColumnName="ChangedOn" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketDLLs_Delete" FunctionName="QAOrgModel.Store.ws_TicketDLLs_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketDLLs_List" FunctionName="QAOrgModel.Store.ws_TicketDLLs_List" />
+    <FunctionImportMapping FunctionImportName="ws_TicketDLLs_Save" FunctionName="QAOrgModel.Store.ws_TicketDLLs_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketEmails_Save" FunctionName="QAOrgModel.Store.ws_TicketEmails_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketErrors_GetByTicketID" FunctionName="QAOrgModel.Store.ws_TicketErrors_GetByTicketID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketErrors_GetByTicketID_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+          <ScalarProperty Name="FacID" ColumnName="FacID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketErrors_Save" FunctionName="QAOrgModel.Store.ws_TicketErrors_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketEstimations_GetByTicketID" FunctionName="QAOrgModel.Store.ws_TicketEstimations_GetByTicketID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketEstimations_GetByTicketID_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="BA" ColumnName="BA" />
+          <ScalarProperty Name="DesignScreen" ColumnName="DesignScreen" />
+          <ScalarProperty Name="LogicScreen" ColumnName="LogicScreen" />
+          <ScalarProperty Name="SPScreen" ColumnName="SPScreen" />
+          <ScalarProperty Name="DesignReport" ColumnName="DesignReport" />
+          <ScalarProperty Name="SPReport" ColumnName="SPReport" />
+          <ScalarProperty Name="DEV" ColumnName="DEV" />
+          <ScalarProperty Name="QC" ColumnName="QC" />
+          <ScalarProperty Name="BA_Real" ColumnName="BA_Real" />
+          <ScalarProperty Name="DEV_Real" ColumnName="DEV_Real" />
+          <ScalarProperty Name="QC_Real" ColumnName="QC_Real" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketEstimations_Save" FunctionName="QAOrgModel.Store.ws_TicketEstimations_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketEstimations_TM_Save" FunctionName="QAOrgModel.Store.ws_TicketEstimations_TM_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketFeature_Save" FunctionName="QAOrgModel.Store.ws_TicketFeature_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketFiles_Delete" FunctionName="QAOrgModel.Store.ws_TicketFiles_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketFiles_FileData" FunctionName="QAOrgModel.Store.ws_TicketFiles_FileData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketFiles_FileData_Result">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketFiles_GetFileData_By_Seq" FunctionName="QAOrgModel.Store.ws_TicketFiles_GetFileData_By_Seq">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketFiles_GetFileData_By_Seq_Result">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketFiles_List" FunctionName="QAOrgModel.Store.ws_TicketFiles_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketFiles_List_Result">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileData" ColumnName="FileData" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketFiles_LogList_ForWeb" FunctionName="QAOrgModel.Store.ws_TicketFiles_LogList_ForWeb">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketFiles_LogList_ForWeb_Result">
+          <ScalarProperty Name="ChangedOn" ColumnName="ChangedOn" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketFiles_Save" FunctionName="QAOrgModel.Store.ws_TicketFiles_Save">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketFiles_Save_Result">
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketFollow_AssignTo_Users" FunctionName="QAOrgModel.Store.ws_TicketFollow_AssignTo_Users" />
+    <FunctionImportMapping FunctionImportName="ws_TicketFollow_Delete" FunctionName="QAOrgModel.Store.ws_TicketFollow_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketFollow_Get" FunctionName="QAOrgModel.Store.ws_TicketFollow_Get" />
+    <FunctionImportMapping FunctionImportName="ws_TicketFollow_List" FunctionName="QAOrgModel.Store.ws_TicketFollow_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketFollow_List_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketFollow_Save" FunctionName="QAOrgModel.Store.ws_TicketFollow_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketHistory_ListByTicketID" FunctionName="QAOrgModel.Store.ws_TicketHistory_ListByTicketID" />
+    <FunctionImportMapping FunctionImportName="ws_TicketHistory_ListByTicketID_ForWeb" FunctionName="QAOrgModel.Store.ws_TicketHistory_ListByTicketID_ForWeb" />
+    <FunctionImportMapping FunctionImportName="ws_TicketHistory_Save" FunctionName="QAOrgModel.Store.ws_TicketHistory_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketHistoryLog_ListByProjectID" FunctionName="QAOrgModel.Store.ws_TicketHistoryLog_ListByProjectID" />
+    <FunctionImportMapping FunctionImportName="ws_TicketInWeekRaw_Save" FunctionName="QAOrgModel.Store.ws_TicketInWeekRaw_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketNotes_Delete" FunctionName="QAOrgModel.Store.ws_TicketNotes_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketNotes_Get" FunctionName="QAOrgModel.Store.ws_TicketNotes_Get" />
+    <FunctionImportMapping FunctionImportName="ws_TicketNotes_Get_ForWeb" FunctionName="QAOrgModel.Store.ws_TicketNotes_Get_ForWeb">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketNotes_Get_ForWeb_Result">
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByText" ColumnName="CreatedByText" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="TicketOwner" ColumnName="TicketOwner" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketNotes_GetBySeq" FunctionName="QAOrgModel.Store.ws_TicketNotes_GetBySeq" />
+    <FunctionImportMapping FunctionImportName="ws_TicketNotes_Save" FunctionName="QAOrgModel.Store.ws_TicketNotes_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketProject_GetByProjectID" FunctionName="QAOrgModel.Store.ws_TicketProject_GetByProjectID" />
+    <FunctionImportMapping FunctionImportName="ws_TicketProject_GetByTicketID" FunctionName="QAOrgModel.Store.ws_TicketProject_GetByTicketID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketProject_GetByTicketID_Result">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketProject_Save" FunctionName="QAOrgModel.Store.ws_TicketProject_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketRaw_Delete" FunctionName="QAOrgModel.Store.ws_TicketRaw_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketReview_List" FunctionName="QAOrgModel.Store.ws_TicketReview_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketReview_List_Result">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketReview_Save" FunctionName="QAOrgModel.Store.ws_TicketReview_Save" />
+    <FunctionImportMapping FunctionImportName="ws_TicketSVN_Link" FunctionName="QAOrgModel.Store.ws_TicketSVN_Link" />
+    <FunctionImportMapping FunctionImportName="ws_TicketSVN_Link_Delete_ALL" FunctionName="QAOrgModel.Store.ws_TicketSVN_Link_Delete_ALL" />
+    <FunctionImportMapping FunctionImportName="ws_TicketSVN_Link_Get" FunctionName="QAOrgModel.Store.ws_TicketSVN_Link_Get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketSVN_Link_Get_Result">
+          <ScalarProperty Name="Revision_SVN" ColumnName="Revision_SVN" />
+          <ScalarProperty Name="LinkSVN_File" ColumnName="LinkSVN_File" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketTags_Delete" FunctionName="QAOrgModel.Store.ws_TicketTags_Delete" />
+    <FunctionImportMapping FunctionImportName="ws_TicketTags_List" FunctionName="QAOrgModel.Store.ws_TicketTags_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_TicketTags_List_Result">
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_TicketTags_Save" FunctionName="QAOrgModel.Store.ws_TicketTags_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Tool_Deploy_Update_Note" FunctionName="QAOrgModel.Store.ws_Tool_Deploy_Update_Note" />
+    <FunctionImportMapping FunctionImportName="ws_User_List" FunctionName="QAOrgModel.Store.ws_User_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_User_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordEmail" ColumnName="PasswordEmail" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_User_List_Dev" FunctionName="QAOrgModel.Store.ws_User_List_Dev">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_User_List_Dev_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordEmail" ColumnName="PasswordEmail" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="NewID" ColumnName="NewID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_User_Login" FunctionName="QAOrgModel.Store.ws_User_Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_User_Login_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Responsibility" ColumnName="Responsibility" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ws_User_Search" FunctionName="QAOrgModel.Store.ws_User_Search" />
+    <FunctionImportMapping FunctionImportName="ws_Users_Save" FunctionName="QAOrgModel.Store.ws_Users_Save" />
+    <FunctionImportMapping FunctionImportName="ws_Week_List" FunctionName="QAOrgModel.Store.ws_Week_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAOrgModel.ws_Week_List_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WebServiceURL" ColumnName="WebServiceURL" />
+          <ScalarProperty Name="ActiveYN" ColumnName="ActiveYN" />
+          <ScalarProperty Name="SLGiuong" ColumnName="SLGiuong" />
+          <ScalarProperty Name="SLuotKham" ColumnName="SLuotKham" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="NguoiLienHe" ColumnName="NguoiLienHe" />
+          <ScalarProperty Name="HopDongID" ColumnName="HopDongID" />
+          <ScalarProperty Name="ThamGiaID" ColumnName="ThamGiaID" />
+          <ScalarProperty Name="GiaTriHopDong" ColumnName="GiaTriHopDong" />
+          <ScalarProperty Name="PM" ColumnName="PM" />
+          <ScalarProperty Name="CR" ColumnName="CR" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

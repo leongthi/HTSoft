@@ -1,11 +1,15 @@
 ﻿using CR_API.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+
 
 namespace CR_API.Controllers
 {
@@ -15,7 +19,7 @@ namespace CR_API.Controllers
         [HttpGet]
         public IEnumerable<Ticket> GetAll()
         {
-            using (QAOrgDBContext dbContext = new QAOrgDBContext())
+            using (QAOrgEntities dbContext = new QAOrgEntities())
             {
                 return dbContext.Ticket.ToList();
             }
@@ -25,7 +29,7 @@ namespace CR_API.Controllers
         [HttpGet]
         public Ticket Get(int id)
         {
-            using (QAOrgDBContext dbContext = new QAOrgDBContext())
+            using (QAOrgEntities dbContext = new QAOrgEntities())
             {
                 return dbContext.Ticket.FirstOrDefault(e => e.TicketID == id);
             }
@@ -33,24 +37,22 @@ namespace CR_API.Controllers
 
         [Route("api/tickets/BuildTicket/{buildid}")]
         [HttpGet]
-        public IEnumerable<Ticket> BuildTicket(int buildid)
+        public IEnumerable<ws_Build_Ticket_InBuild_Get_Result> BuildTicket(int buildid)
         {
-            using(QAOrgDBContext dBContext = new QAOrgDBContext())
+            
+            using (QAOrgEntities dBContext = new QAOrgEntities())
             {
-                List<BuildTickets> buildTickets= dBContext.BuildTickets.Where(x=> x.BuildID == buildid).ToList();
-                List<Ticket> ticketList= new List<Ticket>();
+                List<ws_Build_Ticket_InBuild_Get_Result> tickets = new List<ws_Build_Ticket_InBuild_Get_Result>();
+                string Sess = "16FC6B61-3D5D-4DC5-8FBD-013FC42802C9";
+                tickets = dBContext.ws_Build_Ticket_InBuild_Get(Sess, buildid, 0).ToList();
 
-                if (buildTickets.Count > 0)
-                {
-                    foreach (var item in buildTickets)
-                    {
-                        ticketList.Add(Get(item.TicketID));
-                    }
-                }
+                return tickets;
 
-                return ticketList;
+
+
             }
         }
+
 
     }
 }

@@ -199,6 +199,15 @@
     <Compile Include="Models\Features_Ref.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\fnSplitString_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\func_SplitString_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\func_Split_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Installer.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
@@ -367,6 +376,12 @@
     <Compile Include="Models\Modules_Users.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\proc_Tickets_BAView_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_Tickets_BigDeploy_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Projects.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
@@ -392,6 +407,93 @@
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ScriptsDeploy.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Split_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Builds_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Builds_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Client_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_DLLs_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Installer_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Installer_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_Customer_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_Lookup_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_ReportCollumsDetails_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_ReportInfo_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_ReportParam_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_Reports2_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_ReportsCollumsDetail_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_Reports_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_Reports_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_L_TicketReport_Deploy_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_MemoTemplates_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Menu_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_ScriptsDeploy_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_TA_MoiTruongDay_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_TicketClients_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_TicketFiles_GetFileData_By_Seq_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_TicketTags_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Ticket_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_User_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_User_Login_Result.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SUP_Menu.cs">
@@ -463,6 +565,12 @@
     <Compile Include="Models\TicketSVN_Link.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tickets_ClientView.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tickets_MorningMeetingView.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TicketTags.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
@@ -499,6 +607,372 @@
     <Compile Include="Models\Users.cs">
       <DependentUpon>QAOrgDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ws_Builds_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Build_Ticket_InBuild_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Clients_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Client_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Client_List_ByRunning_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Client_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_CongViec_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_ConnectionString_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_ConnectionString_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_DanhSachPhanHeTamAnh_GetAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Error_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_InstallCheck_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Installer_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Installer_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_LoadTuan_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_LoadWeek_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Attachment_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Customer_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Customer_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_DLLs_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Lookup_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Lookup_Status_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Module_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_BoPhan_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_ChucVuKH_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_ChucVu_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_FileUpload_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_GDDA_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_GiaiDoan_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_HangBenhVien_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_HopDongChiTiet_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_HoSoThanhToan_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_HoSoThanhToan_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_KhachHang_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_KhuVuc_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LichSuSale_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LoaiCoSo_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LoaiDoanhThu_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LoaiHinhDoanhNghiep_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LoaiHopDong_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LoaiNganh_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_LoaiTien_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_MucDoUuTien_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_NhanSu_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_NhomKH_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_NhuCau_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_SoLanTre_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_ThoiHan_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_ThongTinLHKH_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_QLDA_TrangThai_ListAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_ReportCollumsDetails_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_ReportDetail_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_ReportInfo_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_ReportParam_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Reports2_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_ReportsCollumsDetail_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_ReportsSign_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Reports_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Reports_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_StoreProcedures_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Tags_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_Teams_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_TeamTicket_GetByDev_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_TeamTicket_GetByTO_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_TicketErrorProtocol_ListByErrorID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_L_TicketErrors_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_MailAddress_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_MailAttachment_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_MailHeader_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_MailMessage_GetByTicketID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_MailMessage_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_MailMessage_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Member_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Menu_List_Org_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Projects_Search_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_ProjectUsers_ListByProjectID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_ReportChild_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_RequirementOriginal_GetByBuilID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_RequirementOriginal_GetByCode_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_RequirementOriginal_List_ByTicket_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_RequirementOriginal_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_SUP_Menu_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_SUP_Requirement_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TamAnhHospitalRequest_GetAll_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TA_MoiTruongDay_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TA_TicketXacNhanDayMoiTruong_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketCheck_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketClients_ListByTicketID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketClients_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketErrors_GetByTicketID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketEstimations_GetByTicketID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketFiles_FileData_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketFiles_GetFileData_By_Seq_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketFiles_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketFiles_LogList_ForWeb_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketFiles_Save_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketFollow_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketNotes_Get_ForWeb_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketProject_GetByTicketID_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketReview_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketSVN_Link_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_TicketTags_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_Estimations_Detail_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_GetRelative_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_Get_ForWeb_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_Hotfix_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_InBuild_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_InWeek_Chart_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_InWeek_ForUser_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_InWeek_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_InWeek_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_InWeek_Raw_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_QC_Estimation_Detail_Get_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_SearchV1_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_TM_Chart_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Ticket_Week_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_User_List_Dev_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_User_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_User_Login_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ws_Week_List_Result.cs">
+      <DependentUpon>QAOrgDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -512,8 +986,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\QAOrgDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QAOrgDataModel.Context.cs</LastGenOutput>
       <DependentUpon>QAOrgDataModel.edmx</DependentUpon>
+      <LastGenOutput>QAOrgDataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\QAOrgDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -109,133 +109,10 @@
     </div>
   </div>
 </div>
-
-<!-- Content Row  Chart-->
-
-<div class="row">
-  <!-- Tốc độ hoàn thành build Area Chart -->
-  <div class="col-xl-6 col-lg-7">
-    <div class="card shadow mb-4">
-      <!-- Card Header - Dropdown -->
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
-        <h6 class="m-0 font-weight-bold text-primary">
-          Tốc độ hoàn thành build
-        </h6>
-        <div class="dropdown no-arrow">
-          <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-          </a>
-          <div
-            class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-            aria-labelledby="dropdownMenuLink"
-          >
-            <div class="dropdown-header">Dropdown Header:</div>
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Body -->
-      <div class="card-body">
-        <div class="chart-area">
-          <canvas id="myAreaChart"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Build List -->
-  <div class="col-xl-6 col-lg-5">
-    <div class="card shadow mb-4">
-      <!-- Card Header - Dropdown -->
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
-        <div class="col-lg-4">
-          <h6 class="m-0 font-weight-bold text-primary">Danh sách build</h6>
-        </div>
-        <div class="col-lg-8">
-          <input
-            class="form-control"
-            id="myInput"
-            type="text"
-            placeholder="Search.."
-          />
-        </div>
-      </div>
-      <!-- Card Body -->
-      <div class="card-body" >
-        <div class="table-responsive" style="height:302.5px">
-          <table class="table table-bordered">
-            <thead>
-              <tr class="d-flex">
-                <th class="col-1">ID</th>
-                <th class="col-3">BuildName</th>
-                <th class="col-2">Client</th>
-                <th class="col-1">Status</th>
-                <th class="col-2">Deadline</th>
-                <th class="col-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="myTable">
-              {% for build in builds %}
-              <tr class="d-flex">
-                <td class="col-1">{{build.BuildID}}</td>
-                <td class="col-3">{{build.BuildName}}</td>
-                <td class="col-2">{{build.ClientID}}</td>
-                <td class="col-1">{{build.BuildStatus}}</td>
-                <td class="col-2">{{build.BuildDeadline|date:"Y-m-d"}}</td>
-                <td class="col-3">
-                  <a type="button" class="btn btn-primary" href="{% url 'buildTickets' build.BuildID %}">
-                    <i class="far fa-eye"></i>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    data-toggle="modal"
-                    class="edit-view-modal btn btn-success"
-                    data-url="#"
-                    data-target="#modalCart"
-                    data-message=""
-                  >
-                    <i class="fas fa-edit"></i>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    data-toggle="modal"
-                    class="confirm-delete btn btn-danger"
-                    data-url="#"
-                    data-target="#deleteItemModal"
-                    data-message="Bạn có chắc muốn xóa {{build.BuildName}}?"
-                  >
-                    <i class="far fa-trash-alt"></i>
-                  </a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Tiến độ Task theo khách hàng Content Row -->
 <div class="row">
   <!-- Content Column -->
-  <div class="col-lg mb-4">
+  <div class="col-lg mb-6">
     <!-- Project Card Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
@@ -310,18 +187,122 @@
       </div>
     </div>
   </div>
+
+  <div class="col-lg mb-6">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <h6 class="m-0 font-weight-bold text-primary">
+          Tốc độ hoàn thành build
+        </h6>
+        <div class="dropdown no-arrow">
+          <a
+            class="dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          <div
+            class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+            aria-labelledby="dropdownMenuLink"
+          >
+            <div class="dropdown-header">Dropdown Header:</div>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="chart-area">
+          <canvas id="myAreaChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Content Row  Chart-->
+
+<div class="row">
+   <!-- Build List -->
+  <div class="col-xl">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <div class="col-lg-4">
+          <h6 class="m-0 font-weight-bold text-primary">Danh sách build</h6>
+        </div>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body" >
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable">
+            <thead>
+              <tr>
+                <th>BuildID</th>
+                <th>BuildName</th>
+                <th>DueDate</th>
+                <th>Status</th>
+                <th>ClientName</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              {% for build in builds %}
+              <tr>
+                <td>{{build.BuildID}}</td>
+                <td>{{build.BuildName}}</td>
+                <td>{{build.DueDate}}</td>
+                <td>{{build.Status}}</td>
+                <td>{{build.ClientName}}</td>
+                <td>
+                  <a type="button" class="btn btn-primary" href="{% url 'buildTickets' build.BuildID %}">
+                    <i class="far fa-eye"></i>
+                  </a>
+                  <a
+                    href="javascript:void(0)"
+                    data-toggle="modal"
+                    class="edit-view-modal btn btn-success"
+                    data-url="#"
+                    data-target="#modalCart"
+                    data-message=""
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="javascript:void(0)"
+                    data-toggle="modal"
+                    class="confirm-delete btn btn-danger"
+                    data-url="#"
+                    data-target="#deleteItemModal"
+                    data-message="Bạn có chắc muốn xóa {{build.BuildName}}?"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-  $(document).ready(function () {
-    $("#myInput").on("keyup", function () {
-      var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-      });
-    });
-  });
-</script>
+
+
 
 <!-- Modal Edit -->
 <div

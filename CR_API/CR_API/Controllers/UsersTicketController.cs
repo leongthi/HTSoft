@@ -14,7 +14,7 @@ namespace CR_API.Controllers
         [HttpGet]
         public IEnumerable<Users> GetAll()
         {
-            using (QAOrgDBContext dbContext = new QAOrgDBContext())
+            using (QAOrgEntities dbContext = new QAOrgEntities())
             {
                 return dbContext.Users.ToList();
             }

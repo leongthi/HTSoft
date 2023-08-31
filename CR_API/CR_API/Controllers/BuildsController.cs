@@ -10,23 +10,18 @@ namespace CR_API.Controllers
 {
     public class BuildsController : ApiController
     {
-        public IEnumerable<Builds> Get()
+        public IEnumerable<ws_Builds_List_Result> Get()
         {
-            using(QAOrgDBContext dBContext=new QAOrgDBContext())
+            using(QAOrgEntities dBContext=new QAOrgEntities())
             {
-                return dBContext.Builds.ToList();
+                string Sess = "16FC6B61-3D5D-4DC5-8FBD-013FC42802C9";
+                List<ws_Builds_List_Result> buildList = new List<ws_Builds_List_Result> ();
+
+                buildList = dBContext.ws_Builds_List(Sess, 0).ToList();
+
+                return buildList;
             }    
         }
 
-
-        [Route("api/builds/getbuildtoday")]
-        [HttpGet]
-        public IEnumerable<Builds> GetBuildToday()
-        {
-            using (QAOrgDBContext dBContext = new QAOrgDBContext())
-            {
-                return dBContext.Builds.Where(x=>x.CreatedOn==DateTime.Today).ToList();
-            }
-        }
     }
 }

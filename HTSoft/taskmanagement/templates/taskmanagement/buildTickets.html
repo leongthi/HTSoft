@@ -22,14 +22,11 @@
         <thead>
           <tr>
             <th>TicketID</th>
-            <th>Category</th>
             <th>MODULE</th>
-            <th>Priority</th>
             <th>Status</th>
             <th>AssignedTo</th>
             <th>Title</th>
             <th>PrimaryDEV</th>
-            <th>TicketOwner</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -37,14 +34,11 @@
           {% for ticket in tickets %}
           <tr>
             <td>{{ticket.TicketID}}</td>
-            <td>{{ticket.Category}}</td>
             <td>{{ticket.MODULE}}</td>
-            <td>{{ticket.Priority}}</td>
             <td>{{ticket.Status}}</td>
             <td>{{ticket.AssignedTo}}</td>
             <td>{{ticket.Title}}</td>
             <td>{{ticket.PrimaryDEV}}</td>
-            <td>{{ticket.TicketOwner}}</td>
             <td>
               <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
