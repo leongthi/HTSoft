@@ -18,17 +18,23 @@ def customerList(request):
 
 def clientList(request):   
 
+    #Get clients list
+    clients=ft.Initial(api.clients_getall())
+
+
     context={
-        
+        'clients':clients
     }
 
     return render(request,"shared/clientList.html",context)
 
-def usersTicketList(request):    
 
-    usersTickets=ft.Initial(api.usersticket_getall())
+def usersTicketList(request):
+    usersTicket=ft.Initial(api.usersTicket_getall())
 
     context={
-        'usersTickets':usersTickets
+        'usersTicket':usersTicket
     }
+
     return render(request,"shared/usersTicketList.html",context)
+

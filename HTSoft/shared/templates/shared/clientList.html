@@ -22,7 +22,8 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>ClientName</th>
+            <th>Name</th>
+            <th>Status</th>
             <th>Active</th>
             <th>Actions</th>
           </tr>
@@ -30,9 +31,10 @@
         <tbody id="myTable">
           {% for cli in clients %}
           <tr>
-            <td>{{cli.id}}</td>
-            <td>{{cli.ClientName}}</td>
-            <td>{{cli.IsActive}}</td>
+            <td>{{cli.ID}}</td>
+            <td>{{cli.Name}}</td>
+            <td>{{cli.Status}}</td>
+            <td>{{cli.ActiveYN}}</td>
             <td>
               <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>

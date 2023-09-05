@@ -180,6 +180,29 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block" />
 
+
+        <!-- Heading -->
+        <div class="sidebar-heading">Quản lý người dùng</div>
+
+        <!-- Nav Item - Pages Shared Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-user-circle fa-sm"></i>
+            <span>Người dùng ticket</span>
+          </a>
+        </li>
+
+        <!-- Nav Item - Pages Shared Menu -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-user-circle fa-sm"></i>
+            <span>Người dùng CR Web</span>
+          </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block" />
+
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -416,7 +439,7 @@
                   aria-expanded="false"
                 >
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >Douglas McGee</span
+                    >{{user.username}}</span
                   >
                   <img
                     class="img-profile rounded-circle"

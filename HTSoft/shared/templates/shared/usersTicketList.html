@@ -5,12 +5,12 @@
     <div class="row">
       <div class="col-4">
         <h2>
-          Danh sách User tool Ticket
+          Danh sách Client
           <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
 
         </h2>
         <p>
-          Danh sách các Users trong tool quản lý ticket
+          Danh sách Client phần mềm của công ty
         </p>
       </div>
     </div>
@@ -21,23 +21,25 @@
       <table class="table table-bordered" id="dataTable">
         <thead>
           <tr>
-            <th>UserID</th>
-            <th>Responsibility</th>
-            <th>FirstName</th>
+            <th>ID</th>
             <th>UserName</th>
             <th>PASSWORD</th>
-            <th>Active</th>
+            <th>Responsibility</th>
+            <th>FirstName</th>
+            <th>Email</th>
+            <th>IsActive</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody id="myTable">
-          {% for user in usersTickets %}
+          {% for user in usersTicket %}
           <tr>
             <td>{{user.ID}}</td>
-            <td>{{user.Responsibility}}</td>
-            <td>{{user.FirstName}}</td>
             <td>{{user.UserName}}</td>
             <td>{{user.PASSWORD}}</td>
+            <td>{{user.Responsibility}}</td>
+            <td>{{user.FirstName}}</td>
+            <td>{{user.Email}}</td>
             <td>{{user.IsActive}}</td>
             <td>
               <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
@@ -51,5 +53,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

@@ -47,9 +47,6 @@ namespace CR_API.Controllers
                 tickets = dBContext.ws_Build_Ticket_InBuild_Get(Sess, buildid, 0).ToList();
 
                 return tickets;
-
-
-
             }
         }
 

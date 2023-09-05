@@ -35,9 +35,7 @@ def buildTickets(request,BuildID):
     return render(request,"taskmanagement/buildTickets.html",context)
     
 
-def ticketList(request):
-
-    
+def ticketList(request):    
 
     context={
         
