@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from shared.models import Customer, Status
+
 from . import api
 from . import functions as ft
 from dateutil import parser

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer
+from .models import UserTicket
 from . import api
 from . import functions as ft
 from dateutil import parser
@@ -7,10 +7,8 @@ from dateutil import parser
 # Create your views here.
 def customerList(request):
 
-    customers=Customer.objects.all().order_by('id')
-
     context={
-        'customers':customers
+        
     }
 
     return render(request,"shared/customerList.html",context)
@@ -31,6 +29,10 @@ def clientList(request):
 
 def usersTicketList(request):
     usersTicket=ft.Initial(api.usersTicket_getall())
+    usertk_db=UserTicket.objects.all()
+
+    if usertk_db is None:
+        return
 
     context={
         'usersTicket':usersTicket
