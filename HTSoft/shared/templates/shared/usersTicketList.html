@@ -32,9 +32,9 @@
           </tr>
         </thead>
         <tbody id="myTable">
-          {% for user in usersTicket %}
+          {% for user in usertk_db %}
           <tr>
-            <td>{{user.ID}}</td>
+            <td>{{user.ID_main}}</td>
             <td>{{user.UserName}}</td>
             <td>{{user.PASSWORD}}</td>
             <td>{{user.Responsibility}}</td>

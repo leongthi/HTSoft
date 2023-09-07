@@ -11,4 +11,5 @@ class UserTicket(models.Model):
     IsActive=models.BooleanField(null=True,blank=True)
 
     def __str__(self):
-        return self.Responsibility+'-'+self.PASSWORD
+        return self.Responsibility+'-'+self.FirstName
+
