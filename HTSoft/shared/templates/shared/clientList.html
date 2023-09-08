@@ -6,8 +6,6 @@
       <div class="col-4">
         <h2>
           Danh sách Client
-          <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
-
         </h2>
         <p>
           Danh sách Client phần mềm của công ty
@@ -21,22 +19,28 @@
       <table class="table table-bordered" id="dataTable">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>ID_main</th>
+            <th>Code</th>
             <th>Name</th>
+            <th>WebServiceURL</th>
+            <th>Logo</th>
             <th>Status</th>
             <th>Active</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody id="myTable">
-          {% for cli in clients %}
+          {% for cli in clients_db %}
           <tr>
-            <td>{{cli.ID}}</td>
+            <td>{{cli.ID_main}}</td>
+            <td>{{cli.Code}}</td>
             <td>{{cli.Name}}</td>
+            <td>{{cli.WebServiceURL}}</td>
+            <td>{{cli.Logo}}</td>
             <td>{{cli.Status}}</td>
             <td>{{cli.ActiveYN}}</td>
             <td>
-              <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+              <a type="button" class="btn btn-primary" href="{% url 'clientEdit' cli.id %}"><i class="far fa-eye"></i></a>
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
               <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             </td>

@@ -28,6 +28,7 @@
 
 .list-group-item:hover{
 	transform: scaleX(1.1);
+	background-color: rgb(253, 242, 212);
 }
 
 
@@ -43,5 +44,3 @@
 
 
   /* End */
-
-  

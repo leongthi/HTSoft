@@ -13,3 +13,14 @@ class UserTicket(models.Model):
     def __str__(self):
         return self.Responsibility+'-'+self.FirstName
 
+class Client(models.Model):
+    ID_main=models.IntegerField(null=True,blank=True)
+    Code=models.CharField(max_length=50,blank=True,null=True)
+    Name=models.CharField(max_length=255,blank=True,null=True)
+    Status=models.CharField(max_length=255,blank=True,null=True)
+    WebServiceURL=models.CharField(max_length=255,blank=True,null=True)
+    ActiveYN=models.BooleanField(blank=True,null=True)
+    Logo=models.ImageField(upload_to='static/images/logo',null=True,blank=True)
+
+    def __str__(self):
+        return self.Name

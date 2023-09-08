@@ -1,0 +1,73 @@
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <div class="row">
+        <div class="col-4">
+          <h2>
+            Chỉnh sửa Client
+          </h2>
+          <p>
+            Danh sách Client phần mềm của công ty
+          </p>
+        </div>
+      </div>
+     
+    </div>
+    <div class="card-body">   
+        <div class="row">
+            <!-- Hiển thị các trường chỉnh sửa -->
+            <form method="POST" action="{% url 'clientEdit' client.id %}" enctype="multipart/form-data">
+                {% csrf_token %}                               
+                <div>
+                    <div class="mb-4 d-flex justify-content-center">
+                        <img id="logoImage" src="" alt="Không có logo" style="width: 200px;">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="btn btn-primary btn-rounded">
+                            <label class="form-label text-white m-1" for="customFile1">Choose file</label>
+                            <input type="file" class="form-control d-none" id="customFile1" name="Logo"/>
+                        </div>                        
+                    </div>
+                    <br>
+                    <input type="submit" value="Lưu" class="btn btn-primary">
+                    <a type="button" class="btn btn-danger">Hủy</a>
+                </div>
+            </form>        
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var logoImage = document.getElementById("logoImage");
+        var fileInput = document.getElementById("customFile1");
+        
+        {% if client.Logo %}
+            // Kiểm tra xem client.Logo.url có dữ liệu hay không
+            if ("{{ client.Logo.url }}" !== "") {
+                logoImage.src = "{{ client.Logo.url }}";
+            }
+            
+        {% endif %}
+            
+        // Xử lý sự kiện thay đổi trường input file
+        fileInput.addEventListener("change", function() {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    logoImage.src = event.target.result;
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                // Nếu không có file nào được chọn, trống khung hình ảnh
+                logoImage.src = "";
+            }
+        });
+    });
+</script>
+
+{% endblock %}

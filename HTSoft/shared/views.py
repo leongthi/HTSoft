@@ -1,30 +1,73 @@
-from django.shortcuts import render
-from .models import UserTicket
+from django.shortcuts import render,get_object_or_404,redirect
+from .models import UserTicket,Client
 from . import api
 from . import functions as ft
-from dateutil import parser
+
 
 # Create your views here.
-def customerList(request):
-
-    context={
-        
-    }
-
-    return render(request,"shared/customerList.html",context)
-
 
 def clientList(request):   
 
     #Get clients list
     clients=ft.Initial(api.clients_getall())
 
+    clients_db=Client.objects.all()
 
-    context={
-        'clients':clients
+    if not clients_db:
+        for cli in clients:
+            client=Client(
+                ID_main=cli["ID"],
+                Code=cli["Code"],
+                Name=cli["Name"],
+                Status=cli["Status"],
+                WebServiceURL=cli["WebServiceURL"],
+                ActiveYN=cli["ActiveYN"]
+            )
+
+            client.save()
+        context={
+            'clients_db':clients_db
+        }
+
+        return render(request,"shared/clientList.html",context)
+    else:
+        for cli in clients:        
+            for cli_db in clients_db:                
+                if  cli_db.ID_main==cli["ID"]:
+                    if cli["Code"] != cli_db.Code or cli["Name"] != cli_db.Name  or cli["Status"] != cli_db.Status or cli["WebServiceURL"] != cli_db.WebServiceURL or cli["ActiveYN"] != cli_db.ActiveYN:
+                        cli_db.ID_main=cli["ID"]
+                        cli_db.Code=cli["Code"]
+                        cli_db.Name=cli["Name"]
+                        cli_db.Status=cli["Status"]
+                        cli_db.WebServiceURL=cli["WebServiceURL"]
+                        cli_db.ActiveYN=cli["ActiveYN"]
+
+
+                        cli_db.save()
+
+                else:
+                    continue             
+
+        context={
+            'clients_db':clients_db
+        }
+
+        return render(request,"shared/clientList.html",context)
+    
+def clientEdit(request,id):
+    client = get_object_or_404(Client, id=id)
+    if request.method == 'POST':
+        Logo = request.FILES.get('Logo')
+        print(Logo)
+        if Logo:
+            client.Logo = Logo
+
+            client.save()
+            return redirect('clientList')
+    context = {
+        'client': client,
     }
-
-    return render(request,"shared/clientList.html",context)
+    return render(request, 'shared/clientEdit.html', context)
 
 
 def usersTicketList(request):
@@ -73,4 +116,6 @@ def usersTicketList(request):
         }
 
         return render(request,"shared/usersTicketList.html",context)
+    
+
 
