@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-1">Tuần:</label>
+                    <div class="col-4">
+                        <select class="form-control" id="selectWeek" onchange="getValueWeek()">
+                            {% for week in weeks %}
+                            <option value="{{week.ID}}" name="{{week.ID}}">{{week.WeekName}}</option>
+                            {% endfor %}
+                            
+                        </select>
+                    </div>
+                    <label class="col-1">TO:</label>
+                    <div class="col-3">
+                        <select class="form-control" id="selectTeam" onchange="getValueTeam()">
+                            {% for team in teams %}
+                            <option value="{{team.TeamID}}" name="{{team.TeamID}}">{{team.TeamName}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <a href="{% url 'ticketWeekList' week.ID team.TeamID %}" class="btn btn-primary">Lọc</a>
+                </div>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                      <thead>
+                        <tr>
+                          <th>TicketID</th>
+                          <th>Category</th>
+                          <th>MODULE</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="myTable">
+                        {% for ticket in tickets %}
+                        <tr>
+                          <td>{{ticket.TicketID}}</td>
+                          <td>{{ticket.Category}}</td>
+                          <td>{{ticket.MODULE}}</td>
+                          <td>
+                            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+                            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+
+            <div class="col-6">
+                <h1> Danh sách ticket mong muốn đã được duyệt
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getValueWeek() {
+      var selectElement = document.getElementById("selectWeek");
+      var selectedValue = selectElement.value;
+      alert(selectedValue); 
+    }
+
+    function getValueTeam(){
+        var selectElement = document.getElementById("selectTeam");
+        var selectedValue = selectElement.value;
+        alert(selectedValue); 
+    }
+    </script>
+{% endblock %}
+

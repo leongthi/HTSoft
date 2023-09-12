@@ -1,11 +1,18 @@
 {% extends 'dashboard/base.html' %} {% load static %} {% block content %}
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Tổng quan</h1>
-  <a href="{% url 'ticketList' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-    ><i class="fas fa-download fa-sm text-white-50"></i> Danh sách ticket</a
+
+<div class="row">
+  <div class="col">
+    <a href="{% url 'ticketWeekList' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+    ><i class="fas fa-download fa-sm text-white-50"></i> Ticket tuần</a
   >
+    <a href="{% url 'ticketList' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+    ><i class="fas fa-download fa-sm text-white-50"></i> Cảnh báo Assigned ticket</a
+  >  
+  </div>
 </div>
+
+<br>
 
 <!-- Content Row -->
 <div class="row">
