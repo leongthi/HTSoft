@@ -36,10 +36,10 @@ def listweek_GetAllTeam():
 
 #3.  api/tickets/listweek/getlistweek
 def get_list_week(weekid, teamid):
-    url = 'http://localhost/api/tickets/listweek/getlistweek'  # Thay đổi URL tương ứng với địa chỉ của API
+    url = 'https://localhost:44320/api/tickets/listweek/getlistweek'  # Thay đổi URL tương ứng với địa chỉ của API
     params = {'weekid': weekid, 'teamid': teamid}  # Đặt các tham số trong query string
 
-    response = requests.get(url, params=params)
+    response = requests.get(url, params=params,verify=False)
     
     return response
 

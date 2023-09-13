@@ -14,7 +14,9 @@ namespace CR_API.Models
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+
     public partial class QAOrgEntities : DbContext
     {
         public QAOrgEntities()
@@ -6145,24 +6147,26 @@ namespace CR_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_Get_Result>("ws_Ticket_InWeek_Get", sessionIDParameter, ticketIDParameter);
         }
-    
-        public virtual ObjectResult<ws_Ticket_InWeek_List_Result> ws_Ticket_InWeek_List(string sessionID, Nullable<int> tuanID, Nullable<int> teamID)
+
+        public virtual List<ws_Ticket_InWeek_List_Result> ws_Ticket_InWeek_List(string sessionID, Nullable<int> tuanID, Nullable<int> teamID)
         {
             var sessionIDParameter = sessionID != null ?
-                new ObjectParameter("SessionID", sessionID) :
-                new ObjectParameter("SessionID", typeof(string));
-    
+                new SqlParameter("SessionID", sessionID) :
+                new SqlParameter("SessionID", DBNull.Value);
+
             var tuanIDParameter = tuanID.HasValue ?
-                new ObjectParameter("TuanID", tuanID) :
-                new ObjectParameter("TuanID", typeof(int));
-    
+                new SqlParameter("TuanID", tuanID) :
+                new SqlParameter("TuanID", DBNull.Value);
+
             var teamIDParameter = teamID.HasValue ?
-                new ObjectParameter("TeamID", teamID) :
-                new ObjectParameter("TeamID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ws_Ticket_InWeek_List_Result>("ws_Ticket_InWeek_List", sessionIDParameter, tuanIDParameter, teamIDParameter);
+                new SqlParameter("TeamID", teamID) :
+                new SqlParameter("TeamID", DBNull.Value);
+
+            var query = ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<ws_Ticket_InWeek_List_Result>("EXECUTE ws_Ticket_InWeek_List @SessionID, @TuanID, @TeamID", sessionIDParameter, tuanIDParameter, teamIDParameter);
+
+            return query.ToList();
         }
-    
+
         public virtual ObjectResult<ws_Ticket_InWeek_Raw_List_Result> ws_Ticket_InWeek_Raw_List(string sessionID, Nullable<int> tuanID)
         {
             var sessionIDParameter = sessionID != null ?

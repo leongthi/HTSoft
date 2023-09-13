@@ -10,7 +10,8 @@
 namespace CR_API.Models
 {
     using System;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class ws_Ticket_InWeek_List_Result
     {
         public long TictketID { get; set; }
@@ -30,7 +31,6 @@ namespace CR_API.Models
         public string Tuan { get; set; }
         public Nullable<decimal> TOEST { get; set; }
         public Nullable<decimal> HourInWeek { get; set; }
-        public string TeamName1 { get; set; }
         public Nullable<System.DateTime> DeadlineQC { get; set; }
         public Nullable<System.DateTime> NgayGiaoQC { get; set; }
         public string STTUuTien { get; set; }

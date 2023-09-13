@@ -4,6 +4,7 @@ from . import api
 from . import functions as ft
 from dateutil import parser
 from django.db import connection
+from datetime import datetime
 
 # Create your views here.
 def task_dashboard(request):
@@ -11,6 +12,9 @@ def task_dashboard(request):
     #Get build list
     builds=ft.Initial(api.builds_getall())
 
+    for build in builds:
+        if build['DueDate'] is not None:
+            build['DueDate'] = datetime.strptime(build['DueDate'], "%Y-%m-%dT%H:%M:%S").strftime("%d/%m/%Y")
 
     context={
         'builds':builds
@@ -27,6 +31,7 @@ def buildTickets(request,BuildID):
     for ticket in tickets:
         if ticket is None:
             tickets.remove(ticket)
+        
     
     context={
         'tickets':tickets
@@ -48,15 +53,22 @@ def ticketWeekList(request,weekid=0,teamid=0):
 
     getListWeek=ft.Initial(api.get_list_week(weekid,teamid))
 
-    print(getListWeek)
-
     weeks=getAllWeek
     teams=getAllTeam
+    listWeeks=getListWeek
 
+    for week in listWeeks:
+        if week['DeadlineCR'] is not None:
+            week['DeadlineCR'] = datetime.strptime(week['DeadlineCR'], "%Y-%m-%dT%H:%M:%S").strftime("%d/%m/%Y")
+        if week['DeadlineQC'] is not None:
+            week['DeadlineQC']= datetime.strptime(week['DeadlineQC'], "%Y-%m-%dT%H:%M:%S").strftime("%d/%m/%Y")
+        if week['DeadlineTO'] is not None:
+            week['DeadlineTO']= datetime.strptime(week['DeadlineTO'], "%Y-%m-%dT%H:%M:%S").strftime("%d/%m/%Y")
     
     context={
         'weeks':weeks,
         'teams':teams,
+        'listWeeks':listWeeks,
     }
 
 

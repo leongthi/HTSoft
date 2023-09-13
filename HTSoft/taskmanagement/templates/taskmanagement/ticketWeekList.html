@@ -1,10 +1,9 @@
 {% extends 'dashboard/base.html' %} {% load static %} {% block content %}
 
-
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="form-group row">
                     <label class="col-1">Tuần:</label>
                     <div class="col-4">
@@ -12,7 +11,6 @@
                             {% for week in weeks %}
                             <option value="{{week.ID}}" name="{{week.ID}}">{{week.WeekName}}</option>
                             {% endfor %}
-                            
                         </select>
                     </div>
                     <label class="col-1">TO:</label>
@@ -23,7 +21,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <a href="{% url 'ticketWeekList' week.ID team.TeamID %}" class="btn btn-primary">Lọc</a>
+                    <a href="#" id="filterLink" class="btn btn-primary">Lọc</a>
                 </div>
                 <hr>
                 <div class="table-responsive">
@@ -31,21 +29,37 @@
                       <thead>
                         <tr>
                           <th>TicketID</th>
-                          <th>Category</th>
-                          <th>MODULE</th>
+                          <th>Title</th>
+                          <th>PrimaryDEV</th>
+                          <th>PrimaryQC</th>
+                          <th>ESTDEV</th>
+                          <th>ESTQC</th>
+                          <th>DeadlineCR</th>
+                          <th>DeadlineTO</th>
+                          <th>DeadlineQC</th>
+                          <th>DoOrNot</th>
+                          <th>Note</th>
+                          <th>ClientName</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody id="myTable">
-                        {% for ticket in tickets %}
+                        {% for lw in listWeeks %}
                         <tr>
-                          <td>{{ticket.TicketID}}</td>
-                          <td>{{ticket.Category}}</td>
-                          <td>{{ticket.MODULE}}</td>
+                          <td>{{lw.TictketID}}</td>
+                          <td>{{lw.Title|truncatechars:50}}</td>
+                          <td>{{lw.PrimaryDEV}}</td>
+                          <td>{{lw.PrimaryQC}}</td>
+                          <td>{{lw.ESTDEV}}</td>
+                          <td>{{lw.ESTQC}}</td>
+                          <td>{{lw.DeadlineCR}}</td>
+                          <td>{{lw.DeadlineTO}}</td>
+                          <td>{{lw.DeadlineQC}}</td>
+                          <td>{{lw.DoOrNot}}</td>
+                          <td>{{lw.Note}}</td>
+                          <td>{{lw.ClientName}}</td>
                           <td>
                             <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                           </td>
                         </tr>
                         {% endfor %}
@@ -53,25 +67,29 @@
                     </table>
                   </div>
             </div>
-
-            <div class="col-6">
-                <h1> Danh sách ticket mong muốn đã được duyệt
-            </div>
         </div>
     </div>
 </div>
 <script>
-    function getValueWeek() {
-      var selectElement = document.getElementById("selectWeek");
-      var selectedValue = selectElement.value;
-      alert(selectedValue); 
-    }
+    document.getElementById("filterLink").addEventListener("click", function (event) {
+        event.preventDefault(); // Ngăn chặn sự kiện mặc định của thẻ a
 
-    function getValueTeam(){
-        var selectElement = document.getElementById("selectTeam");
-        var selectedValue = selectElement.value;
-        alert(selectedValue); 
-    }
-    </script>
+        var selectWeek = document.getElementById("selectWeek");
+        var selectTeam = document.getElementById("selectTeam");
+
+        var weekid = selectWeek.value;
+        var teamid = selectTeam.value;
+
+        var url = "{% url 'ticketWeekList' 0 0 %}"; // Thay đổi 0 0 thành giá trị mặc định nếu cần thiết
+        url = url.replace("0", weekid);
+        url = url.replace("0", teamid);
+
+        url = decodeURIComponent(url); // Giải mã URL
+
+        url = url.replace(/&amp;/g, '&'); // Thay thế tất cả &amp; thành &
+
+        window.location.href = url;
+    });
+</script>
 {% endblock %}
 
